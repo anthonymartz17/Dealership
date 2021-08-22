@@ -1,32 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem labore modi reprehenderit optio, omnis deserunt quae error cum iste molestiae, aperiam dolores? Aliquid sequi neque nemo in aspernatur asperiores sapiente tenetur totam, nisi beatae, quia quasi! Possimus vel nisi aut iure rerum repellendus, officiis odio dolor a? Doloribus, pariatur vero.</p>
+
   </div>
 </template>
 
+<script>
+
+export default {
+
+}
+</script>
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
