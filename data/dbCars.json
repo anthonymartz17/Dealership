@@ -4,6 +4,7 @@
               {
                  "id": 1,
                  "dealerId":"dealer-1",
+                 "condition":"used",
                  "make":"Toyota",
                  "model":"RAV4",
                  "style":"XLE",
@@ -23,6 +24,7 @@
                  "Interior":"Black",
                  "vin":"A1B2C3D4E5F6G7HI9",
                  "owners":1,
+                 "accidents":0,
                  "accesories":[
                                   "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
                  ],
