@@ -1,8 +1,15 @@
 <template>
-  <div>
-    <div class="root-component-container">
+  <div class="div">
+    <b-container class="container">
       <header>
-
+        <b-container>
+          <b-row>
+            <b-col class="col">column 1</b-col>
+            <b-col class="col">column 2</b-col>
+            <b-col class="col">column 3</b-col>
+          </b-row>
+        </b-container>
+         
       </header>
       <main>
         <div class="main-container">
@@ -24,7 +31,7 @@
 
         </div>
       </footer>
-    </div>
+    </b-container>
   </div>
 </template>
 
@@ -35,5 +42,17 @@ export default {
 }
 </script>
 <style lang="scss">
+
+.col{
+  background: lightblue;
+
+}
+.container{
+  background: lightcoral;
+  
+}
+.div{
+  background: lightgreen;
+}
 
 </style>
