@@ -1,14 +1,8 @@
 <template>
-  <div class="div">
-    <b-container class="container">
+  <!-- <div class="div"> -->
+    <b-jumbotron class="container mw-100" fluid>
       <header>
-        <b-container>
-          <b-row>
-            <b-col class="col">column 1</b-col>
-            <b-col class="col">column 2</b-col>
-            <b-col class="col">column 3</b-col>
-          </b-row>
-        </b-container>
+    
          
       </header>
       <main>
@@ -31,8 +25,8 @@
 
         </div>
       </footer>
-    </b-container>
-  </div>
+    </b-jumbotron>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -49,6 +43,7 @@ export default {
 }
 .container{
   background: lightcoral;
+
   
 }
 .div{
