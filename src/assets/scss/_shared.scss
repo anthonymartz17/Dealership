@@ -1,0 +1,29 @@
+// colors
+
+$dark:#333;
+$lightDark: lighten($dark, 10%);
+$light:white;
+
+
+
+// flexing
+
+.flex-a-c{
+  display: flex;
+  align-items: center;
+}
+
+
+
+// viewports
+
+$mobile: 26em;
+$tablet: 48em;
+
+
+@mixin desktop {
+  @media (min-width:#{$mobile}){
+    @content;
+  }
+  
+}

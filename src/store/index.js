@@ -5,6 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    // Global
+    desktopView:false,
+
+
+    // desktop nav links
+    desktopNav:[
+        {
+          link:'Vehicle',
+          name:'vehicles',  
+      }
+    ]
   },
   mutations: {
   },

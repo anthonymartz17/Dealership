@@ -1,53 +1,78 @@
 <template>
-  <!-- <div class="div"> -->
-    <b-jumbotron class="container mw-100" fluid>
-      <header>
+  <div>
+    <div class="page-container">
     
-         
-      </header>
-      <main>
-        <div class="main-container">
-          <div class="car-search-type-vehicle-container">
-            <div class="car-search-container">
-
-            </div>
-            <div class="type-vehicle-container">
-
-            </div>
-          </div>
-          <div class="cars-carrousel">
-
-          </div>
+    <header>
+      <div class="header-container flex-a-c">
+        <i class="fas fa-bars fa-2x"></i>
+        <div class="logo">Auto Marz</div>
+        <NavDesktop/>
+        <i class="fas fa-search"></i>
+        <div class="sMedia" v-show="$store.state.desktopView">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
         </div>
-      </main>
-      <footer>
-        <div class="footer-container">
-
-        </div>
-      </footer>
-    </b-jumbotron>
-  <!-- </div> -->
+      </div>
+    </header>
+    <main>
+      <div class="main-content">
+        <router-view/>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-content"></div>
+    </footer>
+    
+  </div>
+  </div>
+  
 </template>
 
 <script>
 
+import NavDesktop from './components/navDesktop.vue'
 export default {
 
-}
-</script>
-<style lang="scss">
-
-.col{
-  background: lightblue;
-
-}
-.container{
-  background: lightcoral;
-
+  components:{
+    NavDesktop,
+  }
   
+  }
+</script>
+<style lang="scss" scoped>
+ 
+.page-container{
+  background: $lightDark;
+  height: 100vh;
+  min-width: 22.5em;
 }
-.div{
-  background: lightgreen;
+.header-container{
+  background: $dark;
+  height: 10vh;
+  width: 100%;
+  padding-inline: .5em;
+  color: $light;
+  justify-content: space-around;
+
+  @include desktop{
+    background: red;
+  }
+
+
+  .logo{
+    font-size: 2em;
+  }
+
+  .fa-bars{
+    @include desktop{
+      display: none;
+    }
+  }
+
+  .fa-search{
+    font-size: 1.5em;
+  }
+
 }
 
 </style>
