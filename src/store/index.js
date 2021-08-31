@@ -11,10 +11,15 @@ export default new Vuex.Store({
 
     // desktop nav links
     desktopNav:[
+
         {
           link:'Vehicle',
-          name:'vehicles',  
-      }
+          name:'vehicles', 
+          subList:['Carros','Motores', 'Barcos', 'Vehiculos Pesados', 'Otros']
+      },
+        {link:'Electricos', name: 'electricos'},
+        {link:'Contacto', name: 'contacto'}
+      
     ]
   },
   mutations: {
