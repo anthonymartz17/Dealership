@@ -2,11 +2,8 @@
   <div>
     <div class="page-container">
       <AppHeader/>
-    <main>
-      <div class="main-content">
-        <router-view/>
-      </div>
-    </main>
+      <AppMain/>
+  
     <footer>
       <div class="footer-content"></div>
     </footer>
@@ -19,10 +16,12 @@
 <script>
 
 import AppHeader from './components/Header.vue'
+import AppMain from './components/Main.vue'
 export default {
 
   components:{
     AppHeader,
+    AppMain
   }
   
   }

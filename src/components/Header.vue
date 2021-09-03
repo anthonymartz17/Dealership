@@ -2,7 +2,7 @@
   <header class="header-container flex-j-c ">
         <div class="header-wrapper flex-a-c">
           <i class="fas fa-bars fa-2x"></i>
-          <div class="logo">Auto <span>M</span>artz</div>
+          <div class="logo-container"><span class="logo">Auto <span class="logo-m">M</span>artz</span></div>
           <nav class="desktopNav-container">
             <ul class="desktopNav flex-a-c">
               <li v-for="(link,key) in $store.state.desktopNav" :key="key"> 
@@ -48,13 +48,20 @@ export default {
   }
 }
  
-.logo{
+.logo-container{
   font: $font-logo-S;
   flex: 1 1 100%;
   text-align: center;
+  
+  .logo{
+    cursor: pointer;
+  }
 
-  span{
+  .logo-m{
     color: $primary;
+    border: 1px solid rgba(255, 255, 255, 0.301);
+    padding-inline: .2em;
+    border-radius: 50%;
   }
   @include desktop{
     text-align: left;
@@ -101,6 +108,12 @@ export default {
       border-radius: 100%;
       text-align: center;
       padding-top:.2em ;
+      transition: all .3s ease-in-out;
+      cursor: pointer;
+
+      &:hover{
+        color: $primary;
+      }
     }
 }
 
@@ -131,6 +144,12 @@ export default {
       text-decoration: none;
       color: $light;
       font: $font-text-bold;
+      transition: all .3s ease-in-out;
+       cursor: pointer;
+
+      &:hover{
+        color: $primary;
+      }
     } 
 }
 
