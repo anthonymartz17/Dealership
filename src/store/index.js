@@ -20,7 +20,7 @@ export default new Vuex.Store({
     makes:['Honda','Toyota','Acura'],
     models:['Civic','camry','MDX'],
     prices:[3000,5000,7000,9000],
-    years:[2010,2012,2008],
+    years:[2010,2011,2012,2013,2014,2015],
 
     desktopNav:[
 
@@ -35,6 +35,9 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    searchVehicle(){
+      console.log('found')
+    }
   },
   actions: {
   },
@@ -42,12 +45,32 @@ export default new Vuex.Store({
   },
 
   getters:{
-    priceTo(state){
-      let priceIncremented = state.prices.forEach(one =>{
-        one + 2000
+    priceFromComputed(state){
+      let price = state.prices.map(one =>{
+        return `$ ${one}`
       })
-
+      return price
+    },
+    
+    priceToComputed(state){
+      let priceIncremented = state.prices.map(one =>{
+        return `$ ${one + 2000}`
+      })
       return priceIncremented
-    }
+    },
+
+    yearFromComputed(state){
+      let year = state.years.map(one =>{
+        return `From ${one}`
+      })
+      return year
+    },
+    yearToComputed(state){
+      let year = state.years.map(one =>{
+        return `To ${one}`
+      })
+      return year
+    },
+
   }
 })

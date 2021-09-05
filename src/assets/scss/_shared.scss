@@ -5,6 +5,7 @@
 
 $dark:#333;
 $lightDark: lighten($dark, 10%);
+$lightestDark: lighten($dark, 40%);
 $light:white;
 $primary:#E40017;
 
@@ -26,6 +27,10 @@ $font-text: normal 200 1em $font-stack;
 .flex-j-c{
   display: flex;
   justify-content: center;
+}
+.flex-dir-c{
+  display: flex;
+  flex-direction: column;
 }
 
 
