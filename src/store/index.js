@@ -7,6 +7,32 @@ export default new Vuex.Store({
   state: {
     // Global
     desktopView:false,
+    searchMobileModal:false,
+
+    //Search mobile component
+
+    searchMobileModalContent:null,
+    searchMobileFields:[
+      {
+        name:'Make',
+        class:'field make',
+    },
+      {
+        name:'Model',
+        class:'field model',
+    },
+      {
+        name:'price',
+        class:'field price',
+    },
+      {
+        name:'year',
+        class:'field year',
+    },
+
+
+    ],
+    
 
 
 
@@ -35,8 +61,9 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    searchVehicle(){
-      console.log('found')
+    showFieldOpt(state,e){
+      console.log(state)
+      console.log(e.target.classList)
     }
   },
   actions: {
