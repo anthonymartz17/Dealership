@@ -24,25 +24,19 @@
 <script>
 import {mapGetters} from 'vuex'
 import {mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
+
 export default {
 
-created(){
+  created(){
 
-  fetch("https://cis-automotive.p.rapidapi.com/getModels?brandName=Toyota", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "cis-automotive.p.rapidapi.com",
-		"x-rapidapi-key": "undefined"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
-},
+  },
+
+
   methods:{
+    ...mapActions([
+       ''
+    ]),
    ...mapMutations([
      'showFieldOpt',
    ])

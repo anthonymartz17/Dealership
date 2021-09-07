@@ -67,6 +67,20 @@ export default new Vuex.Store({
     }
   },
   actions: {
+
+    getCarsData(){
+      fetch('../store/cars.json')
+      .then(response =>{
+          //  return resp.json()
+          console.log(response)
+      })
+      // .then(data =>{
+      //   console.log(data)
+      // })
+      .catch(err =>{
+        console.log(err)
+      })
+    }
   },
   modules: {
   },

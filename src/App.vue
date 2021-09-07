@@ -18,9 +18,18 @@
 
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
+import {mapActions} from 'vuex'
 
 
 export default {
+
+  methods:{
+    ...mapActions(['getCarsData'])
+
+  },
+  created(){
+    this.getCarsData()
+  },
 
   components:{
     AppHeader,
