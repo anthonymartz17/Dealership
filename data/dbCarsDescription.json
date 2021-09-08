@@ -1,0 +1,279 @@
+
+{
+  "vehicles":[
+
+    {
+      "id": 1,
+      "make":"ACURA",
+      "model":[
+         {
+          "name":"MDX",
+          "trim":["SH-AWD ADVANCE"]
+        } 
+      ]
+    },
+    {
+      "id": 2,
+      "make":"AUDI",
+      "model":[
+        {
+         "name":"A3"
+       },
+       {
+         "name":"A4",
+         "trim":["QUATTRO", "SPORT SLINE", "SPORT TURBO"]
+       }
+     ]
+    },
+    {
+      "id": 3,
+      "make":"BMW",
+      "model":[ 
+        {
+          "name":"SERIE 1",
+          "trim":["120 I", "128 I"]
+        },
+        {
+          "name":"SERIE 3",
+          "trim":["316I", "320 SPORT"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "make":"CADILLAC",
+      "model":[ 
+        {
+          "name":"ESCALADE",
+          "trim":["ESV", "PLATINUM"]
+        },
+        {
+          "name":"ATS" 
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "make":"CHEVROLET",
+      "model":[
+        {
+          "name":"TAHOE",
+          "trim":["LT", "RST"]
+        },
+        {
+          "name":"TRAVERSE",
+          "trim":["LS", "LT"]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "make":"DODGE",
+      "model":[
+        {
+          "name":"AVENGER",
+          "trim":["SXT"]
+        },
+        {
+          "name":"DURANGO",
+          "trim":["CITADAL", "CREW"]
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "make":"FERRARI",
+      "model":[
+        {"name":"CALIFORNIA"},
+        {"name":"458"}
+      ]
+    },
+    {
+      "id": 8,
+      "make":"FORD",
+      "model":[ 
+        {
+          "name":"ESCAPE",
+          "trim":["HYBRID", "LIMITED"]
+        },
+        {
+          "name":"EXPLORER",
+          "trim":["LIMITED", "SPORT"]
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "make":"GMC",
+      "model":[
+        {"name":"ACADIA"},
+        {"name":"CANYON"}
+      ]
+    },
+    {
+      "id": 10,
+      "make":"HONDA",
+      "model":[ 
+        {
+          "name":"ACCORD",
+          "trim":["EX", "SPORT"]
+        },
+        {
+          "name":"CIVIC",
+          "trim":["HYBRID", "SPORT"]
+        },
+        {
+          "name":"CR-V",
+          "trim":["EX", "LIMITED"]
+        }
+        
+      ]
+
+    },
+    {
+      "id": 11,
+      "make":"HYUNDAI",
+      "model":[ 
+        {
+          "name":"SONATA",
+          "trim":["N20", "Y20"]
+        },
+        {
+          "name":"TUCSON",
+          "trim":["LIMITED", "SPORT"]
+        }
+       
+      ]
+
+    },
+    {
+      "id": 12,
+      "make":"JEEP",
+      "model":[ 
+        {
+          "name":"GRAND CHEROKEE",
+          "trim":["CRD", "LAREDO"]
+        },
+        {
+          "name":"LIBERTY"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "make":"KIA",
+      "model":[ 
+        {
+          "name":"FORTE",
+          "trim":["HATCHBACK", "EX"]
+        },
+        {
+          "name":"SORENTO",
+          "trim":["EX", "LX"]
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "make":"LEXUS",
+      "model":[ 
+        {
+          "name":"ES",
+          "trim":["350"]
+        },
+        {
+          "name":"GS",
+          "trim":["F-SPORT"]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "make":"MAZDA",
+      "model":[ 
+        {
+          "name":"DEMIO",
+          "trim":["SPORT"]
+        },
+        {
+          "name":"CX-9",
+          "trim":["AWD LIMITED", "SPORT"]
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "make":"MERCEDES-BENZ",
+      "model":[ 
+        {
+          "name":"300 SD"
+        },
+        {
+          "name":"CLASE CLK",
+          "trim":["500"]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "make":"NISSAN",
+      "model":[ 
+        {
+          "name":"ALTIMA",
+          "trim":["S", "SL"]
+        },
+        {
+          "name":"ROGUE",
+          "trim":["S", "SV FULL"]
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "make":"TESLA",
+      "model":[ 
+        {
+          "name":"MODEL 3",
+          "trim":["LONG RANGE"]
+        },
+        {
+          "name":"MODEL Y",
+          "trim":["PERFORMANCE"]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "make":"TOYOTA",
+      "model":[ 
+        {
+          "name":"4 RUNNER",
+          "trim":["LIMITED", "SR5"]
+        },
+        {
+          "name":"COROLLA",
+          "trim":["S", "LE"]
+        },
+        {
+          "name":"HIGHLANDER",
+          "trim":["LE", "SPORT"]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "make":"VOLVO",
+      "model":[ 
+        {
+          "name":"XC40",
+          "trim":["INSCRIPTION"]
+        },
+        {
+          "name":"S60",
+          "trim":["R DESING"]
+        }
+      ]
+    }
+
+  ]
+}

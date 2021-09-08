@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -69,14 +70,14 @@ export default new Vuex.Store({
   actions: {
 
     getCarsData(){
-      fetch('../store/cars.json')
+      fetch('../data/dbCarsDescription.json')
       .then(response =>{
-          //  return resp.json()
-          console.log(response)
+           return response.json()
+          // console.log(response)
       })
-      // .then(data =>{
-      //   console.log(data)
-      // })
+      .then(data =>{
+        console.log(data)
+      })
       .catch(err =>{
         console.log(err)
       })
