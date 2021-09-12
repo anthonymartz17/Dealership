@@ -1,45 +1,49 @@
 <template>
   <div class="search-vehicle">
-            <div class="search-modal" v-show="$store.state.searchMobileModal">
-              <ul>
-                <li>
-                  <p></p>
-                  <input type="checkbox">
-                </li>
-              </ul>
-            </div>
-
+          
             <p>Search for Your Vehicle!</p>
             <div>
-              <div v-for="(field,key) in $store.state.searchMobileFields" :key="key" :class="[field.class]" @click="showFieldOpt($event)" >
+              <div v-for="(field,key) in $store.state.searchMobileFields" :key="key" :class="[field.class]" @click="toggleSelectionModal($event); whichFieldContent($event)">
                 <p>{{field.name}}</p>
                 <i class="fas fa-caret-down"></i>
               </div>         
               <div class="btn btn-search">Search</div>
               <div class="btn btn-advanceSearch">Advanced Search</div>
             </div>
+            <div>
+            </div>
           </div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
-import {mapMutations} from 'vuex'
-import {mapActions} from 'vuex'
+import {mapGetters,mapMutations} from 'vuex'
+// import {mapMutations} from 'vuex'
+// import {mapActions} from 'vuex'
+
 
 export default {
 
-  created(){
+  components:{
 
+    
+  
+  },
+
+  data(){
+    return{
+
+      selectionModalToggler:true,
+
+    }
   },
 
 
   methods:{
-    ...mapActions([
-       ''
-    ]),
-   ...mapMutations([
-     'showFieldOpt',
-   ])
+    ...mapMutations([
+      'toggleSelectionModal',
+      'whichFieldContent'
+    ])
+  
   },
   
   computed:{
@@ -48,6 +52,7 @@ export default {
       'priceFromComputed',
       'yearFromComputed',
       'yearToComputed',
+   
       ]),
 
 }

@@ -9,6 +9,8 @@ export default new Vuex.Store({
     // Global
     desktopView:false,
     searchMobileModal:false,
+    selectionModalToggler:false,
+    fieldContent:'',
 
     //Search mobile component
 
@@ -34,16 +36,26 @@ export default new Vuex.Store({
 
     ],
     
+    // endPoints
+    
+    dealersUrl: "http://localhost:3000/dealers",
+    carsInventory: "http://localhost:3000/cars_inventory",
 
 
 
-    // desktop nav links
+    // mobile nav links
     make:'',
+    makeSelected:'',
     model:'',
+    modelSelected:'',
     priceFrom:'',
+    priceFromSelected:'',
     priceTo:'',
+    priceToSelected:'',
     yearFrom:'',
+    yearFromSelected:'',
     yearTo:'',
+    yearToSelected:'',
     makes:['Honda','Toyota','Acura'],
     models:['Civic','camry','MDX'],
     prices:[3000,5000,7000,9000],
@@ -62,38 +74,47 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    showFieldOpt(state,e){
-      console.log(state)
-      console.log(e.target.classList)
+    toggleSelectionModal(state,e){
+      if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('field')){
+
+        state.selectionModalToggler = !state.selectionModalToggler
+        
+      }
+      // if(e.target.classList.contains('modal-card-content')){
+         
+      // }
+    },
+    whichFieldContent(state,e){
+      state.fieldContent = e.target.firstElementChild.textContent
+     
     }
+  
   },
   actions: {
-
-    getCarsData(){
-      fetch('../data/dbCarsDescription.json')
-      .then(response =>{
-           return response.json()
-          // console.log(response)
-      })
-      .then(data =>{
-        console.log(data)
-      })
+ 
+    getCarsSelectionData(context){
+      const carSelectionUrl = 'http://localhost:3000/car_selection';
+      fetch(carSelectionUrl)
+      .then(response => response.json())
+      .then(data => context.state.make = data)
       .catch(err =>{
         console.log(err)
       })
+          
     }
   },
   modules: {
   },
 
   getters:{
+    
     priceFromComputed(state){
       let price = state.prices.map(one =>{
         return `$ ${one}`
       })
       return price
     },
-    
+       
     priceToComputed(state){
       let priceIncremented = state.prices.map(one =>{
         return `$ ${one + 2000}`
