@@ -27,12 +27,17 @@ import {mapActions,mapState} from 'vuex'
 export default {
 
   methods:{
-    ...mapActions(['getCarsSelectionData'])
+    ...mapActions([
+      'getCarsSelectionData',
+      // 'getCarsModel',
+
+      ])
 
   },
 
   created(){
     this.getCarsSelectionData()
+    // this.getCarsModel()
     
   },
 

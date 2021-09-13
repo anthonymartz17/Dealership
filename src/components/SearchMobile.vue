@@ -90,6 +90,11 @@ export default {
       border: 1px solid $light;
     }
 
+    p,i{
+      pointer-events: none;
+      
+    }
+
   }
   .price{
     display: flex;

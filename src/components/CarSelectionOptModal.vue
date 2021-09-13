@@ -1,38 +1,50 @@
 <template>
-<transition
-
-enter-active-class="animate__animated animate__fadeIn animate__faster"
-leave-active-class="animate__animated animate__fadeOut animate__faster"
-
->
-  <div class="modal"  @click="toggleSelectionModal($event);">
-
-    <div class="modal-card"  v-if="fieldContent == 'Make'">
-    <label v-for="(car,key) in make" :key="key" class="modal-card-content" :for="car.make">
-      <p>{{car.make}}</p>
-      <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
-    </label>
-    </div>
-    <div class="modal-card"  v-else-if="fieldContent == 'Model'">
-    <label v-for="(car,key) in make" :key="key" class="modal-card-content" :for="car.model">
-      <p>{{car.model.name}}</p>
-      <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="car.model" :value="car.model">    
-    </label>
-    </div>
-    <div class="modal-card"  v-else-if="fieldContent == 'Price'">
-    <label v-for="(car,key) in make" :key="key" class="modal-card-content" :for="car.price">
-      <p>{{car.price}}</p>
-      <input class="radio" type="radio" v-model="$store.state.priceSelected" :id="car.price" :value="car.price">    
-    </label>
-    </div>
-    <div class="modal-card"  v-else-if="fieldContent == 'Year'">
-    <label v-for="(car,key) in make" :key="key" class="modal-card-content" :for="car.year">
-      <p>{{car.year}}</p>
-      <input class="radio" type="radio" v-model="$store.state.yearSelected" :id="car.year" :value="car.year">    
-    </label>
-    </div>
+  <transition
+    enter-active-class="animate__animated animate__fadeIn animate__faster"
+    leave-active-class="animate__animated animate__fadeOut animate__faster"
+  >
+    <div class="modal"  @click="toggleSelectionModal($event);">
+      <div class="modal-card" >
+        <template  v-if="fieldContent == 'Make'" >
+          <label v-for="(car,key) in carSelection"  :key="key"  class="modal-card-content" :for="car.make" @click="showSelectedMakeModels($event)">
+            <p>{{car.make}}</p>
+            <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
+          </label>
+        </template>
+        <template v-else-if="fieldContent == 'Model'">
+          <template  v-if="$store.state.makeSelected != ''" >
+            <label v-for="(car,key) in carSelection" :key="key" class="modal-card-content" :for="car.model"  >
+              <template v-for="(model,key) in car.model" >
+              <p :key="key">{{model}}</p>
+              </template>
+              <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="car.model" :value="car.model">    
+            </label>
+          </template>
+          <p class="select-a-make" v-else>Please select a make first</p>
+        </template>
     
-  </div>
+    <!-- <template v-for="(car,key) in make">
+      <label  :key="key" class="modal-card-content" :for="car.model"  v-if="fieldContent == 'Model'">
+          <p>{{car.model.name}}</p>
+          <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="car.model" :value="car.model">    
+    </label>
+    </template>
+    <template  v-for="(car,key) in make" >
+      <label :key="key" class="modal-card-content" :for="car.price" v-if="fieldContent == 'Price'">
+          <p>{{car.price}}</p>
+          <input class="radio" type="radio" v-model="$store.state.priceSelected" :id="car.price" :value="car.price">    
+    </label>
+    </template>
+    <template v-for="(car,key) in make" >
+      <label :key="key" class="modal-card-content" :for="car.year"  v-if="fieldContent == 'Year'">
+          <p>{{car.year}}</p>
+          <input class="radio" type="radio" v-model="$store.state.yearSelected" :id="car.year" :value="car.year">    
+    </label>
+    </template> -->
+
+      </div>
+    
+    </div>
   </transition>
 </template>
 
@@ -42,7 +54,7 @@ export default {
 
 computed:{
   ...mapState([
-    'make',
+    'carSelection',
     'fieldContent'
     
 
@@ -50,7 +62,8 @@ computed:{
 },
 methods:{
   ...mapMutations([
-    'toggleSelectionModal'
+    'toggleSelectionModal',
+    'showSelectedMakeModels'
   ])
 }
 
@@ -85,6 +98,12 @@ methods:{
     align-items: baseline;
     justify-content: space-between;
     cursor: pointer;
+    
+  }
+  .select-a-make{
+    padding: 2em 1em;
+    text-align: center;
+    font: $font-text-bold;
   }
 
   .radio{

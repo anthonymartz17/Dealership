@@ -44,6 +44,7 @@ export default new Vuex.Store({
 
 
     // mobile nav links
+    carSelection:null,
     make:'',
     makeSelected:'',
     model:'',
@@ -86,7 +87,14 @@ export default new Vuex.Store({
     },
     whichFieldContent(state,e){
       state.fieldContent = e.target.firstElementChild.textContent
-     
+    },
+
+    showSelectedMakeModels(state,e){
+      state.modelSelected = e.target.firstElementChild.textContent
+
+      // console.log(state.modelSelected)
+      
+    
     }
   
   },
@@ -96,12 +104,29 @@ export default new Vuex.Store({
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
-      .then(data => context.state.make = data)
+      .then(data => context.state.carSelection = data)
       .catch(err =>{
         console.log(err)
-      })
-          
-    }
+      })   
+    },
+    // getCarsModel(context){
+    //   const carSelectionUrl = 'http://localhost:3000/car_selection';
+    //   fetch(carSelectionUrl)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //    data.map(one =>{
+    //      return context.state.model = one.model
+    //    })
+    //     console.log(context.state.model)
+    //   })
+
+
+    //   .catch(err =>{
+    //     console.log(err)
+    //   })   
+    //   console.log(context.state.model)
+    // },
+
   },
   modules: {
   },
