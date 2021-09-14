@@ -6,18 +6,15 @@
     <div class="modal"  @click="toggleSelectionModal($event);">
       <div class="modal-card" >
         <template  v-if="fieldContent == 'Make'" >
-          <label v-for="(car,key) in carSelection"  :key="key"  class="modal-card-content" :for="car.make" @click="showSelectedMakeModels($event)">
+          <label v-for="(car,key) in carSelection"  :key="key"  class="modal-card-content" :for="car.make" >
             <p>{{car.make}}</p>
             <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
           </label>
         </template>
         <template v-else-if="fieldContent == 'Model'">
           <template  v-if="$store.state.makeSelected != ''" >
-            <label v-for="(car,key) in carSelection" :key="key" class="modal-card-content" :for="car.model"  >
-              <template v-for="(model,key) in car.model" >
-              <p :key="key">{{model}}</p>
-              </template>
-              <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="car.model" :value="car.model">    
+            <label v-for="(model,key) in carModelByMake" :key="key" class="modal-card-content" :for="model.name"  >
+              <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="model.name" :value="model.name">    
             </label>
           </template>
           <p class="select-a-make" v-else>Please select a make first</p>
@@ -49,7 +46,7 @@
 </template>
 
 <script>
-import {mapState,mapMutations} from 'vuex';
+import {mapState,mapMutations,mapGetters} from 'vuex';
 export default {
 
 computed:{
@@ -58,12 +55,15 @@ computed:{
     'fieldContent'
     
 
+    ]),
+    ...mapGetters([
+      'carModelByMake'
     ])
 },
 methods:{
   ...mapMutations([
     'toggleSelectionModal',
-    'showSelectedMakeModels'
+    // 'showSelectedMakeModels'
   ])
 }
 

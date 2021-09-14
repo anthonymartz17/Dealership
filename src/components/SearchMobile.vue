@@ -5,6 +5,7 @@
             <div>
               <div v-for="(field,key) in $store.state.searchMobileFields" :key="key" :class="[field.class]" @click="toggleSelectionModal($event); whichFieldContent($event)">
                 <p>{{field.name}}</p>
+                <!-- <p v-if="$store.state.makeSelected != ''">{{$store.state.makeSelected}}</p> -->
                 <i class="fas fa-caret-down"></i>
               </div>         
               <div class="btn btn-search">Search</div>
@@ -52,6 +53,7 @@ export default {
       'priceFromComputed',
       'yearFromComputed',
       'yearToComputed',
+      'makeSelected'
    
       ]),
 

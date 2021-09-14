@@ -88,14 +88,15 @@ export default new Vuex.Store({
     whichFieldContent(state,e){
       state.fieldContent = e.target.firstElementChild.textContent
     },
-
-    showSelectedMakeModels(state,e){
-      state.modelSelected = e.target.firstElementChild.textContent
-
-      // console.log(state.modelSelected)
       
     
-    }
+    // showSelectedMakeModels(state,e){
+    //   state.modelSelected = e.target.firstElementChild.textContent
+
+    //   // console.log(state.modelSelected)
+      
+    
+    // }
   
   },
   actions: {
@@ -108,7 +109,9 @@ export default new Vuex.Store({
       .catch(err =>{
         console.log(err)
       })   
+
     },
+
     // getCarsModel(context){
     //   const carSelectionUrl = 'http://localhost:3000/car_selection';
     //   fetch(carSelectionUrl)
@@ -132,6 +135,10 @@ export default new Vuex.Store({
   },
 
   getters:{
+
+    carModels(state){
+        return state.carSelection
+    },
     
     priceFromComputed(state){
       let price = state.prices.map(one =>{
@@ -159,6 +166,21 @@ export default new Vuex.Store({
       })
       return year
     },
+
+    carModelByMake(state){
+      if(state.makeSelected !== ''){
+    //   const models = state.carSelection.map(one =>{
+    //             if(one.make == state.makeSelected){
+    //              return one.model
+    //             }
+    //             // return one.make + state.makeSelected
+
+    //  })
+      const models = state.makes.map(one => one)
+      
+      return models
+    }
+    }
 
   }
 })
