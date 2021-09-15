@@ -6,15 +6,33 @@
     <div class="modal"  @click="toggleSelectionModal($event);">
       <div class="modal-card" >
         <template  v-if="fieldContent == 'Make'" >
-          <label v-for="(car,key) in carSelection"  :key="key"  class="modal-card-content" :for="car.make" >
+          <label
+             v-for="(car,key) in carSelection"
+             :key="key"  
+             class="modal-card-content"
+             :for="car.make" 
+             @click="selectModelByMake($event)"
+             >
             <p>{{car.make}}</p>
             <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
           </label>
         </template>
         <template v-else-if="fieldContent == 'Model'">
           <template  v-if="$store.state.makeSelected != ''" >
-            <label v-for="(model,key) in carModelByMake" :key="key" class="modal-card-content" :for="model.name"  >
-              <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="model.name" :value="model.name">    
+             <label
+              class="modal-card-content" 
+              for="model" 
+             >
+             <p>Model</p>
+            <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" :checked="checked">    
+            </label>
+            <label
+              v-for="(model,key) in models" 
+              :key="key" class="modal-card-content" 
+              :for="model.name" 
+             >
+             <p>{{model.name}}</p>
+            <input class="radio" type="radio" v-model="$store.state.modelSelected" :id="model.name" :value="model.name">    
             </label>
           </template>
           <p class="select-a-make" v-else>Please select a make first</p>
@@ -52,7 +70,8 @@ export default {
 computed:{
   ...mapState([
     'carSelection',
-    'fieldContent'
+    'fieldContent',
+    'models'
     
 
     ]),
@@ -63,7 +82,7 @@ computed:{
 methods:{
   ...mapMutations([
     'toggleSelectionModal',
-    // 'showSelectedMakeModels'
+    'selectModelByMake'
   ])
 }
 

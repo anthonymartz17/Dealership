@@ -47,7 +47,7 @@ export default new Vuex.Store({
     carSelection:null,
     make:'',
     makeSelected:'',
-    model:'',
+    models:'',
     modelSelected:'',
     priceFrom:'',
     priceFromSelected:'',
@@ -57,8 +57,8 @@ export default new Vuex.Store({
     yearFromSelected:'',
     yearTo:'',
     yearToSelected:'',
-    makes:['Honda','Toyota','Acura'],
-    models:['Civic','camry','MDX'],
+    // makes:['Honda','Toyota','Acura'],
+    // models:['Civic','camry','MDX'],
     prices:[3000,5000,7000,9000],
     years:[2010,2011,2012,2013,2014,2015],
 
@@ -81,22 +81,18 @@ export default new Vuex.Store({
         state.selectionModalToggler = !state.selectionModalToggler
         
       }
-      // if(e.target.classList.contains('modal-card-content')){
-         
-      // }
+    
     },
     whichFieldContent(state,e){
       state.fieldContent = e.target.firstElementChild.textContent
     },
-      
-    
-    // showSelectedMakeModels(state,e){
-    //   state.modelSelected = e.target.firstElementChild.textContent
-
-    //   // console.log(state.modelSelected)
-      
-    
-    // }
+    selectModelByMake(state,e){
+      state.carSelection.forEach(one =>{
+        if(e.target.firstElementChild.textContent == one.make){
+           state.models = one.model
+        }
+      })
+    }
   
   },
   actions: {
@@ -111,24 +107,6 @@ export default new Vuex.Store({
       })   
 
     },
-
-    // getCarsModel(context){
-    //   const carSelectionUrl = 'http://localhost:3000/car_selection';
-    //   fetch(carSelectionUrl)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //    data.map(one =>{
-    //      return context.state.model = one.model
-    //    })
-    //     console.log(context.state.model)
-    //   })
-
-
-    //   .catch(err =>{
-    //     console.log(err)
-    //   })   
-    //   console.log(context.state.model)
-    // },
 
   },
   modules: {
@@ -167,20 +145,6 @@ export default new Vuex.Store({
       return year
     },
 
-    carModelByMake(state){
-      if(state.makeSelected !== ''){
-    //   const models = state.carSelection.map(one =>{
-    //             if(one.make == state.makeSelected){
-    //              return one.model
-    //             }
-    //             // return one.make + state.makeSelected
-
-    //  })
-      const models = state.makes.map(one => one)
-      
-      return models
-    }
-    }
 
   }
 })
