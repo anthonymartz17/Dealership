@@ -4,7 +4,7 @@
       <AppHeader/>
       <AppMain/>
       <SelectionModal v-show="$store.state.selectionModalToggler"/>
-    
+     <p>{{models}}</p>
      
       
   
@@ -26,7 +26,7 @@ import {mapActions,mapState} from 'vuex'
 
 
 export default {
-
+  
   methods:{
     ...mapActions([
       'getCarsSelectionData',
@@ -50,6 +50,7 @@ export default {
   computed:{
     ...mapState([
       'makeSelected',
+      'models'
      
     ]),
     // ...mapGetters([
@@ -65,6 +66,8 @@ export default {
   background: $lightestDark;
   height: 100vh;
   min-width: 22.5em;
+
+
 }
 
 

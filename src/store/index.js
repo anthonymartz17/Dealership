@@ -44,6 +44,7 @@ export default new Vuex.Store({
 
 
     // mobile nav links
+    testing:null,
     carSelection:null,
     make:'',
     makeSelected:'',
@@ -87,11 +88,16 @@ export default new Vuex.Store({
       state.fieldContent = e.target.firstElementChild.textContent
     },
     selectModelByMake(state,e){
-      state.carSelection.forEach(one =>{
-        if(e.target.firstElementChild.textContent == one.make){
-           state.models = one.model
-        }
-      })
+       
+      console.log(state)
+      console.log(e.currentTarget)
+      // state.carSelection.forEach(one =>{
+      //   if(e.target.firstElementChild.textContent == one.make){
+      //     //  state.models = one.model
+      //     console.log(e)
+      //   }
+      //   state.models = one.model
+      // })
     }
   
   },
@@ -105,7 +111,6 @@ export default new Vuex.Store({
       .catch(err =>{
         console.log(err)
       })   
-
     },
 
   },

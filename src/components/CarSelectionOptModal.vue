@@ -6,12 +6,16 @@
     <div class="modal"  @click="toggleSelectionModal($event);">
       <div class="modal-card" >
         <template  v-if="fieldContent == 'Make'" >
-          <label
+            <!-- <label class="modal-card-content" for="make">
+              <p>MAKE</p>
+              <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" value="">
+            </label> -->
+            <label
              v-for="(car,key) in carSelection"
              :key="key"  
              class="modal-card-content"
              :for="car.make" 
-             @click="selectModelByMake($event)"
+             @click.stop="selectModelByMake($event)"
              >
             <p>{{car.make}}</p>
             <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
@@ -19,12 +23,9 @@
         </template>
         <template v-else-if="fieldContent == 'Model'">
           <template  v-if="$store.state.makeSelected != ''" >
-             <label
-              class="modal-card-content" 
-              for="model" 
-             >
+             <label class="modal-card-content" for="model">
              <p>Model</p>
-            <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" :checked="checked">    
+            <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" value="">    
             </label>
             <label
               v-for="(model,key) in models" 
