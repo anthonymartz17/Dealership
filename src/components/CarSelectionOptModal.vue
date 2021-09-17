@@ -5,23 +5,25 @@
   >
     <div class="modal"  @click="toggleSelectionModal($event);">
       <div class="modal-card" >
-        <template  v-if="fieldContent == 'Make'" >
+        <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
+        <template  v-if="fieldContent == 0" >
             <!-- <label class="modal-card-content" for="make">
               <p>MAKE</p>
-              <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" value="">
+              <input class="radio" type="radio" v-model="$store.state.makeSelected" id="model"  :checked="$store.state.makeSelected == ''">
             </label> -->
             <label
              v-for="(car,key) in carSelection"
              :key="key"  
              class="modal-card-content"
              :for="car.make" 
-             @click.stop="selectModelByMake($event)"
+             @click="selectModelByMake($event)"
              >
             <p>{{car.make}}</p>
             <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="car.make" :value="car.make">    
           </label>
         </template>
-        <template v-else-if="fieldContent == 'Model'">
+
+        <template v-else-if="fieldContent == 1">
           <template  v-if="$store.state.makeSelected != ''" >
              <label class="modal-card-content" for="model">
              <p>Model</p>
@@ -67,6 +69,12 @@
 <script>
 import {mapState,mapMutations,mapGetters} from 'vuex';
 export default {
+
+  data(){
+    return {
+      model:'model'
+    }
+  },
 
 computed:{
   ...mapState([
@@ -118,6 +126,11 @@ methods:{
     align-items: baseline;
     justify-content: space-between;
     cursor: pointer;
+
+
+    p{
+      pointer-events: none;
+    }
     
   }
   .select-a-make{

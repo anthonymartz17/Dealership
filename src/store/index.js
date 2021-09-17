@@ -10,32 +10,12 @@ export default new Vuex.Store({
     desktopView:false,
     searchMobileModal:false,
     selectionModalToggler:false,
-    fieldContent:'',
+    fieldContent:null,
 
     //Search mobile component
 
     searchMobileModalContent:null,
-    searchMobileFields:[
-      {
-        name:'Make',
-        class:'field make',
-    },
-      {
-        name:'Model',
-        class:'field model',
-    },
-      {
-        name:'price',
-        class:'field price',
-    },
-      {
-        name:'year',
-        class:'field year',
-    },
-
-
-    ],
-    
+      
     // endPoints
     
     dealersUrl: "http://localhost:3000/dealers",
@@ -50,14 +30,14 @@ export default new Vuex.Store({
     makeSelected:'',
     models:'',
     modelSelected:'',
-    priceFrom:'',
-    priceFromSelected:'',
-    priceTo:'',
-    priceToSelected:'',
-    yearFrom:'',
-    yearFromSelected:'',
-    yearTo:'',
-    yearToSelected:'',
+    priceFrom:0,
+    priceFromSelected:0,
+    priceTo:0,
+    priceToSelected:0,
+    yearFrom:0,
+    yearFromSelected:0,
+    yearTo:0,
+    yearToSelected:0,
     // makes:['Honda','Toyota','Acura'],
     // models:['Civic','camry','MDX'],
     prices:[3000,5000,7000,9000],
@@ -84,22 +64,17 @@ export default new Vuex.Store({
       }
     
     },
-    whichFieldContent(state,e){
-      state.fieldContent = e.target.firstElementChild.textContent
+    // determines which content card will be display according to which search field is clicked on in the mobile view
+    whichFieldContent(state,index){
+      state.fieldContent = index
     },
     selectModelByMake(state,e){
-       
-      console.log(state)
-      console.log(e.currentTarget)
-      // state.carSelection.forEach(one =>{
-      //   if(e.target.firstElementChild.textContent == one.make){
-      //     //  state.models = one.model
-      //     console.log(e)
-      //   }
-      //   state.models = one.model
-      // })
+      state.carSelection.forEach(one =>{
+        if(e.currentTarget.firstElementChild.textContent == one.make){
+           state.models = one.model
+        } 
+      })
     }
-  
   },
   actions: {
  
@@ -149,6 +124,76 @@ export default new Vuex.Store({
       })
       return year
     },
+
+    // renders default text content of search fields when nothing is selected and updates according to whatever is selected
+    searchMobileFields(state){
+      let make;
+      let model;
+      let priceFrom;
+      let priceTo;
+      let yearFrom;
+      let yearTo;
+
+      if(state.makeSelected == ''){
+        make = 'Make'
+      }else{ 
+        make = state.makeSelected
+      }
+      if(state.modelSelected == ''){
+        model = 'Model'
+      }else{ 
+        model= state.modelSelected
+      }
+      if(state.priceFromSelected == 0){
+        priceFrom = 'Price From'
+      }else{ 
+        priceFrom = state.priceFromSelected
+      }
+      if(state.priceToSelected == 0){
+        priceTo = 'Price To'
+      }else{ 
+        priceTo = state.priceToSelected
+      }
+      if(state.yearFromSelected == 0){
+        yearFrom = 'Year From'
+      }else{ 
+        yearFrom = state.yearFromSelected
+      }
+      if(state.yearToSelected == 0){
+        yearTo = 'Year To'
+      }else{ 
+        yearTo = state.yearToSelected
+      }
+
+      return [
+        { 
+          name:make,
+          class:'field make',      
+        },
+        {
+          name:model,
+          class:'field make', 
+        },
+        {
+           name:priceFrom,
+          class:'field make', 
+        },
+        {
+           name:priceTo,
+          class:'field make', 
+        },
+        {
+           name:yearFrom,
+           class:'field make', 
+        },
+        {
+           name:yearTo,
+           class:'field make', 
+        },
+        
+      ]
+
+    }
 
 
   }

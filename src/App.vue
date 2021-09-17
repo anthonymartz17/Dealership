@@ -4,7 +4,7 @@
       <AppHeader/>
       <AppMain/>
       <SelectionModal v-show="$store.state.selectionModalToggler"/>
-     <p>{{models}}</p>
+     <!-- <p>{{models}}</p> -->
      
       
   
@@ -50,7 +50,7 @@ export default {
   computed:{
     ...mapState([
       'makeSelected',
-      'models'
+      
      
     ]),
     // ...mapGetters([

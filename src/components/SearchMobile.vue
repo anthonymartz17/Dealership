@@ -3,9 +3,9 @@
           
             <p>Search for Your Vehicle!</p>
             <div>
-              <div v-for="(field,key) in $store.state.searchMobileFields" :key="key" :class="[field.class]" @click="toggleSelectionModal($event); whichFieldContent($event)">
+              <!-- searchMobileFields is a computed property. It returns array of obj with field textContent and field class -->
+              <div v-for="(field,key) in searchMobileFields" :key="key" :class="[field.class]" @click="toggleSelectionModal($event); whichFieldContent(key)">
                 <p>{{field.name}}</p>
-                <!-- <p v-if="$store.state.makeSelected != ''">{{$store.state.makeSelected}}</p> -->
                 <i class="fas fa-caret-down"></i>
               </div>         
               <div class="btn btn-search">Search</div>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {mapGetters,mapMutations} from 'vuex'
+import {mapGetters,mapMutations,mapState} from 'vuex'
 // import {mapMutations} from 'vuex'
 // import {mapActions} from 'vuex'
 
@@ -53,9 +53,13 @@ export default {
       'priceFromComputed',
       'yearFromComputed',
       'yearToComputed',
-      'makeSelected'
+      'makeSelected',
+      'searchMobileFields'
    
       ]),
+      ...mapState([
+        'makeSelected'
+      ])
 
 }
 
