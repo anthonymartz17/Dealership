@@ -30,13 +30,10 @@ export default new Vuex.Store({
     makeSelected:'',
     models:'',
     modelSelected:'',
-    priceFrom:0,
     priceFromSelected:0,
-    priceTo:0,
     priceToSelected:0,
-    yearFrom:0,
+    // yearsRange:[],
     yearFromSelected:0,
-    yearTo:0,
     yearToSelected:0,
     // makes:['Honda','Toyota','Acura'],
     // models:['Civic','camry','MDX'],
@@ -56,6 +53,15 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+
+    // getYearsRange(state){
+    //   let startYear = 1970;
+    //   let currentYear = new Date().getFullYear();
+    //   for (let i = startYear; i<= currentYear+1; i++){
+    //       state.yearsRange.push(i)
+    //   }
+    // },
+   
     toggleSelectionModal(state,e){
       if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('field')){
 
@@ -96,33 +102,26 @@ export default new Vuex.Store({
 
     carModels(state){
         return state.carSelection
+    },  
+    // array of years
+    yearsRangeComputed(){
+     let yearsRange = [];
+      let startYear = 1970;
+      let currentYear = new Date().getFullYear();
+      for (let i = startYear; i<= currentYear+1; i++){
+          yearsRange.push(i)
+      }
+      return yearsRange
     },
-    
-    priceFromComputed(state){
-      let price = state.prices.map(one =>{
-        return `$ ${one}`
-      })
-      return price
-    },
-       
-    priceToComputed(state){
-      let priceIncremented = state.prices.map(one =>{
-        return `$ ${one + 2000}`
-      })
-      return priceIncremented
-    },
-
-    yearFromComputed(state){
-      let year = state.years.map(one =>{
-        return `From ${one}`
-      })
-      return year
-    },
-    yearToComputed(state){
-      let year = state.years.map(one =>{
-        return `To ${one}`
-      })
-      return year
+      //  array of prices
+    priceRangeComputed(){
+      let priceRange=[];
+      let lowestPrice = 4000;
+      let highestPrice = 60000;
+      for(let i = lowestPrice; i<= highestPrice; i += 1000){
+        priceRange.push(i)
+      }
+      return priceRange
     },
 
     // renders default text content of search fields when nothing is selected and updates according to whatever is selected

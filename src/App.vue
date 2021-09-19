@@ -4,7 +4,7 @@
       <AppHeader/>
       <AppMain/>
       <SelectionModal v-show="$store.state.selectionModalToggler"/>
-     <!-- <p>{{models}}</p> -->
+     <!-- <p>{{priceRangeComputed}}</p> -->
      
       
   
@@ -21,26 +21,27 @@
 import SelectionModal from './components/CarSelectionOptModal.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
-import {mapActions,mapState} from 'vuex'
+import {mapActions,mapState,mapMutations,mapGetters} from 'vuex'
 
 
 
 export default {
+  created(){
   
+   this.getCarsSelectionData()
+  
+
+
+  },
   methods:{
     ...mapActions([
       'getCarsSelectionData',
-     
-
-      ])
-
-  },
-
-  created(){
-    this.getCarsSelectionData()
-
+      ]),
     
+
   },
+
+
 
   components:{
     AppHeader,
@@ -50,11 +51,13 @@ export default {
   computed:{
     ...mapState([
       'makeSelected',
+     
+
       
      
     ]),
     // ...mapGetters([
-     
+    //    'priceRangeComputed'
     // ])
   } 
   
