@@ -42,13 +42,13 @@
         </template>
         <template  v-else-if="fieldContent == 2">
           <label  v-for="(priceFrom,key) in priceRangeComputed" :key="key" class="modal-card-content" :for="priceFrom">
-            <p>{{priceFrom}}</p>
+            <p>${{priceFrom}}</p>
             <input class="radio" type="radio" v-model="$store.state.priceFromSelected" :id="priceFrom" :value="priceFrom">    
           </label>
         </template>
         <template  v-else-if="fieldContent == 3">
           <label  v-for="(priceTo,key) in priceRangeComputed" :key="key" class="modal-card-content" :for="priceTo">
-            <p>{{priceTo}}</p>
+            <p>${{priceTo}}</p>
             <input class="radio" type="radio" v-model="$store.state.priceToSelected" :id="priceTo" :value="priceTo">    
           </label>
         </template>
@@ -107,7 +107,8 @@ computed:{
 methods:{
   ...mapMutations([
     'toggleSelectionModal',
-    'selectModelByMake'
+    'selectModelByMake',
+    'formatPrice'
   ])
 }
 

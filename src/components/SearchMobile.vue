@@ -4,10 +4,12 @@
             <p>Search for Your Vehicle!</p>
             <div>
               <!-- searchMobileFields is a computed property. It returns array of obj with field textContent and field class -->
-              <div v-for="(field,key) in searchMobileFields" :key="key" :class="[field.class]" @click="toggleSelectionModal($event); whichFieldContent(key)">
+              
+              <div v-for="(field,key) in searchMobileFields" :key="key" :class="[field.class]"  @click="toggleSelectionModal($event);  
+              whichFieldContent(key)">
                 <p>{{field.name}}</p>
                 <i class="fas fa-caret-down"></i>
-              </div>         
+              </div>        
               <div class="btn btn-search">Search</div>
               <div class="btn btn-advanceSearch">Advanced Search</div>
             </div>
@@ -102,12 +104,7 @@ export default {
     }
 
   }
-  .price{
-    display: flex;
-  }
-  .year{
-    display: flex;
-  }
+    
   .btn{
     width: 100%;
     height: 3em;

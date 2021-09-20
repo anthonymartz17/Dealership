@@ -1,7 +1,7 @@
 <template>
   <header class="header-container flex-j-c ">
         <div class="header-wrapper flex-a-c">
-          <i class="fas fa-bars fa-2x"></i>
+          <i class="fas fa-bars fa-2x" @click="toggleMobileMenu"></i>
           <div class="logo-container"><span class="logo">Auto <span class="logo-m">M</span>artz</span></div>
           <nav class="desktopNav-container">
             <ul class="desktopNav flex-a-c">
@@ -20,7 +20,14 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
+  methods:{
+    ...mapMutations([
+    'toggleMobileMenu'
+    ])
+    
+  }
 
 }
 </script>
@@ -74,6 +81,7 @@ export default {
 }
 
 .fa-bars{
+  cursor: pointer;
   @include desktop{
     display: none;
   }

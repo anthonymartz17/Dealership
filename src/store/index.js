@@ -24,7 +24,7 @@ export default new Vuex.Store({
 
 
     // mobile nav links
-    testing:null,
+    mobileMenuToggler:true,
     carSelection:null,
     make:'',
     makeSelected:'',
@@ -32,35 +32,46 @@ export default new Vuex.Store({
     modelSelected:'',
     priceFromSelected:0,
     priceToSelected:0,
-    // yearsRange:[],
     yearFromSelected:0,
     yearToSelected:0,
-    // makes:['Honda','Toyota','Acura'],
-    // models:['Civic','camry','MDX'],
-    prices:[3000,5000,7000,9000],
-    years:[2010,2011,2012,2013,2014,2015],
+  
 
     desktopNav:[
 
         {
-          link:'Vehicle',
+          link:'Home',
+          name:'Home', 
+          icon:'fas fa-home',
+          
+      },
+        {
+          link:'Vehicles',
           name:'vehicles', 
+          icon:'fas fa-car',
           subList:['Carros','Motores', 'Barcos', 'Vehiculos Pesados', 'Otros']
       },
-        {link:'Electricos', name: 'electricos'},
-        {link:'Contacto', name: 'contacto'}
+        {
+          link:'Electric Cars',
+          name: 'electricos',
+          icon:'fas fa-charging-station'
+          
+          },
+        {
+          link:'Contacto',
+          name: 'contacto',
+          icon:'fas fa-phone-volume'
+        }
       
     ]
   },
   mutations: {
-
-    // getYearsRange(state){
-    //   let startYear = 1970;
-    //   let currentYear = new Date().getFullYear();
-    //   for (let i = startYear; i<= currentYear+1; i++){
-    //       state.yearsRange.push(i)
-    //   }
-    // },
+    formatPrice(value){
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+  },
+  toggleMobileMenu(state){
+    state.mobileMenuToggler = !state.mobileMenuToggler
+  },
    
     toggleSelectionModal(state,e){
       if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('field')){
@@ -111,7 +122,7 @@ export default new Vuex.Store({
       for (let i = startYear; i<= currentYear+1; i++){
           yearsRange.push(i)
       }
-      return yearsRange
+      return yearsRange.reverse()
     },
       //  array of prices
     priceRangeComputed(){
@@ -132,6 +143,10 @@ export default new Vuex.Store({
       let priceTo;
       let yearFrom;
       let yearTo;
+      function formatPrice(value){
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    }
 
       if(state.makeSelected == ''){
         make = 'Make'
@@ -146,12 +161,12 @@ export default new Vuex.Store({
       if(state.priceFromSelected == 0){
         priceFrom = 'Price From'
       }else{ 
-        priceFrom = state.priceFromSelected
+        priceFrom = `$${formatPrice(state.priceFromSelected)}`
       }
       if(state.priceToSelected == 0){
         priceTo = 'Price To'
       }else{ 
-        priceTo = state.priceToSelected
+        priceTo = `$${formatPrice(state.priceToSelected)}`
       }
       if(state.yearFromSelected == 0){
         yearFrom = 'Year From'
@@ -167,27 +182,27 @@ export default new Vuex.Store({
       return [
         { 
           name:make,
-          class:'field make',      
+          class:'field',      
         },
         {
           name:model,
-          class:'field make', 
+          class:'field', 
         },
         {
            name:priceFrom,
-          class:'field make', 
+          class:'field inline', 
         },
         {
            name:priceTo,
-          class:'field make', 
+          class:'field inline', 
         },
         {
            name:yearFrom,
-           class:'field make', 
+           class:'field', 
         },
         {
            name:yearTo,
-           class:'field make', 
+           class:'field ', 
         },
         
       ]

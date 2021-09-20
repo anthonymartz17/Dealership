@@ -1,13 +1,23 @@
 <template>
   <div>
+     <MobileMenu/>
     <div class="page-container">
+      <transition 
+      enter-active-class="animate__animated animate__fadeIn animate__faster"
+      leave-active-class="animate__animated animate__fadeOut animate__faster"
+      >
+      <div
+       class="modal" 
+       v-show="$store.state.mobileMenuToggler" 
+       @click="toggleMobileMenu">
+       </div>
+      </transition>
+     
       <AppHeader/>
       <AppMain/>
       <SelectionModal v-show="$store.state.selectionModalToggler"/>
      <!-- <p>{{priceRangeComputed}}</p> -->
      
-      
-  
     <footer>
       <div class="footer-content"></div>
     </footer>
@@ -21,7 +31,8 @@
 import SelectionModal from './components/CarSelectionOptModal.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
-import {mapActions,mapState,mapMutations,mapGetters} from 'vuex'
+import MobileMenu from './components/MobileMenu.vue'
+import {mapActions,mapState,mapMutations} from 'vuex'
 
 
 
@@ -37,6 +48,10 @@ export default {
     ...mapActions([
       'getCarsSelectionData',
       ]),
+
+    ...mapMutations([
+      'toggleMobileMenu'
+    ])
     
 
   },
@@ -47,6 +62,7 @@ export default {
     AppHeader,
     AppMain,
     SelectionModal,
+    MobileMenu
   }, 
   computed:{
     ...mapState([
@@ -69,9 +85,13 @@ export default {
   background: $lightestDark;
   height: 100vh;
   min-width: 22.5em;
-
-
+  position: relative;
 }
-
+.modal{
+  position: absolute;
+  height: 100%;
+  width:100%;
+  background: rgba(0, 0, 0, 0.4);
+}
 
 </style>
