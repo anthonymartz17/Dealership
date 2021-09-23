@@ -1,26 +1,20 @@
 <template>
   <main>
     <div class="main-container">
-      <div class="search-type-carrousel-container">
-        <div class="search-type-vehicles">
-          <SearchMobile />
-          <div class="type-vehicle"></div>
-        </div>
-        <div class="carrousel-vehicle"></div>
-      </div>
+       <router-view/>
     </div>
   </main>
 </template>
 
 <script>
-import SearchMobile from './SearchMobile.vue'
+// import SearchMobile from './SearchMobile.vue'
 
 
 
 export default {
 
   components:{
-    SearchMobile,
+    
   },
 
 

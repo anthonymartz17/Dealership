@@ -24,7 +24,7 @@ export default new Vuex.Store({
 
 
     // mobile nav links
-    mobileMenuToggler:true,
+    mobileMenuToggler:false,
     carSelection:null,
     make:'',
     makeSelected:'',
@@ -34,6 +34,58 @@ export default new Vuex.Store({
     priceToSelected:0,
     yearFromSelected:0,
     yearToSelected:0,
+    carType:[
+      'Body Style',
+      'Sedan',
+      'SUV',
+      'Van',
+      'Pickup Truck',
+      'Convertible',
+    ],
+    carTypeSelected:'',
+    carCondition:['Car Condition','New','Used'],
+    carConditionSelected:'',
+    fuelType:['Gasoline','Diesel','Electric','Hybrid'],
+    fuelTypeSelected:'',
+    driveTrain:['RWD','FWD','AWD'],
+    driveTrainSelected:'',
+    color:[
+      "Black",
+      "Blue",
+      "Brown",
+      "Coral",
+      "DarkGray",
+      "DarkGrey",
+      "DarkGreen",
+      "Gold",
+      "Gray",
+      "Grey",
+      "Green",
+      "LightBlue",
+      "LightCoral",
+      "LightGray",
+      "LightGrey",
+      "LightGreen",
+      "LightPink",
+      "LightSalmon",
+      "Magenta",
+      "Maroon",
+      "Olive",
+      "Orange",
+      "Pink",
+      "Purple",
+      "Red",
+      "RoyalBlue",
+      "Silver",
+      "SkyBlue",
+      "Violet",
+      "White",
+      "Yellow",
+    ],
+    colorSelected:'',
+
+
+
   
 
     desktopNav:[
@@ -46,19 +98,19 @@ export default new Vuex.Store({
       },
         {
           link:'Vehicles',
-          name:'vehicles', 
+          name:'Vehicles', 
           icon:'fas fa-car',
           subList:['Carros','Motores', 'Barcos', 'Vehiculos Pesados', 'Otros']
       },
         {
           link:'Electric Cars',
-          name: 'electricos',
+          name: 'Electric',
           icon:'fas fa-charging-station'
           
           },
         {
           link:'Contacto',
-          name: 'contacto',
+          name: 'Contact',
           icon:'fas fa-phone-volume'
         }
       
@@ -137,12 +189,8 @@ export default new Vuex.Store({
 
     // renders default text content of search fields when nothing is selected and updates according to whatever is selected
     searchMobileFields(state){
-      let make;
-      let model;
-      let priceFrom;
-      let priceTo;
-      let yearFrom;
-      let yearTo;
+      let make,model,priceFrom,priceTo,yearFrom,yearTo;
+
       function formatPrice(value){
         let val = (value/1).toFixed(2).replace('.', ',')
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -180,30 +228,87 @@ export default new Vuex.Store({
       }
 
       return [
-        { 
-          name:make,
-          class:'field',      
-        },
-        {
-          name:model,
-          class:'field', 
-        },
-        {
-           name:priceFrom,
-          class:'field inline', 
-        },
-        {
-           name:priceTo,
-          class:'field inline', 
-        },
-        {
-           name:yearFrom,
-           class:'field', 
-        },
-        {
-           name:yearTo,
-           class:'field ', 
-        },
+        { name:make},{ name:model},{ name:priceFrom},
+        { name:priceTo},{ name:yearFrom},{ name:yearTo}, 
+      ]
+
+    },
+
+
+    advanceSearchFieldsMobile(state){
+      let make,model,priceFrom,priceTo,yearFrom,yearTo,carCondition,carType,fuelType,driveTrain,color;
+      
+      function formatPrice(value){
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    }
+
+      if(state.makeSelected == ''){
+        make = 'Make'
+      }else{ 
+        make = state.makeSelected
+      }
+      if(state.modelSelected == ''){
+        model = 'Model'
+      }else{ 
+        model= state.modelSelected
+      }
+      if(state.priceFromSelected == 0){
+        priceFrom = 'Price From'
+      }else{ 
+        priceFrom = `$${formatPrice(state.priceFromSelected)}`
+      }
+      if(state.priceToSelected == 0){
+        priceTo = 'Price To'
+      }else{ 
+        priceTo = `$${formatPrice(state.priceToSelected)}`
+      }
+      if(state.yearFromSelected == 0){
+        yearFrom = 'Year From'
+      }else{ 
+        yearFrom = state.yearFromSelected
+      }
+      if(state.yearToSelected == 0){
+        yearTo = 'Year To'
+      }else{ 
+        yearTo = state.yearToSelected
+      }
+
+      if(state.carTypeSelected == ''){
+        carType = 'Car Type'
+      }else{ 
+        carType = state.cartypeSelected
+      }
+
+      if(state.carConditionSelected == ''){
+        carCondition = 'Car Condition'
+      }else{ 
+        carCondition = state.carConditionSelected
+      }
+
+      if(state.fuelTypeSelected == ''){
+        fuelType = 'Fuel Type'
+      }else{ 
+        fuelType = state.fuelTypeSelected
+      }
+
+      if(state.driveTrainSelected == ''){
+        driveTrain = 'DriveTrain'
+      }else{ 
+        driveTrain = state.driveTrainSelected
+      }
+      if(state.colorSelected == ''){
+        color = 'Color'
+      }else{ 
+        color = state.colorSelected
+      }
+
+
+      return [
+        { name:make},{ name:model},{ name:priceFrom},
+        { name:priceTo},{ name:yearFrom},{ name:yearTo}, 
+        { name:carType},{ name:carCondition},{ name:fuelType}, 
+        { name:driveTrain},{ name:color}
         
       ]
 

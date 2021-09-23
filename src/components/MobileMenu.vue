@@ -5,8 +5,11 @@
  >
   <nav class="nav-menu-container" v-show="$store.state.mobileMenuToggler">
     <ul>
-      <li v-for="(link,key) in $store.state.desktopNav" :key="key"> 
-                <router-link to=""><i :class="link.icon"></i> <p>{{link.link}}</p> </router-link>
+      <li v-for="(link,key) in $store.state.desktopNav" :key="key" @click="toggleMobileMenu"> 
+        <router-link :to="{name:link.name}" class="tabs">
+          <i :class="link.icon"></i> 
+          <p>{{link.link}}</p> 
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -14,12 +17,26 @@
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
 export default {
+
+  methods:{
+    ...mapMutations([
+      'toggleMobileMenu'
+    ])
+  }
 
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+a.router-link-exact-active{
+  border-block: .2px solid $light;
+}
+.tabs{
+  color: $light;
+}
 
  .nav-menu-container{
    z-index: 3;
@@ -30,35 +47,33 @@ export default {
    padding-top: 4em;
 
    ul{
-
-     height: 30%;
+     padding-block: 1em;
+     height: 40%;
      width: 100%;
      display: flex;
      flex-direction: column;
      justify-content: space-around;
+    
+    
 
      
    }
 
    li{
-     padding: 1em 2em;
+    
      list-style: none;
      width: 100%;
-     border: 1px solid transparent;
+     border-block: .5px solid transparent;
      transition: all .3s ease-in-out;
      
-     
-     
-
      &:hover{
-       border-block: 1px solid $light;
+       border-block: .5px solid rgba(255, 255, 255, 0.5);
        
      }
      
-
-
    }
    a{
+     padding: 1em 2em;
      width: 100%;
      height: 100%;
      text-decoration: none;
@@ -66,8 +81,13 @@ export default {
      align-items: baseline;
      gap: 1em;
      font: $font-text-bold;
+  
+
+        
+     
     
    }
+   
  }
 
 </style>

@@ -1,18 +1,17 @@
 <template>
-  <div class="search-vehicle">
-          
-            <p>Search for Your Vehicle!</p>
-            <div>
+  <div class="search-fields-container">        
+            <p class="search-fields-container-title">Search for Your Vehicle!</p>
               <!-- searchMobileFields is a computed property. It returns array of obj with field textContent and field class -->
-              
-              <div v-for="(field,key) in searchMobileFields" :key="key" :class="[field.class]"  @click="toggleSelectionModal($event);  
+              <div v-for="(field,key) in searchMobileFields" :key="key" class="search-fields-container-field"  @click="toggleSelectionModal($event);  
               whichFieldContent(key)">
                 <p>{{field.name}}</p>
                 <i class="fas fa-caret-down"></i>
               </div>        
               <div class="btn btn-search">Search</div>
-              <div class="btn btn-advanceSearch">Advanced Search</div>
-            </div>
+              <router-link :to="{name:'Advance'}" class="btn btn-advanceSearch">
+                <div >Advanced Search</div>
+              </router-link>
+            
             <div>
             </div>
           </div>
@@ -68,43 +67,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-*{
-  font-family: $font-stack;
-  color: $light;
-
-}
-
-  .search-vehicle{
-    background: $lightDark;
-    padding: 1em .5em;
+<style lang="scss" scoped>
  
-  }
-  
-  .field{
-    height: 3em;
-    margin-block: .2em;
-    background:$lightestDark;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-inline: 1em;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-     border: 1px solid transparent;
-
-    &:hover{
-      background: darken($lightestDark, 10%);
-      border: 1px solid $light;
-    }
-
-    p,i{
-      pointer-events: none;
-      
-    }
-
-  }
-    
   .btn{
     width: 100%;
     height: 3em;
@@ -127,6 +91,7 @@ export default {
     color: $primary;
     transition: all .3s ease-in-out;
     border: 1px solid transparent;
+    text-decoration: none;
 
       &:hover{
       color: $light;

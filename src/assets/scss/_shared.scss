@@ -32,6 +32,41 @@ $font-text: normal 200 1em $font-stack;
   display: flex;
   flex-direction: column;
 }
+// search fields 
+.search-fields-container{
+  background: $lightDark;
+  padding: 1em .5em;
+  font-family: $font-stack;
+  color: $light;
+
+  &-title{
+    margin-block: 1em;
+  }
+
+&-field{
+  height: 3em;
+  margin-block: .2em;
+  background:$lightestDark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1em;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+   border: 1px solid transparent;
+
+  &:hover{
+    background: darken($lightestDark, 10%);
+    border: 1px solid $light;
+  }
+
+  p,i{
+    pointer-events: none;
+    
+  }
+
+}
+}
 
 
 

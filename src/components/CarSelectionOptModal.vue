@@ -129,6 +129,7 @@ methods:{
 
 
   &-card{
+    font-family: $font-stack;
     overflow-y: auto;
     max-height: 95%;
     width: 95%;

@@ -59,10 +59,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 *{
   font-family: $font-stack;
-  color: $light;
+  // color: $light;
 
 }
 
@@ -82,8 +82,6 @@ export default {
       background:$lightestDark;
       font: $font-text-bold;
       height: 100%;
-    
-      
     }
   }
   .price{
