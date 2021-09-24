@@ -126,7 +126,7 @@ export default new Vuex.Store({
   },
    
     toggleSelectionModal(state,e){
-      if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('field')){
+      if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('search-fields-container-field')){
 
         state.selectionModalToggler = !state.selectionModalToggler
         
@@ -141,6 +141,7 @@ export default new Vuex.Store({
       state.carSelection.forEach(one =>{
         if(e.currentTarget.firstElementChild.textContent == one.make){
            state.models = one.model
+           state.modelSelected = `All ${one.make}`
         } 
       })
     }

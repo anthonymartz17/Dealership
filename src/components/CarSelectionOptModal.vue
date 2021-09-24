@@ -7,10 +7,7 @@
       <div class="modal-card" >
         <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
         <template  v-if="fieldContent == 0" >
-            <!-- <label class="modal-card-content" for="make">
-              <p>MAKE</p>
-              <input class="radio" type="radio" v-model="$store.state.makeSelected" id="model"  :checked="$store.state.makeSelected == ''">
-            </label> -->
+          
             <label
              v-for="(car,key) in carSelection"
              :key="key"  
@@ -26,8 +23,9 @@
         <template v-else-if="fieldContent == 1">
           <template  v-if="$store.state.makeSelected != ''" >
              <label class="modal-card-content" for="model">
-             <p>Model</p>
-            <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" value="">    
+             <p>All {{makeSelected}}</p>
+             
+            <input class="radio" type="radio" v-model="$store.state.modelSelected" id="model" :value="'All ' + makeSelected">    
             </label>
             <label
               v-for="(model,key) in models" 
@@ -67,6 +65,12 @@
           <input class="radio" type="radio" v-model="$store.state.yearToSelected" :id="yearTo" :value="yearTo">    
     </label>
     </template>
+    <template v-else-if="fieldContent == 6">
+      <label v-for="(type,key) in carType"  :key="key" class="modal-card-content" :for="type" >
+          <p>{{type}}</p>
+          <input class="radio" type="radio" v-model="$store.state.carTypeSelected" :id="type" :value="type">    
+    </label>
+    </template>
 
 
 
@@ -93,6 +97,8 @@ computed:{
     'carSelection',
     'fieldContent',
     'models',
+    'makeSelected',
+    'carType'
     
     
     

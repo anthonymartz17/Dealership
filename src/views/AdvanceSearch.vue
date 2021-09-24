@@ -6,22 +6,32 @@
                 <p>{{field.name}}</p>
                 <i class="fas fa-caret-down"></i>
               </div> 
-             
+              <div class="testing"></div>       
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters,mapMutations } from "vuex";
 export default {
   computed:{
     ...mapGetters([
       'advanceSearchFieldsMobile'
+    ])
+  },
+  methods:{
+    ...mapMutations([
+      'toggleSelectionModal',
+       'whichFieldContent'
     ])
   }
 
 }
 </script>
 
-<style>
+<style lang="scss">
+.testing{
+  
+}
+
 
 </style>

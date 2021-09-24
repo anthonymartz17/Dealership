@@ -19,9 +19,6 @@
 
 <script>
 import {mapGetters,mapMutations,mapState} from 'vuex'
-// import {mapMutations} from 'vuex'
-// import {mapActions} from 'vuex'
-
 
 export default {
 
@@ -43,7 +40,8 @@ export default {
   methods:{
     ...mapMutations([
       'toggleSelectionModal',
-      'whichFieldContent'
+      'whichFieldContent',
+      
     ])
   
   },
