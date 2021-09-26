@@ -32,6 +32,7 @@ export default new Vuex.Store({
     modelSelected:'',
     priceFromSelected:0,
     priceToSelected:0,
+    priceUnavailable:null,
     yearFromSelected:0,
     yearToSelected:0,
     carType:[
@@ -117,6 +118,10 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
+    disablePrice(state,val){
+       state.priceUnavailable = val
+    },
     formatPrice(value){
       let val = (value/1).toFixed(2).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -193,12 +198,6 @@ export default new Vuex.Store({
  
     advanceSearchFieldsMobile(state){
       let make,model,priceFrom,priceTo,yearFrom,yearTo,carCondition,carType,fuelType,driveTrain,color;
-      
-      function formatPrice(value){
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-    }
-
       if(state.makeSelected == ''){
         make = 'Make'
       }else{ 
@@ -212,12 +211,12 @@ export default new Vuex.Store({
       if(state.priceFromSelected == 0){
         priceFrom = 'Price From'
       }else{ 
-        priceFrom = `$${formatPrice(state.priceFromSelected)}`
+        priceFrom = state.priceFromSelected
       }
       if(state.priceToSelected == 0){
         priceTo = 'Price To'
       }else{ 
-        priceTo = `$${formatPrice(state.priceToSelected)}`
+        priceTo = state.priceToSelected
       }
       if(state.yearFromSelected == 0){
         yearFrom = 'Year From'

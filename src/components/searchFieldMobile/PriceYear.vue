@@ -33,12 +33,12 @@ export default {
         if(this.$store.state.priceFromSelected == 0){
           priceFrom = 'Price From'
         }else{
-          priceFrom = formatPrice(this.$store.state.priceFromSelected)
+          priceFrom = `$${formatPrice(this.$store.state.priceFromSelected)}`
         }
         if(this.$store.state.priceToSelected == 0){
           priceTo = 'Price To'
         }else{
-          priceTo = formatPrice(this.$store.state.priceToSelected)
+          priceTo = `$${formatPrice(this.$store.state.priceToSelected)}`
         }
          if(this.$store.state.yearFromSelected == 0){
           yearFrom = 'Year From'

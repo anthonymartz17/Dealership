@@ -39,14 +39,14 @@
           <p class="select-a-make" v-else>Please select a make first</p>
         </template>
         <template  v-else-if="fieldContent == 'priceFrom'">
-          <label  v-for="(priceFrom,key) in priceRangeComputed" :key="key" class="modal-card-content" :for="priceFrom">
-            <p>{{priceFrom}}</p>
+          <label  v-for="(priceFrom,key) in priceRangeComputed" :key="key" class="modal-card-content" :for="priceFrom" @click="disablePrice(key)">
+            <p>{{priceFrom | currency}}</p>
             <input class="radio" type="radio" v-model="$store.state.priceFromSelected" :id="priceFrom" :value="priceFrom">    
           </label>
         </template>
         <template  v-else-if="fieldContent == 'priceTo'">
-          <label  v-for="(priceTo,key) in priceRangeComputed" :key="key" class="modal-card-content" :for="priceTo">
-            <p>${{priceTo}}</p>
+          <label  v-for="(priceTo,key) in priceRangeComputed" :key="key" :class="['modal-card-content',{priceto: key < priceUnavailable}]" :for="priceTo">
+            <p>{{priceTo | currency}}</p>
             <input class="radio" type="radio" v-model="$store.state.priceToSelected" :id="priceTo" :value="priceTo">    
           </label>
         </template>
@@ -93,12 +93,16 @@ export default {
   },
 
 computed:{
+  // priceToavailable(){
+  //   if(this.)
+  // },
   ...mapState([
     'carSelection',
     'fieldContent',
     'models',
     'makeSelected',
-    'carType'
+    'carType',
+    'priceUnavailable'
     
     
     
@@ -114,7 +118,8 @@ methods:{
   ...mapMutations([
     'toggleSelectionModal',
     'selectModelByMake',
-    'formatPrice'
+    'disablePrice'
+  
   ])
 }
 
@@ -122,6 +127,22 @@ methods:{
 </script>
 
 <style lang="scss" scoped>
+.priceto{
+  pointer-events: none;
+  text-decoration: line-through;
+  &::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.26);
+    
+    
+  }
+ 
+}
 .modal{
   
   position: absolute;
@@ -144,6 +165,7 @@ methods:{
 
 
   &-content{
+    position: relative;
     padding: 1em;
     border-bottom: .5px solid $lightestDark;
     display: flex;
