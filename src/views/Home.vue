@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import SearchMobile from '../components/SearchMobile.vue'
+import SearchMobile from '../components/searchFieldMobile/SearchMobile.vue'
 
 
 export default {

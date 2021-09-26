@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import SelectionModal from './components/CarSelectionOptModal.vue'
+import SelectionModal from './components/searchFieldMobile/CarSelectionOptModal.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
 import MobileMenu from './components/MobileMenu.vue'

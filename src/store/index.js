@@ -130,12 +130,13 @@ export default new Vuex.Store({
 
         state.selectionModalToggler = !state.selectionModalToggler
         
+        
       }
-    
+      
     },
     // determines which content card will be display according to which search field is clicked on in the mobile view
-    whichFieldContent(state,index){
-      state.fieldContent = index
+    whichFieldContent(state,field){
+      state.fieldContent = field.id
     },
     selectModelByMake(state,e){
       state.carSelection.forEach(one =>{
@@ -189,53 +190,7 @@ export default new Vuex.Store({
     },
 
     // renders default text content of search fields when nothing is selected and updates according to whatever is selected
-    searchMobileFields(state){
-      let make,model,priceFrom,priceTo,yearFrom,yearTo;
-
-      function formatPrice(value){
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-    }
-
-      if(state.makeSelected == ''){
-        make = 'Make'
-      }else{ 
-        make = state.makeSelected
-      }
-      if(state.modelSelected == ''){
-        model = 'Model'
-      }else{ 
-        model= state.modelSelected
-      }
-      if(state.priceFromSelected == 0){
-        priceFrom = 'Price From'
-      }else{ 
-        priceFrom = `$${formatPrice(state.priceFromSelected)}`
-      }
-      if(state.priceToSelected == 0){
-        priceTo = 'Price To'
-      }else{ 
-        priceTo = `$${formatPrice(state.priceToSelected)}`
-      }
-      if(state.yearFromSelected == 0){
-        yearFrom = 'Year From'
-      }else{ 
-        yearFrom = state.yearFromSelected
-      }
-      if(state.yearToSelected == 0){
-        yearTo = 'Year To'
-      }else{ 
-        yearTo = state.yearToSelected
-      }
-
-      return [
-        { name:make},{ name:model},{ name:priceFrom},
-        { name:priceTo},{ name:yearFrom},{ name:yearTo}, 
-      ]
-
-    },
-
-
+ 
     advanceSearchFieldsMobile(state){
       let make,model,priceFrom,priceTo,yearFrom,yearTo,carCondition,carType,fuelType,driveTrain,color;
       

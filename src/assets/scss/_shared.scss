@@ -44,8 +44,9 @@ $font-text: normal 200 1em $font-stack;
   }
 
 &-field{
+  flex: 1;
   height: 3em;
-  margin-block: .2em;
+  margin-top: .2em;
   background:$lightestDark;
   display: flex;
   justify-content: space-between;

@@ -1,9 +1,15 @@
 <template>
-  <h2>vehicles page</h2>
+  <div>
+    <h2>vehicles page</h2>
+   
+  </div>
 </template>
 
 <script>
+
+
 export default {
+ 
 
 }
 </script>
