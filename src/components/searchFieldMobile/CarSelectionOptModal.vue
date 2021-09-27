@@ -45,7 +45,7 @@
           </label>
         </template>
         <template  v-else-if="fieldContent == 'priceTo'">
-          <label  v-for="(priceTo,key) in priceRangeComputed" :key="key" :class="['modal-card-content',{priceto: key < priceUnavailable}]" :for="priceTo">
+          <label  v-for="(priceTo,key) in priceRangeComputed" :key="key" :class="['modal-card-content',{disableOptions: key < priceUnavailable}]" :for="priceTo">
             <p>{{priceTo | currency}}</p>
             <input class="radio" type="radio" v-model="$store.state.priceToSelected" :id="priceTo" :value="priceTo">    
           </label>
@@ -53,22 +53,37 @@
    
     
     <template v-else-if="fieldContent == 'yearFrom'">
-      <label v-for="(yearFrom,key) in yearsRangeComputed"  :key="key" class="modal-card-content" :for="yearFrom" >
+      <label v-for="(yearFrom,key) in yearsRangeComputed" 
+             :key="key" 
+             :for="yearFrom"
+             @click="disableYears(key)"
+             class="modal-card-content"
+      >
           <p>{{yearFrom}}</p>
           <input class="radio" type="radio" v-model="$store.state.yearFromSelected" :id="yearFrom" :value="yearFrom">    
     </label>
     </template>
 
     <template v-else-if="fieldContent == 'yearTo'">
-      <label v-for="(yearTo,key) in yearsRangeComputed"  :key="key" class="modal-card-content" :for="yearTo" >
+      <label v-for="(yearTo,key) in yearsRangeComputed"
+             :key="key" 
+             :for="yearTo"
+             :class="['modal-card-content',{disableOptions:key > yearsUnavailable}]" 
+       >
           <p>{{yearTo}}</p>
           <input class="radio" type="radio" v-model="$store.state.yearToSelected" :id="yearTo" :value="yearTo">    
     </label>
     </template>
-    <template v-else-if="fieldContent == 6">
-      <label v-for="(type,key) in carType"  :key="key" class="modal-card-content" :for="type" >
+    <template v-else-if="fieldContent == 'carType'">
+      <label v-for="(type,key) in carType.type"  :key="key" class="modal-card-content" :for="carType.id" >
           <p>{{type}}</p>
-          <input class="radio" type="radio" v-model="$store.state.carTypeSelected" :id="type" :value="type">    
+          <input class="radio" type="radio" v-model="$store.state.carTypeSelected" :id="carType.id" :value="type">    
+    </label>
+    </template>
+    <template v-else-if="fieldContent == 'condition'">
+      <label v-for="(condition,key) in carCondition"  :key="key" class="modal-card-content" :for="condition" >
+          <p>{{condition}}</p>
+          <input class="radio" type="radio" v-model="$store.state.carConditionSelected" :id="condition" :value="condition">    
     </label>
     </template>
 
@@ -102,7 +117,8 @@ computed:{
     'models',
     'makeSelected',
     'carType',
-    'priceUnavailable'
+    'priceUnavailable',
+    'yearsUnavailable'
     
     
     
@@ -118,7 +134,9 @@ methods:{
   ...mapMutations([
     'toggleSelectionModal',
     'selectModelByMake',
-    'disablePrice'
+    'disablePrice',
+    'disableYears'
+
   
   ])
 }
@@ -127,7 +145,7 @@ methods:{
 </script>
 
 <style lang="scss" scoped>
-.priceto{
+.disableOptions{
   pointer-events: none;
   text-decoration: line-through;
   &::before{

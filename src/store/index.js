@@ -33,61 +33,65 @@ export default new Vuex.Store({
     priceFromSelected:0,
     priceToSelected:0,
     priceUnavailable:null,
+    yearsUnavailable:null,
     yearFromSelected:0,
     yearToSelected:0,
-    carType:[
-      'Body Style',
-      'Sedan',
-      'SUV',
-      'Van',
-      'Pickup Truck',
-      'Convertible',
-    ],
+    carType:{
+      id:'carType',
+      type:
+        [
+         'Body Style',
+         'Sedan',
+         'SUV',
+         'Van',
+         'Pickup Truck',
+         'Convertible',
+       ]
+      },
     carTypeSelected:'',
-    carCondition:['Car Condition','New','Used'],
+    carCondition:{id:'carCondition',condition:['Car Condition','New','Used']},
     carConditionSelected:'',
-    fuelType:['Gasoline','Diesel','Electric','Hybrid'],
+    fuelType:{id:'fuelType',type:['Gasoline','Diesel','Electric','Hybrid']},
     fuelTypeSelected:'',
-    driveTrain:['RWD','FWD','AWD'],
+    driveTrain:{id:'driveTrain', type:['RWD','FWD','AWD']},
     driveTrainSelected:'',
-    color:[
-      "Black",
-      "Blue",
-      "Brown",
-      "Coral",
-      "DarkGray",
-      "DarkGrey",
-      "DarkGreen",
-      "Gold",
-      "Gray",
-      "Grey",
-      "Green",
-      "LightBlue",
-      "LightCoral",
-      "LightGray",
-      "LightGrey",
-      "LightGreen",
-      "LightPink",
-      "LightSalmon",
-      "Magenta",
-      "Maroon",
-      "Olive",
-      "Orange",
-      "Pink",
-      "Purple",
-      "Red",
-      "RoyalBlue",
-      "Silver",
-      "SkyBlue",
-      "Violet",
-      "White",
-      "Yellow",
-    ],
+    color:{
+      id:'color',
+      color:[
+        "Black",
+        "Blue",
+        "Brown",
+        "Coral",
+        "DarkGray",
+        "DarkGrey",
+        "DarkGreen",
+        "Gold",
+        "Gray",
+        "Grey",
+        "Green",
+        "LightBlue",
+        "LightCoral",
+        "LightGray",
+        "LightGrey",
+        "LightGreen",
+        "LightPink",
+        "LightSalmon",
+        "Magenta",
+        "Maroon",
+        "Olive",
+        "Orange",
+        "Pink",
+        "Purple",
+        "Red",
+        "RoyalBlue",
+        "Silver",
+        "SkyBlue",
+        "Violet",
+        "White",
+        "Yellow",
+      ]
+    },
     colorSelected:'',
-
-
-
-  
 
     desktopNav:[
 
@@ -119,8 +123,11 @@ export default new Vuex.Store({
   },
   mutations: {
     // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
-    disablePrice(state,val){
-       state.priceUnavailable = val
+    disablePrice(state,prices){
+       state.priceUnavailable = prices
+    },
+    disableYears(state,years){
+      state.yearsUnavailable = years
     },
     formatPrice(value){
       let val = (value/1).toFixed(2).replace('.', ',')
@@ -142,6 +149,7 @@ export default new Vuex.Store({
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
+      console.log(state.fieldContent)
     },
     selectModelByMake(state,e){
       state.carSelection.forEach(one =>{
