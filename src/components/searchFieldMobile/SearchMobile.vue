@@ -4,8 +4,8 @@
     <MakeModel/>
     <PriceYear/>        
     <div class="btn btn-search">Search</div>
-    <router-link :to="{name:'Advance'}" class="btn btn-advanceSearch">
-      <div >Advanced Search</div>
+    <router-link :to="{name:'Advance'}">
+      <div class="btn btn-advanceSearch" @click="clearPropsVal" >Advanced Search</div>
     </router-link>      
    </div>
 </template>
@@ -23,7 +23,8 @@ export default {
   },
   methods:{
     ...mapMutations([
-      'toggleSelectionModal',        
+      'toggleSelectionModal',   
+      'clearPropsVal'     
     ])
   
   },
@@ -49,12 +50,15 @@ export default {
       border: 1px solid $light;
     }
   }
+  
   .btn-advanceSearch{
     background: $dark;
     color: $primary;
     transition: all .3s ease-in-out;
     border: 1px solid transparent;
-    text-decoration: none;
+   
+
+  
 
       &:hover{
       color: $light;

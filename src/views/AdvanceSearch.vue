@@ -28,7 +28,20 @@
       </div> 
       <PriceYear/>              
     </div>
-    <p>{{carTypeSelected}}</p>
+    <div class="search-fields-container">        
+     <p class="search-fields-container-title">More Options</p>
+     <div 
+          v-for="(opt,key) in moreOptionsComputed"
+          :key="key"
+          class="search-fields-container-field"  
+          @click="toggleSelectionModal($event);  
+          whichFieldContent(opt)"
+     >
+        <p>{{opt.field}}</p>
+        <i class="fas fa-caret-down"></i>
+      </div> 
+                   
+    </div>
   </div>
 </template>
 
@@ -43,7 +56,7 @@ export default {
   },
   computed:{
     ...mapState([
-      'carTypeSelected'
+      
     ]),
   
     ...mapGetters([
@@ -67,6 +80,42 @@ export default {
       }
       return [{field:condition, id:'condition'}]
     },
+
+    moreOptionsComputed(){
+      let fuel,transmission,driveTrain,engine,color;
+      if(this.$store.state.fuelTypeSelected == ''){
+        fuel = 'Fuel'
+      }else{
+        fuel = this.$store.state.fuelTypeSelected
+      }
+      if(this.$store.state.transmissionSelected == ''){
+        transmission = 'transmission'
+      }else{
+        transmission = this.$store.state.transmissionSelected
+      }
+      if(this.$store.state.driveTrainSelected == ''){
+       driveTrain = 'DriveTrain'
+      }else{
+        driveTrain = this.$store.state.driveTrainSelected
+      }
+      if(this.$store.state.engineSelected == ''){
+        engine = 'Engine'
+      }else{
+        engine = this.$store.state.engineSelected
+      }
+      if(this.$store.state.colorSelected == ''){
+        color = 'Color'
+      }else{
+        color = this.$store.state.colorSelected
+      }
+      return [
+        {field:fuel, id:'fuel'},
+        {field:transmission, id:'transmission'},
+        {field:driveTrain, id:'driveTrain'},
+        {field:engine, id:'engine'},
+        {field:color, id:'color'},
+      ]
+    }
   },
   methods:{
     ...mapMutations([

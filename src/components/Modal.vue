@@ -23,6 +23,16 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+.modal{
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1em .5em;
+}
 
 </style>

@@ -1,22 +1,28 @@
 <template>
   <header class="header-container flex-j-c ">
-        <div class="header-wrapper flex-a-c">
-          <i class="fas fa-bars fa-2x" @click="toggleMobileMenu"></i>
-          <div class="logo-container"><span class="logo">Auto <span class="logo-m">M</span>artz</span></div>
-          <nav class="desktopNav-container">
-            <ul class="desktopNav flex-a-c">
-              <li v-for="(link,key) in $store.state.desktopNav" :key="key"> 
-                <router-link to=""> <p>{{link.link}}</p> </router-link>
-              </li>
-            </ul>
-          </nav>
-          <i class="fas fa-search"></i>
-          <div class="sMedia" v-show="!$store.state.desktopView">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-instagram"></i>
-          </div>
+    <div class="header-wrapper flex-a-c">
+      <i class="fas fa-bars fa-2x" @click="toggleMobileMenu"></i>
+        <div class="logo-container">
+          <router-link :to="{name:'Home'}"  @click="clearPropsVal">
+            <span class="logo">Auto <span class="logo-m">M</span>artz</span>
+          </router-link>
         </div>
-    </header>
+        <nav class="desktopNav-container">
+          <ul class="desktopNav flex-a-c">
+            <li v-for="(link,key) in $store.state.desktopNav" :key="key"> 
+              <router-link to=""> <p>{{link.link}}</p> </router-link>
+            </li>
+          </ul>
+        </nav>
+        <router-link :to="{name:'Advance'}" tag="div">
+          <i class="fas fa-search"></i>
+        </router-link>
+        <div class="sMedia" v-show="!$store.state.desktopView">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+        </div>
+    </div>
+  </header>
 </template>
 
 <script>
@@ -24,7 +30,8 @@ import {mapMutations} from 'vuex'
 export default {
   methods:{
     ...mapMutations([
-    'toggleMobileMenu'
+    'toggleMobileMenu',
+    'clearPropsVal'
     ])
     
   }
@@ -62,6 +69,7 @@ export default {
   
   .logo{
     cursor: pointer;
+    color: $light;
   }
 
   .logo-m{
@@ -92,6 +100,8 @@ export default {
     display: none;
   }
   font-size: 1.5em;
+  cursor: pointer;
+  
    
 }
 .sMedia{

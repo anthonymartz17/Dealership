@@ -49,12 +49,16 @@ export default new Vuex.Store({
        ]
       },
     carTypeSelected:'',
-    carCondition:{id:'carCondition',condition:['Car Condition','New','Used']},
+    carCondition:{id:'carCondition',condition:['New/Used','New','Used']},
     carConditionSelected:'',
     fuelType:{id:'fuelType',type:['Gasoline','Diesel','Electric','Hybrid']},
     fuelTypeSelected:'',
     driveTrain:{id:'driveTrain', type:['RWD','FWD','AWD']},
     driveTrainSelected:'',
+    transmission:['Automatic','Manual'],
+    transmissionSelected:'',
+    engine:['I4','v6'],
+    engineSelected:'',
     color:{
       id:'color',
       color:[
@@ -129,6 +133,20 @@ export default new Vuex.Store({
     disableYears(state,years){
       state.yearsUnavailable = years
     },
+    clearPropsVal(state){
+      state.makeSelected = ''
+      state.modelSelected = ''
+      state.priceFromSelected = ''
+      state.priceToSelected = ''
+      state.yearFromSelected = ''
+      state.yearToSelected = ''
+      state.carTypeSelected = ''
+      state.carConditionSelected = ''
+      state.fuelTypeSelected = ''
+      state.driveTrainSelected = ''
+      state.colorSelected = ''
+
+    },
     formatPrice(value){
       let val = (value/1).toFixed(2).replace('.', ',')
       return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
@@ -149,8 +167,8 @@ export default new Vuex.Store({
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
-      console.log(state.fieldContent)
     },
+    // selects the models to show according to the make selected
     selectModelByMake(state,e){
       state.carSelection.forEach(one =>{
         if(e.currentTarget.firstElementChild.textContent == one.make){
