@@ -6,7 +6,7 @@
     <div class="modal-clear"  @click="toggleSelectionModal($event);">
       <div class="modal-clear-card" >
         <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
-        <template  v-if="fieldContent == 'make'" >
+        <!-- <template  v-if="fieldContent == 'make'" >
           
             <label
              v-for="(car,key) in carSelection"
@@ -85,6 +85,14 @@
           <p>{{condition}}</p>
           <input class="radio" type="radio" v-model="$store.state.carConditionSelected" :id="key" :value="condition">    
     </label>
+    </template> -->
+
+    <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
+    <template>
+      <label v-for="(field,key) in clickedFieldContent"  :key="key" class="modal-clear-card-content" :for="key" >
+          <p>{{field}}</p>
+          <input class="radio" type="radio" v-model="$store.state.carConditionSelected" :id="key" :value="field">    
+    </label>
     </template>
 
 
@@ -119,7 +127,8 @@ computed:{
     'carType',
     'carCondition',
     'priceUnavailable',
-    'yearsUnavailable'
+    'yearsUnavailable',
+    'clickedFieldContent'
     
     
     
@@ -169,7 +178,7 @@ methods:{
   
   position: absolute;
   top: 0;
-  height: 100vh;
+  height: 120%;
   width: 100%;
   display: grid;
   place-items: center;

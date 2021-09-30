@@ -49,19 +49,17 @@ export default new Vuex.Store({
        ]
       },
     carTypeSelected:'',
-    carCondition:{id:'carCondition',condition:['New/Used','New','Used']},
+    carCondition:{id:'carCondition',type:['New/Used','New','Used']},
     carConditionSelected:'',
-    fuelType:{id:'fuelType',type:['Gasoline','Diesel','Electric','Hybrid']},
-    fuelTypeSelected:'',
+    fuel:{id:'fuel', type:['Gasoline','Diesel','Electric','Hybrid']},
+    fuelSelected:'',
+    transmission:{id:'transmission', type:['Automatic','Manual']},
+    transmissionSelected:'',
     driveTrain:{id:'driveTrain', type:['RWD','FWD','AWD']},
     driveTrainSelected:'',
-    transmission:['Automatic','Manual'],
-    transmissionSelected:'',
-    engine:['I4','v6'],
+    engine:{id:'engine', type:['I4','v6']},
     engineSelected:'',
-    color:{
-      id:'color',
-      color:[
+    color:{id:'color', type:[
         "Black",
         "Blue",
         "Brown",
@@ -93,9 +91,9 @@ export default new Vuex.Store({
         "Violet",
         "White",
         "Yellow",
-      ]
-    },
+      ]},
     colorSelected:'',
+    clickedFieldContent:null,
 
     desktopNav:[
 
@@ -167,6 +165,25 @@ export default new Vuex.Store({
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
+
+    
+    },
+    // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
+    whichFieldContentTest(state,id){
+      let contentToShow = [
+        state.carType,
+        state.carCondition,
+        state.fuel,
+        state.transmission,
+        state.driveTrain,
+        state.engine,
+        state.color
+      ]
+      contentToShow.forEach(one =>{
+        if(one.id == id){
+          state.clickedFieldContent = one.type
+        }
+      })
     },
     // selects the models to show according to the make selected
     selectModelByMake(state,e){

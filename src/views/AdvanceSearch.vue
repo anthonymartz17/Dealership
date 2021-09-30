@@ -34,8 +34,11 @@
           v-for="(opt,key) in moreOptionsComputed"
           :key="key"
           class="search-fields-container-field"  
-          @click="toggleSelectionModal($event);  
-          whichFieldContent(opt)"
+          @click="
+            toggleSelectionModal($event);  
+            whichFieldContent(opt);
+            whichFieldContentTest(opt.id);
+          "
      >
         <p>{{opt.field}}</p>
         <i class="fas fa-caret-down"></i>
@@ -83,10 +86,10 @@ export default {
 
     moreOptionsComputed(){
       let fuel,transmission,driveTrain,engine,color;
-      if(this.$store.state.fuelTypeSelected == ''){
+      if(this.$store.state.fuelSelected == ''){
         fuel = 'Fuel'
       }else{
-        fuel = this.$store.state.fuelTypeSelected
+        fuel = this.$store.state.fuelSelected
       }
       if(this.$store.state.transmissionSelected == ''){
         transmission = 'transmission'
@@ -120,7 +123,8 @@ export default {
   methods:{
     ...mapMutations([
       'toggleSelectionModal',
-       'whichFieldContent'
+       'whichFieldContent',
+       'whichFieldContentTest'
     ])
   }
 

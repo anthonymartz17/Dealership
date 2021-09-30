@@ -1,20 +1,19 @@
 <template>
-  <div>
-    <MobileMenu/>
     <div class="page-container">
+      <MobileMenu/>
       <AppHeader/>
       <AppMain/>
-      <SelectionModal v-show="$store.state.selectionModalToggler" />
+      <CarSelectionCard v-show="$store.state.selectionModalToggler" />
       <footer>
         <div class="footer-content"></div>
       </footer>
     </div>
-  </div>
+ 
   
 </template>
 
 <script>
-import SelectionModal from './components/searchFieldMobile/CarSelectionOptModal.vue'
+import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
 import MobileMenu from './components/MobileMenu.vue'
@@ -47,7 +46,7 @@ export default {
   components:{
     AppHeader,
     AppMain,
-    SelectionModal,
+    CarSelectionCard,
     MobileMenu
   }, 
   computed:{
@@ -70,15 +69,10 @@ export default {
  
 .page-container{
   background: $lightestDark;
-  height: 100vh;
+  height: 100%;
   min-width: 22.5em;
-  position: relative;
+  // position: relative;
 }
-// .modal{
-//   position: absolute;
-//   height: 100%;
-//   width:100%;
-//   background: rgba(0, 0, 0, 0.4);
-// }
+
 
 </style>
