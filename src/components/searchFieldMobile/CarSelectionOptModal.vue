@@ -57,8 +57,7 @@
              :key="key" 
              :for="key"
              @click="disableYears(key);"
-             class="modal-clear-card-content"
-             
+             class="modal-clear-card-content"       
       >
           <p>{{yearFrom}}</p>
           <input class="radio" type="radio" v-model="$store.state.yearFromSelected" :id="key" :value="yearFrom">    
@@ -168,14 +167,14 @@ methods:{
 }
 .modal-clear{
   
-  // position: absolute;
-  // top: 0;
-  // height: 100vh;
-  // width: 100%;
-  // display: grid;
-  // place-items: center;
-  // background: rgba(0, 0, 0, 0.5);
-  // padding: 1em .5em;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1em .5em;
 
 
   &-card{

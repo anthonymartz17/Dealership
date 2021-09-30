@@ -156,7 +156,7 @@ export default new Vuex.Store({
   },
    
     toggleSelectionModal(state,e){
-      if(e.target.classList.contains('modal-card-content') || e.target.classList.contains('modal') || e.target.classList.contains('search-fields-container-field')){
+      if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('modal-clear') || e.target.classList.contains('search-fields-container-field')){
 
         state.selectionModalToggler = !state.selectionModalToggler
         

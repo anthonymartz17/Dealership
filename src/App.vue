@@ -1,28 +1,14 @@
 <template>
   <div>
-     <MobileMenu/>
+    <MobileMenu/>
     <div class="page-container">
-      <transition 
-      enter-active-class="animate__animated animate__fadeIn animate__faster"
-      leave-active-class="animate__animated animate__fadeOut animate__faster"
-      >
-      <div
-       class="modal" 
-       v-show="$store.state.mobileMenuToggler" 
-       @click="toggleMobileMenu">
-       </div>
-      </transition>
-     
       <AppHeader/>
       <AppMain/>
-      <SelectionModal v-show="$store.state.selectionModalToggler"/>
-     <!-- <p>{{priceRangeComputed}}</p> -->
-     
-    <footer>
-      <div class="footer-content"></div>
-    </footer>
-    
-  </div>
+      <SelectionModal v-show="$store.state.selectionModalToggler" />
+      <footer>
+        <div class="footer-content"></div>
+      </footer>
+    </div>
   </div>
   
 </template>
@@ -80,6 +66,7 @@ export default {
   }
 </script>
 <style lang="scss" scoped>
+
  
 .page-container{
   background: $lightestDark;
@@ -87,11 +74,11 @@ export default {
   min-width: 22.5em;
   position: relative;
 }
-.modal{
-  position: absolute;
-  height: 100%;
-  width:100%;
-  background: rgba(0, 0, 0, 0.4);
-}
+// .modal{
+//   position: absolute;
+//   height: 100%;
+//   width:100%;
+//   background: rgba(0, 0, 0, 0.4);
+// }
 
 </style>

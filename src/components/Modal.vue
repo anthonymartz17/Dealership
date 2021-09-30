@@ -4,10 +4,9 @@
     leave-active-class="animate__animated animate__fadeOut animate__faster"
   >
     <div
-       class="modal" 
-       v-show="$store.state.mobileMenuToggler" 
-       @click="toggleModal">
-      </div>
+       class="modal"
+       @click="toggleSelectionModal($event)">
+    </div>
   </transition>
 </template>
 
@@ -16,7 +15,7 @@ import {mapMutations} from 'vuex'
 export default {
   methods:{
      ...mapMutations([
-      'toggleModal'
+      'toggleSelectionModal'
     ])
   }
 
