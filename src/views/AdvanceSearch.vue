@@ -67,49 +67,49 @@ export default {
     ]),
     carTypeComputed(){
       let cartype
-      if(this.$store.state.carTypeSelected == ''){
+      if(this.$store.state.carType.typeSelected == ''){
         cartype = 'Car Types'
       }else{
-        cartype = this.$store.state.carTypeSelected
+        cartype = this.$store.state.carType.typeSelected
       }
       return [{field:cartype, id:'carType'}]
     },
     carConditionComputed(){
       let condition
-      if(this.$store.state.carConditionSelected == ''){
+      if(this.$store.state.carCondition.typeSelected == ''){
         condition = 'New/Used'
       }else{
-        condition = this.$store.state.carConditionSelected
+        condition = this.$store.state.carCondition.typeSelected
       }
       return [{field:condition, id:'condition'}]
     },
 
     moreOptionsComputed(){
       let fuel,transmission,driveTrain,engine,color;
-      if(this.$store.state.fuelSelected == ''){
+      if(this.$store.state.fuel.typeSelected == ''){
         fuel = 'Fuel'
       }else{
-        fuel = this.$store.state.fuelSelected
+        fuel = this.$store.state.fuel.typeSelected
       }
-      if(this.$store.state.transmissionSelected == ''){
+      if(this.$store.state.transmission.typeSelected == ''){
         transmission = 'transmission'
       }else{
-        transmission = this.$store.state.transmissionSelected
+        transmission = this.$store.state.transmission.typeSelected
       }
-      if(this.$store.state.driveTrainSelected == ''){
+      if(this.$store.state.driveTrain.typeSelected == ''){
        driveTrain = 'DriveTrain'
       }else{
-        driveTrain = this.$store.state.driveTrainSelected
+        driveTrain = this.$store.state.driveTrain.typeSelected
       }
-      if(this.$store.state.engineSelected == ''){
+      if(this.$store.state.engine.typeSelected == ''){
         engine = 'Engine'
       }else{
-        engine = this.$store.state.engineSelected
+        engine = this.$store.state.engine.typeSelected
       }
-      if(this.$store.state.colorSelected == ''){
+      if(this.$store.state.color.typeSelected == ''){
         color = 'Color'
       }else{
-        color = this.$store.state.colorSelected
+        color = this.$store.state.color.typeSelected
       }
       return [
         {field:fuel, id:'fuel'},

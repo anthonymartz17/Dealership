@@ -46,20 +46,37 @@ export default new Vuex.Store({
          'Van',
          'Pickup Truck',
          'Convertible',
-       ]
+       ],
+       typeSelected:'',
       },
-    carTypeSelected:'',
-    carCondition:{id:'carCondition',type:['New/Used','New','Used']},
-    carConditionSelected:'',
-    fuel:{id:'fuel', type:['Gasoline','Diesel','Electric','Hybrid']},
-    fuelSelected:'',
-    transmission:{id:'transmission', type:['Automatic','Manual']},
-    transmissionSelected:'',
-    driveTrain:{id:'driveTrain', type:['RWD','FWD','AWD']},
-    driveTrainSelected:'',
-    engine:{id:'engine', type:['I4','v6']},
-    engineSelected:'',
-    color:{id:'color', type:[
+    carCondition:{
+      id:'condition',
+      type:['New/Used','New','Used'],
+      typeSelected:'',
+    },
+    fuel:{
+      id:'fuel',
+      type:['Gasoline','Diesel','Electric','Hybrid'],
+      typeSelected:'',    
+    },
+    transmission:{
+      id:'transmission',
+      type:['Automatic','Manual'],
+      typeSelected:'',
+    },
+    driveTrain:{
+      id:'driveTrain',
+      type:['RWD','FWD','AWD'],
+      typeSelected:'',
+    },
+    engine:{
+      id:'engine',
+      type:['I4','v6'],
+      typeSelected:'',
+    },
+    color:{
+      id:'color',
+       type:[
         "Black",
         "Blue",
         "Brown",
@@ -91,9 +108,10 @@ export default new Vuex.Store({
         "Violet",
         "White",
         "Yellow",
-      ]},
-    colorSelected:'',
-    clickedFieldContent:null,
+      ],
+      typeSelected:'',
+    },
+    clickedFieldContent:{},
 
     desktopNav:[
 
@@ -168,6 +186,22 @@ export default new Vuex.Store({
 
     
     },
+    selectedFieldData(state,e){
+        let selectedDataField =[
+          state.fuel,
+          state.transmission,
+          state.driveTrain,
+          state.engine,
+          state.color,
+        ]
+        selectedDataField.forEach(one =>{
+          if(one.id == e.target.id){
+            // one.typeSelected = e.target.value
+            console.log(e.target.value)
+
+          }
+        })
+    },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
     whichFieldContentTest(state,id){
       let contentToShow = [
@@ -181,7 +215,7 @@ export default new Vuex.Store({
       ]
       contentToShow.forEach(one =>{
         if(one.id == id){
-          state.clickedFieldContent = one.type
+          state.clickedFieldContent = one
         }
       })
     },

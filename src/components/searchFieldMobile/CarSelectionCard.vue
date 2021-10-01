@@ -89,16 +89,12 @@
 
     <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
     <template>
-      <label v-for="(field,key) in clickedFieldContent"  :key="key" class="modal-clear-card-content" :for="key" >
+      <label v-for="(field,key) in clickedFieldContent.type"  :key="key" class="modal-clear-card-content" :for="clickedFieldContent.id" @click="selectedFieldData($event)">
           <p>{{field}}</p>
-          <input class="radio" type="radio" v-model="$store.state.carConditionSelected" :id="key" :value="field">    
+          <input class="radio" type="radio"  :id="clickedFieldContent.id" :value="field">    
     </label>
     </template>
-
-
-
-
-
+<!-- -----------value field is not passing the right selected value------------------ -->
       </div>
     
     </div>
@@ -147,7 +143,8 @@ methods:{
     'toggleSelectionModal',
     'selectModelByMake',
     'disablePrice',
-    'disableYears'
+    'disableYears',
+    'selectedFieldData'
 
   
   ]),
