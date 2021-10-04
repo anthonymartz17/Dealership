@@ -9,7 +9,7 @@
 </template>
 
 <script>
-// import SearchMobile from './SearchMobile.vue'
+
 
 
 
@@ -30,6 +30,7 @@ export default {
 .main-container{
   width: 100%;
   height: 100vh;
+  
 }
 
 

@@ -1,9 +1,10 @@
 <template>
     <div class="page-container">
+      <AppModal/>
       <MobileMenu/>
       <AppHeader/>
       <AppMain/>
-      <CarSelectionCard v-show="$store.state.selectionModalToggler" />
+      <CarSelectionCard v-show="$store.state.modalToggler"/>
       <footer>
         <div class="footer-content"></div>
       </footer>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
@@ -35,7 +37,8 @@ export default {
       ]),
 
     ...mapMutations([
-      'toggleMobileMenu'
+      'toggleMobileMenu',
+      'to'
     ])
     
 
@@ -47,7 +50,8 @@ export default {
     AppHeader,
     AppMain,
     CarSelectionCard,
-    MobileMenu
+    MobileMenu,
+    AppModal,
   }, 
   computed:{
     ...mapState([
@@ -57,9 +61,7 @@ export default {
       
      
     ]),
-    // ...mapGetters([
-    //    'priceRangeComputed'
-    // ])
+  
   } 
   
   }
@@ -68,11 +70,13 @@ export default {
 
  
 .page-container{
-  background: $lightestDark;
-  height: 100%;
+ 
+  background:$lightestDark;
+  height: 100vh;
   min-width: 22.5em;
-  // position: relative;
+ 
 }
+
 
 
 </style>

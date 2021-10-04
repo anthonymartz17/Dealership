@@ -3,19 +3,22 @@
     enter-active-class="animate__animated animate__fadeIn animate__faster"
     leave-active-class="animate__animated animate__fadeOut animate__faster"
   >
-    <div
-       class="modal"
-       @click="toggleSelectionModal($event)">
-    </div>
+    <div class="modal" @click="toggleModal()" v-show="modalToggler"></div>
   </transition>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations,mapState} from 'vuex'
 export default {
+  computed:{
+     ...mapState([
+       'modalToggler'
+     ])
+  },
   methods:{
      ...mapMutations([
-      'toggleSelectionModal'
+      'toggleModal',
+      'toggleMobileMenu'
     ])
   }
 
@@ -32,6 +35,8 @@ export default {
   place-items: center;
   background: rgba(0, 0, 0, 0.5);
   padding: 1em .5em;
+ 
+  
 }
 
 </style>

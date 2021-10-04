@@ -3,7 +3,7 @@
     <div 
       class="search-fields-container-field"
       v-for="(field,key) in priceYear" :key="key"
-      @click="toggleSelectionModal($event);whichFieldContent(field)"
+      @click="toggleModal;whichFieldContent(field)"
     >
       <p>{{field.field}}</p>
       <i class="fas fa-caret-down"></i>
@@ -16,7 +16,7 @@ import {mapMutations} from 'vuex'
 export default {
   methods:{
     ...mapMutations([
-      'toggleSelectionModal',    
+      'toggleModal',    
       'whichFieldContent'   
     ])
   

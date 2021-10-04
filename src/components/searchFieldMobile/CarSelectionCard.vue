@@ -1,9 +1,6 @@
 <template>
-  <transition
-    enter-active-class="animate__animated animate__fadeIn animate__faster"
-    leave-active-class="animate__animated animate__fadeOut animate__faster"
-  >
-    <div class="modal-clear"  @click="toggleSelectionModal($event);">
+
+    <div class="modal-clear">
       <div class="modal-clear-card" >
         <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
         <!-- <template  v-if="fieldContent == 'make'" >
@@ -89,16 +86,20 @@
 
     <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
     <template>
-      <label v-for="(field,key) in clickedFieldContent.type"  :key="key" class="modal-clear-card-content" :for="clickedFieldContent.id" @click="selectedFieldData($event)">
+      <label v-for="(field,key) in clickedFieldContent.type"  :key="key" class="modal-clear-card-content" :for="key" @click="selectedFieldData({$event,clickedFieldContent})">
           <p>{{field}}</p>
-          <input class="radio" type="radio"  :id="clickedFieldContent.id" :value="field">    
+          <input 
+            class="radio"
+            type="radio" 
+            :id="key" 
+            :value="field"
+            name="moreOptions"          
+          >    
     </label>
     </template>
-<!-- -----------value field is not passing the right selected value------------------ -->
       </div>
     
     </div>
-  </transition>
 </template>
 
 <script>
@@ -107,7 +108,8 @@ export default {
 
   data(){
     return {
-      model:'model'
+      model:'model',
+    
     }
   },
 
@@ -175,12 +177,12 @@ methods:{
   
   position: absolute;
   top: 0;
-  height: 120%;
+  height: 100%;
   width: 100%;
   display: grid;
   place-items: center;
-  background: rgba(0, 0, 0, 0.5);
   padding: 1em .5em;
+  pointer-events: none;
 
 
   &-card{
@@ -200,6 +202,11 @@ methods:{
     align-items: baseline;
     justify-content: space-between;
     cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover{
+      background: darken($light, 20%);
+    }
 
 
     p{

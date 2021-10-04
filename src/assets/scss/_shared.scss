@@ -71,6 +71,16 @@ $font-text: normal 200 1em $font-stack;
 a{
   text-decoration: none;
 }
+.btn{
+  width: 100%;
+  height: 3em;
+  margin-block: .2em;
+  font: $font-text-bold;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  
+}
 
 
 

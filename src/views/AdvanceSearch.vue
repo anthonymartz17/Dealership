@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="advance-search">
     <div class="search-fields-container">        
      <p class="search-fields-container-title">Advance Search!</p>
      <div 
@@ -28,6 +28,7 @@
       </div> 
       <PriceYear/>              
     </div>
+    <SearchBtn :class="{btnPosition:searchBtn}"/>
     <div class="search-fields-container">        
      <p class="search-fields-container-title">More Options</p>
      <div 
@@ -35,15 +36,14 @@
           :key="key"
           class="search-fields-container-field"  
           @click="
-            toggleSelectionModal($event);  
+            toggleModal();  
             whichFieldContent(opt);
             whichFieldContentTest(opt.id);
           "
      >
         <p>{{opt.field}}</p>
         <i class="fas fa-caret-down"></i>
-      </div> 
-                   
+      </div>               
     </div>
   </div>
 </template>
@@ -52,10 +52,20 @@
 import { mapGetters,mapMutations,mapState} from "vuex";
 import MakeModel from '../components/searchFieldMobile/MakeModel.vue'
 import PriceYear from '../components/searchFieldMobile/PriceYear.vue'
+import SearchBtn from '../components/searchFieldMobile/SearchBtn.vue'
 export default {
+  data(){
+    return{
+      searchBtn:false
+    }
+  },
   components:{
     MakeModel,
     PriceYear,
+    SearchBtn,
+  },
+  created(){
+   this.searchBtn = true 
   },
   computed:{
     ...mapState([
@@ -122,7 +132,7 @@ export default {
   },
   methods:{
     ...mapMutations([
-      'toggleSelectionModal',
+      'toggleModal',
        'whichFieldContent',
        'whichFieldContentTest'
     ])
@@ -132,7 +142,16 @@ export default {
 </script>
 
 <style lang="scss">
-.testing{}
+
+.advance-search{
+  padding-bottom: 3em;
+  background: $lightDark;
+}
+
+.btnPosition{
+  position: fixed;
+  bottom: 0em;
+}
 
 
 

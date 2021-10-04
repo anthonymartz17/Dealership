@@ -9,7 +9,8 @@ export default new Vuex.Store({
     // Global
     desktopView:false,
     searchMobileModal:false,
-    selectionModalToggler:false,
+    modalToggler:false,
+    searchBtnPosition:false,
     fieldContent:null,
 
     //Search mobile component
@@ -134,6 +135,13 @@ export default new Vuex.Store({
           
           },
         {
+          link:'Advance Search',
+          name: 'Advance',
+          icon:'fas fa-search'
+          },
+
+
+        {
           link:'Contacto',
           name: 'Contact',
           icon:'fas fa-phone-volume'
@@ -171,22 +179,27 @@ export default new Vuex.Store({
     state.mobileMenuToggler = !state.mobileMenuToggler
   },
    
-    toggleSelectionModal(state,e){
-      if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('modal-clear') || e.target.classList.contains('search-fields-container-field')){
-
-        state.selectionModalToggler = !state.selectionModalToggler
-        
-        
-      }
-      
+    toggleModal(state){
+        state.modalToggler = !state.modalToggler
+        state.mobileMenuToggler = false
+       
     },
+    // toggleSelectionModal(state,e){
+    //   if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('modal-clear') || e.target.classList.contains('search-fields-container-field')){
+
+    //     state.selectionModalToggler = !state.selectionModalToggler
+        
+        
+    //   }
+      
+    // },
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
 
     
     },
-    selectedFieldData(state,e){
+    selectedFieldData(state,data){
         let selectedDataField =[
           state.fuel,
           state.transmission,
@@ -195,10 +208,8 @@ export default new Vuex.Store({
           state.color,
         ]
         selectedDataField.forEach(one =>{
-          if(one.id == e.target.id){
-            // one.typeSelected = e.target.value
-            console.log(e.target.value)
-
+          if(one.id == data.clickedFieldContent.id){
+            one.typeSelected = data.$event.target.value
           }
         })
     },
@@ -246,6 +257,7 @@ export default new Vuex.Store({
   },
 
   getters:{
+  
 
     carModels(state){
         return state.carSelection
