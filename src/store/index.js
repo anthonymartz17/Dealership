@@ -10,6 +10,7 @@ export default new Vuex.Store({
     desktopView:false,
     searchMobileModal:false,
     modalToggler:false,
+    optionsCardToggler:false,
     searchBtnPosition:false,
     fieldContent:null,
 
@@ -180,19 +181,27 @@ export default new Vuex.Store({
   },
    
     toggleModal(state){
+     
         state.modalToggler = !state.modalToggler
         state.mobileMenuToggler = false
        
     },
-    // toggleSelectionModal(state,e){
-    //   if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('modal-clear') || e.target.classList.contains('search-fields-container-field')){
 
-    //     state.selectionModalToggler = !state.selectionModalToggler
+    // togggles on and off to show the card with the options  of the selected field
+    toggleOptionsCard(state,e){
+      if(e.target.classList.contains('selected-field-options') || e.target.classList.contains('selected-field-options-card-content') || e.target.classList.contains('search-fields-container-field')){
+        state.optionsCardToggler = !state.optionsCardToggler      
+      }
+
+    },
+    closeSelectionCard(state,e){
+      if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('search-fields-container-field')){
+
+        state.modalToggler = false
         
-        
-    //   }
+      }
       
-    // },
+    },
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
@@ -211,6 +220,7 @@ export default new Vuex.Store({
           if(one.id == data.clickedFieldContent.id){
             one.typeSelected = data.$event.target.value
           }
+          data.$event.target.value = ''
         })
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card

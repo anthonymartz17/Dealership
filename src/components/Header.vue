@@ -47,6 +47,8 @@ export default {
   height: 10vh;
   width: 100%;
   color: $light;
+  position: sticky;
+  top: 0;
   
 }
 .header-wrapper{

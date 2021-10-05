@@ -29,12 +29,13 @@ export default {
 .modal{
   position: absolute;
   top: 0;
-  height: 100vh;
+  // height: 130%;
   width: 100%;
   display: grid;
   place-items: center;
   background: rgba(0, 0, 0, 0.5);
   padding: 1em .5em;
+  z-index: 1;
  
   
 }

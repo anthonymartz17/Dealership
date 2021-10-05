@@ -1,7 +1,14 @@
 <template>
-
-    <div class="modal-clear">
-      <div class="modal-clear-card" >
+  <transition 
+    enter-active-class="animate__animated animate__fadeIn animate__faster"
+    leave-active-class="animate__animated animate__fadeOut animate__faster"
+  >
+    <div class="selected-field-options" 
+    v-show="$store.state.optionsCardToggler"
+    @click="toggleOptionsCard($event)"
+    
+    >
+      <div class="selected-field-options-card" >
         <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
         <!-- <template  v-if="fieldContent == 'make'" >
           
@@ -86,7 +93,13 @@
 
     <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
     <template>
-      <label v-for="(field,key) in clickedFieldContent.type"  :key="key" class="modal-clear-card-content" :for="key" @click="selectedFieldData({$event,clickedFieldContent})">
+      <label 
+        v-for="(field,key) in clickedFieldContent.type"
+        :key="key"
+        class="selected-field-options-card-content" 
+        :for="key" 
+        @click.stop="selectedFieldData({$event,clickedFieldContent});toggleOptionsCard($event)"
+      >
           <p>{{field}}</p>
           <input 
             class="radio"
@@ -100,6 +113,7 @@
       </div>
     
     </div>
+  </transition>
 </template>
 
 <script>
@@ -142,11 +156,12 @@ computed:{
 
 methods:{
   ...mapMutations([
-    'toggleSelectionModal',
+    'closeSelectionCard',
     'selectModelByMake',
     'disablePrice',
     'disableYears',
-    'selectedFieldData'
+    'selectedFieldData',
+    'toggleOptionsCard'
 
   
   ]),
@@ -173,16 +188,18 @@ methods:{
   }
  
 }
-.modal-clear{
+
+.selected-field-options{
   
   position: absolute;
   top: 0;
-  height: 100%;
+  height: 130%;
   width: 100%;
   display: grid;
   place-items: center;
   padding: 1em .5em;
-  pointer-events: none;
+  background:rgba(0, 0, 0, 0.5);
+
 
 
   &-card{

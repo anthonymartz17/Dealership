@@ -1,10 +1,10 @@
 <template>
     <div class="page-container">
-      <AppModal/>
+      <!-- <AppModal/> -->
       <MobileMenu/>
       <AppHeader/>
       <AppMain/>
-      <CarSelectionCard v-show="$store.state.modalToggler"/>
+      <CarSelectionCard />
       <footer>
         <div class="footer-content"></div>
       </footer>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import AppModal from './components/Modal.vue'
+// import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
@@ -38,7 +38,7 @@ export default {
 
     ...mapMutations([
       'toggleMobileMenu',
-      'to'
+      
     ])
     
 
@@ -51,7 +51,7 @@ export default {
     AppMain,
     CarSelectionCard,
     MobileMenu,
-    AppModal,
+    // AppModal,
   }, 
   computed:{
     ...mapState([
@@ -70,8 +70,8 @@ export default {
 
  
 .page-container{
- 
-  background:$lightestDark;
+ background: blue;
+  // background:$lightestDark;
   height: 100vh;
   min-width: 22.5em;
  

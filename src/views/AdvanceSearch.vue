@@ -6,7 +6,7 @@
           v-for="(carType,key) in carTypeComputed"
           :key="key"
           class="search-fields-container-field"  
-          @click="toggleSelectionModal($event);  
+          @click="toggleModal();  
           whichFieldContent(carType)"
      >
         <p>{{carType.field}}</p>
@@ -36,7 +36,7 @@
           :key="key"
           class="search-fields-container-field"  
           @click="
-            toggleModal();  
+            toggleOptionsCard($event);  
             whichFieldContent(opt);
             whichFieldContentTest(opt.id);
           "
@@ -132,7 +132,7 @@ export default {
   },
   methods:{
     ...mapMutations([
-      'toggleModal',
+      'toggleOptionsCard',
        'whichFieldContent',
        'whichFieldContentTest'
     ])
