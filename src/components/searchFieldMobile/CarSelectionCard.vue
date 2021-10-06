@@ -10,20 +10,31 @@
     >
       <div class="selected-field-options-card" >
         <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
-        <!-- <template  v-if="fieldContent == 'make'" >
-          
+     
+       <template  >
             <label
-             v-for="(car,key) in carSelection"
+             v-for="(field,key) in clickedFieldContent.type"
              :key="key"  
-             class="modal-clear-card-content"
+             class="selected-field-options-card-content"
              :for="key" 
-             @click="selectModelByMake($event)"
+             @click.stop="selectedFieldData({$event,clickedFieldContent});
+             toggleOptionsCard($event)
+             "
              >
-            <p>{{car.make}}</p>
-            <input class="radio" type="radio" v-model="$store.state.makeSelected" :id="key" :value="car.make">    
+             <!-- bug here -->
+            <p>{{field.field}}</p>
+            <input 
+            class="radio"
+            type="radio" 
+            :id="key" 
+            :value="field"
+            name="searchFields"
+            
+            > 
+             
           </label>
         </template>
-
+   <!--
         <template v-else-if="fieldContent == 'model'">
           <template  v-if="$store.state.makeSelected != ''" >
              <label class="modal-clear-card-content" for="model">
@@ -92,7 +103,7 @@
     </template> -->
 
     <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
-    <template>
+    <!-- <template>
       <label 
         v-for="(field,key) in clickedFieldContent.type"
         :key="key"
@@ -109,7 +120,7 @@
             name="moreOptions"          
           >    
     </label>
-    </template>
+    </template> -->
       </div>
     
     </div>
@@ -132,7 +143,7 @@ computed:{
   //   if(this.)
   // },
   ...mapState([
-    'carSelection',
+    'make',
     'fieldContent',
     'models',
     'makeSelected',

@@ -27,11 +27,17 @@ export default new Vuex.Store({
 
     // mobile nav links
     mobileMenuToggler:false,
-    carSelection:null,
-    make:'',
-    makeSelected:'',
-    models:'',
-    modelSelected:'',
+    make:{
+      id:'make',
+      type:[],
+      typeSelected:'',
+    },
+    models:{
+      id:'model',
+      type:[],
+      typeSelected:'',
+
+    },
     priceFromSelected:0,
     priceToSelected:0,
     priceUnavailable:null,
@@ -159,8 +165,8 @@ export default new Vuex.Store({
       state.yearsUnavailable = years
     },
     clearPropsVal(state){
-      state.makeSelected = ''
-      state.modelSelected = ''
+      state.make.typeSelected = ''
+      state.models.typeSelected = ''
       state.priceFromSelected = ''
       state.priceToSelected = ''
       state.yearFromSelected = ''
@@ -210,6 +216,8 @@ export default new Vuex.Store({
     },
     selectedFieldData(state,data){
         let selectedDataField =[
+          state.make,
+          // state.model,
           state.fuel,
           state.transmission,
           state.driveTrain,
@@ -220,12 +228,14 @@ export default new Vuex.Store({
           if(one.id == data.clickedFieldContent.id){
             one.typeSelected = data.$event.target.value
           }
-          data.$event.target.value = ''
+        
         })
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
-    whichFieldContentTest(state,id){
+    showSelectedFieldContent(state,id){
       let contentToShow = [
+        state.make,
+        state.models,
         state.carType,
         state.carCondition,
         state.fuel,
@@ -239,13 +249,14 @@ export default new Vuex.Store({
           state.clickedFieldContent = one
         }
       })
+      
     },
     // selects the models to show according to the make selected
     selectModelByMake(state,e){
-      state.carSelection.forEach(one =>{
+      state.make.type.forEach(one =>{
         if(e.currentTarget.firstElementChild.textContent == one.make){
-           state.models = one.model
-           state.modelSelected = `All ${one.make}`
+           state.models.type = one.model
+           state.models.typeSelected = `All ${one.make}`
         } 
       })
     }
@@ -256,7 +267,7 @@ export default new Vuex.Store({
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
-      .then(data => context.state.carSelection = data)
+      .then(data => context.state.make.type = data)
       .catch(err =>{
         console.log(err)
       })   
@@ -297,15 +308,15 @@ export default new Vuex.Store({
  
     advanceSearchFieldsMobile(state){
       let make,model,priceFrom,priceTo,yearFrom,yearTo,carCondition,carType,fuelType,driveTrain,color;
-      if(state.makeSelected == ''){
+      if(state.make.typeSelected == ''){
         make = 'Make'
       }else{ 
-        make = state.makeSelected
+        make = state.make.typeSelected
       }
-      if(state.modelSelected == ''){
+      if(state.models.typeSelected == ''){
         model = 'Model'
       }else{ 
-        model= state.modelSelected
+        model= state.model.typeSelected
       }
       if(state.priceFromSelected == 0){
         priceFrom = 'Price From'

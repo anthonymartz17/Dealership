@@ -2,8 +2,10 @@
   <div class="makeModel-wrapper">        
     <div 
       class="search-fields-container-field"
-      v-for="(field,key) in makeModel" :key="key"
-      @click="toggleSelectionModal($event);whichFieldContent(field)"
+      v-for="(field,key) in makeModel"
+      :key="key"
+      @click="toggleOptionsCard($event);
+      showSelectedFieldContent(field.id)"
     >
       <p>{{field.field}}</p>
       <i class="fas fa-caret-down"></i>
@@ -16,8 +18,8 @@ import {mapMutations} from 'vuex'
 export default {
   methods:{
     ...mapMutations([
-      'toggleSelectionModal',
-      'whichFieldContent'      
+      'toggleOptionsCard',
+      'showSelectedFieldContent'      
     ])
   
   },
@@ -25,15 +27,15 @@ export default {
    
       makeModel(){
        let make,model;
-        if(this.$store.state.makeSelected == ''){
+        if(this.$store.state.make.typeSelected == ''){
           make = 'Make'
         }else{
-          make = this.$store.state.makeSelected
+          make = this.$store.state.make.typeSelected
         }
-        if(this.$store.state.modelSelected == ''){
+        if(this.$store.state.models.typeSelected == ''){
           model = 'Model'
         }else{
-          model = this.$store.state.modelSelected
+          model = this.$store.state.models.typeSelected
         }
          
         return[

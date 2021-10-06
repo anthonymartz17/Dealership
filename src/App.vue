@@ -70,8 +70,8 @@ export default {
 
  
 .page-container{
- background: blue;
-  // background:$lightestDark;
+
+  background:$lightestDark;
   height: 100vh;
   min-width: 22.5em;
  

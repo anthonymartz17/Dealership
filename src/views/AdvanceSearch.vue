@@ -6,8 +6,7 @@
           v-for="(carType,key) in carTypeComputed"
           :key="key"
           class="search-fields-container-field"  
-          @click="toggleModal();  
-          whichFieldContent(carType)"
+          @click="whichFieldContent(carType)"
      >
         <p>{{carType.field}}</p>
         <i class="fas fa-caret-down"></i>
@@ -17,13 +16,13 @@
     <div class="search-fields-container">        
      <p class="search-fields-container-title">Price and Condition</p>
      <div 
-          v-for="(condition,key) in carConditionComputed"
+          v-for="(field,key) in carConditionComputed"
           :key="key"
           class="search-fields-container-field"  
-          @click="toggleSelectionModal($event);  
-          whichFieldContent(condition)"
+          @click="toggleOptionsCard($event);  
+          showSelectedFieldContent(field.id)"
      >
-        <p>{{condition.field}}</p>
+        <p>{{field.field}}</p>
         <i class="fas fa-caret-down"></i>
       </div> 
       <PriceYear/>              
@@ -32,16 +31,15 @@
     <div class="search-fields-container">        
      <p class="search-fields-container-title">More Options</p>
      <div 
-          v-for="(opt,key) in moreOptionsComputed"
+          v-for="(field,key) in moreOptionsComputed"
           :key="key"
           class="search-fields-container-field"  
           @click="
             toggleOptionsCard($event);  
-            whichFieldContent(opt);
-            whichFieldContentTest(opt.id);
+            showSelectedFieldContent(field.id);
           "
      >
-        <p>{{opt.field}}</p>
+        <p>{{field.field}}</p>
         <i class="fas fa-caret-down"></i>
       </div>               
     </div>
@@ -133,8 +131,7 @@ export default {
   methods:{
     ...mapMutations([
       'toggleOptionsCard',
-       'whichFieldContent',
-       'whichFieldContentTest'
+       'showSelectedFieldContent'
     ])
   }
 
