@@ -3,6 +3,7 @@
 
 // colors
 
+
 $dark:#333;
 $lightDark: lighten($dark, 10%);
 $lightestDark: lighten($dark, 40%);
@@ -80,6 +81,67 @@ a{
   place-items: center;
   cursor: pointer;
   
+}
+
+.selected-field-options{
+  
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1em .5em;
+  background:rgba(0, 0, 0, 0.5);
+  z-index: 1;
+
+
+
+  &-card{
+    font-family: $font-stack;
+    overflow-y: auto;
+    max-height: 95%;
+    width: 95%;
+    background: $light;
+    border-radius: 5px;
+
+
+  &-content{
+    position: relative;
+    padding: 1em;
+    border-bottom: .5px solid $lightestDark;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover{
+      background: darken($light, 20%);
+    }
+
+
+    p{
+      pointer-events: none;
+    }
+    
+  }
+  .select-a-make{
+    padding: 2em 1em;
+    text-align: center;
+    font: $font-text-bold;
+  }
+
+  .radio{
+    pointer-events: none;
+  }
+    
+
+    p{
+      color: $dark;
+    }
+
+  }
 }
 
 

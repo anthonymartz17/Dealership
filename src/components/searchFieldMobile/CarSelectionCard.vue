@@ -1,5 +1,6 @@
 <template>
-  <transition 
+
+   <!-- <transition 
     enter-active-class="animate__animated animate__fadeIn animate__faster"
     leave-active-class="animate__animated animate__fadeOut animate__faster"
   >
@@ -9,9 +10,10 @@
     
     >
       <div class="selected-field-options-card" >
-        <!-- Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event -->
+
+         Each search field content card was assigned the index of the search field in order to show the content according to the index returned from the click event 
      
-       <template  >
+        <template  >
             <label
              v-for="(field,key) in clickedFieldContent.type"
              :key="key"  
@@ -21,20 +23,20 @@
              toggleOptionsCard($event)
              "
              >
-             <!-- bug here -->
-            <p>{{field.field}}</p>
+          
+            <p>{{field}}</p>
             <input 
             class="radio"
             type="radio" 
             :id="key" 
-            :value="field"
+            :value="field.make"
             name="searchFields"
             
             > 
              
           </label>
-        </template>
-   <!--
+        </template> 
+   
         <template v-else-if="fieldContent == 'model'">
           <template  v-if="$store.state.makeSelected != ''" >
              <label class="modal-clear-card-content" for="model">
@@ -100,10 +102,9 @@
           <p>{{condition}}</p>
           <input class="radio" type="radio" v-model="$store.state.carConditionSelected" :id="key" :value="condition">    
     </label>
-    </template> -->
-
-    <!-- ---------------HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?--------------------- -->
-    <!-- <template>
+    </template> 
+HOW TO ASSIGN THE VALUE OF THE INPUT SELECTED TO A DYNAMIC V-MODEL SO THE VALUE GOES TO EACH CORRESPONDING PROP IN THE STORE?
+    <template>
       <label 
         v-for="(field,key) in clickedFieldContent.type"
         :key="key"
@@ -120,11 +121,13 @@
             name="moreOptions"          
           >    
     </label>
-    </template> -->
+    </template> 
       </div>
     
     </div>
-  </transition>
+  </transition>  -->
+
+  <div></div>
 </template>
 
 <script>
@@ -199,66 +202,5 @@ methods:{
   }
  
 }
-
-.selected-field-options{
-  
-  position: absolute;
-  top: 0;
-  height: 130%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  padding: 1em .5em;
-  background:rgba(0, 0, 0, 0.5);
-
-
-
-  &-card{
-    font-family: $font-stack;
-    overflow-y: auto;
-    max-height: 95%;
-    width: 95%;
-    background: $light;
-    border-radius: 5px;
-
-
-  &-content{
-    position: relative;
-    padding: 1em;
-    border-bottom: .5px solid $lightestDark;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-
-    &:hover{
-      background: darken($light, 20%);
-    }
-
-
-    p{
-      pointer-events: none;
-    }
-    
-  }
-  .select-a-make{
-    padding: 2em 1em;
-    text-align: center;
-    font: $font-text-bold;
-  }
-
-  .radio{
-    pointer-events: none;
-  }
-    
-
-    p{
-      color: $dark;
-    }
-
-  }
-}
-
 
 </style>

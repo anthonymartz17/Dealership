@@ -215,6 +215,7 @@ export default new Vuex.Store({
     
     },
     selectedFieldData(state,data){
+      console.log(data.clickedFieldContent)
         let selectedDataField =[
           state.make,
           // state.model,
@@ -249,6 +250,7 @@ export default new Vuex.Store({
           state.clickedFieldContent = one
         }
       })
+    
       
     },
     // selects the models to show according to the make selected

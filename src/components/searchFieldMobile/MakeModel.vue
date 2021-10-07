@@ -1,4 +1,5 @@
 <template>
+ <div>
   <div class="makeModel-wrapper">        
     <div 
       class="search-fields-container-field"
@@ -11,6 +12,39 @@
       <i class="fas fa-caret-down"></i>
     </div>                       
   </div> 
+  <transition 
+      enter-active-class="animate__animated animate__fadeIn animate__faster"
+      leave-active-class="animate__animated animate__fadeOut animate__faster"
+    >
+      <div class="selected-field-options" 
+        v-show="$store.state.optionsCardToggler"
+        @click="toggleOptionsCard($event)"
+    
+      >
+        <div  class="selected-field-options-card">
+          <label
+            v-for="(field,key) in clickedFieldContent.type"
+            :key="key"  
+            class="selected-field-options-card-content"
+            :for="key" 
+            @click.stop="selectedFieldData({$event,clickedFieldContent});
+            toggleOptionsCard($event)
+            "
+        >
+           <p v-if="clickedFieldContent.id == 'make' ">{{field.make}}</p>
+           
+            <input 
+              class="radio"
+              type="radio" 
+              :id="key" 
+              :value="field"
+              name="searchFields" 
+            >    
+          </label>
+        </div>
+      </div>
+    </transition>
+ </div>
 </template>
 
 <script>

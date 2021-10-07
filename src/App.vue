@@ -1,6 +1,6 @@
 <template>
     <div class="page-container">
-      <!-- <AppModal/> -->
+     <div class="test"></div>
       <MobileMenu/>
       <AppHeader/>
       <AppMain/>
@@ -70,9 +70,9 @@ export default {
 
  
 .page-container{
-
+  position: relative;
   background:$lightestDark;
-  height: 100vh;
+  height: 100%;
   min-width: 22.5em;
  
 }
