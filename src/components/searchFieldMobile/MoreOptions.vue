@@ -15,16 +15,16 @@
         <i class="fas fa-caret-down"></i>
      </div>               
     </div>
-    <transition 
+    <!-- <transition 
       enter-active-class="animate__animated animate__fadeIn animate__faster"
       leave-active-class="animate__animated animate__fadeOut animate__faster"
     >
       <div class="selected-field-options" 
         v-show="$store.state.optionsCardToggler"
-        @click="toggleOptionsCard($event)"
+        @click="toggleOptionsCard($event)" -->
     
       >
-        <div  class="selected-field-options-card">
+        <!-- <div  class="selected-field-options-card">
           <label
             v-for="(field,key) in clickedFieldContent.type"
             :key="key"  
@@ -43,9 +43,9 @@
               name="searchFields" 
             >    
           </label>
-        </div>
-      </div>
-    </transition>
+        </div>-->
+      <!-- </div> 
+    </transition> -->
   </div>
 </template>
 

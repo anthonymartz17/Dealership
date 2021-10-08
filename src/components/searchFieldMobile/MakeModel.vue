@@ -21,7 +21,7 @@
         @click="toggleOptionsCard($event)"
     
       >
-        <div  class="selected-field-options-card">
+        <!-- <div  class="selected-field-options-card">
           <label
             v-for="(field,key) in clickedFieldContent.type"
             :key="key"  
@@ -41,23 +41,28 @@
               name="searchFields" 
             >    
           </label>
-        </div>
+        </div> -->
       </div>
     </transition>
  </div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations,mapState} from 'vuex'
 export default {
   methods:{
     ...mapMutations([
       'toggleOptionsCard',
-      'showSelectedFieldContent'      
+      'showSelectedFieldContent',
+      'selectedFieldData'    
     ])
   
   },
   computed:{
+     
+     ...mapState([
+       'clickedFieldContent',
+     ]),
    
       makeModel(){
        let make,model;
