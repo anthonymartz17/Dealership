@@ -14,6 +14,8 @@ export default new Vuex.Store({
     searchBtnPosition:false,
     fieldContent:null,
 
+    carsData:{},
+
     //Search mobile component
 
     searchMobileModalContent:null,
@@ -215,7 +217,7 @@ export default new Vuex.Store({
     
     },
     selectedFieldData(state,data){
-      console.log(data.clickedFieldContent)
+     
         let selectedDataField =[
           state.make,
           // state.model,
@@ -249,19 +251,37 @@ export default new Vuex.Store({
         if(one.id == id){
           state.clickedFieldContent = one
         }
+        
       })
     
       
     },
-    // selects the models to show according to the make selected
-    selectModelByMake(state,e){
-      state.make.type.forEach(one =>{
-        if(e.currentTarget.firstElementChild.textContent == one.make){
-           state.models.type = one.model
-           state.models.typeSelected = `All ${one.make}`
-        } 
-      })
+    // selects the car models to show according to the make selected
+
+    selectModelByMake(state,data){
+     
+      if(data.clickedFieldContent.id == 'make'){
+        let models = [];
+        state.carsData.forEach(one =>{
+          if(state.make.typeSelected == one.make){
+             state.models.typeSelected = `All ${one.make}`
+             one.model.forEach(one =>{
+               models.push(one.name)
+             })
+
+          } 
+        })
+        state.models.type = models    
+      } if(data.clickedFieldContent.id == 'model'){
+        state.models.typeSelected = data.$event.currentTarget.textContent
+        
+      }
+
+    
+
+
     }
+      
   },
   actions: {
  
@@ -269,7 +289,13 @@ export default new Vuex.Store({
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
-      .then(data => context.state.make.type = data)
+      .then(data => {
+        
+        context.state.carsData = data
+        context.state.carsData.forEach(one =>{
+        context.state.make.type.push(one.make)
+        })
+      })
       .catch(err =>{
         console.log(err)
       })   

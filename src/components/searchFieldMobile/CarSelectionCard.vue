@@ -17,18 +17,18 @@
             :key="key"  
             class="selected-field-options-card-content"
             :for="key" 
-            @click.stop="selectedFieldData({$event,clickedFieldContent});
-            toggleOptionsCard($event)
+            @click.stop="
+            selectedFieldData({$event,clickedFieldContent});
+            toggleOptionsCard($event);
+            selectModelByMake({$event,clickedFieldContent});
             "
         >
-        <!-- buggasso -->
-           <!-- <p v-if="clickedFieldContent.id == 'make' ">{{field.make}}</p> -->
-           <p>{{testfun(field)}}</p>
+            <p>{{field}}</p>
             <input 
               class="radio"
               type="radio" 
               :id="key" 
-              :value="testfun(field)"
+              :value="field"
               name="searchFields" 
             >    
           </label>
@@ -46,17 +46,10 @@
 import {mapState,mapMutations,mapGetters} from 'vuex';
 export default {
 
-  data(){
-    return {
-      model:'model',
-    
-    }
-  },
+
 
 computed:{
-  // priceToavailable(){
-  //   if(this.)
-  // },
+
   ...mapState([
     'make',
     'fieldContent',
@@ -82,9 +75,7 @@ computed:{
 
 methods:{
 
-    testFun(val){
-     return val
-    },
+ 
   ...mapMutations([
     'closeSelectionCard',
     'selectModelByMake',
