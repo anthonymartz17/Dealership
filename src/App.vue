@@ -26,7 +26,9 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 export default {
   created(){
   
-   this.getCarsSelectionData()
+   this.getCarsSelectionData();
+   this.getPriceRange();
+   this.getYearsRange();
   
 
 
@@ -38,6 +40,8 @@ export default {
 
     ...mapMutations([
       'toggleMobileMenu',
+      'getPriceRange',
+      'getYearsRange'
       
     ])
     

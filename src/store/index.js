@@ -40,12 +40,31 @@ export default new Vuex.Store({
       typeSelected:'',
 
     },
-    priceFromSelected:0,
-    priceToSelected:0,
+    priceFrom:{
+      id:'priceFrom',
+      type:[],
+      typeSelected:0,
+
+    },
+    priceTo:{
+      id:'priceTo',
+      type:[],
+      typeSelected:0,
+
+    },
+    yearFrom:{
+      id:'yearFrom',
+      type:[],
+      typeSelected:0,
+    },
+    yearTo:{
+      id:'yearTo',
+      type:[],
+      typeSelected:0
+    },
     priceUnavailable:null,
     yearsUnavailable:null,
-    yearFromSelected:0,
-    yearToSelected:0,
+   
     carType:{
       id:'carType',
       type:
@@ -165,7 +184,31 @@ export default new Vuex.Store({
     },
     disableYears(state,years){
       state.yearsUnavailable = years
+    },  
+     //  array of prices
+    getPriceRange(state){
+      let priceRange=[];
+      let lowestPrice = 4000;
+      let highestPrice = 60000;
+      for(let i = lowestPrice; i<= highestPrice; i += 1000){
+        priceRange.push(i)
+      }
+      state.priceFrom.type =  priceRange
+      state.priceTo.type =  priceRange
+     
     },
+     // array of years
+     getYearsRange(state){
+      let yearsRange = [];
+       let startYear = 1970;
+       let currentYear = new Date().getFullYear();
+       for (let i = startYear; i<= currentYear+1; i++){
+           yearsRange.push(i)
+       }
+       state.yearFrom.type = yearsRange.reverse()
+       state.yearTo.type = yearsRange.reverse()
+     },
+    
     clearPropsVal(state){
       state.make.typeSelected = ''
       state.models.typeSelected = ''
@@ -180,10 +223,7 @@ export default new Vuex.Store({
       state.colorSelected = ''
 
     },
-    formatPrice(value){
-      let val = (value/1).toFixed(2).replace('.', ',')
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-  },
+   
   toggleMobileMenu(state){
     state.mobileMenuToggler = !state.mobileMenuToggler
   },
@@ -216,6 +256,7 @@ export default new Vuex.Store({
 
     
     },
+    // i think this function is not necessary anymore
     selectedFieldData(state,data){
      
         let selectedDataField =[
@@ -239,6 +280,10 @@ export default new Vuex.Store({
       let contentToShow = [
         state.make,
         state.models,
+        state.priceFrom,
+        state.priceTo,
+        state.yearFrom,
+        state.yearTo,
         state.carType,
         state.carCondition,
         state.fuel,
@@ -247,12 +292,13 @@ export default new Vuex.Store({
         state.engine,
         state.color
       ]
+
       contentToShow.forEach(one =>{
         if(one.id == id){
           state.clickedFieldContent = one
         }
-        
       })
+      
     
       
     },
@@ -276,10 +322,20 @@ export default new Vuex.Store({
         state.models.typeSelected = data.$event.currentTarget.textContent
         
       }
-
-    
-
-
+    },
+    selectPriceAndYear(state,data){
+      let priceYear=
+      [
+        state.priceFrom,
+        state.priceTo,
+        state.yearFrom,
+        state.yearTo
+      ]
+      priceYear.forEach(one =>{
+        if (one.id == data.clickedFieldContent.id){
+          one.typeSelected = data.$event.currentTarget.textContent
+        }
+      })
     }
       
   },
@@ -307,106 +363,6 @@ export default new Vuex.Store({
 
   getters:{
   
-
-    carModels(state){
-        return state.carSelection
-    },  
-    // array of years
-    yearsRangeComputed(){
-     let yearsRange = [];
-      let startYear = 1970;
-      let currentYear = new Date().getFullYear();
-      for (let i = startYear; i<= currentYear+1; i++){
-          yearsRange.push(i)
-      }
-      return yearsRange.reverse()
-    },
-      //  array of prices
-    priceRangeComputed(){
-      let priceRange=[];
-      let lowestPrice = 4000;
-      let highestPrice = 60000;
-      for(let i = lowestPrice; i<= highestPrice; i += 1000){
-        priceRange.push(i)
-      }
-      return priceRange
-    },
-
-    // renders default text content of search fields when nothing is selected and updates according to whatever is selected
- 
-    advanceSearchFieldsMobile(state){
-      let make,model,priceFrom,priceTo,yearFrom,yearTo,carCondition,carType,fuelType,driveTrain,color;
-      if(state.make.typeSelected == ''){
-        make = 'Make'
-      }else{ 
-        make = state.make.typeSelected
-      }
-      if(state.models.typeSelected == ''){
-        model = 'Model'
-      }else{ 
-        model= state.model.typeSelected
-      }
-      if(state.priceFromSelected == 0){
-        priceFrom = 'Price From'
-      }else{ 
-        priceFrom = state.priceFromSelected
-      }
-      if(state.priceToSelected == 0){
-        priceTo = 'Price To'
-      }else{ 
-        priceTo = state.priceToSelected
-      }
-      if(state.yearFromSelected == 0){
-        yearFrom = 'Year From'
-      }else{ 
-        yearFrom = state.yearFromSelected
-      }
-      if(state.yearToSelected == 0){
-        yearTo = 'Year To'
-      }else{ 
-        yearTo = state.yearToSelected
-      }
-
-      if(state.carTypeSelected == ''){
-        carType = 'Car Type'
-      }else{ 
-        carType = state.cartypeSelected
-      }
-
-      if(state.carConditionSelected == ''){
-        carCondition = 'Car Condition'
-      }else{ 
-        carCondition = state.carConditionSelected
-      }
-
-      if(state.fuelTypeSelected == ''){
-        fuelType = 'Fuel Type'
-      }else{ 
-        fuelType = state.fuelTypeSelected
-      }
-
-      if(state.driveTrainSelected == ''){
-        driveTrain = 'DriveTrain'
-      }else{ 
-        driveTrain = state.driveTrainSelected
-      }
-      if(state.colorSelected == ''){
-        color = 'Color'
-      }else{ 
-        color = state.colorSelected
-      }
-
-
-      return [
-        { name:make},{ name:model},{ name:priceFrom},
-        { name:priceTo},{ name:yearFrom},{ name:yearTo}, 
-        { name:carType},{ name:carCondition},{ name:fuelType}, 
-        { name:driveTrain},{ name:color}
-        
-      ]
-
-    }
-
 
   }
 })

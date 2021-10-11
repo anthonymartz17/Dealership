@@ -3,7 +3,10 @@
     <div 
       class="search-fields-container-field"
       v-for="(field,key) in priceYear" :key="key"
-      @click="toggleModal;whichFieldContent(field)"
+      @click="
+      toggleOptionsCard($event);
+      showSelectedFieldContent(field.id);
+      "
     >
       <p>{{field.field}}</p>
       <i class="fas fa-caret-down"></i>
@@ -15,9 +18,9 @@
 import {mapMutations} from 'vuex'
 export default {
   methods:{
-    ...mapMutations([
-      'toggleModal',    
-      'whichFieldContent'   
+    ...mapMutations([   
+      'toggleOptionsCard',
+      'showSelectedFieldContent',   
     ])
   
   },
@@ -30,25 +33,25 @@ export default {
         return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
        }
        let priceFrom,priceTo,yearFrom,yearTo;
-        if(this.$store.state.priceFromSelected == 0){
+        if(this.$store.state.priceFrom.typeSelected == 0){
           priceFrom = 'Price From'
         }else{
-          priceFrom = `$${formatPrice(this.$store.state.priceFromSelected)}`
+          priceFrom = `$${formatPrice(this.$store.state.priceFrom.typeSelected)}`
         }
-        if(this.$store.state.priceToSelected == 0){
+        if(this.$store.state.priceTo.typeSelected == 0){
           priceTo = 'Price To'
         }else{
-          priceTo = `$${formatPrice(this.$store.state.priceToSelected)}`
+          priceTo = `$${formatPrice(this.$store.state.priceTo.typeSelected)}`
         }
-         if(this.$store.state.yearFromSelected == 0){
+         if(this.$store.state.yearFrom.typeSelected == 0){
           yearFrom = 'Year From'
         }else{
-          yearFrom = this.$store.state.yearFromSelected
+          yearFrom = this.$store.state.yearFrom.typeSelected
         }
-        if(this.$store.state.yearToSelected == 0){
+        if(this.$store.state.yearTo.typeSelected == 0){
           yearTo = 'Year to'
         }else{
-          yearTo = this.$store.state.yearToSelected
+          yearTo = this.$store.state.yearTo.typeSelected
         }
 
         return[

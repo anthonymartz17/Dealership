@@ -21,6 +21,7 @@
             selectedFieldData({$event,clickedFieldContent});
             toggleOptionsCard($event);
             selectModelByMake({$event,clickedFieldContent});
+            selectPriceAndYear({$event,clickedFieldContent});
             "
         >
             <p>{{field}}</p>
@@ -59,7 +60,8 @@ computed:{
     'carCondition',
     'priceUnavailable',
     'yearsUnavailable',
-    'clickedFieldContent'
+    'clickedFieldContent',
+   
     
     
     
@@ -67,8 +69,6 @@ computed:{
     ]),
     ...mapGetters([
       'carModelByMake',
-      'priceRangeComputed',
-      'yearsRangeComputed',
     ])
 },
 
@@ -79,6 +79,7 @@ methods:{
   ...mapMutations([
     'closeSelectionCard',
     'selectModelByMake',
+    'selectPriceAndYear',
     'disablePrice',
     'disableYears',
     'selectedFieldData',
