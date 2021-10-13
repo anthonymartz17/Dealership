@@ -179,12 +179,14 @@ export default new Vuex.Store({
   },
   mutations: {
     // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
-    disablePrice(state,prices){
-       state.priceUnavailable = prices
+    disablePriceAndYear(state,data){
+       
+       if(data.clickedFieldContent.id == 'priceFrom'){
+         state.priceUnavailable = data.key
+       }
+      
     },
-    disableYears(state,years){
-      state.yearsUnavailable = years
-    },  
+    
      //  array of prices
     getPriceRange(state){
       let priceRange=[];
@@ -203,10 +205,10 @@ export default new Vuex.Store({
        let startYear = 1970;
        let currentYear = new Date().getFullYear();
        for (let i = startYear; i<= currentYear+1; i++){
-           yearsRange.push(i)
+           yearsRange.unshift(i)
        }
-       state.yearFrom.type = yearsRange.reverse()
-       state.yearTo.type = yearsRange.reverse()
+       state.yearFrom.type = yearsRange
+       state.yearTo.type = yearsRange
      },
     
     clearPropsVal(state){
@@ -256,12 +258,12 @@ export default new Vuex.Store({
 
     
     },
-    // i think this function is not necessary anymore
+   
     selectedFieldData(state,data){
      
         let selectedDataField =[
           state.make,
-          // state.model,
+          state.models,
           state.fuel,
           state.transmission,
           state.driveTrain,
@@ -269,10 +271,9 @@ export default new Vuex.Store({
           state.color,
         ]
         selectedDataField.forEach(one =>{
-          if(one.id == data.clickedFieldContent.id){
+          if(one.id == data.id){
             one.typeSelected = data.$event.target.value
           }
-        
         })
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
@@ -304,25 +305,25 @@ export default new Vuex.Store({
     },
     // selects the car models to show according to the make selected
 
-    selectModelByMake(state,data){
+    // selectModelByMake(state,data){
      
-      if(data.clickedFieldContent.id == 'make'){
-        let models = [];
-        state.carsData.forEach(one =>{
-          if(state.make.typeSelected == one.make){
-             state.models.typeSelected = `All ${one.make}`
-             one.model.forEach(one =>{
-               models.push(one.name)
-             })
-
-          } 
-        })
-        state.models.type = models    
-      } if(data.clickedFieldContent.id == 'model'){
-        state.models.typeSelected = data.$event.currentTarget.textContent
+    //   if(data.id == 'make'){  
+    //     state.carsData.forEach(one =>{
+    //       if(state.make.typeSelected == one.make){
+    //         state.models.typeSelected = `All ${one.make}`
+    //         state.models.type = one.model.map(one =>{
+    //           return one.name
+    //         })
+    //       } 
+    //     })
+    //   } 
+    //   if(data.id == 'model'){
+    //     state.models.typeSelected = data.$event.currentTarget.textContent
         
-      }
-    },
+    //   }
+    // },
+
+
     selectPriceAndYear(state,data){
       let priceYear=
       [

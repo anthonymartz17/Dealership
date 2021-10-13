@@ -4,7 +4,7 @@
     enter-active-class="animate__animated animate__fadeIn animate__faster"
     leave-active-class="animate__animated animate__fadeOut animate__faster"
   >
-    <div class="selected-field-options" 
+    <!-- <div class="selected-field-options" 
     v-show="$store.state.optionsCardToggler"
     @click="toggleOptionsCard($event)"
     
@@ -21,9 +21,10 @@
             selectedFieldData({$event,clickedFieldContent});
             toggleOptionsCard($event);
             selectModelByMake({$event,clickedFieldContent});
-            selectPriceAndYear({$event,clickedFieldContent});
+          
             "
         >
+       
             <p>{{field}}</p>
             <input 
               class="radio"
@@ -37,7 +38,7 @@
 
       </div>
     
-    </div>
+    </div> -->
   </transition>  
 
 
@@ -80,8 +81,7 @@ methods:{
     'closeSelectionCard',
     'selectModelByMake',
     'selectPriceAndYear',
-    'disablePrice',
-    'disableYears',
+    'disablePriceAndYear',
     'selectedFieldData',
     'toggleOptionsCard'
 
@@ -105,8 +105,6 @@ methods:{
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.26);
-    
-    
   }
  
 }
