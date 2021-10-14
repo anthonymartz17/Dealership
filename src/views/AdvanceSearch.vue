@@ -28,8 +28,8 @@
       <PriceYear/>              
     </div>
     <MoreOptions/>
-    
-    <SearchBtn :class="{btnPosition:searchBtn}"/>
+
+    <SearchBtn/>
     
   </div>
 </template>
@@ -41,20 +41,14 @@ import PriceYear from '../components/searchFieldMobile/PriceYear.vue'
 import SearchBtn from '../components/searchFieldMobile/SearchBtn.vue'
 import MoreOptions from '../components/searchFieldMobile/MoreOptions.vue'
 export default {
-  data(){
-    return{
-      searchBtn:false
-    }
-  },
+
   components:{
     MakeModel,
     PriceYear,
     SearchBtn,
     MoreOptions,
   },
-  created(){
-   this.searchBtn = true 
-  },
+ 
   computed:{
     
   
@@ -82,6 +76,7 @@ export default {
 
   },
   methods:{
+    
     ...mapMutations([
       'toggleOptionsCard',
        'showSelectedFieldContent'

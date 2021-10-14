@@ -30,7 +30,11 @@
           <label
             v-for="(field,key) in makeOrModel.type"
             :key="key"  
-            class="selected-field-options-card-content"
+            :class="[
+            'selected-field-options-card-content',
+            {'card-content-disabled':makeOrModel.id == 'model' && make.typeSelected == ''
+            }
+            ]"
             :for="key" 
             @click.stop="
             toggleOptionsCard($event);
@@ -38,8 +42,7 @@
             selectModelByMake($event,makeOrModel.id);
             "
         >
-       
-            <p>{{field}}</p>
+            <p >{{field}}</p>
             <input 
               class="radio"
               type="radio" 
@@ -64,6 +67,7 @@ export default {
   data(){
     return{
       makeOrModel:[],
+      selectMakeFirst:'',
 
     }
   },
@@ -72,9 +76,14 @@ export default {
     showMakeOrModel(id){
      if(id == this.make.id){
        this.makeOrModel = this.make
-     }else{
+     }else if (id == this.models.id){
        this.makeOrModel = this.models
+       
+       if(id == this.models.id && this.make.typeSelected == ''){
+         this.models.type = ['Select a Make First']
+       }
      }
+     
     },
     
     selectModelByMake(e,id){
@@ -89,7 +98,8 @@ export default {
           } 
         })
       } 
-      if(id == 'model'){
+       
+       if(id == 'model'){
         this.models.typeSelected = e.currentTarget.textContent
       }
     },

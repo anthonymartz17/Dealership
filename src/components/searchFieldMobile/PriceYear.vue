@@ -1,5 +1,7 @@
 <template>
-  <div class="p-y-wrapper">        
+<div>
+  <div>
+    <div class="price-year-wrapper">        
     <div 
       class="search-fields-container-field"
       v-for="(field,key) in priceYear" :key="key"
@@ -11,28 +13,40 @@
       <p>{{field.field}}</p>
       <i class="fas fa-caret-down"></i>
     </div>                       
-  </div> 
+    </div> 
+  </div>
+</div>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 export default {
   methods:{
     ...mapMutations([   
       'toggleOptionsCard',
-      'showSelectedFieldContent',   
+      'showSelectedFieldContent', 
+      'formatPrice'  
     ])
   
   },
   computed:{
+
+    ...mapState([
+      'priceFrom',
+      'priceTo',
+      'yearFrom',
+      'yearTo',
+    ]),
    
       priceYear(){
 
-       function formatPrice(value){
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-       }
+      //  function formatPrice(value){
+      //   let val = (value/1).toFixed(2).replace('.', ',')
+      //   return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      //  }
+
        let priceFrom,priceTo,yearFrom,yearTo;
+       
         if(this.$store.state.priceFrom.typeSelected == 0){
           priceFrom = 'Price From'
         }else{
@@ -68,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.p-y-wrapper{
+.price-year-wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: .2em;

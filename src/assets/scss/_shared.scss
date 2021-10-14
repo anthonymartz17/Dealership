@@ -101,7 +101,7 @@ a{
     font-family: $font-stack;
     overflow-y: auto;
     max-height: 95%;
-    width: 100%;
+    width: 95%;
     background: $light;
     border-radius: 5px;
 
@@ -125,6 +125,9 @@ a{
       pointer-events: none;
     }
     
+  }
+  .card-content-disabled{
+    pointer-events: none;
   }
   .select-a-make{
     padding: 2em 1em;

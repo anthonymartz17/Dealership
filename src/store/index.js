@@ -178,6 +178,14 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+
+    formatPrice(value){
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+     },
+    
+
+
     // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
     disablePriceAndYear(state,data){
        
@@ -298,6 +306,7 @@ export default new Vuex.Store({
         if(one.id == id){
           state.clickedFieldContent = one
         }
+        
       })
       
     

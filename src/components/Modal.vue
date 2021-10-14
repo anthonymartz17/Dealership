@@ -1,9 +1,17 @@
 <template>
-  <transition 
+   <transition 
     enter-active-class="animate__animated animate__fadeIn animate__faster"
     leave-active-class="animate__animated animate__fadeOut animate__faster"
   >
-    <div class="modal" @click="toggleModal()" v-show="modalToggler"></div>
+    <div class="selected-field-options" 
+    v-show="$store.state.optionsCardToggler"
+    @click="
+    toggleOptionsCard($event);
+    "
+    >
+
+
+    </div>
   </transition>
 </template>
 
