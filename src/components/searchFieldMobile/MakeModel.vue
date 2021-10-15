@@ -6,7 +6,6 @@
       v-for="(field,key) in makeModel"
       :key="key"
       @click="toggleOptionsCard($event);
-      showSelectedFieldContent(field.id);
       showMakeOrModel(field.id)
       "
     >
@@ -38,7 +37,7 @@
             :for="key" 
             @click.stop="
             toggleOptionsCard($event);
-            selectedFieldData({$event,id:makeOrModel.id});
+            assignValueToTypeSelected({$event,id:makeOrModel.id});
             selectModelByMake($event,makeOrModel.id);
             "
         >
@@ -56,7 +55,7 @@
       </div>
     
     </div>
-  </transition>  
+ </transition>  
 
  </div>
 </template>
@@ -107,7 +106,7 @@ export default {
     ...mapMutations([
       'toggleOptionsCard',
       'showSelectedFieldContent',
-      'selectedFieldData',
+      'assignValueToTypeSelected',
      
         
     ])

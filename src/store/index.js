@@ -267,7 +267,7 @@ export default new Vuex.Store({
     
     },
    
-    selectedFieldData(state,data){
+    assignValueToTypeSelected(state,data){
      
         let selectedDataField =[
           state.make,
