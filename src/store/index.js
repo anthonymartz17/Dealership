@@ -238,12 +238,12 @@ export default new Vuex.Store({
     state.mobileMenuToggler = !state.mobileMenuToggler
   },
    
-    toggleModal(state){
+    // toggleModal(state){
      
-        state.modalToggler = !state.modalToggler
-        state.mobileMenuToggler = false
+    //     state.modalToggler = !state.modalToggler
+    //     state.mobileMenuToggler = false
        
-    },
+    // },
 
     // togggles on and off to show the card with the options  of the selected field
     toggleOptionsCard(state,e){
@@ -286,6 +286,7 @@ export default new Vuex.Store({
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
     showSelectedFieldContent(state,id){
+    
       let contentToShow = [
         state.make,
         state.models,
@@ -301,36 +302,47 @@ export default new Vuex.Store({
         state.engine,
         state.color
       ]
+      
+      if(id == 'model' && state.make.typeSelected == ''){
+        state.clickedFieldContent = {type:['Select Make First']}
+      }
+      else{
 
-      contentToShow.forEach(one =>{
-        if(one.id == id){
-          state.clickedFieldContent = one
-        }
-        
-      })
+        contentToShow.forEach(one =>{
+          
+          if(one.id == id){
+            state.clickedFieldContent = one
+          }
+          
+        })
+      }
       
     
       
     },
     // selects the car models to show according to the make selected
 
-    // selectModelByMake(state,data){
-     
-    //   if(data.id == 'make'){  
-    //     state.carsData.forEach(one =>{
-    //       if(state.make.typeSelected == one.make){
-    //         state.models.typeSelected = `All ${one.make}`
-    //         state.models.type = one.model.map(one =>{
-    //           return one.name
-    //         })
-    //       } 
-    //     })
-    //   } 
-    //   if(data.id == 'model'){
-    //     state.models.typeSelected = data.$event.currentTarget.textContent
+    selectModelByMake(state,data){
+    
+      if(data.id == 'make'){  
+        state.carsData.forEach(one =>{
+          if(state.make.typeSelected == one.make){
+            state.models.typeSelected = `All ${one.make}`
+            state.models.type = one.model.map(one =>{
+              return one.name
+            })
+          } 
+        })
+      } 
+      // assigns val of clicked field in model card content to the type selected
+      if(data.id == 'model'){
+        state.models.typeSelected = data.$event.currentTarget.textContent
         
-    //   }
-    // },
+      }
+      else{
+        return
+      }
+    },
 
 
     selectPriceAndYear(state,data){

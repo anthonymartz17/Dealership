@@ -14,11 +14,8 @@
     </div>                       
     </div> 
 
- <transition 
-    enter-active-class="animate__animated animate__fadeIn animate__faster"
-    leave-active-class="animate__animated animate__fadeOut animate__faster"
-  >
-    <div class="selected-field-options" 
+
+    <!-- <div class="selected-field-options" 
     v-show="$store.state.optionsCardToggler"
     @click="
     toggleOptionsCard($event);
@@ -50,8 +47,8 @@
 
       </div>
     
-    </div>
- </transition>  
+    </div> -->
+
 
 
 

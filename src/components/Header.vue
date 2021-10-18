@@ -1,7 +1,7 @@
 <template>
   <header class="header-container flex-j-c ">
     <div class="header-wrapper flex-a-c">
-      <i class="fas fa-bars fa-2x" @click="toggleMobileMenu();toggleModal()"></i>
+      <i class="fas fa-bars fa-2x" @click="toggleMobileMenu()"></i>
         <div class="logo-container">
           <router-link :to="{name:'Home'}"  @click="clearPropsVal">
             <span class="logo">Auto <span class="logo-m">M</span>artz</span>
@@ -32,7 +32,7 @@ export default {
     ...mapMutations([
     'toggleMobileMenu',
     'clearPropsVal',
-    'toggleModal'
+   
     ])
     
   }

@@ -83,6 +83,7 @@ a{
   
 }
 
+
 .selected-field-options{
   
   position: absolute;
@@ -101,7 +102,7 @@ a{
     font-family: $font-stack;
     overflow-y: auto;
     max-height: 95%;
-    width: 95%;
+    width: 100%;
     background: $light;
     border-radius: 5px;
 

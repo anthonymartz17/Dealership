@@ -1,6 +1,6 @@
 <template>
     <div class="page-container">
-     <div class="test"></div>
+     <AppModal/>
       <MobileMenu/>
       <AppHeader/>
       <AppMain/>
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-// import AppModal from './components/Modal.vue'
+import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
@@ -55,7 +55,7 @@ export default {
     AppMain,
     CarSelectionCard,
     MobileMenu,
-    // AppModal,
+    AppModal,
   }, 
   computed:{
     ...mapState([
@@ -76,7 +76,7 @@ export default {
 .page-container{
   position: relative;
   background:$lightestDark;
-  height: 100%;
+  height: 100vh;
   min-width: 22.5em;
  
 }
