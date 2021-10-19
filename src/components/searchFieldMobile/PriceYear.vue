@@ -6,7 +6,7 @@
       v-for="(field,key) in priceYear" :key="key"
       @click="
       toggleOptionsCard($event);
-      selectPriceOrYear(field.id)
+      showSelectedFieldContent(field.id);
       "
     >
       <p>{{field.field}}</p>
@@ -95,17 +95,17 @@ export default {
       'yearTo',
     ]),
 
+// price formatter function is throwing undefined
   
       priceYear(){
 
-  
 
        let priceFrom,priceTo,yearFrom,yearTo;
        
         if(this.$store.state.priceFrom.typeSelected == 0){
           priceFrom = 'Price From'
         }else{
-          priceFrom = `$${this.formatPrice(this.$store.state.priceFrom.typeSelected)}`
+          priceFrom = this.$store.state.priceFrom.typeSelected
         }
         if(this.$store.state.priceTo.typeSelected == 0){
           priceTo = 'Price To'

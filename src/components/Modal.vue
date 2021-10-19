@@ -15,7 +15,10 @@
           <label
             v-for="(field,key) in clickedFieldContent.type"
             :key="key"  
-            class="selected-field-options-card-content"
+            :class="[
+            'selected-field-options-card-content',
+            {'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '' }
+            ]"
             :for="key" 
             @click.stop="
             toggleOptionsCard($event);
@@ -23,7 +26,8 @@
             selectModelByMake({$event,id:clickedFieldContent.id});
             "
         >
-            <p >{{field}}</p>
+           
+            <p>{{field}}</p>
             <input 
               class="radio"
               type="radio" 
@@ -48,6 +52,7 @@ import {mapMutations,mapState} from 'vuex'
 export default {
   computed:{
      ...mapState([
+       'make',
        'modalToggler',
        'optionsCardToggler',
        'clickedFieldContent'

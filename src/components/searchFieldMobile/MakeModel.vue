@@ -7,7 +7,6 @@
       :key="key"
       @click="
       toggleOptionsCard($event);
-      showMakeOrModel(field.id);
       showSelectedFieldContent(field.id);
       "
     >
@@ -61,51 +60,15 @@
 <script>
 import {mapMutations,mapState} from 'vuex'
 export default {
-  data(){
-    return{
-      makeOrModel:[],
-      selectMakeFirst:'',
 
-    }
-  },
   methods:{
-
-    showMakeOrModel(id){
-     if(id == this.make.id){
-       this.makeOrModel = this.make
-     }else if (id == this.models.id){
-       this.makeOrModel = this.models
-       
-       if(id == this.models.id && this.make.typeSelected == ''){
-         this.models.type = ['Select a Make First']
-       }
-     }
-     
-    },
-    
-    selectModelByMake(e,id){
-
-      if(id == 'make'){  
-        this.carsData.forEach(one =>{
-          if(this.make.typeSelected == one.make){
-            this.models.typeSelected = `All ${one.make}`
-            this.models.type = one.model.map(one =>{
-              return one.name
-            })
-          } 
-        })
-      } 
-       
-       if(id == 'model'){
-        this.models.typeSelected = e.currentTarget.textContent
-      }
-    },
     
     ...mapMutations([
       'toggleOptionsCard',
       'showSelectedFieldContent',
       'assignValueToTypeSelected',
-      'showSelectedFieldContent'
+      'showSelectedFieldContent',
+      'selectModelByMake'
      
         
     ])
