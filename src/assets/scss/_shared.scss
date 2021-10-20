@@ -131,6 +131,11 @@ a{
     pointer-events: none;
   
   }
+  .disabledOptions{
+    pointer-events: none;
+    background: darken($light, 20%);
+    text-decoration: line-through;
+  }
   .select-a-make{
     padding: 2em 1em;
     text-align: center;

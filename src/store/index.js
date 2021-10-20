@@ -62,9 +62,8 @@ export default new Vuex.Store({
       type:[],
       typeSelected:0
     },
-    priceUnavailable:null,
+    pricesUnavailable:null,
     yearsUnavailable:null,
-   
     carType:{
       id:'carType',
       type:
@@ -179,22 +178,18 @@ export default new Vuex.Store({
   },
   mutations: {
 
-    formatPrice(value){
-      let val = (value/1).toFixed(2).replace('.', ',')
-      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-     },
-    
-
 
     // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
-    disablePriceAndYear(state,data){
-       
+    disablePricesYears(state,data){
+     
        if(data.clickedFieldContent.id == 'priceFrom'){
-         state.priceUnavailable = data.key
+         state.pricesUnavailable = data.key
        }
-      
+       else  if(data.clickedFieldContent.id == 'yearFrom'){
+        state.yearsUnavailable = data.key
+      } 
     },
-    
+       
      //  array of prices
     getPriceRange(state){
       let priceRange=[];
@@ -287,7 +282,7 @@ export default new Vuex.Store({
             one.typeSelected = data.$event.currentTarget.lastElementChild.value
           }
         })
-        console.log(data.$event.currentTarget.lastElementChild.value)
+       
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
     showSelectedFieldContent(state,id){

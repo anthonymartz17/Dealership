@@ -95,32 +95,37 @@ export default {
       'yearTo',
     ]),
 
+
 // price formatter function is throwing undefined
   
       priceYear(){
-
+        
+   function formatPrice(value){
+      let val = (value/1).toFixed(2).replace('.', ',')
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+     }
 
        let priceFrom,priceTo,yearFrom,yearTo;
        
-        if(this.$store.state.priceFrom.typeSelected == 0){
+        if(this.priceFrom.typeSelected == 0){
           priceFrom = 'Price From'
         }else{
-          priceFrom = this.$store.state.priceFrom.typeSelected
+          priceFrom = `$${formatPrice(this.priceFrom.typeSelected)}`
         }
-        if(this.$store.state.priceTo.typeSelected == 0){
+        if(this.priceTo.typeSelected == 0){
           priceTo = 'Price To'
         }else{
-          priceTo = `$${this.formatPrice(this.$store.state.priceTo.typeSelected)}`
+          priceTo = `$${formatPrice(this.priceTo.typeSelected)}`
         }
-         if(this.$store.state.yearFrom.typeSelected == 0){
+         if(this.yearFrom.typeSelected == 0){
           yearFrom = 'Year From'
         }else{
-          yearFrom = this.$store.state.yearFrom.typeSelected
+          yearFrom = this.yearFrom.typeSelected
         }
-        if(this.$store.state.yearTo.typeSelected == 0){
+        if(this.yearTo.typeSelected == 0){
           yearTo = 'Year to'
         }else{
-          yearTo = this.$store.state.yearTo.typeSelected
+          yearTo = this.yearTo.typeSelected
         }
 
         return[

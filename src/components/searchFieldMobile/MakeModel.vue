@@ -85,15 +85,15 @@ export default {
    
       makeModel(){
        let make,model;
-        if(this.$store.state.make.typeSelected == ''){
+        if(this.make.typeSelected == ''){
           make = 'Make'
         }else{
-          make = this.$store.state.make.typeSelected
+          make = this.make.typeSelected
         }
-        if(this.$store.state.models.typeSelected == ''){
+        if(this.models.typeSelected == ''){
           model = 'Model'
         }else{
-          model = this.$store.state.models.typeSelected
+          model = this.models.typeSelected
         }
          
         return[

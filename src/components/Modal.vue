@@ -17,17 +17,26 @@
             :key="key"  
             :class="[
             'selected-field-options-card-content',
-            {'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '' }
+            {
+              'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '',
+              disabledOptions: clickedFieldContent.id == 'priceTo' && pricesUnavailable != null && pricesUnavailable > key  ||  clickedFieldContent.id == 'yearTo' && yearsUnavailable != null && yearsUnavailable < key 
+              
+             
+             }
             ]"
             :for="key" 
             @click.stop="
             toggleOptionsCard($event);
             assignValueToTypeSelected({$event,id:clickedFieldContent.id});
             selectModelByMake({$event,id:clickedFieldContent.id});
+            disablePricesYears({clickedFieldContent,key});
             "
         >
            
-            <p>{{field}}</p>
+            <p v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">  
+              {{field | currency}}
+            </p>
+            <p v-else>{{field}}</p>
             <input 
               class="radio"
               type="radio" 
@@ -53,17 +62,25 @@ export default {
   computed:{
      ...mapState([
        'make',
+       'priceFrom',
+       'priceTo',
        'modalToggler',
        'optionsCardToggler',
-       'clickedFieldContent'
-     ])
+       'clickedFieldContent',
+       'pricesUnavailable',
+       'yearsUnavailable'
+     ]),
+
   },
   methods:{
     ...mapMutations([
       'toggleOptionsCard',
       'showSelectedFieldContent',
       'assignValueToTypeSelected',
-      'selectModelByMake'
+      'selectModelByMake',
+      'formatPrice',
+      'disablePricesYears',
+     
      
         
     ])
