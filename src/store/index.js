@@ -217,15 +217,15 @@ export default new Vuex.Store({
     clearPropsVal(state){
       state.make.typeSelected = ''
       state.models.typeSelected = ''
-      state.priceFromSelected = ''
-      state.priceToSelected = ''
-      state.yearFromSelected = ''
-      state.yearToSelected = ''
-      state.carTypeSelected = ''
-      state.carConditionSelected = ''
-      state.fuelTypeSelected = ''
-      state.driveTrainSelected = ''
-      state.colorSelected = ''
+      state.priceFrom.typeSelected = ''
+      state.priceTo.typeSelected = ''
+      state.yearFrom.typeSelected = ''
+      state.yearTo.typeSelected = ''
+      state.carType.typeSelected = ''
+      state.carCondition.typeSelected = ''
+      state.fuel.TypeSelected = ''
+      state.driveTrain.typeSelected = ''
+      state.color.typeSelected = ''
 
     },
    

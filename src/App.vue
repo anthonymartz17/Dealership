@@ -5,9 +5,6 @@
       <AppHeader/>
       <AppMain/>
       <CarSelectionCard />
-      <footer>
-        <div class="footer-content"></div>
-      </footer>
     </div>
  
   
@@ -74,10 +71,14 @@ export default {
 
  
 .page-container{
-  position: relative;
-  background:$lightestDark;
-  height: 100vh;
+
+  // background:$lightestDark;
+  background: red;
+  max-height: 100vh;
   min-width: 22.5em;
+  overflow-y: auto;
+ 
+
  
 }
 

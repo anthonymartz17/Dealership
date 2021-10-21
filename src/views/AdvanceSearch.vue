@@ -13,7 +13,7 @@
       </div> 
       <MakeModel/>               
     </div>
-    <div class="search-fields-container">        
+     <div class="search-fields-container">        
      <p class="search-fields-container-title">Price and Condition</p>
      <div 
           v-for="(field,key) in carConditionComputed"
@@ -27,7 +27,8 @@
       </div> 
       <PriceYear/>              
     </div>
-    <MoreOptions/>
+    
+     <MoreOptions/>
 
     <SearchBtn/>
     
@@ -38,15 +39,15 @@
 import { mapGetters,mapMutations} from "vuex";
 import MakeModel from '../components/searchFieldMobile/MakeModel.vue'
 import PriceYear from '../components/searchFieldMobile/PriceYear.vue'
-import SearchBtn from '../components/searchFieldMobile/SearchBtn.vue'
 import MoreOptions from '../components/searchFieldMobile/MoreOptions.vue'
+import SearchBtn from '../components/searchFieldMobile/SearchBtn.vue'
 export default {
 
   components:{
     MakeModel,
     PriceYear,
-    SearchBtn,
     MoreOptions,
+    SearchBtn,
   },
  
   computed:{
@@ -89,14 +90,19 @@ export default {
 <style lang="scss">
 
 .advance-search{
+  // height: 100%;
   padding-bottom: 3em;
-  background: $lightDark;
+  background: blue;
+ 
+
+  
 }
 
 .btnPosition{
   position: fixed;
   bottom: 0em;
 }
+
 
 
 

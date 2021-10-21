@@ -3,8 +3,10 @@
     <div class="header-wrapper flex-a-c">
       <i class="fas fa-bars fa-2x" @click="toggleMobileMenu()"></i>
         <div class="logo-container">
-          <router-link :to="{name:'Home'}"  @click="clearPropsVal">
-            <span class="logo">Auto <span class="logo-m">M</span>artz</span>
+          <router-link :to="{name:'Home'}">
+            <span @click="clearPropsVal" class="logo">
+              Auto <span class="logo-m">M</span>artz
+            </span>
           </router-link>
         </div>
         <nav class="desktopNav-container">
@@ -15,7 +17,7 @@
           </ul>
         </nav>
         <router-link :to="{name:'Advance'}" tag="div">
-          <i class="fas fa-search"></i>
+          <i class="fas fa-search" @click="clearPropsVal"></i>
         </router-link>
         <div class="sMedia" v-show="!$store.state.desktopView">
           <i class="fab fa-facebook"></i>

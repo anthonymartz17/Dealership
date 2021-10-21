@@ -1,10 +1,9 @@
 <template>
-  <main>
-    <div class="main-container">
+  <main class="main-container">
       <transition appear enter-active-class="animate__animated animate__fadeIn" >
-        <router-view/>
+      <router-view/>
       </transition>
-    </div>
+   
   </main>
 </template>
 
@@ -15,9 +14,6 @@
 
 export default {
 
-  components:{
-    
-  },
 
 
 
@@ -30,6 +26,10 @@ export default {
 .main-container{
   width: 100%;
   height: 100%;
+  background: green;
+
+ 
+
   
 }
 
