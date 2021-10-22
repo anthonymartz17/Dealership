@@ -4,7 +4,7 @@
       <MobileMenu/>
       <AppHeader/>
       <AppMain/>
-      <CarSelectionCard />
+      <CarSelectionCard /> 
     </div>
  
   
@@ -73,10 +73,11 @@ export default {
 .page-container{
 
   // background:$lightestDark;
-  background: red;
-  max-height: 100vh;
+  background: lawngreen;
+  height: 100%;
   min-width: 22.5em;
   overflow-y: auto;
+  position: relative;
  
 
  

@@ -1,11 +1,23 @@
 <template>
+<div>
+  <transition 
+    enter-active-class="animate__animated animate__fadeIn animate__faster"
+    leave-active-class="animate__animated animate__fadeOut animate__faster"
+  >
+  
+       <div class="selected-field-options" 
+    v-show="$store.state.mobileMenuToggler"
+     @click="toggleMobileMenu()"
+    >
+    </div>
+  </transition>
  <transition
  enter-active-class="animate__animated animate__slideInLeft animate__faster"
  leave-active-class="animate__animated animate__slideOutLeft animate__faster"
  >
   <nav class="nav-menu-container" v-show="$store.state.mobileMenuToggler">
     <ul>
-      <li v-for="(link,key) in $store.state.desktopNav" :key="key" @click="toggleMobileMenu();toggleModal()"> 
+      <li v-for="(link,key) in $store.state.desktopNav" :key="key" @click="toggleMobileMenu()"> 
         <router-link :to="{name:link.name}" class="tabs">
           <i :class="link.icon"></i> 
           <p>{{link.link}}</p> 
@@ -14,6 +26,7 @@
     </ul>
   </nav>
  </transition>
+ </div>
 </template>
 
 <script>
