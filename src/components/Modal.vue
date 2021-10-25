@@ -20,8 +20,6 @@
             {
               'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '',
               disabledOptions: clickedFieldContent.id == 'priceTo' && pricesUnavailable != null && pricesUnavailable > key  ||  clickedFieldContent.id == 'yearTo' && yearsUnavailable != null && yearsUnavailable < key 
-              
-             
              }
             ]"
             :for="key" 
@@ -90,18 +88,5 @@ export default {
 </script>
 
 <style lang="scss">
-.modal{
-  position: absolute;
-  top: 0;
-  // height: 130%;
-  width: 100%;
-  display: grid;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 1em .5em;
-  z-index: 1;
- 
-  
-}
 
 </style>

@@ -25,10 +25,10 @@ export default {
 <style lang="scss" scoped>
 .main-container{
   width: 100%;
-  max-height: 100%;
-  background: red;
-  // overflow-y: auto;
- 
+  // max-height: 100%;
+
+
+
 
  
 

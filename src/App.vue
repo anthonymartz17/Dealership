@@ -72,12 +72,12 @@ export default {
  
 .page-container{
 
-  // background:$lightestDark;
-  background: lawngreen;
-  height: 100%;
+  background:$lightestDark;
+  min-height: 100%;
   min-width: 22.5em;
-  overflow-y: auto;
+  overflow: auto;
   position: relative;
+ 
  
 
  

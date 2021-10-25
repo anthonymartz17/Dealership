@@ -3,12 +3,12 @@
     <div class="search-fields-container">        
      <p class="search-fields-container-title">Advance Search!</p>
      <div 
-          v-for="(carType,key) in carTypeComputed"
-          :key="key"
+       
           class="search-fields-container-field"  
-          @click="whichFieldContent(carType)"
+          @click=" toggleOptionsCard($event);  
+          showSelectedFieldContent(carTypeComputed.id);"
      >
-        <p>{{carType.field}}</p>
+        <p>{{carTypeComputed.field}}</p>
         <i class="fas fa-caret-down"></i>
       </div> 
       <MakeModel/>               
@@ -63,7 +63,7 @@ export default {
       }else{
         cartype = this.$store.state.carType.typeSelected
       }
-      return [{field:cartype, id:'carType'}]
+      return {field:cartype, id:'carType'}
     },
     carConditionComputed(){
       let condition
@@ -90,12 +90,9 @@ export default {
 <style lang="scss">
 
 .advance-search{
-  // height: 100%;
-  padding-bottom: 3em;
-  background: blue;
- 
+  height: 100%;
+  padding-bottom: 3em; 
 
-  
 }
 
 .btnPosition{

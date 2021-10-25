@@ -223,8 +223,10 @@ export default new Vuex.Store({
       state.yearTo.typeSelected = ''
       state.carType.typeSelected = ''
       state.carCondition.typeSelected = ''
-      state.fuel.TypeSelected = ''
+      state.fuel.typeSelected = ''
+      state.transmission.typeSelected = ''
       state.driveTrain.typeSelected = ''
+      state.engine.typeSelected = ''
       state.color.typeSelected = ''
 
     },
@@ -266,16 +268,19 @@ export default new Vuex.Store({
      
         let selectedDataField =[
           state.make,
+          state.make,
           state.models,
           state.priceFrom,
           state.priceTo,
           state.yearFrom,
           state.yearTo,
+          state.carType,
+          state.carCondition,
           state.fuel,
           state.transmission,
           state.driveTrain,
           state.engine,
-          state.color,
+          state.color
         ]
         selectedDataField.forEach(one =>{
           if(one.id == data.id){
@@ -286,7 +291,7 @@ export default new Vuex.Store({
     },
     // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
     showSelectedFieldContent(state,id){
-    
+   
       let contentToShow = [
         state.make,
         state.models,
@@ -309,16 +314,14 @@ export default new Vuex.Store({
       else{
 
         contentToShow.forEach(one =>{
-          
+
           if(one.id == id){
             state.clickedFieldContent = one
           }
           
         })
       }
-      
     
-      
     },
     // selects the car models to show according to the make selected
 

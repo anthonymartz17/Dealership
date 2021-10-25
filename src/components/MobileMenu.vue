@@ -17,7 +17,11 @@
  >
   <nav class="nav-menu-container" v-show="$store.state.mobileMenuToggler">
     <ul>
-      <li v-for="(link,key) in $store.state.desktopNav" :key="key" @click="toggleMobileMenu()"> 
+      <li v-for="(link,key) in $store.state.desktopNav" :key="key" @click="
+      toggleMobileMenu()
+      clearPropsVal()
+      
+      "> 
         <router-link :to="{name:link.name}" class="tabs">
           <i :class="link.icon"></i> 
           <p>{{link.link}}</p> 
@@ -36,7 +40,8 @@ export default {
   methods:{
     ...mapMutations([
       'toggleMobileMenu',
-      'toggleModal'
+      'toggleModal',
+      'clearPropsVal'
     ])
   }
 
