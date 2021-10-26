@@ -12,6 +12,7 @@ export default new Vuex.Store({
     modalToggler:false,
     optionsCardToggler:false,
     searchBtnPosition:false,
+    moreVehicles:false,
     fieldContent:null,
 
     carsData:{},
