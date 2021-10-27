@@ -178,7 +178,10 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-
+    
+    displayCarsAtRandom(state){
+       console.log(state.carsData)
+    },
 
     // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
     disablePricesYears(state,data){
@@ -205,6 +208,7 @@ export default new Vuex.Store({
     },
      // array of years
      getYearsRange(state){
+       
       let yearsRange = [];
        let startYear = 1970;
        let currentYear = new Date().getFullYear();
@@ -235,13 +239,10 @@ export default new Vuex.Store({
   toggleMobileMenu(state){
     state.mobileMenuToggler = !state.mobileMenuToggler
   },
-   
-    // toggleModal(state){
-     
-    //     state.modalToggler = !state.modalToggler
-    //     state.mobileMenuToggler = false
-       
-    // },
+   showMoreVehicles(state){
+     state.moreVehicles = !state.moreVehicles
+
+   },
 
     // togggles on and off to show the card with the options  of the selected field
     toggleOptionsCard(state,e){
@@ -333,7 +334,7 @@ export default new Vuex.Store({
           if(state.make.typeSelected == one.make){
             state.models.typeSelected = `All ${one.make}`
             state.models.type = one.model.map(one =>{
-              return one.name
+              return one.model
             })
           } 
         })

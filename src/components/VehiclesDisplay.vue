@@ -13,22 +13,24 @@
       </div>
     </div>
   </div>
-  <div class="btn-search btn" @click="moreVehicles = !moreVehicles">+ More Vehicles</div>
-  <p>{{moreVehicles}}</p>
+  <div class="btn-search btn" @click="showMoreVehicles">+ More Vehicles</div>
+  
 
 </div>
   
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import {mapMutations} from 'vuex'
 
 export default {
-  computed:{
-    ...mapState([
-      'moreVehicles'
+ 
+  methods:{
+    ...mapMutations([
+      'showMoreVehicles'
     ])
-  }
+  },
+
 
 
 }

@@ -7,10 +7,35 @@
       "make":"ACURA",
       "model":[
          {
-        
-          "name":"MDX",
-          "trim":["SH-AWD ADVANCE"]
+          "make":"ACURA",
+          "model":"MDX",
+          "trim":"SH-AWD",
+          "price":31900,
+          "year":2018,
+          "pics":{
+            "pic1":"../assests/images/acura/front.jpeg",
+            "pic2":"../assests/images/acura/back.jpeg",
+            "pic3":"../assests/images/acura/interior.jpeg",
+            "pic4":"../assests/images/acura/dashboard.jpeg"
+          },
+          "miles":"76,235",
+          "mileage":"22",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"290 hp 3.5L V6",
+          "colorEx":"white",
+          "colorIn":"white",
+          "vin":"5J8YD4H50JL027019",
+          "location":"Elizabeth, NJ",
+          "owner":"1",
+          "accidents":2,
+          "titleCheck":"No issues"
+
         } 
+        
       ]
     },
     {
@@ -18,11 +43,36 @@
       "make":"AUDI",
       "model":[
         {
-        
-         "name":"A3"
+          "make":"AUDI",
+          "model":"A3",
+          "trim":"QUATTRO",
+          "price":25295,
+          "year":2018,
+          "pics":{
+            "pic1":"../assests/images/audi/a3/front.jpeg",
+            "pic2":"../assests/images/audi/a3/back.jpeg",
+            "pic3":"../assests/images/audi/a3/interior.jpeg",
+            "pic4":"../assests/images/audi/a3/dashboard.jpeg"
+          },
+          "miles":"25,465",
+          "mileage":"25",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"220 hp 2L I4",
+          "colorEx":"Black",
+          "colorIn":"Black",
+          "vin":"WAUB8GFF9J1088822",
+          "location":"Bronx, NY",
+          "owner":"1",
+          "accidents":0,
+          "titleCheck":"No issues"
+         
        },
        {
-         "name":"A4",
+         "model":"A4",
          "trim":["QUATTRO", "SPORT SLINE", "SPORT TURBO"]
        }
      ]
@@ -32,11 +82,11 @@
       "make":"BMW",
       "model":[ 
         {
-          "name":"SERIE 1",
+          "model":"SERIE 1",
           "trim":["120 I", "128 I"]
         },
         {
-          "name":"SERIE 3",
+          "model":"SERIE 3",
           "trim":["316I", "320 SPORT"]
         }
       ]
@@ -46,11 +96,11 @@
       "make":"CADILLAC",
       "model":[ 
         {
-          "name":"ESCALADE",
+          "model":"ESCALADE",
           "trim":["ESV", "PLATINUM"]
         },
         {
-          "name":"ATS" 
+          "model":"ATS" 
         }
       ]
     },
@@ -59,11 +109,11 @@
       "make":"CHEVROLET",
       "model":[
         {
-          "name":"TAHOE",
+          "model":"TAHOE",
           "trim":["LT", "RST"]
         },
         {
-          "name":"TRAVERSE",
+          "model":"TRAVERSE",
           "trim":["LS", "LT"]
         }
       ]
@@ -73,11 +123,11 @@
       "make":"DODGE",
       "model":[
         {
-          "name":"AVENGER",
+          "model":"AVENGER",
           "trim":["SXT"]
         },
         {
-          "name":"DURANGO",
+          "model":"DURANGO",
           "trim":["CITADAL", "CREW"]
         }
       ]
@@ -86,8 +136,8 @@
       "id": 7,
       "make":"FERRARI",
       "model":[
-        {"name":"CALIFORNIA"},
-        {"name":"458"}
+        {"model":"CALIFORNIA"},
+        {"model":"458"}
       ]
     },
     {
@@ -95,11 +145,11 @@
       "make":"FORD",
       "model":[ 
         {
-          "name":"ESCAPE",
+          "model":"ESCAPE",
           "trim":["HYBRID", "LIMITED"]
         },
         {
-          "name":"EXPLORER",
+          "model":"EXPLORER",
           "trim":["LIMITED", "SPORT"]
         }
       ]
@@ -108,8 +158,8 @@
       "id": 9,
       "make":"GMC",
       "model":[
-        {"name":"ACADIA"},
-        {"name":"CANYON"}
+        {"model":"ACADIA"},
+        {"model":"CANYON"}
       ]
     },
     {
@@ -117,15 +167,15 @@
       "make":"HONDA",
       "model":[ 
         {
-          "name":"ACCORD",
+          "model":"ACCORD",
           "trim":["EX", "SPORT"]
         },
         {
-          "name":"CIVIC",
+          "model":"CIVIC",
           "trim":["HYBRID", "SPORT"]
         },
         {
-          "name":"CR-V",
+          "model":"CR-V",
           "trim":["EX", "LIMITED"]
         }
         
@@ -137,11 +187,11 @@
       "make":"HYUNDAI",
       "model":[ 
         {
-          "name":"SONATA",
+          "model":"SONATA",
           "trim":["N20", "Y20"]
         },
         {
-          "name":"TUCSON",
+          "model":"TUCSON",
           "trim":["LIMITED", "SPORT"]
         }
        
@@ -153,11 +203,11 @@
       "make":"JEEP",
       "model":[ 
         {
-          "name":"GRAND CHEROKEE",
+          "model":"GRAND CHEROKEE",
           "trim":["CRD", "LAREDO"]
         },
         {
-          "name":"LIBERTY"
+          "model":"LIBERTY"
         }
       ]
     },
@@ -166,11 +216,11 @@
       "make":"KIA",
       "model":[ 
         {
-          "name":"FORTE",
+          "model":"FORTE",
           "trim":["HATCHBACK", "EX"]
         },
         {
-          "name":"SORENTO",
+          "model":"SORENTO",
           "trim":["EX", "LX"]
         }
       ]
@@ -180,11 +230,11 @@
       "make":"LEXUS",
       "model":[ 
         {
-          "name":"ES",
+          "model":"ES",
           "trim":["350"]
         },
         {
-          "name":"GS",
+          "model":"GS",
           "trim":["F-SPORT"]
         }
       ]
@@ -194,11 +244,11 @@
       "make":"MAZDA",
       "model":[ 
         {
-          "name":"DEMIO",
+          "model":"DEMIO",
           "trim":["SPORT"]
         },
         {
-          "name":"CX-9",
+          "model":"CX-9",
           "trim":["AWD LIMITED", "SPORT"]
         }
       ]
@@ -208,10 +258,10 @@
       "make":"MERCEDES-BENZ",
       "model":[ 
         {
-          "name":"300 SD"
+          "model":"300 SD"
         },
         {
-          "name":"CLASE CLK",
+          "model":"CLASE CLK",
           "trim":["500"]
         }
       ]
@@ -221,11 +271,11 @@
       "make":"NISSAN",
       "model":[ 
         {
-          "name":"ALTIMA",
+          "model":"ALTIMA",
           "trim":["S", "SL"]
         },
         {
-          "name":"ROGUE",
+          "model":"ROGUE",
           "trim":["S", "SV FULL"]
         }
       ]
@@ -235,11 +285,11 @@
       "make":"TESLA",
       "model":[ 
         {
-          "name":"MODEL 3",
+          "model":"MODEL 3",
           "trim":["LONG RANGE"]
         },
         {
-          "name":"MODEL Y",
+          "model":"MODEL Y",
           "trim":["PERFORMANCE"]
         }
       ]
@@ -249,15 +299,15 @@
       "make":"TOYOTA",
       "model":[ 
         {
-          "name":"4 RUNNER",
+          "model":"4 RUNNER",
           "trim":["LIMITED", "SR5"]
         },
         {
-          "name":"COROLLA",
+          "model":"COROLLA",
           "trim":["S", "LE"]
         },
         {
-          "name":"HIGHLANDER",
+          "model":"HIGHLANDER",
           "trim":["LE", "SPORT"]
         }
       ]
@@ -267,11 +317,11 @@
       "make":"VOLVO",
       "model":[ 
         {
-          "name":"XC40",
+          "model":"XC40",
           "trim":["INSCRIPTION"]
         },
         {
-          "name":"S60",
+          "model":"S60",
           "trim":["R DESING"]
         }
       ]
@@ -283,7 +333,7 @@
     {
       "id":1,
       "dealerId":"dealer-1",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -292,7 +342,7 @@
     {
       "id":2,
       "dealerId":"dealer-2",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -301,7 +351,7 @@
     {
       "id":3,
       "dealerId":"dealer-3",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -310,7 +360,7 @@
     {
       "id":4,
       "dealerId":"dealer-4",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -319,7 +369,7 @@
     {
       "id":5,
       "dealerId":"dealer-5",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -328,7 +378,7 @@
     {
       "id":6,
       "dealerId":"dealer-6",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -337,7 +387,7 @@
     {
       "id":7,
       "dealerId":"dealer-7",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -346,7 +396,7 @@
     {
       "id":8,
       "dealerId":"dealer-8",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -355,7 +405,7 @@
     {
       "id":9,
       "dealerId":"dealer-9",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -364,7 +414,7 @@
     {
       "id":10,
       "dealerId":"dealer-10",
-      "name":"Dealer's name",
+      "model":"Dealer's model",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
