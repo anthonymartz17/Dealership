@@ -26,11 +26,10 @@ export default {
    this.getCarsSelectionData();
    this.getPriceRange();
    this.getYearsRange();
+  
 
   },
-  mounted(){
-     this.displayCarsAtRandom();
-  },
+
   methods:{
     ...mapActions([
       'getCarsSelectionData',
@@ -40,7 +39,7 @@ export default {
       'toggleMobileMenu',
       'getPriceRange',
       'getYearsRange',
-      'displayCarsAtRandom'
+     
       
     ])
     

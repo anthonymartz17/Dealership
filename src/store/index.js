@@ -12,10 +12,11 @@ export default new Vuex.Store({
     modalToggler:false,
     optionsCardToggler:false,
     searchBtnPosition:false,
-    moreVehicles:false,
     fieldContent:null,
-
+    
     carsData:{},
+    randomCarsDisplay:[],
+    moreVehicles:false,
 
     //Search mobile component
 
@@ -179,11 +180,7 @@ export default new Vuex.Store({
   },
   mutations: {
     
-    displayCarsAtRandom(state){
-       console.log(state.carsData)
-    },
-
-    // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
+       // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
     disablePricesYears(state,data){
      
        if(data.clickedFieldContent.id == 'priceFrom'){
@@ -220,6 +217,11 @@ export default new Vuex.Store({
      },
     
     clearPropsVal(state){
+      // state.carsData.forEach(one =>{
+      //   one.model.forEach(one =>{
+      //     state.randomCarsDisplay.push(one)
+      //   })
+      // })
       state.make.typeSelected = ''
       state.models.typeSelected = ''
       state.priceFrom.typeSelected = ''
@@ -378,6 +380,14 @@ export default new Vuex.Store({
         context.state.carsData.forEach(one =>{
         context.state.make.type.push(one.make)
         })
+
+       
+        context.state.carsData.forEach(one =>{
+          one.model.forEach(one =>{
+            context.state.randomCarsDisplay.push(one)
+          })
+        })
+ 
       })
       .catch(err =>{
         console.log(err)

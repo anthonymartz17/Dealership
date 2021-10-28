@@ -1,15 +1,29 @@
+
+
 <template>
-<div class="vehicles">
+<!-- working on displaying the correct images and making the more cars button work -->
+<div :class="['vehicles',{moreCars: !moreVehicles}]">
   <h2 class="vehicles-title">Vehicles</h2>
-  <div class="vehicles-display">
+  <div class="vehicles-display" 
+  v-for="(car,key) in randomCarsDisplay"
+  :key="key"
+  
+  >
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img src="../assets/images/crv.png" alt="">
+        <img :src="car.pic1" alt="car">
+        
       </div>
+      <!-- <div class="vehicles-display-img"
+       v-for="(pic,key) in car.pics" :key="key">
+        <img :src="pic" alt="">
+      </div> -->
       <div class="vehicles-display-description">
-        <h3 class="vehicles-display-title">2020 Honda CR-V EX</h3>
-        <p class="vehicles-display-specs">Gasoline - Used -120,000 mi</p>
-        <p class="vehicles-display-price">$35,000</p>
+        <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
+        <p class="vehicles-display-specs">
+          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} mi
+        </p>
+        <p class="vehicles-display-price">{{car.price | currency}}</p>
       </div>
     </div>
   </div>
@@ -21,15 +35,24 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations,mapState} from 'vuex'
+
 
 export default {
+
  
   methods:{
     ...mapMutations([
-      'showMoreVehicles'
+      'showMoreVehicles',
+     
     ])
   },
+  computed:{
+    ...mapState([
+      'randomCarsDisplay',
+      'moreVehicles'
+    ])
+  }
 
 
 
@@ -37,6 +60,10 @@ export default {
 </script>
 
 <style lang="scss">
+.moreCars{
+  max-height: 30%;
+  overflow: hidden;
+}
 .vehicles{
   background: $light;
   padding: 1em .5em;

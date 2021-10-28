@@ -12,12 +12,13 @@
           "trim":"SH-AWD",
           "price":31900,
           "year":2018,
-          "pics":{
-            "pic1":"../assests/images/acura/front.jpeg",
-            "pic2":"../assests/images/acura/back.jpeg",
-            "pic3":"../assests/images/acura/interior.jpeg",
-            "pic4":"../assests/images/acura/dashboard.jpeg"
-          },
+          "pic1":"../assests/images/acura/front.jpeg",
+          "pics":[
+            {"pic1":"../assests/images/acura/front.jpeg"},
+            {"pic2":"../assests/images/acura/back.jpeg"},
+            {"pic3":"../assests/images/acura/interior.jpeg"},
+            {"pic4":"../assests/images/acura/dashboard.jpeg"}
+        ],
           "miles":"76,235",
           "mileage":"22",
           "carType":"SUV",
@@ -30,7 +31,7 @@
           "colorIn":"white",
           "vin":"5J8YD4H50JL027019",
           "location":"Elizabeth, NJ",
-          "owner":"1",
+          "owner":1,
           "accidents":2,
           "titleCheck":"No issues"
 
@@ -48,12 +49,13 @@
           "trim":"QUATTRO",
           "price":25295,
           "year":2018,
-          "pics":{
-            "pic1":"../assests/images/audi/a3/front.jpeg",
-            "pic2":"../assests/images/audi/a3/back.jpeg",
-            "pic3":"../assests/images/audi/a3/interior.jpeg",
-            "pic4":"../assests/images/audi/a3/dashboard.jpeg"
-          },
+          "pic1":"require('../assests/images/audi/a3/front.jpeg')",
+          "pics":[
+            {"pic1":"../assests/images/audi/a3/front.jpeg"},
+            {"pic2":"../assests/images/audi/a3/back.jpeg"},
+            {"pic3":"../assests/images/audi/a3/interior.jpeg"},
+            {"pic4":"../assests/images/audi/a3/dashboard.jpeg"}
+        ],
           "miles":"25,465",
           "mileage":"25",
           "carType":"Sedan",
@@ -66,14 +68,40 @@
           "colorIn":"Black",
           "vin":"WAUB8GFF9J1088822",
           "location":"Bronx, NY",
-          "owner":"1",
+          "owner":1,
           "accidents":0,
           "titleCheck":"No issues"
          
        },
        {
-         "model":"A4",
-         "trim":["QUATTRO", "SPORT SLINE", "SPORT TURBO"]
+        "make":"AUDI",
+        "model":"A4",
+        "trim":"QUATTRO",
+        "price":8500,
+        "year":2014,
+        "pic1":"../assests/images/audi/a4/front.jpeg",
+        "pics":[
+          {"pic1":"../assests/images/audi/a4/front.jpeg"},
+          {"pic2":"../assests/images/audi/a4/back.jpeg"},
+          {"pic3":"../assests/images/audi/a4/interior.jpeg"},
+          {"pic4":"../assests/images/audi/a4/dashboard.jpeg"}
+      ],
+        "miles":"134,970",
+        "mileage":"25",
+        "carType":"Sedan",
+        "carCondition":"Used",
+        "fuel":"FFVs",
+        "transmission":"Automatic",
+        "driveTrain":"AWD",
+        "engine":"220 hp 2L I4 Flex Fuel Vehicle",
+        "colorEx":"Red",
+        "colorIn":"Black",
+        "vin":"WAUBFAFL1EA030704",
+        "location":"Maplewood, NJ",
+        "owner":3,
+        "accidents":1,
+        "titleCheck":"No issues"
+        
        }
      ]
     },
