@@ -11,13 +11,8 @@
   >
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img :src="car.pic1" alt="car">
-        
+        <img :src="car.mainPic" alt="car">        
       </div>
-      <!-- <div class="vehicles-display-img"
-       v-for="(pic,key) in car.pics" :key="key">
-        <img :src="pic" alt="">
-      </div> -->
       <div class="vehicles-display-description">
         <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
         <p class="vehicles-display-specs">
@@ -34,12 +29,25 @@
   
 </template>
 
+
 <script>
 import {mapMutations,mapState} from 'vuex'
 
 
+
+
+
 export default {
 
+data(){
+  return{
+    pics:[
+      {img:'../assets/images/audi/a3/front.jpeg'},
+      {img:'../assets/images/audi/a3/back.jpeg'},
+      {img:'../assets/images/audi/a3/dashboard.jpeg'}
+    ]
+  }
+},
  
   methods:{
     ...mapMutations([
