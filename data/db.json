@@ -12,7 +12,7 @@
           "trim":"SH-AWD",
           "price":31900,
           "year":2018,
-          "mainPic":"'../assets/images/acura/front.jpeg'",
+          "mainPic":"../../public/images/acura/front.jpeg",
           "pics":[
             {"pic1":"../assets/images/acura/front.jpeg"},
             {"pic2":"../assets/images/acura/back.jpeg"},
@@ -49,7 +49,7 @@
           "trim":"QUATTRO",
           "price":25295,
           "year":2018,
-          "mainPic":"../assets/images/audi/a3/front.jpeg",
+          "mainPic":"../../public/images/audi/a3/front.jpeg",
           "pics":[
             {"pic1":"../assets/images/audi/a3/front.jpeg"},
             {"pic2":"../assets/images/audi/a3/back.jpeg"},
@@ -79,7 +79,7 @@
         "trim":"QUATTRO",
         "price":8500,
         "year":2014,
-        "mainPic":"../assets/images/audi/a4/front.jpeg",
+        "mainPic":"../../public/images/audi/a4/front.jpeg",
         "pics":[
           {"pic1":"../assets/images/audi/a4/front.jpeg"},
           {"pic2":"../assets/images/audi/a4/back.jpeg"},
@@ -115,7 +115,7 @@
           "trim":"228i",
           "price":41445,
           "year":2021,
-          "mainPic":"../assets/images/bmw/2series/front.jpeg",
+          "mainPic":"../../public/images/bmw/2series/front.jpeg",
           "pics":[
             {"pic1":"../assets/images/bmw/2series/front.jpeg"},
             {"pic2":"../assets/images/bmw/2series/back.jpeg"},
@@ -144,7 +144,7 @@
           "trim":"30i",
           "price":49445,
           "year":2021,
-          "mainPic":"../assets/images/bmw/x3/front.jpeg",
+          "mainPic":"../../public/images/bmw/x3/front.jpeg",
           "pics":[
             {"pic1":"../assets/images/bmw/x3/front.jpeg"},
             {"pic2":"../assets/images/bmw/x3/back.jpeg"},

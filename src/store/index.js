@@ -217,11 +217,7 @@ export default new Vuex.Store({
      },
     
     clearPropsVal(state){
-      // state.carsData.forEach(one =>{
-      //   one.model.forEach(one =>{
-      //     state.randomCarsDisplay.push(one)
-      //   })
-      // })
+     
       state.make.typeSelected = ''
       state.models.typeSelected = ''
       state.priceFrom.typeSelected = ''
@@ -384,7 +380,9 @@ export default new Vuex.Store({
        
         context.state.carsData.forEach(one =>{
           one.model.forEach(one =>{
+
             context.state.randomCarsDisplay.push(one)
+            
           })
         })
  

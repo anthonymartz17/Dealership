@@ -59,7 +59,7 @@ a.router-link-exact-active{
 
  .nav-menu-container{
    z-index: 3;
-   position: absolute;
+   position:fixed;
    background: $lightestDark;
    height: 100%;
    width: 70%;
