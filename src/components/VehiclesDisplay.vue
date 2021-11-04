@@ -11,7 +11,7 @@
   >
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img :src="car.mainPic" alt="car">       
+        <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
       </div>
       <div class="vehicles-display-description">
         <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
@@ -33,21 +33,16 @@
 <script>
 import {mapMutations,mapState} from 'vuex'
 
+// import {mapMutations,mapState} from '../../public/images/'
+
+
 
 
 
 
 export default {
 
-data(){
-  return{
-    pics:[
-      {img:'../assets/images/audi/a3/front.jpeg'},
-      {img:'../assets/images/audi/a3/back.jpeg'},
-      {img:'../assets/images/audi/a3/dashboard.jpeg'}
-    ]
-  }
-},
+
  
   methods:{
     ...mapMutations([

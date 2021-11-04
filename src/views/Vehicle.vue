@@ -7,8 +7,9 @@
   :key="key"
   
   >
+  <p>{{car.mainPic}}</p>
   
-  <!-- <img :src="" :alt="`picture of ${car.model}`"> -->
+  <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">
   </div>
   <button  @click="makeRandom">random</button>
   <div>{{test}}</div>
@@ -16,12 +17,14 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+import {mapMutations, mapState} from 'vuex'
+
 
 
 
 
 export default {
+
   data(){
     return {
       test:0,
@@ -46,6 +49,9 @@ export default {
  
   },
   methods:{
+    ...mapMutations([
+      'makeImgRequirement'
+    ]),
     makeRandom(){
       this.test = Math.round(Math.random() * this.items.length)
     }

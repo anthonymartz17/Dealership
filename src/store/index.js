@@ -361,7 +361,8 @@ export default new Vuex.Store({
           one.typeSelected = data.$event.currentTarget.textContent
         }
       })
-    }
+    },
+
       
   },
   actions: {
@@ -397,7 +398,7 @@ export default new Vuex.Store({
   },
 
   getters:{
-  
 
+   
   }
 })
