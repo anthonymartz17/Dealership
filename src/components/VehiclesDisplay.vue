@@ -2,7 +2,8 @@
 
 <template>
 <!-- working on displaying the correct images and making the more cars button work -->
-<div :class="['vehicles',{moreCars: !moreVehicles}]">
+<div class="vehicles-container">
+    <div :class="['vehicles',{moreCars: !moreVehicles}]">
   <h2 class="vehicles-title">Vehicles</h2>
   <div class="vehicles-display" 
   v-for="(car,key) in randomCarsDisplay"
@@ -22,13 +23,11 @@
       </div>
     </div>
   </div>
-  <div class="btn-search btn" @click="showMoreVehicles">+ More Vehicles</div>
+    </div>
+    <div class="btn-search btn" @click="showMoreVehicles($event)">+ More Vehicles</div>
   
-
 </div>
-  
 </template>
-
 
 <script>
 import {mapMutations,mapState} from 'vuex'
@@ -42,6 +41,9 @@ import {mapMutations,mapState} from 'vuex'
 
 export default {
 
+destroyed(){
+   this.showMoreVehicles
+},
 
  
   methods:{
@@ -63,14 +65,18 @@ export default {
 </script>
 
 <style lang="scss">
+.vehicles-container{
+   background: $light;
+}
 .moreCars{
-  max-height: 30%;
+  height: 68vh;
   overflow: hidden;
 }
 .vehicles{
-  background: $light;
+ 
   padding: 1em .5em;
   color: $dark;
+  
 
   &-title{
     font:$font-text-bold;
@@ -85,7 +91,7 @@ export default {
       display: flex;
       justify-content: space-around;
       gap: .5em;
-      padding-block: 1em;
+      padding-block: .3em;
       cursor: pointer;
 
     }
@@ -93,9 +99,11 @@ export default {
     &-img{
       flex: 1;
       border: 2px solid $lightestDark;
+      
    
       img{
         max-width: 100%;
+        height: 100%;
       }
      }
     &-description{

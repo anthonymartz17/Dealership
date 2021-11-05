@@ -237,8 +237,14 @@ export default new Vuex.Store({
   toggleMobileMenu(state){
     state.mobileMenuToggler = !state.mobileMenuToggler
   },
-   showMoreVehicles(state){
-     state.moreVehicles = !state.moreVehicles
+   showMoreVehicles(state,e){
+     if(state.moreVehicles == true){
+       state.moreVehicles = false
+       e.target.textContent ='+ More vehicles' 
+     }else{
+      state.moreVehicles = true
+      e.target.textContent ='- Show Less vehicles'
+     }
 
    },
 
