@@ -6,10 +6,11 @@
     <div :class="['vehicles',{moreCars: !moreVehicles}]">
   <h2 class="vehicles-title">Vehicles</h2>
   <div class="vehicles-display" 
-  v-for="(car,key) in randomCarsDisplay"
+  v-for="(car,key) in allAvailableModels"
   :key="key"
   
   >
+  <!-- broken  -->
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
         <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
@@ -40,6 +41,9 @@ import {mapMutations,mapState} from 'vuex'
 
 
 export default {
+ mounted(){
+    this.displayCarsRandomly()
+  },
 
 destroyed(){
    this.showMoreVehicles
@@ -49,13 +53,15 @@ destroyed(){
   methods:{
     ...mapMutations([
       'showMoreVehicles',
+      'displayCarsRandomly'
      
     ])
   },
   computed:{
     ...mapState([
       'randomCarsDisplay',
-      'moreVehicles'
+      'moreVehicles',
+      'allAvailableModels'
     ])
   }
 

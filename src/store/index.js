@@ -15,8 +15,10 @@ export default new Vuex.Store({
     fieldContent:null,
     
     carsData:{},
-    randomCarsDisplay:[],
+    allAvailableModels:[],
     moreVehicles:false,
+    randomCarsDisplay:[],
+    testNums:[],
 
     //Search mobile component
 
@@ -179,85 +181,137 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    
-       // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
-    disablePricesYears(state,data){
-     
-       if(data.clickedFieldContent.id == 'priceFrom'){
-         state.pricesUnavailable = data.key
-       }
-       else  if(data.clickedFieldContent.id == 'yearFrom'){
-        state.yearsUnavailable = data.key
-      } 
-    },
+    // broken broken
+    // fisher yates shuffling method
+    displayCarsRandomly(){
+
+      let nums = ['a','b','c','d']
+      let ran = []
+      for(let i = 0; i )
+  
+      // nums.forEach((one,index) =>{
+      //   let randomNum = Math.round(Math.random() * nums.length)
+      //   // if(index == randomNum){
+      //     ran.push(one)
+      //   // } 
+      // })
+      console.log(ran)
+ 
+    // while(ran.length < nums.length)
+
+      // for (let i = 0; i < nums.length; i++) {
        
-     //  array of prices
-    getPriceRange(state){
-      let priceRange=[];
-      let lowestPrice = 4000;
-      let highestPrice = 60000;
-      for(let i = lowestPrice; i<= highestPrice; i += 1000){
-        priceRange.push(i)
-      }
-      state.priceFrom.type =  priceRange
-      state.priceTo.type =  priceRange
+      // let randomNum = Math.round(Math.random() * nums.length)
+
+  // if(ran.length == 0){
+  //   ran.push(randomNum)
+  // }else{
+  //   ran.forEach(one =>{
+  //     if(one !== randomNum){
+  //       ran.push(randomNum)
+  //     }
+  //   })
+  // }
+      // }
+
+
+      // nums.forEach((one,index)=>{
+      //   if (randomIndex == index){
+      //     state.testNums.push(one)
+      //   }
+      // })
+
+      console.log(ran)
+
+      // if(state.allAvailableModels.length !== 0){
+      //   console.log(state.allAvailableModels)
+
+
+        //  state.allAvailableModels.forEach((one,index) =>{
+        //    if (randomIndex === index){
+        //      state.randomCarsDisplay.push(one)
+        //    }
+        //  })
+        },
+      
+        // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
+        disablePricesYears(state,data){
+          
+          if(data.clickedFieldContent.id == 'priceFrom'){
+            state.pricesUnavailable = data.key
+          }
+          else  if(data.clickedFieldContent.id == 'yearFrom'){
+            state.yearsUnavailable = data.key
+          } 
+        },
+        
+        //  array of prices
+        getPriceRange(state){
+          let priceRange=[];
+          let lowestPrice = 4000;
+          let highestPrice = 60000;
+          for(let i = lowestPrice; i<= highestPrice; i += 1000){
+            priceRange.push(i)
+          }
+          state.priceFrom.type =  priceRange
+          state.priceTo.type =  priceRange
+          
+        },
+        // array of years
+        getYearsRange(state){
+          
+          let yearsRange = [];
+          let startYear = 1970;
+          let currentYear = new Date().getFullYear();
+          for (let i = startYear; i<= currentYear+1; i++){
+            yearsRange.unshift(i)
+          }
+          state.yearFrom.type = yearsRange
+          state.yearTo.type = yearsRange
+        },
+        
+        clearPropsVal(state){
      
-    },
-     // array of years
-     getYearsRange(state){
-       
-      let yearsRange = [];
-       let startYear = 1970;
-       let currentYear = new Date().getFullYear();
-       for (let i = startYear; i<= currentYear+1; i++){
-           yearsRange.unshift(i)
-       }
-       state.yearFrom.type = yearsRange
-       state.yearTo.type = yearsRange
-     },
-    
-    clearPropsVal(state){
-     
-      state.make.typeSelected = ''
-      state.models.typeSelected = ''
-      state.priceFrom.typeSelected = ''
-      state.priceTo.typeSelected = ''
-      state.yearFrom.typeSelected = ''
-      state.yearTo.typeSelected = ''
-      state.carType.typeSelected = ''
-      state.carCondition.typeSelected = ''
-      state.fuel.typeSelected = ''
-      state.transmission.typeSelected = ''
-      state.driveTrain.typeSelected = ''
-      state.engine.typeSelected = ''
-      state.color.typeSelected = ''
-
-    },
-   
-  toggleMobileMenu(state){
-    state.mobileMenuToggler = !state.mobileMenuToggler
-  },
-   showMoreVehicles(state,e){
-     if(state.moreVehicles == true){
-       state.moreVehicles = false
-       e.target.textContent ='+ More vehicles' 
-     }else{
-      state.moreVehicles = true
-      e.target.textContent ='- Show Less vehicles'
-     }
-
-   },
-
+          state.make.typeSelected = ''
+          state.models.typeSelected = ''
+          state.priceFrom.typeSelected = ''
+          state.priceTo.typeSelected = ''
+          state.yearFrom.typeSelected = ''
+          state.yearTo.typeSelected = ''
+          state.carType.typeSelected = ''
+          state.carCondition.typeSelected = ''
+          state.fuel.typeSelected = ''
+          state.transmission.typeSelected = ''
+          state.driveTrain.typeSelected = ''
+          state.engine.typeSelected = ''
+          state.color.typeSelected = ''
+          
+        },
+        
+        toggleMobileMenu(state){
+          state.mobileMenuToggler = !state.mobileMenuToggler
+        },
+        showMoreVehicles(state,e){
+          if(state.moreVehicles == true){
+            state.moreVehicles = false
+            e.target.textContent ='+ More vehicles' 
+          }else{
+            state.moreVehicles = true
+            e.target.textContent ='- Show Less vehicles'
+          }
+          
+        },
+        
     // togggles on and off to show the card with the options  of the selected field
     toggleOptionsCard(state,e){
       if(e.target.classList.contains('selected-field-options') || e.target.classList.contains('selected-field-options-card-content') || e.target.classList.contains('search-fields-container-field')){
         state.optionsCardToggler = !state.optionsCardToggler      
       }
-
+      
     },
     closeSelectionCard(state,e){
       if(e.target.classList.contains('modal-clear-card-content') || e.target.classList.contains('search-fields-container-field')){
-
+        
         state.modalToggler = false
         
       }
@@ -266,13 +320,13 @@ export default new Vuex.Store({
     // determines which content card will be display according to which search field is clicked on in the mobile view
     whichFieldContent(state,field){
       state.fieldContent = field.id
-
-    
+      
+      
     },
-   
+    
     assignValueToTypeSelected(state,data){
-     
-        let selectedDataField =[
+      
+      let selectedDataField =[
           state.make,
           state.make,
           state.models,
@@ -294,55 +348,55 @@ export default new Vuex.Store({
           }
         })
        
-    },
-    // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
-    showSelectedFieldContent(state,id){
-   
-      let contentToShow = [
-        state.make,
-        state.models,
-        state.priceFrom,
-        state.priceTo,
-        state.yearFrom,
-        state.yearTo,
-        state.carType,
-        state.carCondition,
-        state.fuel,
-        state.transmission,
-        state.driveTrain,
-        state.engine,
-        state.color
-      ]
+      },
+      // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
+      showSelectedFieldContent(state,id){
+        
+        let contentToShow = [
+          state.make,
+          state.models,
+          state.priceFrom,
+          state.priceTo,
+          state.yearFrom,
+          state.yearTo,
+          state.carType,
+          state.carCondition,
+          state.fuel,
+          state.transmission,
+          state.driveTrain,
+          state.engine,
+          state.color
+        ]
+        
+        if(id == 'model' && state.make.typeSelected == ''){
+          state.clickedFieldContent = {id: 'model' ,type:['Select Make First']}
+        }
+        else{
+
+          contentToShow.forEach(one =>{
+            
+            if(one.id == id){
+              state.clickedFieldContent = one
+            }
+            
+          })
+        }
+        
+      },
+      // selects the car models to show according to the make selected
       
-      if(id == 'model' && state.make.typeSelected == ''){
-        state.clickedFieldContent = {id: 'model' ,type:['Select Make First']}
-      }
-      else{
-
-        contentToShow.forEach(one =>{
-
-          if(one.id == id){
-            state.clickedFieldContent = one
-          }
-          
-        })
-      }
-    
-    },
-    // selects the car models to show according to the make selected
-
-    selectModelByMake(state,data){
-     
-      if(data.id == 'make'){  
-        state.carsData.forEach(one =>{
-          if(state.make.typeSelected == one.make){
-            state.models.typeSelected = `All ${one.make}`
-            state.models.type = one.model.map(one =>{
-              return one.model
-            })
-          } 
-        })
-      } 
+      selectModelByMake(state,data){
+        
+        if(data.id == 'make'){  
+          state.carsData.forEach(one =>{
+            if(state.make.typeSelected == one.make){
+              state.models.typeSelected = `All ${one.make}`
+              state.models.type = one.model.map(one =>{
+                return one.model
+              })
+            } 
+          })
+        } 
       // assigns val of clicked field in model card content to the type selected
       if(data.id == 'model'){
         state.models.typeSelected = data.$event.currentTarget.textContent
@@ -352,8 +406,8 @@ export default new Vuex.Store({
         return
       }
     },
-
-
+    
+    
     selectPriceAndYear(state,data){
       let priceYear=
       [
@@ -368,11 +422,13 @@ export default new Vuex.Store({
         }
       })
     },
-
-      
+    
+    
   },
+  
+
   actions: {
- 
+    
     getCarsSelectionData(context){
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
@@ -381,14 +437,17 @@ export default new Vuex.Store({
         
         context.state.carsData = data
         context.state.carsData.forEach(one =>{
-        context.state.make.type.push(one.make)
+          context.state.make.type.push(one.make)
         })
 
-       
+     
         context.state.carsData.forEach(one =>{
+    
           one.model.forEach(one =>{
+        
 
-            context.state.randomCarsDisplay.push(one)
+              context.state.allAvailableModels.push(one)
+          
             
           })
         })
