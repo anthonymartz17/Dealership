@@ -41,7 +41,7 @@ import {mapMutations,mapState} from 'vuex'
 
 
 export default {
- mounted(){
+created (){
     this.displayCarsRandomly()
   },
 

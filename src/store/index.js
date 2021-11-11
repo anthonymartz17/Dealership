@@ -183,55 +183,38 @@ export default new Vuex.Store({
   mutations: {
     // broken broken
     // fisher yates shuffling method
-    displayCarsRandomly(){
+    displayCarsRandomly(state){
+      let arrLength = state.randomCarsDisplay.length,temp,ranNum;
+     if(state.randomCarsDisplay.length !== 0){
 
-      let nums = ['a','b','c','d']
-      let ran = []
-      for(let i = 0; i )
-  
-      // nums.forEach((one,index) =>{
-      //   let randomNum = Math.round(Math.random() * nums.length)
-      //   // if(index == randomNum){
-      //     ran.push(one)
-      //   // } 
-      // })
-      console.log(ran)
+       console.log(state.randomCarsDisplay)
+      }
+
+      while(--arrLength > 0){
+        ranNum = Math.round(Math.random() * (arrLength + 1))
+        temp = state.randomCarsDisplay[ranNum]
+        state.randomCarsDisplay[ranNum] = state.randomCarsDisplay[arrLength]
+        state.randomCarsDisplay[arrLength] = temp
+
+      }
+      console.log(state.randomCarsDisplay)
+
+      // let nums = ['d','c','a','b'];
+      // let length = nums.length -1
+      // let ranNum;
+      // let temp;
  
-    // while(ran.length < nums.length)
+      // while(length-- > 0){
+      //  ranNum = Math.round(Math.random() * (length + 1))
+      //  temp = nums[ranNum]
+      //  nums[ranNum] = nums[length]
+      //  nums[length] = temp
 
-      // for (let i = 0; i < nums.length; i++) {
-       
-      // let randomNum = Math.round(Math.random() * nums.length)
-
-  // if(ran.length == 0){
-  //   ran.push(randomNum)
-  // }else{
-  //   ran.forEach(one =>{
-  //     if(one !== randomNum){
-  //       ran.push(randomNum)
-  //     }
-  //   })
-  // }
       // }
+      // console.log(nums)
 
-
-      // nums.forEach((one,index)=>{
-      //   if (randomIndex == index){
-      //     state.testNums.push(one)
-      //   }
-      // })
-
-      console.log(ran)
-
-      // if(state.allAvailableModels.length !== 0){
-      //   console.log(state.allAvailableModels)
-
-
-        //  state.allAvailableModels.forEach((one,index) =>{
-        //    if (randomIndex === index){
-        //      state.randomCarsDisplay.push(one)
-        //    }
-        //  })
+    
+ 
         },
       
         // keeps track of the index of the price from selected to disable prices below this index in the priceTo options

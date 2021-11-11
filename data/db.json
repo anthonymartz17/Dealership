@@ -174,11 +174,64 @@
       "make":"CADILLAC",
       "model":[ 
         {
+          "make":"CADILLAC",
           "model":"ESCALADE",
-          "trim":["ESV", "PLATINUM"]
+          "trim":"ESV",
+          "price":68994,
+          "year":2018,
+          "mainPic":"cadillac-esv-front.jpeg",
+          "pics":[
+            {"pic1":"cadillac-esv-front.jpeg"},
+            {"pic2":"cadillac-esv-back.jpeg"},
+            {"pic3":"cadillac-esv-interior.jpeg"},
+            {"pic4":"cadillac-esv-dashboard.jpeg"}
+        ],
+          "miles":"33,911",
+          "mileage":"17",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"420 hp 6.2L V8",
+          "colorEx":"White",
+          "colorIn":"Black",
+          "vin":"1GYS4KKJXJR287577",
+          "location":"Woodbridge, CT",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
-          "model":"ATS" 
+         
+          "make":"CADILLAC",
+          "model":"ATS",
+          "trim":"Luxury",
+          "price":21019,
+          "year":2018,
+          "mainPic":"cadillac-ats-front.jpeg",
+          "pics":[
+            {"pic1":"cadillac-ats-front.jpeg"},
+            {"pic2":"cadillac-ats-back.jpeg"},
+            {"pic3":"cadillac-ats-interior.jpeg"},
+            {"pic4":"cadillac-ats-dashboard.jpeg"}
+        ],
+          "miles":"44,507",
+          "mileage":"26",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"RWD",
+          "engine":"272 hp 2L I4",
+          "colorEx":"Black Raven",
+          "colorIn":"Jet Black with Jet Black Accents",
+          "vin":"1G6AA5RX2J0180567",
+          "location":"Stradford, CT",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
+         
         }
       ]
     },
