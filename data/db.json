@@ -240,12 +240,64 @@
       "make":"CHEVROLET",
       "model":[
         {
+          "make":"CHEVROLET",
           "model":"TAHOE",
-          "trim":["LT", "RST"]
+          "trim":"LT",
+          "price":49985,
+          "year":2019,
+          "mainPic":"tahoe-lt-front.jpeg",
+          "pics":[
+            {"pic1":"tahoe-lt-front.jpeg"},
+            {"pic2":"tahoe-lt-back.jpeg"},
+            {"pic3":"tahoe-lt-interior.jpeg"},
+            {"pic4":"tahoe-lt-dashboard.jpeg"}
+        ],
+          "miles":"23,066",
+          "mileage":"20",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"355 hp 5.3L V8",
+          "colorEx":"Black",
+          "colorIn":"Black",
+          "vin":"1GNSKBKC1KR132986",
+          "location":"Douglaston, NY",
+          "owner":1,
+          "accidents":1,
+          "titleCheck":"No issues"
+          
         },
         {
+        
+          "make":"CHEVROLET",
           "model":"TRAVERSE",
-          "trim":["LS", "LT"]
+          "trim":"LT",
+          "price":34996,
+          "year":2018,
+          "mainPic":"traverse-lt-front.jpeg",
+          "pics":[
+            {"pic1":"traverse-lt-front.jpeg"},
+            {"pic2":"traverse-lt-back.jpeg"},
+            {"pic3":"traverse-lt-interior.jpeg"},
+            {"pic4":"traverse-lt-dashboard.jpeg"}
+        ],
+          "miles":"39,876",
+          "mileage":"21",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"310 hp 3.6L V6",
+          "colorEx":"Gray (Graphite Metallic)",
+          "colorIn":"Jet Black",
+          "vin":"1GNEVHKW5JJ263014",
+          "location":"St James, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },

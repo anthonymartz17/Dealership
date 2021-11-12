@@ -184,10 +184,11 @@ export default new Vuex.Store({
     // broken broken
     // fisher yates shuffling method
     displayCarsRandomly(state){
+      console.log(state.carsData)
       let arrLength = state.randomCarsDisplay.length,temp,ranNum;
      if(state.randomCarsDisplay.length !== 0){
 
-       console.log(state.randomCarsDisplay)
+       console.log(state.allAvailableModels)
       }
 
       while(--arrLength > 0){
@@ -446,6 +447,22 @@ export default new Vuex.Store({
   },
 
   getters:{
+
+    allAvailableModels(state){
+      let arr = [];
+      let test = [state.carsData]
+      state.carsData
+      test.forEach(one =>{
+        one.model.forEach(one =>{
+            arr.push(one)
+          
+        })
+        arr.push(one.make)
+        
+      })
+         return arr
+     
+    }
 
    
   }

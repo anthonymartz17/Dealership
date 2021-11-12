@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import {mapMutations,mapState} from 'vuex'
+import {mapMutations,mapState, } from 'vuex'
 
 // import {mapMutations,mapState} from '../../public/images/'
 
@@ -41,16 +41,26 @@ import {mapMutations,mapState} from 'vuex'
 
 
 export default {
-created (){
+afterCreated (){
     this.displayCarsRandomly()
+  },
+  watch:{
+    'this.$store.state.randomCarsDisplay':function(oldVal,newVal){
+      console.log(this.$store.state.randomCarsDisplay)
+      console.log(oldVal + newVal)
+
+    }
+
   },
 
 destroyed(){
    this.showMoreVehicles
+   
 },
 
  
   methods:{
+    
     ...mapMutations([
       'showMoreVehicles',
       'displayCarsRandomly'
@@ -62,7 +72,12 @@ destroyed(){
       'randomCarsDisplay',
       'moreVehicles',
       'allAvailableModels'
-    ])
+     
+    ]),
+
+    // ...mapGetters([
+    //   'allAvailableModels'
+    // ])
   }
 
 
