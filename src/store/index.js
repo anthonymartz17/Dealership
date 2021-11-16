@@ -14,7 +14,7 @@ export default new Vuex.Store({
     searchBtnPosition:false,
     fieldContent:null,
     
-    carsData:{},
+    carsData:[],
     allAvailableModels:[],
     moreVehicles:false,
     randomCarsDisplay:[],
@@ -183,8 +183,18 @@ export default new Vuex.Store({
   mutations: {
     // broken broken
     // fisher yates shuffling method
+    setCarsData(state,data){
+        state.carsData = data
+    },
+    setMakes(state,data){
+        data.forEach(one =>{
+          state.make.type.push(one.make)
+        })
+
+    },
+
     displayCarsRandomly(state){
-      console.log(state.carsData)
+    
       let arrLength = state.randomCarsDisplay.length,temp,ranNum;
      if(state.randomCarsDisplay.length !== 0){
 
@@ -198,7 +208,7 @@ export default new Vuex.Store({
         state.randomCarsDisplay[arrLength] = temp
 
       }
-      console.log(state.randomCarsDisplay)
+     
 
       // let nums = ['d','c','a','b'];
       // let length = nums.length -1
@@ -413,40 +423,58 @@ export default new Vuex.Store({
 
   actions: {
     
-    getCarsSelectionData(context){
+    getCarsData(context){
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
       .then(data => {
         
-        context.state.carsData = data
-        context.state.carsData.forEach(one =>{
-          context.state.make.type.push(one.make)
-        })
-
-     
-        context.state.carsData.forEach(one =>{
-    
-          one.model.forEach(one =>{
+        context.commit('setCarsData',data)
+        context.commit('setMakes',data)
+        
+        // context.state.carsData.forEach(one =>{
+        //   context.state.make.type.push(one.make)
+        // })
+      })
         
 
-              context.state.allAvailableModels.push(one)
-          
-            
-          })
-        })
- 
-      })
       .catch(err =>{
         console.log(err)
       })   
+      
     },
+
+    getAllModels(context){ 
+      if(context.state.carsData.length !== 0){
+        console.log(context.state.carsData)
+      }
+      context.state.carsData.forEach(one =>{
+        one.model.forEach(one =>{
+          context.state.allAvailableModels.push(one)
+        
+        })
+      })
+      
+    }
 
   },
   modules: {
   },
 
   getters:{
+
+    // makes(state,getters){
+    //   let makes =[]
+    //   getters.carsDataReady.forEach(one =>{
+    //     makes.push(one.make)
+    //   })
+    //   return state.make.type = makes       
+
+    // },
+
+    carsDataReady(state){
+      return state.carsData 
+    },
 
     allAvailableModels(state){
       let arr = [];

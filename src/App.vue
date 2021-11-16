@@ -23,16 +23,17 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 export default {
   created(){
   
-   this.getCarsSelectionData();
+   this.getCarsData();
+   this.getAllModels();
    this.getPriceRange();
    this.getYearsRange();
-  
 
   },
 
   methods:{
     ...mapActions([
-      'getCarsSelectionData',
+      'getCarsData',
+      'getAllModels'
       ]),
 
     ...mapMutations([

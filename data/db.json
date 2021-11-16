@@ -306,12 +306,63 @@
       "make":"DODGE",
       "model":[
         {
+         
+          "make":"DODGE",
           "model":"AVENGER",
-          "trim":["SXT"]
+          "trim":"SE",
+          "price":8800,
+          "year":2014,
+          "mainPic":"dodge-avenger-front.jpeg",
+          "pics":[
+            {"pic1":"dodge-avenger-front.jpeg"},
+            {"pic2":"dodge-avenger-back.jpeg"},
+            {"pic3":"dodge-avenger-interior.jpeg"},
+            {"pic4":"dodge-avenger-dashboard.jpeg"}
+        ],
+          "miles":"82,658",
+          "mileage":"25",
+          "carType":"SEDAN",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"FWD",
+          "engine":"173 hp 2.4L I4",
+          "colorEx":"White",
+          "colorIn":"Black",
+          "vin":"1C3CDZAB3EN190008",
+          "location":"South Orange, NJ",
+          "owner":3,
+          "accidents":1,
+          "titleCheck":"No issues"
         },
-        {
+        {         
+          "make":"DODGE",
           "model":"DURANGO",
-          "trim":["CITADAL", "CREW"]
+          "trim":"SGT",
+          "price":38900,
+          "year":2018,
+          "mainPic":"dodge-durango-front.jpeg",
+          "pics":[
+            {"pic1":"dodge-durango-front.jpeg"},
+            {"pic2":"dodge-durango-back.jpeg"},
+            {"pic3":"dodge-durango-interior.jpeg"},
+            {"pic4":"dodge-durango-dashboard.jpeg"}
+        ],
+          "miles":"19,326 miles",
+          "mileage":"21",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"295 hp 3.6L V6",
+          "colorEx":"Granite Clearcoat",
+          "colorIn":"Black",
+          "vin":"1C4RDJDG1JC497486",
+          "location":"Amityville, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },

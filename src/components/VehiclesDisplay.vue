@@ -21,6 +21,7 @@
           {{car.fuel}} - {{car.carCondition}} - {{car.miles}} mi
         </p>
         <p class="vehicles-display-price">{{car.price | currency}}</p>
+        
       </div>
     </div>
   </div>
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-import {mapMutations,mapState, } from 'vuex'
+import {mapMutations,mapState } from 'vuex'
 
 // import {mapMutations,mapState} from '../../public/images/'
 
@@ -41,7 +42,7 @@ import {mapMutations,mapState, } from 'vuex'
 
 
 export default {
-afterCreated (){
+created (){
     this.displayCarsRandomly()
   },
   watch:{
@@ -71,12 +72,13 @@ destroyed(){
     ...mapState([
       'randomCarsDisplay',
       'moreVehicles',
-      'allAvailableModels'
-     
+      'allAvailableModels',
+       
+   
     ]),
 
     // ...mapGetters([
-    //   'allAvailableModels'
+    //    'makes',
     // ])
   }
 
