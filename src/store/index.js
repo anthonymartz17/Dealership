@@ -15,7 +15,7 @@ export default new Vuex.Store({
     fieldContent:null,
     
     carsData:[],
-    allAvailableModels:[],
+    allModels:[],
     moreVehicles:false,
     randomCarsDisplay:[],
     testNums:[],
@@ -181,8 +181,7 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    // broken broken
-    // fisher yates shuffling method
+  
     setCarsData(state,data){
         state.carsData = data
     },
@@ -192,6 +191,15 @@ export default new Vuex.Store({
         })
 
     },
+    // getAllModels(state,getters){ 
+     
+    //   // getters.carsDataReady.forEach(one =>{
+    //   //   one.model.forEach(one =>{
+    //   //    state.allModels.push(one)
+    //   //   })
+    //   // })
+    //   // console.log(state.allModels)
+    // },
 
     displayCarsRandomly(state){
     
@@ -431,10 +439,6 @@ export default new Vuex.Store({
         
         context.commit('setCarsData',data)
         context.commit('setMakes',data)
-        
-        // context.state.carsData.forEach(one =>{
-        //   context.state.make.type.push(one.make)
-        // })
       })
         
 
@@ -444,54 +448,27 @@ export default new Vuex.Store({
       
     },
 
-    getAllModels(context){ 
-      if(context.state.carsData.length !== 0){
-        console.log(context.state.carsData)
-      }
-      context.state.carsData.forEach(one =>{
-        one.model.forEach(one =>{
-          context.state.allAvailableModels.push(one)
-        
-        })
-      })
-      
-    }
 
   },
   modules: {
   },
 
   getters:{
-
-    // makes(state,getters){
-    //   let makes =[]
-    //   getters.carsDataReady.forEach(one =>{
-    //     makes.push(one.make)
-    //   })
-    //   return state.make.type = makes       
-
-    // },
-
     carsDataReady(state){
       return state.carsData 
     },
 
-    allAvailableModels(state){
-      let arr = [];
-      let test = [state.carsData]
-      state.carsData
-      test.forEach(one =>{
+ 
+    allModels(state,getters){ 
+      let allModels=[];
+      getters.carsDataReady.map(one =>{
         one.model.forEach(one =>{
-            arr.push(one)
-          
+          allModels.push(one)
         })
-        arr.push(one.make)
-        
       })
-         return arr
-     
-    }
+      return allModels
+    },
 
-   
+
   }
 })

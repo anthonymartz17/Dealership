@@ -1,16 +1,16 @@
 
 
 <template>
-<!-- working on displaying the correct images and making the more cars button work -->
 <div class="vehicles-container">
     <div :class="['vehicles',{moreCars: !moreVehicles}]">
   <h2 class="vehicles-title">Vehicles</h2>
+  <!-- <div>{{allModels}}</div> -->
   <div class="vehicles-display" 
-  v-for="(car,key) in allAvailableModels"
+  v-for="(car,key) in allModels"
   :key="key"
   
   >
-  <!-- broken  -->
+  
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
         <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {mapMutations,mapState } from 'vuex'
+import {mapMutations,mapState,mapGetters } from 'vuex'
 
 // import {mapMutations,mapState} from '../../public/images/'
 
@@ -42,17 +42,6 @@ import {mapMutations,mapState } from 'vuex'
 
 
 export default {
-created (){
-    this.displayCarsRandomly()
-  },
-  watch:{
-    'this.$store.state.randomCarsDisplay':function(oldVal,newVal){
-      console.log(this.$store.state.randomCarsDisplay)
-      console.log(oldVal + newVal)
-
-    }
-
-  },
 
 destroyed(){
    this.showMoreVehicles
@@ -72,14 +61,14 @@ destroyed(){
     ...mapState([
       'randomCarsDisplay',
       'moreVehicles',
-      'allAvailableModels',
+      
        
    
     ]),
 
-    // ...mapGetters([
-    //    'makes',
-    // ])
+    ...mapGetters([
+       'allModels',
+    ])
   }
 
 

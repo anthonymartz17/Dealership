@@ -24,7 +24,7 @@ export default {
   created(){
   
    this.getCarsData();
-   this.getAllModels();
+  //  this.getAllModels();
    this.getPriceRange();
    this.getYearsRange();
 
@@ -33,13 +33,14 @@ export default {
   methods:{
     ...mapActions([
       'getCarsData',
-      'getAllModels'
+      
       ]),
 
     ...mapMutations([
       'toggleMobileMenu',
       'getPriceRange',
       'getYearsRange',
+      'getAllModels'
      
       
     ])
