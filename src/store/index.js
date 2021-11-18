@@ -191,52 +191,25 @@ export default new Vuex.Store({
         })
 
     },
-    // getAllModels(state,getters){ 
-     
-    //   // getters.carsDataReady.forEach(one =>{
-    //   //   one.model.forEach(one =>{
-    //   //    state.allModels.push(one)
-    //   //   })
-    //   // })
-    //   // console.log(state.allModels)
-    // },
-
-    displayCarsRandomly(state){
-    
-      let arrLength = state.randomCarsDisplay.length,temp,ranNum;
-     if(state.randomCarsDisplay.length !== 0){
-
-       console.log(state.allAvailableModels)
+//  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
+    displayCarsRandomly(state,data){
+     data.forEach(one =>{
+       one.model.forEach(one =>{
+          state.randomCarsDisplay.push(one)
+       })
+     })
+    //  fisher yates modern shuffle
+         let arrLength = state.randomCarsDisplay.length,temp,ranNum;
+      while(arrLength-- > 0){
+       ranNum = Math.round(Math.random() * (arrLength + 1));
+       temp = state.randomCarsDisplay[ranNum];
+       state.randomCarsDisplay[ranNum] = state.randomCarsDisplay[arrLength]
+       state.randomCarsDisplay[arrLength] = temp
       }
 
-      while(--arrLength > 0){
-        ranNum = Math.round(Math.random() * (arrLength + 1))
-        temp = state.randomCarsDisplay[ranNum]
-        state.randomCarsDisplay[ranNum] = state.randomCarsDisplay[arrLength]
-        state.randomCarsDisplay[arrLength] = temp
-
-      }
-     
-
-      // let nums = ['d','c','a','b'];
-      // let length = nums.length -1
-      // let ranNum;
-      // let temp;
- 
-      // while(length-- > 0){
-      //  ranNum = Math.round(Math.random() * (length + 1))
-      //  temp = nums[ranNum]
-      //  nums[ranNum] = nums[length]
-      //  nums[length] = temp
-
-      // }
-      // console.log(nums)
-
-    
- 
         },
       
-        // keeps track of the index of the price from selected to disable prices below this index in the priceTo options
+        // keeps track of the index of the priceFrom property selected, to disable prices below this index in the priceTo options
         disablePricesYears(state,data){
           
           if(data.clickedFieldContent.id == 'priceFrom'){
@@ -431,14 +404,14 @@ export default new Vuex.Store({
 
   actions: {
     
-    getCarsData(context){
+    getCarsData(context,funToCommit){
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
       .then(data => {
         
-        context.commit('setCarsData',data)
-        context.commit('setMakes',data)
+        context.commit(funToCommit,data)
+        
       })
         
 

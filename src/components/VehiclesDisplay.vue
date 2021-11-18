@@ -6,7 +6,7 @@
   <h2 class="vehicles-title">Vehicles</h2>
   <!-- <div>{{allModels}}</div> -->
   <div class="vehicles-display" 
-  v-for="(car,key) in allModels"
+  v-for="(car,key) in randomCarsDisplay"
   :key="key"
   
   >
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import {mapMutations,mapState,mapGetters } from 'vuex'
+import {mapMutations,mapState,mapGetters,mapActions} from 'vuex'
 
 // import {mapMutations,mapState} from '../../public/images/'
 
@@ -42,6 +42,10 @@ import {mapMutations,mapState,mapGetters } from 'vuex'
 
 
 export default {
+  created(){
+    this.getCarsData('displayCarsRandomly');
+
+  },
 
 destroyed(){
    this.showMoreVehicles
@@ -55,7 +59,11 @@ destroyed(){
       'showMoreVehicles',
       'displayCarsRandomly'
      
-    ])
+    ]),
+     ...mapActions([
+      'getCarsData',
+      
+      ]),
   },
   computed:{
     ...mapState([
