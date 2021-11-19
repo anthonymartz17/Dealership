@@ -366,25 +366,68 @@
         }
       ]
     },
-    {
-      "id": 7,
-      "make":"FERRARI",
-      "model":[
-        {"model":"CALIFORNIA"},
-        {"model":"458"}
-      ]
-    },
+  
     {
       "id": 8,
       "make":"FORD",
       "model":[ 
         {
+          "make":"FORD",
           "model":"ESCAPE",
-          "trim":["HYBRID", "LIMITED"]
+          "trim":"Titanium ",
+          "price":39960,
+          "year":2021,
+          "mainPic":"ford-escape-front.jpeg",
+          "pics":[
+            {"pic1":"ford-escape-front.jpeg"},
+            {"pic2":"ford-escape-back.jpeg"},
+            {"pic3":"ford-escape-interior.jpeg"},
+            {"pic4":"ford-escape-dashboard.jpeg"}
+        ],
+          "miles":"0 miles",
+          "mileage":"27",
+          "carType":"SUV",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"2L I4",
+          "colorEx":"Iconic Silver Metallic",
+          "colorIn":"Ebony",
+          "vin":"1FMCU9J95MUB14489",
+          "location":"Red Bank, NJ",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
+          "make":"FORD",
           "model":"EXPLORER",
-          "trim":["LIMITED", "SPORT"]
+          "trim":"Titanium ",
+          "price":20995,
+          "year":2016,
+          "mainPic":"ford-explorer-front.jpeg",
+          "pics":[
+            {"pic1":"ford-explorer-front.jpeg"},
+            {"pic2":"ford-explorer-back.jpeg"},
+            {"pic3":"ford-explorer-interior.jpeg"},
+            {"pic4":"ford-explorer-dashboard.jpeg"}
+        ],
+          "miles":"88,760  miles",
+          "mileage":"21",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"290 hp 3.5L V6",
+          "colorEx":"Gray",
+          "colorIn":"Black",
+          "vin":"1FM5K8D8XGGD08921",
+          "location":"Newark, NJ",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },
@@ -392,7 +435,37 @@
       "id": 9,
       "make":"GMC",
       "model":[
-        {"model":"ACADIA"},
+        {
+          "make":"GMC",
+          "model":"ACADIA",
+          "trim":"Denali ",
+          "price":55585,
+          "year":2021,
+          "mainPic":"gmc-acadia-front.jpeg",
+          "pics":[
+            {"pic1":"gmc-acadia-front.jpeg"},
+            {"pic2":"fgmc-acadia-back.jpeg"},
+            {"pic3":"gmc-acadia-interior.jpeg"},
+            {"pic4":"gmc-acadia-dashboard.jpeg"}
+        ],
+          "miles":"0 miles",
+          "mileage":"22",
+          "carType":"SUV",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"310 hp 3.6L V6",
+          "colorEx":"White",
+          "colorIn":"Black",
+          "vin":"1GKKNXLS9MZ209470",
+          "location":"Long Island City, NY",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
+        },
+
+        
         {"model":"CANYON"}
       ]
     },

@@ -181,6 +181,7 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    
   
     setCarsData(state,data){
         state.carsData = data
@@ -267,10 +268,14 @@ export default new Vuex.Store({
           state.mobileMenuToggler = !state.mobileMenuToggler
         },
         showMoreVehicles(state,e){
+          // if(this.$route.name == 'Vehicles'){
+
+          // }
           if(state.moreVehicles == true){
             state.moreVehicles = false
             e.target.textContent ='+ More vehicles' 
-          }else{
+          }          
+          else{
             state.moreVehicles = true
             e.target.textContent ='- Show Less vehicles'
           }

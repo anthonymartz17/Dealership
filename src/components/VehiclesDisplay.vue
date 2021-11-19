@@ -2,7 +2,7 @@
 
 <template>
 <div class="vehicles-container">
-    <div :class="['vehicles',{moreCars: !moreVehicles}]">
+    <div :class="['vehicles',{moreCars: $route.name == 'Home' && !moreVehicles}]">
   <h2 class="vehicles-title">Vehicles</h2>
   <!-- <div>{{allModels}}</div> -->
   <div class="vehicles-display" 
@@ -26,8 +26,19 @@
     </div>
   </div>
     </div>
-    <div class="btn-search btn" @click="showMoreVehicles($event)">+ More Vehicles</div>
-  
+    <transition 
+     enter-active-class="animate__animated animate__slideInLeft"
+     leave-active-class="animate__animated animate__slideInLeft"
+    >
+    <div 
+     
+      v-if="$route.name == 'Home'"
+      :class="['btn-search btn', {'floating-btn':moreVehicles }]" 
+      @click="showMoreVehicles($event)"
+      >
+          + More Vehicles
+      </div>
+  </transition>
 </div>
 </template>
 
@@ -92,6 +103,18 @@ destroyed(){
   height: 68vh;
   overflow: hidden;
 }
+.floating-btn{
+  position: fixed;
+  top: 75%;
+  right: 0%;
+  width: 15em !important;
+  height: 3em;
+  margin-block: .2em;
+  font: $font-text-bold;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
 .vehicles{
  
   padding: 1em .5em;
@@ -99,8 +122,10 @@ destroyed(){
   
 
   &-title{
-    font:$font-text-bold;
+    font:$font-logo-S;
     border-bottom: 2px solid $lightestDark;
+    padding: .2em;
+    margin-bottom: .5em ;
   }
 
 }

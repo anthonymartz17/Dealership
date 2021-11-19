@@ -1,59 +1,37 @@
 <template>
   <div>
-    <h2>vehicles page</h2>
+   
+    <VehiclesDisplay/>
 
-    <div class="vehicles-display" 
-  v-for="(car,key) in randomCarsDisplay"
-  :key="key"
-  
-  >
-  <p>{{car.mainPic}}</p>
-  
-  <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">
-  </div>
-  <button  @click="makeRandom">random</button>
-  <div>{{test}}</div>
   </div>
 </template>
 
 <script>
-import {mapMutations, mapState} from 'vuex'
+import {mapMutations} from 'vuex'
+import VehiclesDisplay from '../components/VehiclesDisplay.vue'
 
 
 
 
 export default {
 
-  data(){
-    return {
-      test:0,
+  // created(){
 
-      items:[
-        'anny','elianny','elainy','lucy'
-      ]
-     
-    }
+  //   this.showMoreVehicles()
+
+  // },
+
+  components:{
+    VehiclesDisplay,
+
   },
-  computed:{
-    ...mapState([
-      'randomCarsDisplay'
-    ]),
 
-
-    randomOrder(){
-     return this.items.forEach((one) =>{
-        console.log(one.index)
-      })
-    }
- 
-  },
   methods:{
     ...mapMutations([
-      'makeImgRequirement'
+      'makeImgRequirement',
+      
     ]),
-    makeRandom(){
-      this.test = Math.round(Math.random() * this.items.length)
-    }
+
   }
 
 
