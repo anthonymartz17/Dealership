@@ -19,17 +19,18 @@
         <router-link :to="{name:'Advance'}" tag="div">
           <i class="fas fa-search" @click="clearPropsVal"></i>
         </router-link>
-        <div class="sMedia" v-show="!$store.state.desktopView">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-instagram"></i>
-        </div>
+        <SocialMedia v-show="desktopView"/>
     </div>
   </header>
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
+import {mapMutations,mapState} from 'vuex'
+import SocialMedia from './SocialMedia.vue'
 export default {
+  components:{
+    SocialMedia,
+  },
   methods:{
     ...mapMutations([
     'toggleMobileMenu',
@@ -39,7 +40,13 @@ export default {
     ]),
     
     
+    
   },
+  computed:{
+    ...mapState([
+      'deskTopView'
+    ])
+  }
 
 
 }
@@ -70,79 +77,9 @@ export default {
     width: 90%;
   }
 }
- 
-.logo-container{
-  font: $font-logo-S;
-  flex: 1 1 100%;
-  text-align: center;
-  
-  .logo{
-    cursor: pointer;
-    color: $light;
-  }
 
-  .logo-m{
-    color: $primary;
-    border: 1px solid rgba(255, 255, 255, 0.301);
-    padding-inline: .2em;
-    border-radius: 50%;
-  }
-  @include desktop{
-    text-align: left;
-    font: $font-logo-L;
-  }
-   @include tablet{
-    flex: 1 ;
-    font: $font-logo-S;
-  }
-}
 
-.fa-bars{
-  cursor: pointer;
-  @include desktop{
-    display: none;
-  }
-}
 
-.fa-search{
-  @include desktop{
-    display: none;
-  }
-  font-size: 1.5em;
-  cursor: pointer;
-  
-   
-}
-.sMedia{
-
-   display: none;
-  @include desktop{
-    display: flex;
-  }
-  @include tablet{
-    flex: 1 ;
-  }
-  flex: 1 1 100%;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .2em;
-    
-    i{ 
-      border: 1px solid $light;
-      font-size: 1em;
-      width: 1.5em;
-      height: 1.5em;
-      border-radius: 100%;
-      text-align: center;
-      padding-top:.2em ;
-      transition: all .3s ease-in-out;
-      cursor: pointer;
-
-      &:hover{
-        color: $primary;
-      }
-    }
-}
 
 .desktopNav-container{
   display: none;

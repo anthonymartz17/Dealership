@@ -5,6 +5,7 @@
       <AppHeader/>
       <AppMain/>
       <CarSelectionCard /> 
+      <AppFooter/>
     </div>
  
   
@@ -15,7 +16,9 @@ import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
 import AppMain from './components/Main.vue'
+import AppFooter from './components/Footer.vue'
 import MobileMenu from './components/MobileMenu.vue'
+
 import {mapActions,mapState,mapMutations} from 'vuex'
 
 
@@ -53,6 +56,7 @@ export default {
   components:{
     AppHeader,
     AppMain,
+    AppFooter,
     CarSelectionCard,
     MobileMenu,
     AppModal,

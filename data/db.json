@@ -465,8 +465,36 @@
           "titleCheck":"No issues"
         },
 
-        
-        {"model":"CANYON"}
+      
+        {
+          "make":"GMC",
+          "model":"CANYON",
+          "trim":"SLE Crew Cab ",
+          "price":36995,
+          "year":2016,
+          "mainPic":"gmc-canyon-front.jpeg",
+          "pics":[
+            {"pic1":"gmc-canyon-front.jpeg"},
+            {"pic2":"gmc-canyon-back.jpeg"},
+            {"pic3":"gmc-canyon-interior.jpeg"},
+            {"pic4":"gmc-canyon-dashboard.jpeg"}
+        ],
+          "miles":"9,631 miles",
+          "mileage":"22",
+          "carType":"Pickup",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"310 hp 3.6L V6",
+          "colorEx":"Summit White",
+          "colorIn":"JET BLACK",
+          "vin":"1GTG6CE30G1318514",
+          "location":"Nanuet, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
+        }
       ]
     },
     {
@@ -474,16 +502,91 @@
       "make":"HONDA",
       "model":[ 
         {
+          "make":"HONDA",
           "model":"ACCORD",
-          "trim":["EX", "SPORT"]
+          "trim":"EX",
+          "price":28995,
+          "year":2018,
+          "mainPic":"honda-accord-front.jpeg",
+          "pics":[
+            {"pic1":"honda-accord-front.jpeg"},
+            {"pic2":"honda-accord-back.jpeg"},
+            {"pic3":"honda-accord-interior.jpeg"},
+            {"pic4":"honda-accord-dashboard.jpeg"}
+        ],
+          "miles":"16,271 miles",
+          "mileage":"27",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"FWD",
+          "engine":"252 hp 2L I4",
+          "colorEx":"White",
+          "colorIn":"JET BLACK",
+          "vin":"1HGCV2F50JA041612",
+          "location":"Glen Head, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
+          "make":"HONDA",
           "model":"CIVIC",
-          "trim":["HYBRID", "SPORT"]
+          "trim":"HYBRID",
+          "price":10751,
+          "year":2013,
+          "mainPic":"civic-hybrid-front.jpeg",
+          "pics":[
+            {"pic1":"civic-hybrid-front.jpeg"},
+            {"pic2":"civic-hybrid-back.jpeg"},
+            {"pic3":"civic-hybrid-interior.jpeg"},
+            {"pic4":"civic-hybrid-dashboard.jpeg"}
+        ],
+          "miles":"107,952 miles",
+          "mileage":"44",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"HYBRID",
+          "transmission":"Continuously Variable Transmission",
+          "driveTrain":"FWD",
+          "engine":"110 hp 1.5L I4 Hybrid",
+          "colorEx":"Crystal Black Pearl",
+          "colorIn":"Brown (Beige)K",
+          "vin":"19XFB4F24DE000035",
+          "location":"Farmington, NY",
+          "owner":4,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
+          "make":"HONDA",
           "model":"CR-V",
-          "trim":["EX", "LIMITED"]
+          "trim":"EX",
+          "price":30985,
+          "year":2022,
+          "mainPic":"honda-crv-front.jpeg",
+          "pics":[
+            {"pic1":"honda-crv-front.jpeg"},
+            {"pic2":"honda-crv-back.jpeg"},
+            {"pic3":"honda-crv-interior.jpeg"},
+            {"pic4":"honda-crv-dashboard.jpeg"}
+        ],
+          "miles":"3 miles",
+          "mileage":"29",
+          "carType":"SUV",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Continuously Variable Transmission",
+          "driveTrain":"AWD",
+          "engine":"190 hp 1.5L I4",
+          "colorEx":"Gray (Modern Steel Metallic)",
+          "colorIn":"Black",
+          "vin":"2HKRW2H50NH605910",
+          "location":"Nanuet, NY",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
         
       ]

@@ -15,8 +15,7 @@ export default new Vuex.Store({
     fieldContent:null,
     
     carsData:[],
-    allModels:[],
-    moreVehicles:false,
+    // allModels:[],
     randomCarsDisplay:[],
     testNums:[],
 
@@ -76,7 +75,7 @@ export default new Vuex.Store({
          'Sedan',
          'SUV',
          'Van',
-         'Pickup Truck',
+         'Pickup',
          'Convertible',
        ],
        typeSelected:'',
@@ -194,19 +193,22 @@ export default new Vuex.Store({
     },
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
     displayCarsRandomly(state,data){
+      let temporaryArray=[];
      data.forEach(one =>{
        one.model.forEach(one =>{
-          state.randomCarsDisplay.push(one)
+        temporaryArray.push(one)
        })
      })
     //  fisher yates modern shuffle
-         let arrLength = state.randomCarsDisplay.length,temp,ranNum;
+         let arrLength = temporaryArray.length,temp,ranNum;
       while(arrLength-- > 0){
        ranNum = Math.round(Math.random() * (arrLength + 1));
-       temp = state.randomCarsDisplay[ranNum];
-       state.randomCarsDisplay[ranNum] = state.randomCarsDisplay[arrLength]
-       state.randomCarsDisplay[arrLength] = temp
+       temp = temporaryArray[ranNum];
+       temporaryArray[ranNum] = temporaryArray[arrLength]
+       temporaryArray[arrLength] = temp
       }
+
+      state.randomCarsDisplay = temporaryArray
 
         },
       
@@ -267,21 +269,8 @@ export default new Vuex.Store({
         toggleMobileMenu(state){
           state.mobileMenuToggler = !state.mobileMenuToggler
         },
-        showMoreVehicles(state,e){
-          // if(this.$route.name == 'Vehicles'){
-
-          // }
-          if(state.moreVehicles == true){
-            state.moreVehicles = false
-            e.target.textContent ='+ More vehicles' 
-          }          
-          else{
-            state.moreVehicles = true
-            e.target.textContent ='- Show Less vehicles'
-          }
-          
-        },
-        
+       
+            
     // togggles on and off to show the card with the options  of the selected field
     toggleOptionsCard(state,e){
       if(e.target.classList.contains('selected-field-options') || e.target.classList.contains('selected-field-options-card-content') || e.target.classList.contains('search-fields-container-field')){
@@ -437,15 +426,15 @@ export default new Vuex.Store({
     },
 
  
-    allModels(state,getters){ 
-      let allModels=[];
-      getters.carsDataReady.map(one =>{
-        one.model.forEach(one =>{
-          allModels.push(one)
-        })
-      })
-      return allModels
-    },
+    // allModels(state,getters){ 
+    //   let allModels=[];
+    //   getters.carsDataReady.map(one =>{
+    //     one.model.forEach(one =>{
+    //       allModels.push(one)
+    //     })
+    //   })
+    //   return allModels
+    // },
 
 
   }

@@ -2,9 +2,8 @@
 
 <template>
 <div class="vehicles-container">
-    <div :class="['vehicles',{moreCars: $route.name == 'Home' && !moreVehicles}]">
+    <div :class="['vehicles',{moreCars: $route.name == 'Home'}]">
   <h2 class="vehicles-title">Vehicles</h2>
-  <!-- <div>{{allModels}}</div> -->
   <div class="vehicles-display" 
   v-for="(car,key) in randomCarsDisplay"
   :key="key"
@@ -26,49 +25,30 @@
     </div>
   </div>
     </div>
-    <transition 
-     enter-active-class="animate__animated animate__slideInLeft"
-     leave-active-class="animate__animated animate__slideInLeft"
-    >
-    <div 
-     
-      v-if="$route.name == 'Home'"
-      :class="['btn-search btn', {'floating-btn':moreVehicles }]" 
-      @click="showMoreVehicles($event)"
-      >
-          + More Vehicles
+ <router-link :to="{name:'Vehicles'}">
+      <div v-show="$route.name == 'Home'" class="btn-search btn">
+        + More Vehicles
       </div>
-  </transition>
+    </router-link>
 </div>
 </template>
 
 <script>
-import {mapMutations,mapState,mapGetters,mapActions} from 'vuex'
-
-// import {mapMutations,mapState} from '../../public/images/'
-
-
-
+import {mapMutations,mapState,mapActions} from 'vuex'
 
 
 
 export default {
+  
   created(){
     this.getCarsData('displayCarsRandomly');
 
   },
 
-destroyed(){
-   this.showMoreVehicles
-   
-},
-
- 
   methods:{
     
     ...mapMutations([
-      'showMoreVehicles',
-      'displayCarsRandomly'
+      'displayCarsRandomly',
      
     ]),
      ...mapActions([
@@ -79,15 +59,9 @@ destroyed(){
   computed:{
     ...mapState([
       'randomCarsDisplay',
-      'moreVehicles',
-      
+     
        
-   
     ]),
-
-    ...mapGetters([
-       'allModels',
-    ])
   }
 
 
@@ -103,18 +77,7 @@ destroyed(){
   height: 68vh;
   overflow: hidden;
 }
-.floating-btn{
-  position: fixed;
-  top: 75%;
-  right: 0%;
-  width: 15em !important;
-  height: 3em;
-  margin-block: .2em;
-  font: $font-text-bold;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-}
+
 .vehicles{
  
   padding: 1em .5em;
