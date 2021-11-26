@@ -19,17 +19,17 @@
         <router-link :to="{name:'Advance'}" tag="div">
           <i class="fas fa-search" @click="clearPropsVal"></i>
         </router-link>
-        <SocialMedia v-show="desktopView"/>
+        <!-- <SocialMedia class="show-or-Hide"/> -->
     </div>
   </header>
 </template>
 
 <script>
 import {mapMutations,mapState} from 'vuex'
-import SocialMedia from './SocialMedia.vue'
+// import SocialMedia from './SocialMedia.vue'
 export default {
   components:{
-    SocialMedia,
+    // SocialMedia,
   },
   methods:{
     ...mapMutations([
@@ -44,7 +44,7 @@ export default {
   },
   computed:{
     ...mapState([
-      'deskTopView'
+      'desktopView'
     ])
   }
 
@@ -53,6 +53,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// gotta work on displaying the social media when in tablet or desktop view
+// .show-or-hide{
+  
+//   @include tablet{
+//    display: none !important;
+//   }
+// }
 
 .header-container{
   background: $dark;
@@ -60,7 +67,8 @@ export default {
   width: 100%;
   color: $light;
   position: sticky;
-  top: 0;
+  top: -10px;
+  border-bottom: 1px solid $lightestDark;
   
 }
 .header-wrapper{

@@ -2,7 +2,7 @@
 
 <template>
 <div class="vehicles-container">
-    <div :class="['vehicles',{moreCars: $route.name == 'Home'}]">
+    <div :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]">
   <h2 class="vehicles-title">Vehicles</h2>
   <div class="vehicles-display" 
   v-for="(car,key) in randomCarsDisplay"
@@ -17,13 +17,16 @@
       <div class="vehicles-display-description">
         <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
         <p class="vehicles-display-specs">
-          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} mi
+          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
         </p>
         <p class="vehicles-display-price">{{car.price | currency}}</p>
         
       </div>
     </div>
   </div>
+
+
+  
     </div>
  <router-link :to="{name:'Vehicles'}">
       <div v-show="$route.name == 'Home'" class="btn-search btn">
@@ -72,16 +75,16 @@ export default {
 <style lang="scss">
 .vehicles-container{
    background: $light;
+    padding: .5em;
 }
-.moreCars{
-  height: 68vh;
-  overflow: hidden;
+
+.vehicles-height{
+  height: 75vh;
 }
 
 .vehicles{
- 
-  padding: 1em .5em;
   color: $dark;
+  overflow: hidden;
   
 
   &-title{
@@ -89,6 +92,7 @@ export default {
     border-bottom: 2px solid $lightestDark;
     padding: .2em;
     margin-bottom: .5em ;
+ 
   }
 
 }

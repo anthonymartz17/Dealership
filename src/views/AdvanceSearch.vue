@@ -92,6 +92,7 @@ export default {
 .advance-search{
   height: 100%;
   padding-bottom: 3em; 
+  background: $dark;
 
 }
 

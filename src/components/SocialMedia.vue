@@ -34,9 +34,6 @@ export default {
   align-items: flex-end;
   gap: .2em;
   
-  @include desktop{
-  
-  }
   @include tablet{
     flex: 1 ;
   }

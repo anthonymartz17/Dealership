@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 // colors
 
 
@@ -40,8 +41,8 @@ $font-text: normal 300 1em $font-stack;
 
 // search fields 
 .search-fields-container{
-  background: $lightDark;
-  padding: 1em .5em;
+  background: $dark;
+  padding:.5em;
   font-family: $font-stack;
   color: $light;
 

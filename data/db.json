@@ -348,7 +348,7 @@
             {"pic3":"dodge-durango-interior.jpeg"},
             {"pic4":"dodge-durango-dashboard.jpeg"}
         ],
-          "miles":"19,326 miles",
+          "miles":"19,326",
           "mileage":"21",
           "carType":"SUV",
           "carCondition":"Used",
@@ -384,7 +384,7 @@
             {"pic3":"ford-escape-interior.jpeg"},
             {"pic4":"ford-escape-dashboard.jpeg"}
         ],
-          "miles":"0 miles",
+          "miles":"0",
           "mileage":"27",
           "carType":"SUV",
           "carCondition":"New",
@@ -413,7 +413,7 @@
             {"pic3":"ford-explorer-interior.jpeg"},
             {"pic4":"ford-explorer-dashboard.jpeg"}
         ],
-          "miles":"88,760  miles",
+          "miles":"88,760",
           "mileage":"21",
           "carType":"SUV",
           "carCondition":"Used",
@@ -448,7 +448,7 @@
             {"pic3":"gmc-acadia-interior.jpeg"},
             {"pic4":"gmc-acadia-dashboard.jpeg"}
         ],
-          "miles":"0 miles",
+          "miles":"0",
           "mileage":"22",
           "carType":"SUV",
           "carCondition":"New",
@@ -479,7 +479,7 @@
             {"pic3":"gmc-canyon-interior.jpeg"},
             {"pic4":"gmc-canyon-dashboard.jpeg"}
         ],
-          "miles":"9,631 miles",
+          "miles":"9,631",
           "mileage":"22",
           "carType":"Pickup",
           "carCondition":"Used",
@@ -514,7 +514,7 @@
             {"pic3":"honda-accord-interior.jpeg"},
             {"pic4":"honda-accord-dashboard.jpeg"}
         ],
-          "miles":"16,271 miles",
+          "miles":"16,271",
           "mileage":"27",
           "carType":"Sedan",
           "carCondition":"Used",
@@ -543,7 +543,7 @@
             {"pic3":"civic-hybrid-interior.jpeg"},
             {"pic4":"civic-hybrid-dashboard.jpeg"}
         ],
-          "miles":"107,952 miles",
+          "miles":"107,952",
           "mileage":"44",
           "carType":"Sedan",
           "carCondition":"Used",
@@ -572,7 +572,7 @@
             {"pic3":"honda-crv-interior.jpeg"},
             {"pic4":"honda-crv-dashboard.jpeg"}
         ],
-          "miles":"3 miles",
+          "miles":"3",
           "mileage":"29",
           "carType":"SUV",
           "carCondition":"New",
@@ -597,12 +597,63 @@
       "make":"HYUNDAI",
       "model":[ 
         {
-          "model":"SONATA",
-          "trim":["N20", "Y20"]
+          "make":"HYUNDAI",
+          "model":"Sonata",
+          "trim":"N20",
+          "price":15644,
+          "year":2017,
+          "mainPic":"hyundai-sonata-front.jpeg",
+          "pics":[
+            {"pic1":"hyundai-sonata-front.jpeg"},
+            {"pic2":"hyundai-sonata-back.jpeg"},
+            {"pic3":"hyundai-sonata-interior.jpeg"},
+            {"pic4":"hyundai-sonata-dashboard.jpeg"}
+        ],
+          "miles":"72,272",
+          "mileage":"29",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"6-Speed Automatic",
+          "driveTrain":"FWD",
+          "engine":"185 hp 2.4L I4",
+          "colorEx":"Phantom Black",
+          "colorIn":"Gray",
+          "vin":"5NPE24AF4HH566851",
+          "location":"New Rochelle, NY",
+          "owner":2,
+          "accidents":0,
+          "titleCheck":"No issues"
+        
         },
         {
+          "make":"HYUNDAI",
           "model":"TUCSON",
-          "trim":["LIMITED", "SPORT"]
+          "trim":"Blue ",
+          "price":32500,
+          "year":2022,
+          "mainPic":"hyundai-tucson-front.jpeg",
+          "pics":[
+            {"pic1":"hyundai-tucson-front.jpeg"},
+            {"pic2":"hyundai-tucson-back.jpeg"},
+            {"pic3":"hyundai-tucson-interior.jpeg"},
+            {"pic4":"hyundai-tucson-dashboard.jpeg"}
+        ],
+          "miles":"5,483",
+          "mileage":"29",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"185 hp 2.4L I4",
+          "colorEx":"Amazon Gray",
+          "colorIn":"Black",
+          "vin":"KM8JBCA15NU023020",
+          "location":"Olathe, KS",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
        
       ]
@@ -613,11 +664,63 @@
       "make":"JEEP",
       "model":[ 
         {
+          "make":"JEEP",
           "model":"GRAND CHEROKEE",
-          "trim":["CRD", "LAREDO"]
+          "trim":"Blue",
+          "price":45745,
+          "year":2021,
+          "mainPic":"jeep-granche-front.jpeg",
+          "pics":[
+            {"pic1":"jeep-granche-front.jpeg"},
+            {"pic2":"jeep-granche-back.jpeg"},
+            {"pic3":"jeep-granche-interior.jpeg"},
+            {"pic4":"jeep-granche-dashboard.jpeg"}
+        ],
+          "miles":"0",
+          "mileage":"21",
+          "carType":"SUV",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"295 hp 3.6L V6",
+          "colorEx":"Diamond Black Crystal Pearl-Coat Paint",
+          "colorIn":"Black",
+          "vin":"1C4RJFBG8MC841991",
+          "location":"Levittown, NY",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
+          
         },
         {
-          "model":"LIBERTY"
+          "make":"JEEP",
+          "model":"Liberty",
+          "trim":"70th Anniversary Sport",
+          "price":9900,
+          "year":2011,
+          "mainPic":"jeep-liberty-front.jpeg",
+          "pics":[
+            {"pic1":"jeep-liberty-front.jpeg"},
+            {"pic2":"jeep-liberty-back.jpeg"},
+            {"pic3":"jeep-liberty-interior.jpeg"},
+            {"pic4":"jeep-liberty-dashboard.jpeg"}
+        ],
+          "miles":"118,259",
+          "mileage":"18",
+          "carType":"Midsize SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"210 hp 3.7L V6",
+          "colorEx":"Brilliant Black Crystal Pearlcoat",
+          "colorIn":"Dark Slate Gray Interior",
+          "vin":"1J4PN2GK4BW558429",
+          "location":"Hazlet, NJ",
+          "owner":2,
+          "accidents":1,
+          "titleCheck":"No issues"
         }
       ]
     },
@@ -626,12 +729,62 @@
       "make":"KIA",
       "model":[ 
         {
+          "make":"KIA",
           "model":"FORTE",
-          "trim":["HATCHBACK", "EX"]
+          "trim":"S",
+          "price":19100,
+          "year":2019,
+          "mainPic":"kia-forte-front.jpeg",
+          "pics":[
+            {"pic1":"kia-forte-front.jpeg"},
+            {"pic2":"kia-forte-back.jpeg"},
+            {"pic3":"kia-forte-interior.jpeg"},
+            {"pic4":"kia-forte-dashboard.jpeg"}
+        ],
+          "miles":"28,358",
+          "mileage":"40",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"FWD",
+          "engine":"147 hp 2L I4",
+          "colorEx":"Deep Sea Blue",
+          "colorIn":"Black",
+          "vin":"3KPF34AD3KE016696",
+          "location":"Hamden, CT",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues" 
         },
         {
+          "make":"KIA",
           "model":"SORENTO",
-          "trim":["EX", "LX"]
+          "trim":"S",
+          "price":19100,
+          "year":2019,
+          "mainPic":"kia-sorento-front.jpeg",
+          "pics":[
+            {"pic1":"kia-sorento-front.jpeg"},
+            {"pic2":"kia-sorento-back.jpeg"},
+            {"pic3":"kia-sorento-interior.jpeg"},
+            {"pic4":"kia-sorento-dashboard.jpeg"}
+        ],
+          "miles":"39,350",
+          "mileage":"21",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"8-Speed Automatic",
+          "driveTrain":"AWD",
+          "engine":"290 hp 3.3L V6",
+          "colorEx":"Gray (Platinum Graphite)",
+          "colorIn":"Satin Black",
+          "vin":"5XYPHDA51KG464436",
+          "location":"Little Ferry, NJ",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },

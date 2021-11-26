@@ -7,7 +7,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     // Global
-    desktopView:false,
     searchMobileModal:false,
     modalToggler:false,
     optionsCardToggler:false,
@@ -180,6 +179,7 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+  
     
   
     setCarsData(state,data){

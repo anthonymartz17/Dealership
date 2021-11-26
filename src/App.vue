@@ -25,7 +25,7 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 
 export default {
   created(){
-  
+ 
    this.getCarsData('setCarsData');
    this.getCarsData('setMakes');
    this.getPriceRange();
@@ -43,7 +43,8 @@ export default {
       'toggleMobileMenu',
       'getPriceRange',
       'getYearsRange',
-      'getAllModels'
+      'getAllModels',
+      'detectResize'
      
       
     ])
@@ -82,7 +83,7 @@ export default {
   background:$lightestDark;
   min-height: 100%;
   min-width: 22.5em;
-  overflow: auto;
+  // overflow: auto;
   position: relative;
  
  

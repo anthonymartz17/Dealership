@@ -44,10 +44,10 @@ export default {
   }
   
   .btn-advanceSearch{
-    background: $dark;
+    
     color: $primary;
     transition: all .3s ease-in-out;
-    border: 1px solid transparent;
+    border: 1px solid $lightestDark;
       &:hover{
       color: $light;
       border: 1px solid $light;
