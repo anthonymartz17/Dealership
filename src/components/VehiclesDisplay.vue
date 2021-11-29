@@ -2,12 +2,15 @@
 
 <template>
 <div class="vehicles-container">
-    <div :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]">
+    <div 
+    :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
+    >
   <h2 class="vehicles-title">Vehicles</h2>
+  <router-link :to="{name:'CarToView'}">
   <div class="vehicles-display" 
   v-for="(car,key) in randomCarsDisplay"
   :key="key"
-  
+  @click="selectCarToView(car)"
   >
   
     <div class="vehicles-display-car">
@@ -24,10 +27,9 @@
       </div>
     </div>
   </div>
-
-
-  
+  </router-link>
     </div>
+
  <router-link :to="{name:'Vehicles'}">
       <div v-show="$route.name == 'Home'" class="btn-search btn">
         + More Vehicles
@@ -52,6 +54,7 @@ export default {
     
     ...mapMutations([
       'displayCarsRandomly',
+      'selectCarToView'
      
     ]),
      ...mapActions([
@@ -75,7 +78,7 @@ export default {
 <style lang="scss">
 .vehicles-container{
    background: $light;
-    padding: .5em;
+   padding: .5em;
 }
 
 .vehicles-height{
@@ -135,7 +138,6 @@ export default {
      font:$font-text-bold;
     }
    
-
   }
   
 

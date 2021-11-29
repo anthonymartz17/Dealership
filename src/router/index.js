@@ -5,6 +5,7 @@ import Vehicle from '../views/Vehicle.vue'
 import Electric from '../views/Electric.vue'
 import Contact from '../views/Contact.vue'
 import Advance from '../views/AdvanceSearch.vue'
+import CarToView from '../views/CarToView.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/advance',
     name: 'Advance',
     component: Advance
+  },
+  {
+    path: '/carToView',
+    name: 'CarToView',
+    component: CarToView 
   },
   
  

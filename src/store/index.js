@@ -17,6 +17,8 @@ export default new Vuex.Store({
     // allModels:[],
     randomCarsDisplay:[],
     testNums:[],
+    // receives the data of the clicked car
+    carToView:{},
 
     //Search mobile component
 
@@ -179,9 +181,11 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-  
+    // brings the data of the clicked car and assigns it to the placeholder prop carToView.
+    selectCarToView(state,carToView){
+      state.carToView = carToView
+    }, 
     
-  
     setCarsData(state,data){
         state.carsData = data
     },

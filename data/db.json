@@ -793,12 +793,62 @@
       "make":"LEXUS",
       "model":[ 
         {
-          "model":"ES",
-          "trim":["350"]
+          "make":"LEXUS",
+          "model":"NX",
+          "trim":"300",
+          "price":35995,
+          "year":2019,
+          "mainPic":"lexus-nx-front.jpeg",
+          "pics":[
+            {"pic1":"lexus-nx-front.jpeg"},
+            {"pic2":"lexus-nx-back.jpeg"},
+            {"pic3":"lexus-nx-interior.jpeg"},
+            {"pic4":"lexus-nx-dashboard.jpeg"}
+        ],
+          "miles":"33,153",
+          "mileage":"25",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"6-Speed Automatic",
+          "driveTrain":"AWD",
+          "engine":"235 hp 2L I4",
+          "colorEx":"Gray (Platinum Graphite)",
+          "colorIn":"Satin Black",
+          "vin":"JTJBARBZ6K2192339",
+          "location":"Totowa, NJ",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
-          "model":"GS",
-          "trim":["F-SPORT"]
+          "make":"LEXUS",
+          "model":"UX",
+          "trim":"200",
+          "price":36061,
+          "year":2021,
+          "mainPic":"lexus-ux-front.jpeg",
+          "pics":[
+            {"pic1":"lexus-ux-front.jpeg"},
+            {"pic2":"lexus-ux-back.jpeg"},
+            {"pic3":"lexus-ux-interior.jpeg"},
+            {"pic4":"lexus-ux-dashboard.jpeg"}
+        ],
+          "miles":"9",
+          "mileage":"33",
+          "carType":"SUV",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"FWD",
+          "engine":"169 hp 2L I4",
+          "colorEx":"Nori Green Pearl",
+          "colorIn":"Birch NuLuxe® with Black dash",
+          "vin":"JTHX3JBH5M2045166",
+          "location":"Ramsey, NJ",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },
@@ -807,8 +857,33 @@
       "make":"MAZDA",
       "model":[ 
         {
-          "model":"DEMIO",
-          "trim":["SPORT"]
+          "make":"MAZDA",
+          "model":"MAZDA3",
+          "trim":"Touring",
+          "price":21500,
+          "year":2018,
+          "mainPic":"mazda-mazda3-front.jpeg",
+          "pics":[
+            {"pic1":"mazda-mazda3-front.jpeg"},
+            {"pic2":"mazda-mazda3-back.jpeg"},
+            {"pic3":"mazda-mazda3-interior.jpeg"},
+            {"pic4":"mazda-mazda3-dashboard.jpeg"}
+        ],
+          "miles":"22,751",
+          "mileage":"31",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"6-Speed Automatic",
+          "driveTrain":"FWD",
+          "engine":"184 hp 2.5L I4",
+          "colorEx":"Deep Crystal Blue Mica",
+          "colorIn":"Black",
+          "vin":"3MZBN1V35JM261851",
+          "location":"Hamden, CT",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
           "model":"CX-9",
