@@ -143,6 +143,17 @@ export default new Vuex.Store({
       ],
       typeSelected:'',
     },
+    specsIcons:[
+    '../assets/icons/mileage.svg',
+    '../assets/icons/owner.svg',
+    '../assets/icons/transmition.svg',
+    '../assets/icons/drivetrain.svg',
+    '../assets/icons/gas.svg',
+    '../assets/icons/engine.svg',
+    '../assets/icons/mpg.svg',
+    '../assets/icons/excolor.svg',
+    '../assets/icons/incolor.svg',
+    ],
     clickedFieldContent:{},
 
     desktopNav:[
@@ -183,7 +194,7 @@ export default new Vuex.Store({
   mutations: {
     // brings the data of the clicked car and assigns it to the placeholder prop carToView.
     selectCarToView(state,carToView){
-      state.carToView = carToView
+      state.carToView = [carToView]
     }, 
     
     setCarsData(state,data){

@@ -886,8 +886,33 @@
           "titleCheck":"No issues"
         },
         {
+          "make":"MAZDA",
           "model":"CX-9",
-          "trim":["AWD LIMITED", "SPORT"]
+          "trim":"Touring",
+          "price":30900,
+          "year":2019,
+          "mainPic":"mazda-cx9-front.jpeg",
+          "pics":[
+            {"pic1":"mazda-cx9-front.jpeg"},
+            {"pic2":"mazda-cx9-back.jpeg"},
+            {"pic3":"mazda-cx9-interior.jpeg"},
+            {"pic4":"mazda-cx9-dashboard.jpeg"}
+        ],
+          "miles":"48,057",
+          "mileage":"23",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"6-Speed Automatic",
+          "driveTrain":"AWD",
+          "engine":"250 hp 2.5L I4",
+          "colorEx":"nowflake White Pearl Mica",
+          "colorIn":"Black",
+          "vin":"JM3TCBCY0K0301332",
+          "location":"Rahway, NJ",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },
@@ -896,7 +921,33 @@
       "make":"MERCEDES-BENZ",
       "model":[ 
         {
-          "model":"300 SD"
+          "make":"MERCEDES-BENZ",
+          "model":"CLA-Class",
+          "trim":"CLA 250",
+          "price":28998,
+          "year":2018,
+          "mainPic":"mercedes-cla-front.jpeg",
+          "pics":[
+            {"pic1":"mercedes-cla-front.jpeg"},
+            {"pic2":"mercedes-cla-back.jpeg"},
+            {"pic3":"mercedes-cla-interior.jpeg"},
+            {"pic4":"mercedes-cla-dashboard.jpeg"}
+        ],
+          "miles":"44,496",
+          "mileage":"26",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"7-Speed Automatic",
+          "driveTrain":"AWD",
+          "engine":"208 hp 2L I4",
+          "colorEx":"Cirrus White",
+          "colorIn":"Black",
+          "vin":"WDDSJ4GB4JN566998",
+          "location":"Nanuet, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
           "model":"CLASE CLK",

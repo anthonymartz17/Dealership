@@ -1,13 +1,14 @@
 <template>
   <div class="car-container">
-    <div class="car">
-      <h2 class="car-title">honda accord</h2>
+    <div class="car" v-for="(car,key) in carToView" :key="key">
+      <h2 class="car-title">{{car.year}} {{car.make}} {{car.model}}</h2>
       <div class="car-info">
-        <div class="car-info-children">
-         <img class="icons" src="../assets/icons/mileage.svg" alt="">
-          <p>12345</p>
+          <img class="icons" src="../assets/icons/owner.svg" alt="">
+        <div class="car-info-children" v-for="(icon,key) in specsIcons" :key="key">
+         <img class="icons" :src="require(icon)" alt="">
+          <p></p>
         </div>
-        <div class="car-info-children">
+        <!-- <div class="car-info-children">
           <img class="icons" src="../assets/icons/owner.svg" alt="">
           <p>Owner</p>
         </div>
@@ -38,7 +39,7 @@
         <div class="car-info-children">
           <img class="icons" src="../assets/icons/incolor.svg" alt="">
           <p>white</p>
-        </div>
+        </div> -->
       </div>
       <div class="car-imgages">
         
@@ -53,9 +54,12 @@
 <script>
 import {mapState} from 'vuex';
 export default {
-  ...mapState([
-    'carToView'
+ computed:{
+    ...mapState([
+    'carToView',
+    'specsIcons'
   ])
+ }
 
 }
 </script>
