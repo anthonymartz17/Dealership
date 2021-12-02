@@ -2,49 +2,25 @@
   <div class="car-container">
     <div class="car" v-for="(car,key) in carToView" :key="key">
       <h2 class="car-title">{{car.year}} {{car.make}} {{car.model}}</h2>
+      <p class="bold-title-red">{{car.price|currency}}</p>
       <div class="car-info">
-          <img class="icons" src="../assets/icons/owner.svg" alt="">
         <div class="car-info-children" v-for="(icon,key) in specsIcons" :key="key">
-         <img class="icons" :src="require(icon)" alt="">
-          <p></p>
+         <img class="icons" :src="`/images/icons/${icon.icon}`" alt="">
+          <p class="specs">{{icon.iconInfo}}
+            <span class="specs" v-if="icon.icon == 'mpg.svg'">mpg</span>
+            <span class="specs" v-if="icon.icon == 'miles.svg'">miles</span>
+          </p> 
+          
         </div>
-        <!-- <div class="car-info-children">
-          <img class="icons" src="../assets/icons/owner.svg" alt="">
-          <p>Owner</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/transmition.svg" alt="">
-          <p>automatic</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/drivetrain.svg" alt="">
-          <p>AWD</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/gas.svg" alt="">
-          <p>Gasoline</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/engine.svg" alt="">
-          <p>190 hp 2.4L I4</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/mpg.svg" alt="">
-          <p>32mpg</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/excolor.svg" alt="">
-          <p>black</p>
-        </div>
-        <div class="car-info-children">
-          <img class="icons" src="../assets/icons/incolor.svg" alt="">
-          <p>white</p>
-        </div> -->
       </div>
       <div class="car-imgages">
-        
+        <div class="vehicles-display-img" v-for="(img,key) in car.pics" :key="key">
+        <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
       </div>
-      <div class="car-specs"></div>
+      </div>
+      <div class="car-specs">
+        <p class="bold-title-red">Vehicle Details</p>
+      </div>
       <div class="car-comments"></div>
       <div class="car-seller"></div>
     </div>
@@ -67,6 +43,13 @@ export default {
 <style lang="scss">
 .icons{
   width: 40px;
+}
+.specs{
+   font:$font-text;
+}
+.bold-title-red{
+    font:$font-logo-S;
+    color: $primary;
 }
 .car-info{
   display: grid;

@@ -143,17 +143,7 @@ export default new Vuex.Store({
       ],
       typeSelected:'',
     },
-    specsIcons:[
-    '../assets/icons/mileage.svg',
-    '../assets/icons/owner.svg',
-    '../assets/icons/transmition.svg',
-    '../assets/icons/drivetrain.svg',
-    '../assets/icons/gas.svg',
-    '../assets/icons/engine.svg',
-    '../assets/icons/mpg.svg',
-    '../assets/icons/excolor.svg',
-    '../assets/icons/incolor.svg',
-    ],
+    specsIcons:[],
     clickedFieldContent:{},
 
     desktopNav:[
@@ -193,8 +183,20 @@ export default new Vuex.Store({
   },
   mutations: {
     // brings the data of the clicked car and assigns it to the placeholder prop carToView.
+    // assigns the dynamic info of the carToView to each corresponding icon
     selectCarToView(state,carToView){
       state.carToView = [carToView]
+      state.specsIcons = [
+        {icon:'miles.svg', iconInfo: carToView.miles},
+        {icon:'transmission.svg', iconInfo: carToView.transmission},
+        {icon:'drivetrain.svg', iconInfo: carToView.driveTrain},
+        {icon:'engine.svg', iconInfo: carToView.engine},
+        {icon:'gas.svg', iconInfo: carToView.fuel},
+        {icon:'mpg.svg', iconInfo: carToView.mileage},
+        {icon:'excolor.svg', iconInfo: carToView.colorEx},
+        {icon:'incolor.svg', iconInfo: carToView.colorIn},
+        {icon:'owner.svg', iconInfo: carToView.owner},
+      ]
     }, 
     
     setCarsData(state,data){

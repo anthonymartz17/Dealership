@@ -14,10 +14,10 @@
           "year":2018,
           "mainPic":"acura-mdx-front.jpeg",
           "pics":[
-            {"pic1":"acura-mdx-front.jpeg"},
-            {"pic2":"acura-mdx-back.jpeg"},
-            {"pic3":"acura-mdx-interior.jpeg"},
-            {"pic4":"acura-mdx-dashboard.jpeg"}
+            "acura-mdx-front.jpeg",
+            "acura-mdx-back.jpeg",
+            "acura-mdx-interior.jpeg",
+            "acura-mdx-dashboard.jpeg"
         ],
           "miles":"76,235",
           "mileage":"22",
@@ -51,10 +51,10 @@
           "year":2018,
           "mainPic":"audi-a3-front.jpeg",
           "pics":[
-            {"pic1":"audi-a3-front.jpeg"},
-            {"pic2":"audi-a3-back.jpeg"},
-            {"pic3":"audi-a3-interior.jpeg"},
-            {"pic4":"audi-a3-dashboard.jpeg"}
+            "audi-a3-front.jpeg",
+            "audi-a3-back.jpeg",
+            "audi-a3-interior.jpeg",
+            "audi-a3-dashboard.jpeg"
         ],
           "miles":"25,465",
           "mileage":"25",
@@ -81,10 +81,10 @@
         "year":2014,
         "mainPic":"audi-a4-front.jpeg",
         "pics":[
-          {"pic1":"audi-a4-front.jpeg"},
-          {"pic2":"audi-a4-back.jpeg"},
-          {"pic3":"audi-a4-interior.jpeg"},
-          {"pic4":"audi-a4-dashboard.jpeg"}
+"audi-a4-front.jpeg",
+"audi-a4-back.jpeg",
+"audi-a4-interior.jpeg",
+"audi-a4-dashboard.jpeg"
       ],
         "miles":"134,970",
         "mileage":"25",
@@ -117,10 +117,10 @@
           "year":2021,
           "mainPic":"bmw-2series-front.jpeg",
           "pics":[
-            {"pic1":"bmw-2series-front.jpeg"},
-            {"pic2":"bmw-2series-back.jpeg"},
-            {"pic3":"bmw-2series-interior.jpeg"},
-            {"pic4":"bmw-2series-dashboard.jpeg"}
+            "bmw-2series-front.jpeg",
+            "bmw-2series-back.jpeg",
+            "bmw-2series-interior.jpeg",
+            "bmw-2series-dashboard.jpeg"
         ],
           "miles":"5,134",
           "mileage":"28",
@@ -146,10 +146,10 @@
           "year":2021,
           "mainPic":"bmw-x3-front.jpeg",
           "pics":[
-            {"pic1":"bmw-x3-front.jpeg"},
-            {"pic2":"bmw-x3-back.jpeg"},
-            {"pic3":"bmw-x3-interior.jpeg"},
-            {"pic4":"bmw-x3-dashboard.jpeg"}
+            "bmw-x3-front.jpeg",
+            "bmw-x3-back.jpeg",
+            "bmw-x3-interior.jpeg",
+            "bmw-x3-dashboard.jpeg"
         ],
           "miles":"10",
           "mileage":"26",
@@ -181,10 +181,10 @@
           "year":2018,
           "mainPic":"cadillac-esv-front.jpeg",
           "pics":[
-            {"pic1":"cadillac-esv-front.jpeg"},
-            {"pic2":"cadillac-esv-back.jpeg"},
-            {"pic3":"cadillac-esv-interior.jpeg"},
-            {"pic4":"cadillac-esv-dashboard.jpeg"}
+            "cadillac-esv-front.jpeg",
+            "cadillac-esv-back.jpeg",
+            "cadillac-esv-interior.jpeg",
+            "cadillac-esv-dashboard.jpeg"
         ],
           "miles":"33,911",
           "mileage":"17",
@@ -211,10 +211,10 @@
           "year":2018,
           "mainPic":"cadillac-ats-front.jpeg",
           "pics":[
-            {"pic1":"cadillac-ats-front.jpeg"},
-            {"pic2":"cadillac-ats-back.jpeg"},
-            {"pic3":"cadillac-ats-interior.jpeg"},
-            {"pic4":"cadillac-ats-dashboard.jpeg"}
+            "cadillac-ats-front.jpeg",
+            "cadillac-ats-back.jpeg",
+            "cadillac-ats-interior.jpeg",
+            "cadillac-ats-dashboard.jpeg"
         ],
           "miles":"44,507",
           "mileage":"26",
@@ -247,10 +247,10 @@
           "year":2019,
           "mainPic":"tahoe-lt-front.jpeg",
           "pics":[
-            {"pic1":"tahoe-lt-front.jpeg"},
-            {"pic2":"tahoe-lt-back.jpeg"},
-            {"pic3":"tahoe-lt-interior.jpeg"},
-            {"pic4":"tahoe-lt-dashboard.jpeg"}
+            "tahoe-lt-front.jpeg",
+            "tahoe-lt-back.jpeg",
+            "tahoe-lt-interior.jpeg",
+            "tahoe-lt-dashboard.jpeg"
         ],
           "miles":"23,066",
           "mileage":"20",
@@ -278,10 +278,10 @@
           "year":2018,
           "mainPic":"traverse-lt-front.jpeg",
           "pics":[
-            {"pic1":"traverse-lt-front.jpeg"},
-            {"pic2":"traverse-lt-back.jpeg"},
-            {"pic3":"traverse-lt-interior.jpeg"},
-            {"pic4":"traverse-lt-dashboard.jpeg"}
+            "traverse-lt-front",
+            "traverse-lt-back",
+            "traverse-lt-interior",
+            "traverse-lt-dashboard"
         ],
           "miles":"39,876",
           "mileage":"21",
@@ -314,10 +314,10 @@
           "year":2014,
           "mainPic":"dodge-avenger-front.jpeg",
           "pics":[
-            {"pic1":"dodge-avenger-front.jpeg"},
-            {"pic2":"dodge-avenger-back.jpeg"},
-            {"pic3":"dodge-avenger-interior.jpeg"},
-            {"pic4":"dodge-avenger-dashboard.jpeg"}
+            "dodge-avenger-front.jpeg",
+            "dodge-avenger-back.jpeg",
+            "dodge-avenger-interior.jpeg",
+            "dodge-avenger-dashboard.jpeg"
         ],
           "miles":"82,658",
           "mileage":"25",
@@ -343,10 +343,10 @@
           "year":2018,
           "mainPic":"dodge-durango-front.jpeg",
           "pics":[
-            {"pic1":"dodge-durango-front.jpeg"},
-            {"pic2":"dodge-durango-back.jpeg"},
-            {"pic3":"dodge-durango-interior.jpeg"},
-            {"pic4":"dodge-durango-dashboard.jpeg"}
+            "dodge-durango-front.jpeg",
+            "dodge-durango-back.jpeg",
+            "dodge-durango-interior.jpeg",
+            "dodge-durango-dashboard.jpeg"
         ],
           "miles":"19,326",
           "mileage":"21",
@@ -379,10 +379,10 @@
           "year":2021,
           "mainPic":"ford-escape-front.jpeg",
           "pics":[
-            {"pic1":"ford-escape-front.jpeg"},
-            {"pic2":"ford-escape-back.jpeg"},
-            {"pic3":"ford-escape-interior.jpeg"},
-            {"pic4":"ford-escape-dashboard.jpeg"}
+            "ford-escape-front.jpeg",
+            "ford-escape-back.jpeg",
+            "ford-escape-interior.jpeg",
+            "ford-escape-dashboard.jpeg"
         ],
           "miles":"0",
           "mileage":"27",
@@ -408,10 +408,10 @@
           "year":2016,
           "mainPic":"ford-explorer-front.jpeg",
           "pics":[
-            {"pic1":"ford-explorer-front.jpeg"},
-            {"pic2":"ford-explorer-back.jpeg"},
-            {"pic3":"ford-explorer-interior.jpeg"},
-            {"pic4":"ford-explorer-dashboard.jpeg"}
+            "ford-explorer-front.jpeg",
+            "ford-explorer-back.jpeg",
+            "ford-explorer-interior.jpeg",
+            "ford-explorer-dashboard.jpeg"
         ],
           "miles":"88,760",
           "mileage":"21",
@@ -443,10 +443,10 @@
           "year":2021,
           "mainPic":"gmc-acadia-front.jpeg",
           "pics":[
-            {"pic1":"gmc-acadia-front.jpeg"},
-            {"pic2":"fgmc-acadia-back.jpeg"},
-            {"pic3":"gmc-acadia-interior.jpeg"},
-            {"pic4":"gmc-acadia-dashboard.jpeg"}
+            "gmc-acadia-front.jpeg",
+            "fgmc-acadia-back.jpeg",
+            "gmc-acadia-interior.jpeg",
+            "gmc-acadia-dashboard.jpeg"
         ],
           "miles":"0",
           "mileage":"22",
@@ -474,10 +474,10 @@
           "year":2016,
           "mainPic":"gmc-canyon-front.jpeg",
           "pics":[
-            {"pic1":"gmc-canyon-front.jpeg"},
-            {"pic2":"gmc-canyon-back.jpeg"},
-            {"pic3":"gmc-canyon-interior.jpeg"},
-            {"pic4":"gmc-canyon-dashboard.jpeg"}
+            "gmc-canyon-front.jpeg",
+            "gmc-canyon-back.jpeg",
+            "gmc-canyon-interior.jpeg",
+            "gmc-canyon-dashboard.jpeg"
         ],
           "miles":"9,631",
           "mileage":"22",
@@ -509,10 +509,10 @@
           "year":2018,
           "mainPic":"honda-accord-front.jpeg",
           "pics":[
-            {"pic1":"honda-accord-front.jpeg"},
-            {"pic2":"honda-accord-back.jpeg"},
-            {"pic3":"honda-accord-interior.jpeg"},
-            {"pic4":"honda-accord-dashboard.jpeg"}
+            "honda-accord-front.jpeg",
+            "honda-accord-back.jpeg",
+            "honda-accord-interior.jpeg",
+            "honda-accord-dashboard.jpeg"
         ],
           "miles":"16,271",
           "mileage":"27",
@@ -538,10 +538,10 @@
           "year":2013,
           "mainPic":"civic-hybrid-front.jpeg",
           "pics":[
-            {"pic1":"civic-hybrid-front.jpeg"},
-            {"pic2":"civic-hybrid-back.jpeg"},
-            {"pic3":"civic-hybrid-interior.jpeg"},
-            {"pic4":"civic-hybrid-dashboard.jpeg"}
+            "civic-hybrid-front.jpeg",
+            "civic-hybrid-back.jpeg",
+            "civic-hybrid-interior.jpeg",
+            "civic-hybrid-dashboard.jpeg"
         ],
           "miles":"107,952",
           "mileage":"44",
@@ -567,10 +567,10 @@
           "year":2022,
           "mainPic":"honda-crv-front.jpeg",
           "pics":[
-            {"pic1":"honda-crv-front.jpeg"},
-            {"pic2":"honda-crv-back.jpeg"},
-            {"pic3":"honda-crv-interior.jpeg"},
-            {"pic4":"honda-crv-dashboard.jpeg"}
+            "honda-crv-front.jpeg",
+            "honda-crv-back.jpeg",
+            "honda-crv-interior.jpeg",
+            "honda-crv-dashboard.jpeg"
         ],
           "miles":"3",
           "mileage":"29",
@@ -604,10 +604,10 @@
           "year":2017,
           "mainPic":"hyundai-sonata-front.jpeg",
           "pics":[
-            {"pic1":"hyundai-sonata-front.jpeg"},
-            {"pic2":"hyundai-sonata-back.jpeg"},
-            {"pic3":"hyundai-sonata-interior.jpeg"},
-            {"pic4":"hyundai-sonata-dashboard.jpeg"}
+            "hyundai-sonata-front.jpeg",
+            "hyundai-sonata-back.jpeg",
+            "hyundai-sonata-interior.jpeg",
+            "hyundai-sonata-dashboard.jpeg"
         ],
           "miles":"72,272",
           "mileage":"29",
@@ -634,10 +634,10 @@
           "year":2022,
           "mainPic":"hyundai-tucson-front.jpeg",
           "pics":[
-            {"pic1":"hyundai-tucson-front.jpeg"},
-            {"pic2":"hyundai-tucson-back.jpeg"},
-            {"pic3":"hyundai-tucson-interior.jpeg"},
-            {"pic4":"hyundai-tucson-dashboard.jpeg"}
+            "hyundai-tucson-front.jpeg",
+            "hyundai-tucson-back.jpeg",
+            "hyundai-tucson-interior.jpeg",
+            "hyundai-tucson-dashboard.jpeg"
         ],
           "miles":"5,483",
           "mileage":"29",
@@ -671,10 +671,10 @@
           "year":2021,
           "mainPic":"jeep-granche-front.jpeg",
           "pics":[
-            {"pic1":"jeep-granche-front.jpeg"},
-            {"pic2":"jeep-granche-back.jpeg"},
-            {"pic3":"jeep-granche-interior.jpeg"},
-            {"pic4":"jeep-granche-dashboard.jpeg"}
+            "jeep-granche-front.jpeg",
+            "jeep-granche-back.jpeg",
+            "jeep-granche-interior.jpeg",
+            "jeep-granche-dashboard.jpeg"
         ],
           "miles":"0",
           "mileage":"21",
@@ -701,10 +701,10 @@
           "year":2011,
           "mainPic":"jeep-liberty-front.jpeg",
           "pics":[
-            {"pic1":"jeep-liberty-front.jpeg"},
-            {"pic2":"jeep-liberty-back.jpeg"},
-            {"pic3":"jeep-liberty-interior.jpeg"},
-            {"pic4":"jeep-liberty-dashboard.jpeg"}
+            "jeep-liberty-front.jpeg",
+            "jeep-liberty-back.jpeg",
+            "jeep-liberty-interior.jpeg",
+            "jeep-liberty-dashboard.jpeg"
         ],
           "miles":"118,259",
           "mileage":"18",
@@ -736,10 +736,10 @@
           "year":2019,
           "mainPic":"kia-forte-front.jpeg",
           "pics":[
-            {"pic1":"kia-forte-front.jpeg"},
-            {"pic2":"kia-forte-back.jpeg"},
-            {"pic3":"kia-forte-interior.jpeg"},
-            {"pic4":"kia-forte-dashboard.jpeg"}
+            "kia-forte-front.jpeg",
+            "kia-forte-back.jpeg",
+            "kia-forte-interior.jpeg",
+            "kia-forte-dashboard.jpeg"
         ],
           "miles":"28,358",
           "mileage":"40",
@@ -765,10 +765,10 @@
           "year":2019,
           "mainPic":"kia-sorento-front.jpeg",
           "pics":[
-            {"pic1":"kia-sorento-front.jpeg"},
-            {"pic2":"kia-sorento-back.jpeg"},
-            {"pic3":"kia-sorento-interior.jpeg"},
-            {"pic4":"kia-sorento-dashboard.jpeg"}
+            "kia-sorento-front.jpeg",
+            "kia-sorento-back.jpeg",
+            "kia-sorento-interior.jpeg",
+            "kia-sorento-dashboard.jpeg"
         ],
           "miles":"39,350",
           "mileage":"21",
@@ -800,10 +800,10 @@
           "year":2019,
           "mainPic":"lexus-nx-front.jpeg",
           "pics":[
-            {"pic1":"lexus-nx-front.jpeg"},
-            {"pic2":"lexus-nx-back.jpeg"},
-            {"pic3":"lexus-nx-interior.jpeg"},
-            {"pic4":"lexus-nx-dashboard.jpeg"}
+            "lexus-nx-front.jpeg",
+            "lexus-nx-back.jpeg",
+            "lexus-nx-interior.jpeg",
+            "lexus-nx-dashboard.jpeg"
         ],
           "miles":"33,153",
           "mileage":"25",
@@ -829,10 +829,10 @@
           "year":2021,
           "mainPic":"lexus-ux-front.jpeg",
           "pics":[
-            {"pic1":"lexus-ux-front.jpeg"},
-            {"pic2":"lexus-ux-back.jpeg"},
-            {"pic3":"lexus-ux-interior.jpeg"},
-            {"pic4":"lexus-ux-dashboard.jpeg"}
+            "lexus-ux-front.jpeg",
+            "lexus-ux-back.jpeg",
+            "lexus-ux-interior.jpeg",
+            "lexus-ux-dashboard.jpeg"
         ],
           "miles":"9",
           "mileage":"33",
@@ -864,10 +864,10 @@
           "year":2018,
           "mainPic":"mazda-mazda3-front.jpeg",
           "pics":[
-            {"pic1":"mazda-mazda3-front.jpeg"},
-            {"pic2":"mazda-mazda3-back.jpeg"},
-            {"pic3":"mazda-mazda3-interior.jpeg"},
-            {"pic4":"mazda-mazda3-dashboard.jpeg"}
+            "mazda-mazda3-front.jpeg",
+            "mazda-mazda3-back.jpeg",
+            "mazda-mazda3-interior.jpeg",
+            "mazda-mazda3-dashboard.jpeg"
         ],
           "miles":"22,751",
           "mileage":"31",
@@ -893,10 +893,10 @@
           "year":2019,
           "mainPic":"mazda-cx9-front.jpeg",
           "pics":[
-            {"pic1":"mazda-cx9-front.jpeg"},
-            {"pic2":"mazda-cx9-back.jpeg"},
-            {"pic3":"mazda-cx9-interior.jpeg"},
-            {"pic4":"mazda-cx9-dashboard.jpeg"}
+            "mazda-cx9-front.jpeg",
+            "mazda-cx9-back.jpeg",
+            "mazda-cx9-interior.jpeg",
+            "mazda-cx9-dashboard.jpeg"
         ],
           "miles":"48,057",
           "mileage":"23",
@@ -928,10 +928,10 @@
           "year":2018,
           "mainPic":"mercedes-cla-front.jpeg",
           "pics":[
-            {"pic1":"mercedes-cla-front.jpeg"},
-            {"pic2":"mercedes-cla-back.jpeg"},
-            {"pic3":"mercedes-cla-interior.jpeg"},
-            {"pic4":"mercedes-cla-dashboard.jpeg"}
+            "mercedes-cla-front.jpeg",
+            "mercedes-cla-back.jpeg",
+            "mercedes-cla-interior.jpeg",
+            "mercedes-cla-dashboard.jpeg"
         ],
           "miles":"44,496",
           "mileage":"26",
