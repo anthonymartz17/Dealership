@@ -1,25 +1,38 @@
 <template>
-  <div class="car-container">
-    <div class="car" v-for="(car,key) in carToView" :key="key">
-      <h2 class="car-title">{{car.year}} {{car.make}} {{car.model}}</h2>
-      <p class="bold-title-red">{{car.price|currency}}</p>
-      <div class="car-info">
-        <div class="car-info-children" v-for="(icon,key) in specsIcons" :key="key">
-         <img class="icons" :src="`/images/icons/${icon.icon}`" alt="">
-          <p class="specs">{{icon.iconInfo}}
-            <span class="specs" v-if="icon.icon == 'mpg.svg'">mpg</span>
-            <span class="specs" v-if="icon.icon == 'miles.svg'">miles</span>
+  <div class="car2view">
+    <div class="car2view-car" v-for="(car,key) in carToView" :key="key">
+     <div class="car2view-title-price">
+      <h2 class="car2view-title">{{car.year}} {{car.make}} {{car.model}}</h2>
+      <p class="car2view-red-title">{{car.price|currency}}</p>
+     </div>
+      <div class="car2view-info">
+        <div class="car2view-info-children" v-for="(icon,key) in carToViewSpecsIcons" :key="key">
+         <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" alt="">
+          <p class="car2view-info-specs">{{icon.iconInfo}}
+            <span class="car2view-info-specs" v-if="icon.icon == 'mpg.svg'">mpg</span>
+            <span class="car2view-info-specs" v-if="icon.icon == 'miles.svg'">miles</span>
+            <span class="car2view-info-specs" v-if="icon.icon == 'owner.svg'">Owner</span>
           </p> 
           
         </div>
       </div>
-      <div class="car-imgages">
-        <div class="vehicles-display-img" v-for="(img,key) in car.pics" :key="key">
+      <div class="car2view-images">
+        <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
         <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
       </div>
       </div>
-      <div class="car-specs">
-        <p class="bold-title-red">Vehicle Details</p>
+
+       <div class="car2view-details">
+        <p class="car2view-red-title car2view-title">Vehicle Details</p>
+        <div class="car2view-details-specs">
+          <div v-for="(detail,key) in carToViewDetails" :key="key">
+            <p class="car2view-details-bold">{{detail.key}}</p>
+            <p class="car2view-details-text">{{detail.val}}</p>
+          </div>
+
+
+        </div>
+
       </div>
       <div class="car-comments"></div>
       <div class="car-seller"></div>
@@ -33,7 +46,8 @@ export default {
  computed:{
     ...mapState([
     'carToView',
-    'specsIcons'
+    'carToViewSpecsIcons',
+    'carToViewDetails',
   ])
  }
 
@@ -41,81 +55,80 @@ export default {
 </script>
 
 <style lang="scss">
-.icons{
-  width: 40px;
-}
-.specs{
-   font:$font-text;
-}
-.bold-title-red{
+.car2view{
+  
+   background: $light;
+   padding: .5em;
+
+ &-title-price{
+   margin-block: 1em;
+ }
+ &-title{
+   font:$font-logo-S;
+    border-bottom: 2px solid $dark;
+ }
+ &-red-title{
     font:$font-logo-S;
     color: $primary;
 }
-.car-info{
+
+}
+
+.car2view-info{
   display: grid;
   justify-items: center;
-  gap: 1em;
+  gap: .5em .2em;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-block: 1em;
 
   &-children{
     text-align: center;
   }
+  &-icons{
+  width: 30px;
 }
-.car-container{
-   background: $light;
-   padding: .5em;
+&-specs{
+   font:$font-text;
+}
 }
 
-.car{
-  // color: $dark;
-  // overflow: hidden;
-  
-
-  &-title{
-    font:$font-logo-S;
-    border-bottom: 2px solid $lightestDark;
-    padding: .2em;
-    margin-bottom: .5em ;
- 
-  }
-
-    &-car{
-
-      display: flex;
-      justify-content: space-around;
-      gap: .5em;
-      padding-block: .3em;
-      cursor: pointer;
-
-    }
-
-    &-img{
-      flex: 1;
-      border: 2px solid $lightestDark;
-      
+    .car2view-images{
+      display: grid;
+      gap: 1em;
+     
+      &-wrapper{
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
    
+      }
       img{
-        max-width: 100%;
-        height: 100%;
+         max-width: 100%;
+         height: 100%;
       }
      }
-    &-description{
-      flex: 2;
 
-    }
-    // &-title{
-    //   color: $primary;
-    //   font:$font-text-bold;
+    .car2view-details{
+      margin-block: 1em;
 
-    // }
-    &-specs{
-      font:$font-text;
-      
-    }
-    &-price{
-     font:$font-text-bold;
-    }
-   
-  }
+      &-title{
+        border-bottom: 2px solid $dark;
+        
+      }
+      &-specs{
+        margin-block: .5em;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 1em;
+       
 
+      }
+      &-bold{
+        font: $font-text-bold;
+        
+      }
+      &-text{
+        font: $font-text;
+
+      }
+    }
+    
 </style>

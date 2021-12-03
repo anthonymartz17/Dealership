@@ -55,6 +55,7 @@ a.router-link-exact-active{
 }
 .tabs{
   color: $light;
+ 
 }
 
  .nav-menu-container{

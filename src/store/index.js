@@ -19,6 +19,8 @@ export default new Vuex.Store({
     testNums:[],
     // receives the data of the clicked car
     carToView:{},
+    carToViewSpecsIcons:[],
+    carToViewDetails:[],
 
     //Search mobile component
 
@@ -143,7 +145,6 @@ export default new Vuex.Store({
       ],
       typeSelected:'',
     },
-    specsIcons:[],
     clickedFieldContent:{},
 
     desktopNav:[
@@ -184,9 +185,11 @@ export default new Vuex.Store({
   mutations: {
     // brings the data of the clicked car and assigns it to the placeholder prop carToView.
     // assigns the dynamic info of the carToView to each corresponding icon
+    // sets the cartoview details of the clicked car on the cartoviewdetails prop.
     selectCarToView(state,carToView){
       state.carToView = [carToView]
-      state.specsIcons = [
+
+      state.carToViewSpecsIcons = [
         {icon:'miles.svg', iconInfo: carToView.miles},
         {icon:'transmission.svg', iconInfo: carToView.transmission},
         {icon:'drivetrain.svg', iconInfo: carToView.driveTrain},
@@ -196,6 +199,23 @@ export default new Vuex.Store({
         {icon:'excolor.svg', iconInfo: carToView.colorEx},
         {icon:'incolor.svg', iconInfo: carToView.colorIn},
         {icon:'owner.svg', iconInfo: carToView.owner},
+      ]
+
+      state.carToViewDetails = [
+        {key:'Location', val: carToView.location},
+        {key:'Engine', val: carToView.engine},
+        {key:'Miles', val: carToView.miles},
+        {key:'MPG', val: carToView.mileage},
+        {key:'Fuel', val: carToView.fuel},
+        {key:'transmission', val: carToView.transmission},
+        {key:'Car type', val: carToView.carType},
+        {key:'Drivetrain', val: carToView.driveTrain},
+        {key:'Color Exterior', val: carToView.colorEx},
+        {key:'Color Interior', val: carToView.colorIn},
+        {key:'Vin', val: carToView.vin},
+        {key:'Owners', val: carToView.owner},
+        {key:'Accidents', val: carToView.accidents},
+        {key:'Title check', val: carToView.titleCheck},
       ]
     }, 
     
