@@ -25,6 +25,11 @@ $font-text: normal 300 1em $font-stack;
 
 
 // flexing
+.flex-gap{
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
 
 .flex-a-c{
   display: flex;

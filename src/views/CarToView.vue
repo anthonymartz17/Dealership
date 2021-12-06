@@ -26,12 +26,24 @@
         <p class="car2view-red-title car2view-title">Vehicle Details</p>
         <div class="car2view-details-specs">
           <div v-for="(detail,key) in carToViewDetails" :key="key">
-            <p class="car2view-details-bold">{{detail.key}}</p>
+            <p class="car2view-details-bold">{{detail.key}}:</p>
             <p class="car2view-details-text">{{detail.val}}</p>
           </div>
-
-
         </div>
+         <p class="car2view-red-title car2view-title">Vehicle History</p>
+         <div class="car2view-history">
+         <div  class="flex-gap" v-for="(detail,key) in carToViewHistory" :key="key">
+              <i :class="[detail.icon,'car-history-icon']"></i>
+           <div>
+            <p class="car2view-details-bold">{{detail.key}}:</p>
+            <p class="car2view-details-text">{{detail.val}}
+              <span v-if="detail.key == 'Owners'">Owner</span>
+              <span v-if="detail.key == 'Accidents'">issues reported</span>
+            </p>
+            </div>
+          </div>
+           
+         </div>
 
       </div>
       <div class="car-comments"></div>
@@ -44,10 +56,12 @@
 import {mapState} from 'vuex';
 export default {
  computed:{
+
     ...mapState([
     'carToView',
     'carToViewSpecsIcons',
     'carToViewDetails',
+    'carToViewHistory',
   ])
  }
 
@@ -55,6 +69,19 @@ export default {
 </script>
 
 <style lang="scss">
+.car2view-history{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding-block: 1em;
+}
+.car-history-icon{
+  border-radius: 50%;
+  padding:1em;
+  color: $light;
+  background: $dark;
+}
+
 .car2view{
   
    background: $light;
@@ -117,7 +144,9 @@ export default {
         margin-block: .5em;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0 1em;
+        gap: 0 2em;
+        
+        
        
 
       }

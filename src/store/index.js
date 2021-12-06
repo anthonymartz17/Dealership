@@ -21,6 +21,7 @@ export default new Vuex.Store({
     carToView:{},
     carToViewSpecsIcons:[],
     carToViewDetails:[],
+    carToViewHistory:[],
 
     //Search mobile component
 
@@ -213,9 +214,12 @@ export default new Vuex.Store({
         {key:'Color Exterior', val: carToView.colorEx},
         {key:'Color Interior', val: carToView.colorIn},
         {key:'Vin', val: carToView.vin},
-        {key:'Owners', val: carToView.owner},
-        {key:'Accidents', val: carToView.accidents},
-        {key:'Title check', val: carToView.titleCheck},
+      ]
+
+      state.carToViewHistory = [
+        {key:'Owners', val: carToView.owner, icon:'fas fa-user'},
+        {key:'Accidents', val: carToView.accidents, icon:'fas fa-car'},
+        {key:'Title check', val: carToView.titleCheck, icon:'far fa-check-square '},
       ]
     }, 
     

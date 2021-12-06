@@ -950,8 +950,33 @@
           "titleCheck":"No issues"
         },
         {
-          "model":"CLASE CLK",
-          "trim":["500"]
+          "make":"MERCEDES-BENZ",
+          "model":"GLS-Class",
+          "trim":"GLS 450",
+          "price":56748,
+          "year":2018,
+          "mainPic":"mercedes-gls-front.jpeg",
+          "pics":[
+            "mercedes-gls-front.jpeg",
+            "mercedes-gls-back.jpeg",
+            "mercedes-gls-interior.jpeg",
+            "mercedes-gls-dashboard.jpeg"
+        ],
+          "miles":"37,101",
+          "mileage":"19",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"9-Speed Automatic",
+          "driveTrain":"AWD",
+          "engine":"362 hp 3L V6",
+          "colorEx":"designo Cardinal Red",
+          "colorIn":"Black",
+          "vin":"4JGDF6EE7JB131127",
+          "location":"Nanuet, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },
@@ -960,8 +985,33 @@
       "make":"NISSAN",
       "model":[ 
         {
-          "model":"ALTIMA",
-          "trim":["S", "SL"]
+          "make":"NISSAN",
+          "model":"GLS-Class",
+          "trim":"GLS 450",
+          "price":35760,
+          "year":2021,
+          "mainPic":"nissan-altima-front.jpeg",
+          "pics":[
+            "nissan-altima-front.jpeg",
+            "nissan-altima-back.jpeg",
+            "nissan-altima-interior.jpeg",
+            "nissan-altima-dashboard.jpeg"
+        ],
+          "miles":"3",
+          "mileage":"30",
+          "carType":"Sedan",
+          "carCondition":"New",
+          "fuel":"Gasoline",
+          "transmission":"Continuously Variable Transmission",
+          "driveTrain":"AWD",
+          "engine":"182 hp 2.5L I4",
+          "colorEx":"Brilliant Silver Metallic",
+          "colorIn":"Black",
+          "vin":"1N4BL4FW8MN306588",
+          "location":"New Rochelle, NY",
+          "owner":0,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
           "model":"ROGUE",
