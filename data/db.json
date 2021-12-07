@@ -1014,8 +1014,33 @@
           "titleCheck":"No issues"
         },
         {
-          "model":"ROGUE",
-          "trim":["S", "SV FULL"]
+          "make":"NISSAN",
+          "model":"Rogue",
+          "trim":"SV",
+          "price":16888,
+          "year":2016,
+          "mainPic":"nissan-rogue-front.jpeg",
+          "pics":[
+            "nissan-rogue-front.jpeg",
+            "nissan-rogue-back.jpeg",
+            "nissan-rogue-interior.jpeg",
+            "nissan-rogue-dashboard.jpeg"
+        ],
+          "miles":"96,994",
+          "mileage":"28",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Continuously Variable Transmission",
+          "driveTrain":"AWD",
+          "engine":"170 hp 2.5L I4",
+          "colorEx":"Brilliant Silver",
+          "colorIn":"Black (Charcoal)",
+          "vin":"KNMAT2MV3GP693547",
+          "location":"Red Bank, NJ",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },

@@ -215,13 +215,75 @@ export default new Vuex.Store({
         {key:'Color Interior', val: carToView.colorIn},
         {key:'Vin', val: carToView.vin},
       ]
+    }, 
+
+    setVehicleHistory(state,carToView){
+      let owner,accidents,titleCheck,iconOwner,bgOwner,bgAccidents,bgTitle;
+
+      if(carToView.owner == 0){
+        owner = 'No owners'
+        bgOwner = 'green'
+        iconOwner= 'fas fa-user'
+
+      }
+      else if(carToView.owner == 1){
+        owner = 'One owner'
+        bgOwner = 'green'
+        iconOwner ='fas fa-user'
+      }
+      else{
+        owner = `${carToView.owner} onwers`
+        bgOwner = '#333'
+        iconOwner = "fas fa-users"
+      }
+
+      if(carToView.accidents == 0){
+        accidents = 'No issues reported'
+        bgAccidents = 'green'
+
+      }
+      else if(carToView.accidents == 1){
+        accidents = 'One accident reported'
+        bgAccidents = '#FFCC1D'
+      }
+      else{
+        accidents = `${carToView.accidents} accidents reported`
+        bgAccidents = '#FFCC1D'
+      }
+
+      if(carToView.titleCheck == 'No issues'){
+        titleCheck = 'No issues reported'
+        bgTitle = 'green'
+
+      }
+      else{
+        titleCheck = carToView.titleCheck 
+        bgTitle = '#FFCC1D'
+      }
+      
 
       state.carToViewHistory = [
-        {key:'Owners', val: carToView.owner, icon:'fas fa-user'},
-        {key:'Accidents', val: carToView.accidents, icon:'fas fa-car'},
-        {key:'Title check', val: carToView.titleCheck, icon:'far fa-check-square '},
+        {
+          key:'Owners',
+          val: owner,
+          icon: iconOwner,
+          iconBg:bgOwner
+        },
+        {
+          key:'Accidents', 
+          val: accidents, 
+          icon:'fas fa-car', 
+          iconBg:bgAccidents
+        },
+        {
+          key:'Title check', 
+          val: titleCheck, 
+          icon:'far fa-check-square ', 
+          iconBg:bgTitle
+        },
       ]
-    }, 
+
+    },
     
     setCarsData(state,data){
         state.carsData = data

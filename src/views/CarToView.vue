@@ -33,16 +33,14 @@
          <p class="car2view-red-title car2view-title">Vehicle History</p>
          <div class="car2view-history">
          <div  class="flex-gap" v-for="(detail,key) in carToViewHistory" :key="key">
-              <i :class="[detail.icon,'car-history-icon']"></i>
+              <i :class="[detail.icon,'car-history-icon']" :style="{'backgroundColor':detail.iconBg}"></i>
            <div>
             <p class="car2view-details-bold">{{detail.key}}:</p>
             <p class="car2view-details-text">{{detail.val}}
-              <span v-if="detail.key == 'Owners'">Owner</span>
-              <span v-if="detail.key == 'Accidents'">issues reported</span>
             </p>
             </div>
-          </div>
-           
+          
+          </div>          
          </div>
 
       </div>
@@ -62,7 +60,17 @@ export default {
     'carToViewSpecsIcons',
     'carToViewDetails',
     'carToViewHistory',
-  ])
+  ]),
+
+  vehicleHistory(){
+    let owner;
+     this.carToViewHistory.forEach(one =>{
+      if(one.key == 'Owners' && one.val == 1){
+        owner = 'One owner'
+      }
+    })
+    return owner
+  }
  }
 
 }
@@ -77,9 +85,13 @@ export default {
 }
 .car-history-icon{
   border-radius: 50%;
-  padding:1em;
+  width: 3em;
+  height: 3em;
+  display: grid;
+  place-items: center;
   color: $light;
-  background: $dark;
+  overflow: hidden;
+
 }
 
 .car2view{
@@ -156,7 +168,6 @@ export default {
       }
       &-text{
         font: $font-text;
-
       }
     }
     
