@@ -16,11 +16,12 @@
           
         </div>
       </div>
-      <div class="car2view-images">
+      <div :class="['car2view-images',{hidePics:!morePics}]">
         <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
         <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
       </div>
       </div>
+      <div v-if="!morePics" class="btn btn-search" @click="showMorePics">+ Show More Pictures</div>
 
        <div class="car2view-details">
         <p class="car2view-red-title car2view-title">Vehicle Details</p>
@@ -34,7 +35,7 @@
          <div class="car2view-history">
          <div  class="flex-gap" v-for="(detail,key) in carToViewHistory" :key="key">
               <i :class="[detail.icon,'car-history-icon']" :style="{'backgroundColor':detail.iconBg}"></i>
-           <div>
+           <div class="car2view-history-details">
             <p class="car2view-details-bold">{{detail.key}}:</p>
             <p class="car2view-details-text">{{detail.val}}
             </p>
@@ -53,6 +54,17 @@
 <script>
 import {mapState} from 'vuex';
 export default {
+ 
+  data(){
+    return {
+      morePics:false
+    }
+  },
+  methods:{
+    showMorePics(){
+      this.morePics = !this.morePics
+    }
+  },
  computed:{
 
     ...mapState([
@@ -77,11 +89,21 @@ export default {
 </script>
 
 <style lang="scss">
+.hidePics{
+  overflow: hidden;
+  height: 40vh;
+}
 .car2view-history{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
   padding-block: 1em;
+
+
+  &-details{
+    flex: 2;
+
+  }
 }
 .car-history-icon{
   border-radius: 50%;
@@ -91,8 +113,11 @@ export default {
   place-items: center;
   color: $light;
   overflow: hidden;
+  flex: 1;
+  
 
 }
+
 
 .car2view{
   

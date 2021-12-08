@@ -221,7 +221,7 @@ export default new Vuex.Store({
       let owner,accidents,titleCheck,iconOwner,bgOwner,bgAccidents,bgTitle;
 
       if(carToView.owner == 0){
-        owner = 'No owners'
+        owner = 'Never owned'
         bgOwner = 'green'
         iconOwner= 'fas fa-user'
 

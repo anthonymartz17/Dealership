@@ -1049,12 +1049,62 @@
       "make":"TESLA",
       "model":[ 
         {
-          "model":"MODEL 3",
-          "trim":["LONG RANGE"]
+          "make":"TESLA",
+          "model":"Model Y",
+          "trim":"Long Range",
+          "price":65218,
+          "year":2021,
+          "mainPic":"tesla-y-front.jpeg",
+          "pics":[
+            "tesla-y-front.jpeg",
+            "tesla-y-back.jpeg",
+            "tesla-y-interior.jpeg",
+            "tesla-y-dashboard.jpeg"
+        ],
+          "miles":"10,598",
+          "mileage":"316",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Electric",
+          "transmission":"1-Speed Automatic",
+          "batteryPerformance":"10 hr",
+          "driveTrain":"AWD",
+          "colorEx":"White",
+          "colorIn":"Black",
+          "vin":"5YJYGDEE8MF092766",
+          "location":"Jamaica, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
-          "model":"MODEL Y",
-          "trim":["PERFORMANCE"]
+          "make":"TESLA",
+          "model":"Model 3",
+          "trim":"Long Range",
+          "price":48490,
+          "year":2018,
+          "mainPic":"tesla-3-front.jpeg",
+          "pics":[
+            "tesla-3-front.jpeg",
+            "tesla-3-back.jpeg",
+            "tesla-3-interior.jpeg",
+            "tesla-3-dashboard.jpeg"
+        ],
+          "miles":"14,564",
+          "mileage":"310",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Electric",
+          "transmission":"1-Speed Automatic",
+          "batteryPerformance":"10 hr",
+          "driveTrain":"AWD",
+          "colorEx":"Red",
+          "colorIn":"Black",
+          "vin":"5YJ3E1EB5JF114755",
+          "location":"Mt Kisco, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },
