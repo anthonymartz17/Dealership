@@ -184,23 +184,53 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    // brings the data of the clicked car and assigns it to the placeholder prop carToView.
-    // assigns the dynamic info of the carToView to each corresponding icon
-    // sets the cartoview details of the clicked car on the cartoviewdetails prop.
-    selectCarToView(state,carToView){
-      state.carToView = [carToView]
+   
+    // receives the data of the current car to view and sets the specifications that go with description icon.
+    setCarToViewSpecifications(state,carToView){
+      let owner,ownerIcon,fuelIcon,milesIcon;
+      if(carToView.owner == 0){
+        owner = 'Never owned'
+        ownerIcon = 'owner.svg'
+      }
+      if(carToView.owner == 1){
+        owner = `${carToView.owner} owner`
+        ownerIcon = 'owner.svg'
+      }if(carToView.owner == 2){
+        ownerIcon = 'owners2.svg'
+      }
+      if(carToView.owner > 2){
+        owner = `${carToView.owner} owners`
+        ownerIcon = 'ownersMany.svg'
+      }
+
+
+
+      if(carToView.fuel == 'Electric'){
+        fuelIcon = 'battery.svg'
+        milesIcon = 'electricMiles.svg'
+
+      }else{
+        fuelIcon = 'gas.svg'
+        milesIcon = 'mpg.svg'
+      }
+
+      
 
       state.carToViewSpecsIcons = [
-        {icon:'miles.svg', iconInfo: carToView.miles},
+        {icon:'miles.svg', iconInfo: `${carToView.miles} Miles`},
         {icon:'transmission.svg', iconInfo: carToView.transmission},
         {icon:'drivetrain.svg', iconInfo: carToView.driveTrain},
         {icon:'engine.svg', iconInfo: carToView.engine},
-        {icon:'gas.svg', iconInfo: carToView.fuel},
-        {icon:'mpg.svg', iconInfo: carToView.mileage},
+        {icon: fuelIcon, iconInfo: carToView.fuel},
+        {icon:milesIcon, iconInfo: `${carToView.mileage} MPG`},
         {icon:'excolor.svg', iconInfo: carToView.colorEx},
         {icon:'incolor.svg', iconInfo: carToView.colorIn},
-        {icon:'owner.svg', iconInfo: carToView.owner},
+        {icon: ownerIcon, iconInfo: owner},
       ]
+    },
+    selectCarToView(state,carToView){
+      state.carToView = [carToView]
+     
 
       state.carToViewDetails = [
         {key:'Location', val: carToView.location},

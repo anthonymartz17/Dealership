@@ -6,15 +6,12 @@
       <p class="car2view-red-title">{{car.price|currency}}</p>
      </div>
       <div class="car2view-info">
-        <div class="car2view-info-children" v-for="(icon,key) in carToViewSpecsIcons" :key="key">
-         <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" alt="">
-          <p class="car2view-info-specs">{{icon.iconInfo}}
-            <span class="car2view-info-specs" v-if="icon.icon == 'mpg.svg'">mpg</span>
-            <span class="car2view-info-specs" v-if="icon.icon == 'miles.svg'">miles</span>
-            <span class="car2view-info-specs" v-if="icon.icon == 'owner.svg'">Owner</span>
-          </p> 
-          
+        <template v-for="(icon,key) in carToViewSpecsIcons">
+        <div  class="car2view-info-children"  v-if="icon.iconInfo"  :key="key" >
+         <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" :alt="`icon of ${icon.iconInfo}`">
+          <p class="car2view-info-specs">{{icon.iconInfo}}</p> 
         </div>
+        </template>
       </div>
       <div :class="['car2view-images',{hidePics:!morePics}]">
         <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
@@ -54,6 +51,10 @@
 <script>
 import {mapState} from 'vuex';
 export default {
+  // resets the morePics prop back to false.
+  destroyed(){
+    this.showMorePics()
+  },
  
   data(){
     return {
@@ -61,6 +62,7 @@ export default {
     }
   },
   methods:{
+    // toggles the showMorePics btn 
     showMorePics(){
       this.morePics = !this.morePics
     }
@@ -74,21 +76,22 @@ export default {
     'carToViewHistory',
   ]),
 
-  vehicleHistory(){
-    let owner;
-     this.carToViewHistory.forEach(one =>{
-      if(one.key == 'Owners' && one.val == 1){
-        owner = 'One owner'
-      }
-    })
-    return owner
-  }
+  // vehicleHistory(){
+  //   let owner;
+  //    this.carToViewHistory.forEach(one =>{
+  //     if(one.key == 'Owners' && one.val == 1){
+  //       owner = 'One owner'
+  //     }
+  //   })
+  //   return owner
+  // }
  }
 
 }
 </script>
 
 <style lang="scss">
+
 .hidePics{
   overflow: hidden;
   height: 40vh;
@@ -96,24 +99,29 @@ export default {
 .car2view-history{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  gap: 1em 0;
   padding-block: 1em;
+  
+
 
 
   &-details{
     flex: 2;
+    min-width: 6em;
+    // background: red;
 
   }
 }
 .car-history-icon{
   border-radius: 50%;
-  width: 3em;
-  height: 3em;
+  // width: 2em;
+  height: 3.5em;
   display: grid;
   place-items: center;
   color: $light;
   overflow: hidden;
   flex: 1;
+  
   
 
 }

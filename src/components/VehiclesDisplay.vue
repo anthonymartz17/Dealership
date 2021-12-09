@@ -10,7 +10,9 @@
   <div class="vehicles-display" 
   v-for="(car,key) in randomCarsDisplay"
   :key="key"
-  @click="selectCarToView(car); setVehicleHistory(car)"
+  @click="selectCarToView(car);
+  setCarToViewSpecifications(car);
+   setVehicleHistory(car)"
   >
   
     <div class="vehicles-display-car">
@@ -55,7 +57,8 @@ export default {
     ...mapMutations([
       'displayCarsRandomly',
       'selectCarToView',
-      'setVehicleHistory'
+      'setVehicleHistory',
+      'setCarToViewSpecifications'
      
     ]),
      ...mapActions([

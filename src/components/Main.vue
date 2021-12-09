@@ -1,9 +1,9 @@
 <template>
   <main class="main-container">
       <transition appear enter-active-class="animate__animated animate__fadeIn" >
-        <keep-alive>
+       
             <router-view />
-        </keep-alive>
+      
       </transition>
    
   </main>
