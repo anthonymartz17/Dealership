@@ -19,7 +19,7 @@ export default new Vuex.Store({
     testNums:[],
     // receives the data of the clicked car
     carToView:{},
-    carToViewSpecsIcons:[],
+    setCarToViewGeneralInfo:[],
     carToViewDetails:[],
     carToViewHistory:[],
 
@@ -184,9 +184,19 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-   
-    // receives the data of the current car to view and sets the specifications that go with description icon.
-    setCarToViewSpecifications(state,carToView){
+    // receive the data of the current car selected and saves it to local storage
+    saveCarToViewToLocalStore(state,carToView){
+      localStorage.setItem('carToView',JSON.stringify(carToView)) 
+    },
+    
+     // receives the data of the current car to view and sets the info of the current vehicle in the carToView prop that is in the state.
+     setCarToViewFromLocalStore(state){
+      // state.carToView = JSON.parse(localStorage.getItem('carToView'))
+      console.log(state.carToView)
+    }, 
+
+    // receives the data of the current car to view and sets the specifications in the setCarToViewGeneralInfo prop that is  in the state.
+    setCarToViewGeneralInfo(state,carToView){
       let owner,ownerIcon,fuelIcon,milesIcon;
       if(carToView.owner == 0){
         owner = 'Never owned'
@@ -216,7 +226,7 @@ export default new Vuex.Store({
 
       
 
-      state.carToViewSpecsIcons = [
+      state.setCarToViewGeneralInfo = [
         {icon:'miles.svg', iconInfo: `${carToView.miles} Miles`},
         {icon:'transmission.svg', iconInfo: carToView.transmission},
         {icon:'drivetrain.svg', iconInfo: carToView.driveTrain},
@@ -228,10 +238,9 @@ export default new Vuex.Store({
         {icon: ownerIcon, iconInfo: owner},
       ]
     },
-    selectCarToView(state,carToView){
-      state.carToView = [carToView]
-     
 
+  
+    setCarToviewDetails(state,carToView){
       state.carToViewDetails = [
         {key:'Location', val: carToView.location},
         {key:'Engine', val: carToView.engine},
@@ -245,8 +254,9 @@ export default new Vuex.Store({
         {key:'Color Interior', val: carToView.colorIn},
         {key:'Vin', val: carToView.vin},
       ]
-    }, 
+    },
 
+    // receives the data of the current car to view and sets the car history of the current vehicle in the carToViewHistory prop that is in the state.
     setVehicleHistory(state,carToView){
       let owner,accidents,titleCheck,iconOwner,bgOwner,bgAccidents,bgTitle;
 

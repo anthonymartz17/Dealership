@@ -6,7 +6,7 @@
       <p class="car2view-red-title">{{car.price|currency}}</p>
      </div>
       <div class="car2view-info">
-        <template v-for="(icon,key) in carToViewSpecsIcons">
+        <template v-for="(icon,key) in setCarToViewGeneralInfo">
         <div  class="car2view-info-children"  v-if="icon.iconInfo"  :key="key" >
          <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" :alt="`icon of ${icon.iconInfo}`">
           <p class="car2view-info-specs">{{icon.iconInfo}}</p> 
@@ -71,7 +71,7 @@ export default {
 
     ...mapState([
     'carToView',
-    'carToViewSpecsIcons',
+    'setCarToViewGeneralInfo',
     'carToViewDetails',
     'carToViewHistory',
   ]),

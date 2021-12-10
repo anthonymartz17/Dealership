@@ -1171,12 +1171,33 @@
           "titleCheck":"No issues"
         },
         {
-          "model":"COROLLA",
-          "trim":["S", "LE"]
-        },
-        {
-          "model":"HIGHLANDER",
-          "trim":["LE", "SPORT"]
+          "make":"TOYOTA",
+          "model":"Highlander",
+          "trim":"XLE",
+          "price":38999,
+          "year":2019,
+          "mainPic":"toyota-highlander-front.jpeg",
+          "pics":[
+            "toyota-highlander-front.jpeg",
+            "toyota-highlander-back.jpeg",
+            "toyota-highlander-interior.jpeg",
+            "toyota-highlander-dashboard.jpeg"
+        ],
+          "miles":"32,939",
+          "mileage":"22",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"295 hp 3.5L V6",
+          "colorEx":"Black",
+          "colorIn":"Black",
+          "vin":"5TDJZRFHXKS924134",
+          "location":"Brooklyn, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     },

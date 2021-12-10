@@ -8,23 +8,26 @@
   <h2 class="vehicles-title">Vehicles</h2>
   <router-link :to="{name:'CarToView'}">
   <div class="vehicles-display" 
-  v-for="(car,key) in randomCarsDisplay"
+  v-for="(carToView,key) in randomCarsDisplay"
   :key="key"
-  @click="selectCarToView(car);
-  setCarToViewSpecifications(car);
-   setVehicleHistory(car)"
+  @click="
+  saveCarToViewToLocalStore(carToView)
+  setCarToViewFromLocalStore(carToView);
+  setCarToViewGeneralInfo(carToView);
+   setVehicleHistory(carToView);
+   setCarToviewDetails(carToView)"
   >
   
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
+        <img :src="`/images/${carToView.mainPic}`" :alt="`picture of ${carToView.model}`">       
       </div>
       <div class="vehicles-display-description">
-        <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
+        <h3 class="vehicles-display-title">{{carToView.year}} {{carToView.make}} {{carToView.model}}</h3>
         <p class="vehicles-display-specs">
-          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
+          {{carToView.fuel}} - {{carToView.carCondition}} - {{carToView.miles}} miles
         </p>
-        <p class="vehicles-display-price">{{car.price | currency}}</p>
+        <p class="vehicles-display-price">{{carToView.price | currency}}</p>
         
       </div>
     </div>
@@ -56,9 +59,11 @@ export default {
     
     ...mapMutations([
       'displayCarsRandomly',
-      'selectCarToView',
+      'setCarToViewFromLocalStore',
       'setVehicleHistory',
-      'setCarToViewSpecifications'
+      'setCarToViewGeneralInfo',
+      'setCarToviewDetails',
+      'saveCarToViewToLocalStore'
      
     ]),
      ...mapActions([
