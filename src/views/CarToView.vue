@@ -6,7 +6,7 @@
       <p class="car2view-red-title">{{car.price|currency}}</p>
      </div>
       <div class="car2view-info">
-        <template v-for="(icon,key) in setCarToViewGeneralInfo">
+        <template v-for="(icon,key) in carToViewGeneralInfo">
         <div  class="car2view-info-children"  v-if="icon.iconInfo"  :key="key" >
          <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" :alt="`icon of ${icon.iconInfo}`">
           <p class="car2view-info-specs">{{icon.iconInfo}}</p> 
@@ -49,9 +49,15 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState,mapMutations} from 'vuex';
 export default {
   // resets the morePics prop back to false.
+  created(){
+     this.getCarToViewFromLocalStore()
+     this.setCarToViewGeneralInfo()
+     this.setVehicleHistory()
+     this.setCarToviewDetails()
+  },
   destroyed(){
     this.showMorePics()
   },
@@ -62,7 +68,14 @@ export default {
     }
   },
   methods:{
-    // toggles the showMorePics btn 
+ 
+     ...mapMutations([
+    'getCarToViewFromLocalStore',
+    'setCarToViewGeneralInfo',
+     'setVehicleHistory',
+      'setCarToviewDetails',
+    ]),
+       // toggles the showMorePics btn 
     showMorePics(){
       this.morePics = !this.morePics
     }
@@ -71,7 +84,7 @@ export default {
 
     ...mapState([
     'carToView',
-    'setCarToViewGeneralInfo',
+    'carToViewGeneralInfo',
     'carToViewDetails',
     'carToViewHistory',
   ]),

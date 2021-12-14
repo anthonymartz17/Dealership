@@ -19,7 +19,7 @@ export default new Vuex.Store({
     testNums:[],
     // receives the data of the clicked car
     carToView:{},
-    setCarToViewGeneralInfo:[],
+    carToViewGeneralInfo:[],
     carToViewDetails:[],
     carToViewHistory:[],
 
@@ -189,33 +189,33 @@ export default new Vuex.Store({
       localStorage.setItem('carToView',JSON.stringify(carToView)) 
     },
     
-     // receives the data of the current car to view and sets the info of the current vehicle in the carToView prop that is in the state.
-     setCarToViewFromLocalStore(state){
-      // state.carToView = JSON.parse(localStorage.getItem('carToView'))
-      console.log(state.carToView)
+     // get the data of current car from local storage and assigns it to the prop carToView.
+     getCarToViewFromLocalStore(state){
+      state.carToView = [JSON.parse(localStorage.getItem('carToView'))]
     }, 
 
     // receives the data of the current car to view and sets the specifications in the setCarToViewGeneralInfo prop that is  in the state.
-    setCarToViewGeneralInfo(state,carToView){
+    setCarToViewGeneralInfo(state){
+      
       let owner,ownerIcon,fuelIcon,milesIcon;
-      if(carToView.owner == 0){
+      if(state.carToView[0].owner == 0){
         owner = 'Never owned'
         ownerIcon = 'owner.svg'
       }
-      if(carToView.owner == 1){
-        owner = `${carToView.owner} owner`
+      if(state.carToView[0].owner == 1){
+        owner = `${state.carToView[0].owner} owner`
         ownerIcon = 'owner.svg'
-      }if(carToView.owner == 2){
+      }if(state.carToView[0].owner == 2){
         ownerIcon = 'owners2.svg'
       }
-      if(carToView.owner > 2){
-        owner = `${carToView.owner} owners`
+      if(state.carToView[0].owner > 2){
+        owner = `${state.carToView[0].owner} owners`
         ownerIcon = 'ownersMany.svg'
       }
 
 
 
-      if(carToView.fuel == 'Electric'){
+      if(state.carToView[0].fuel == 'Electric'){
         fuelIcon = 'battery.svg'
         milesIcon = 'electricMiles.svg'
 
@@ -226,78 +226,78 @@ export default new Vuex.Store({
 
       
 
-      state.setCarToViewGeneralInfo = [
-        {icon:'miles.svg', iconInfo: `${carToView.miles} Miles`},
-        {icon:'transmission.svg', iconInfo: carToView.transmission},
-        {icon:'drivetrain.svg', iconInfo: carToView.driveTrain},
-        {icon:'engine.svg', iconInfo: carToView.engine},
-        {icon: fuelIcon, iconInfo: carToView.fuel},
-        {icon:milesIcon, iconInfo: `${carToView.mileage} MPG`},
-        {icon:'excolor.svg', iconInfo: carToView.colorEx},
-        {icon:'incolor.svg', iconInfo: carToView.colorIn},
+      state.carToViewGeneralInfo = [
+        {icon:'miles.svg', iconInfo: `${state.carToView[0].miles} Miles`},
+        {icon:'transmission.svg', iconInfo: state.carToView.transmission},
+        {icon:'drivetrain.svg', iconInfo: state.carToView[0].driveTrain},
+        {icon:'engine.svg', iconInfo: state.carToView[0].engine},
+        {icon: fuelIcon, iconInfo: state.carToView[0].fuel},
+        {icon:milesIcon, iconInfo: `${state.carToView[0].mileage} MPG`},
+        {icon:'excolor.svg', iconInfo: state.carToView[0].colorEx},
+        {icon:'incolor.svg', iconInfo: state.carToView[0].colorIn},
         {icon: ownerIcon, iconInfo: owner},
       ]
     },
 
   
-    setCarToviewDetails(state,carToView){
+    setCarToviewDetails(state){
       state.carToViewDetails = [
-        {key:'Location', val: carToView.location},
-        {key:'Engine', val: carToView.engine},
-        {key:'Miles', val: carToView.miles},
-        {key:'MPG', val: carToView.mileage},
-        {key:'Fuel', val: carToView.fuel},
-        {key:'transmission', val: carToView.transmission},
-        {key:'Car type', val: carToView.carType},
-        {key:'Drivetrain', val: carToView.driveTrain},
-        {key:'Color Exterior', val: carToView.colorEx},
-        {key:'Color Interior', val: carToView.colorIn},
-        {key:'Vin', val: carToView.vin},
+        {key:'Location', val: state.carToView[0].location},
+        {key:'Engine', val: state.carToView[0].engine},
+        {key:'Miles', val: state.carToView[0].miles},
+        {key:'MPG', val: state.carToView[0].mileage},
+        {key:'Fuel', val: state.carToView[0].fuel},
+        {key:'transmission', val: state.carToView[0].transmission},
+        {key:'Car type', val: state.carToView[0].carType},
+        {key:'Drivetrain', val: state.carToView[0].driveTrain},
+        {key:'Color Exterior', val: state.carToView[0].colorEx},
+        {key:'Color Interior', val: state.carToView[0].colorIn},
+        {key:'Vin', val: state.carToView[0].vin},
       ]
     },
 
     // receives the data of the current car to view and sets the car history of the current vehicle in the carToViewHistory prop that is in the state.
-    setVehicleHistory(state,carToView){
+    setVehicleHistory(state){
       let owner,accidents,titleCheck,iconOwner,bgOwner,bgAccidents,bgTitle;
 
-      if(carToView.owner == 0){
+      if(state.carToView[0].owner == 0){
         owner = 'Never owned'
         bgOwner = 'green'
         iconOwner= 'fas fa-user'
 
       }
-      else if(carToView.owner == 1){
+      else if(state.carToView[0].owner == 1){
         owner = 'One owner'
         bgOwner = 'green'
         iconOwner ='fas fa-user'
       }
       else{
-        owner = `${carToView.owner} onwers`
+        owner = `${state.carToView[0].owner} onwers`
         bgOwner = '#333'
         iconOwner = "fas fa-users"
       }
 
-      if(carToView.accidents == 0){
+      if(state.carToView[0].accidents == 0){
         accidents = 'No issues reported'
         bgAccidents = 'green'
 
       }
-      else if(carToView.accidents == 1){
+      else if(state.carToView[0].accidents == 1){
         accidents = 'One accident reported'
         bgAccidents = '#FFCC1D'
       }
       else{
-        accidents = `${carToView.accidents} accidents reported`
+        accidents = `${state.carToView[0].accidents} accidents reported`
         bgAccidents = '#FFCC1D'
       }
 
-      if(carToView.titleCheck == 'No issues'){
+      if(state.carToView[0].titleCheck == 'No issues'){
         titleCheck = 'No issues reported'
         bgTitle = 'green'
 
       }
       else{
-        titleCheck = carToView.titleCheck 
+        titleCheck = state.carToView[0].titleCheck 
         bgTitle = '#FFCC1D'
       }
       
@@ -328,20 +328,26 @@ export default new Vuex.Store({
     setCarsData(state,data){
         state.carsData = data
     },
+    // receives the data object which contains the data of vehicles and and object with current route
     setMakes(state,data){
-        data.forEach(one =>{
+        data.data.forEach(one =>{
           state.make.type.push(one.make)
         })
 
     },
+    // ///////////////////////////////////////////  use the display cars randomly to decide the cars that you want to show whether electric, or the results from the filters //////////////////////////////////////////////////////////////////////
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
     displayCarsRandomly(state,data){
+      // console.log(data.funcAndRoute.route.name)
       let temporaryArray=[];
-     data.forEach(one =>{
+     data.data.forEach(one =>{
        one.model.forEach(one =>{
         temporaryArray.push(one)
        })
      })
+    
+       if(data.funcAndRoute.route.name == 'Home'){
+
     //  fisher yates modern shuffle
          let arrLength = temporaryArray.length,temp,ranNum;
       while(arrLength-- > 0){
@@ -350,8 +356,22 @@ export default new Vuex.Store({
        temporaryArray[ranNum] = temporaryArray[arrLength]
        temporaryArray[arrLength] = temp
       }
+              
+             
+                state.randomCarsDisplay = temporaryArray
+                // console.log(data.funcAndRoute.route.name)
+              } 
+              else if(data.funcAndRoute.route.name == 'Electric'){
+                
+                // console.log(data.funcAndRoute.route.name)
+                state.randomCarsDisplay = temporaryArray
+                
+              }
+              else{
+                state.randomCarsDisplay = temporaryArray
+                // console.log(data.funcAndRoute.route.name)
 
-      state.randomCarsDisplay = temporaryArray
+           }
 
         },
       
@@ -541,13 +561,15 @@ export default new Vuex.Store({
 
   actions: {
     
-    getCarsData(context,funToCommit){
+    getCarsData(context,funcAndRoute){
+           
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
       .then(data => {
         
-        context.commit(funToCommit,data)
+        // receiving function and current route object. to commit function and send route to the displaycarsramdomly function
+        context.commit(funcAndRoute.funcToCommit,{data,funcAndRoute})
         
       })
         
@@ -567,6 +589,9 @@ export default new Vuex.Store({
     carsDataReady(state){
       return state.carsData 
     },
+    carToViewComputed(state){
+      return state.carToView
+    }
 
  
     // allModels(state,getters){ 

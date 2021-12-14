@@ -77,7 +77,7 @@ export default {
 
   },
   methods:{
-    
+      
     ...mapMutations([
       'toggleOptionsCard',
        'showSelectedFieldContent'

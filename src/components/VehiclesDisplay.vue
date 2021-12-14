@@ -12,10 +12,10 @@
   :key="key"
   @click="
   saveCarToViewToLocalStore(carToView)
-  setCarToViewFromLocalStore(carToView);
-  setCarToViewGeneralInfo(carToView);
-   setVehicleHistory(carToView);
-   setCarToviewDetails(carToView)"
+  getCarToViewFromLocalStore();
+   setCarToViewGeneralInfo();
+   setVehicleHistory();
+   setCarToviewDetails()"
   >
   
     <div class="vehicles-display-car">
@@ -49,9 +49,13 @@ import {mapMutations,mapState,mapActions} from 'vuex'
 
 
 export default {
+
   
   created(){
-    this.getCarsData('displayCarsRandomly');
+    this.getCarsData({funcToCommit:'displayCarsRandomly',route:this.$route});
+    console.log(this.$route.name)
+ 
+    
 
   },
 
@@ -59,9 +63,9 @@ export default {
     
     ...mapMutations([
       'displayCarsRandomly',
-      'setCarToViewFromLocalStore',
-      'setVehicleHistory',
+      'getCarToViewFromLocalStore',
       'setCarToViewGeneralInfo',
+      'setVehicleHistory',
       'setCarToviewDetails',
       'saveCarToViewToLocalStore'
      

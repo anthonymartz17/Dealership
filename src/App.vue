@@ -26,8 +26,8 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 export default {
   created(){
  
-   this.getCarsData('setCarsData');
-   this.getCarsData('setMakes');
+   this.getCarsData({funcToCommit:'setCarsData'});
+   this.getCarsData({funcToCommit:'setMakes'});
    this.getPriceRange();
    this.getYearsRange();
 

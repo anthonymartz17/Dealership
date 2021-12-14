@@ -684,7 +684,7 @@
           "transmission":"Automatic",
           "driveTrain":"AWD",
           "engine":"295 hp 3.6L V6",
-          "colorEx":"Diamond Black Crystal Pearl-Coat Paint",
+          "colorEx":"Diamond Black Crystal",
           "colorIn":"Black",
           "vin":"1C4RJFBG8MC841991",
           "location":"Levittown, NY",
@@ -1206,12 +1206,62 @@
       "make":"VOLVO",
       "model":[ 
         {
-          "model":"XC40",
-          "trim":["INSCRIPTION"]
+          "make":"Volvo",
+          "model":"S90",
+          "trim":"T6",
+          "price":38495,
+          "year":2020,
+          "mainPic":"volvo-s90-front.jpeg",
+          "pics":[
+            "volvo-s90-front.jpeg",
+            "volvo-s90-back.jpeg",
+            "volvo-s90-interior.jpeg",
+            "volvo-s90-dashboard.jpeg"
+        ],
+          "miles":"9,366",
+          "mileage":"25",
+          "carType":"Sedan",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"316 hp 2L I4",
+          "colorEx":"Black",
+          "colorIn":"Black",
+          "vin":"LVYA22MK5LP175581",
+          "location":"Commack, NY",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         },
         {
-          "model":"S60",
-          "trim":["R DESING"]
+          "make":"Volvo",
+          "model":"XC60",
+          "trim":"T6",
+          "price":38484,
+          "year":2019,
+          "mainPic":"volvo-xc60-front.jpeg",
+          "pics":[
+            "volvo-xc60-front.jpeg",
+            "volvo-xc60-back.jpeg",
+            "volvo-xc60-interior.jpeg",
+            "volvo-xc60-dashboard.jpeg"
+        ],
+          "miles":"29,327",
+          "mileage":"22",
+          "carType":"SUV",
+          "carCondition":"Used",
+          "fuel":"Gasoline",
+          "transmission":"Automatic",
+          "driveTrain":"AWD",
+          "engine":"316 hp 2L I4",
+          "colorEx":"Onyx Black Metallic",
+          "colorIn":"Black",
+          "vin":"LYVA22RK7KB230526",
+          "location":"Ramsey, NJ",
+          "owner":1,
+          "accidents":0,
+          "titleCheck":"No issues"
         }
       ]
     }
