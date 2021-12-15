@@ -15,7 +15,7 @@ export default new Vuex.Store({
     
     carsData:[],
     // allModels:[],
-    randomCarsDisplay:[],
+    vehiclesDisplay:[],
     testNums:[],
     // receives the data of the clicked car
     carToView:{},
@@ -184,6 +184,21 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    // search filters
+     searchByMake(state){
+       let carsByMake = [];
+
+       if(state.make.typeSelected !== ''){
+       state.vehiclesDisplay.forEach(one =>{
+         if(one.make == state.make.typeSelected){
+             carsByMake.push(one)
+         }
+       })
+       state.vehiclesDisplay = carsByMake
+      }
+
+         
+     },
     // receive the data of the current car selected and saves it to local storage
     saveCarToViewToLocalStore(state,carToView){
       localStorage.setItem('carToView',JSON.stringify(carToView)) 
@@ -326,7 +341,7 @@ export default new Vuex.Store({
     },
     
     setCarsData(state,data){
-        state.carsData = data
+        state.carsData = data.data
     },
     // receives the data object which contains the data of vehicles and and object with current route
     setMakes(state,data){
@@ -337,7 +352,7 @@ export default new Vuex.Store({
     },
     // ///////////////////////////////////////////  use the display cars randomly to decide the cars that you want to show whether electric, or the results from the filters //////////////////////////////////////////////////////////////////////
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
-    displayCarsRandomly(state,data){
+    setDataInVehiclesDisplay(state,data){
       // console.log(data.funcAndRoute.route.name)
       let temporaryArray=[];
      data.data.forEach(one =>{
@@ -358,20 +373,16 @@ export default new Vuex.Store({
       }
               
              
-                state.randomCarsDisplay = temporaryArray
+                state.vehiclesDisplay = temporaryArray
                 // console.log(data.funcAndRoute.route.name)
               } 
-              else if(data.funcAndRoute.route.name == 'Electric'){
+              else if(data.funcAndRoute.route.name == 'Vehicles'){
                 
                 // console.log(data.funcAndRoute.route.name)
-                state.randomCarsDisplay = temporaryArray
+                state.vehiclesDisplay = temporaryArray
                 
               }
-              else{
-                state.randomCarsDisplay = temporaryArray
-                // console.log(data.funcAndRoute.route.name)
-
-           }
+            
 
         },
       

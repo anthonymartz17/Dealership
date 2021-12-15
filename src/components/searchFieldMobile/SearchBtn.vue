@@ -1,15 +1,28 @@
 <template>
 
-<div :class="{'btn-container':$router.name == 'Advance'}">
-  <div class="btn btn-search">Search</div>
- 
+<router-link :to="{name:'searchResults'}">
+  <div :class="{'btn-container':$router.name == 'Advance'}">
+  <div 
+  class="btn btn-search"
+  @click="searchByMake"
+  
+  
+  
+  >Search</div>
 </div>
+</router-link>
 
 </template>
 
 <script>
-
+import {mapMutations} from 'vuex'
 export default {
+
+  methods:{
+    ...mapMutations([
+      'searchByMake'
+    ])
+  }
  
 
 

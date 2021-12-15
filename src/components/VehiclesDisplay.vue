@@ -5,10 +5,16 @@
     <div 
     :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
     >
-  <h2 class="vehicles-title">Vehicles</h2>
+  <h2 
+  v-if="$route.name !== 'searchResults'"  class="vehicles-title">Vehicles</h2>
+
+  <h2 v-else-if="$route.name == 'searchResults'" class="vehicles-title">Search Results</h2>
+
+  <h2 v-else-if="$route.name == 'Electric'" class="vehicles-title">Electric and Hybrid</h2>
+
   <router-link :to="{name:'CarToView'}">
   <div class="vehicles-display" 
-  v-for="(carToView,key) in randomCarsDisplay"
+  v-for="(carToView,key) in vehiclesDisplay"
   :key="key"
   @click="
   saveCarToViewToLocalStore(carToView)
@@ -52,8 +58,8 @@ export default {
 
   
   created(){
-    this.getCarsData({funcToCommit:'displayCarsRandomly',route:this.$route});
-    console.log(this.$route.name)
+    this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
+   
  
     
 
@@ -62,7 +68,7 @@ export default {
   methods:{
     
     ...mapMutations([
-      'displayCarsRandomly',
+      'setDataInVehiclesDisplayb',
       'getCarToViewFromLocalStore',
       'setCarToViewGeneralInfo',
       'setVehicleHistory',
@@ -77,7 +83,7 @@ export default {
   },
   computed:{
     ...mapState([
-      'randomCarsDisplay',
+      'vehiclesDisplay',
      
        
     ]),

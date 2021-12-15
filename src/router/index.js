@@ -6,6 +6,7 @@ import Electric from '../views/Electric.vue'
 import Contact from '../views/Contact.vue'
 import Advance from '../views/AdvanceSearch.vue'
 import CarToView from '../views/CarToView.vue'
+import SearchResults from '../views/SearchResults'
 
 Vue.use(VueRouter)
 
@@ -36,9 +37,14 @@ const routes = [
     component: Advance
   },
   {
-    path: '/carToView',
+    path: '/cartToView',
     name: 'CarToView',
     component: CarToView 
+  },
+  {
+    path: '/searchResults',
+    name: 'searchResults',
+    component: SearchResults
   },
   
  
