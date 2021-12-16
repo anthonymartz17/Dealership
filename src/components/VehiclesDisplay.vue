@@ -5,19 +5,15 @@
     <div 
     :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
     >
-  <h2 
-  v-if="$route.name !== 'searchResults'"  class="vehicles-title">Vehicles</h2>
+  <h2 class="vehicles-title">{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
 
-  <h2 v-else-if="$route.name == 'searchResults'" class="vehicles-title">Search Results</h2>
-
-  <h2 v-else-if="$route.name == 'Electric'" class="vehicles-title">Electric and Hybrid</h2>
 
   <router-link :to="{name:'CarToView'}">
   <div class="vehicles-display" 
   v-for="(carToView,key) in vehiclesDisplay"
   :key="key"
   @click="
-  saveCarToViewToLocalStore(carToView)
+  saveCarToViewToLocalStore({name:'carToView',data:carToView})
   getCarToViewFromLocalStore();
    setCarToViewGeneralInfo();
    setVehicleHistory();
@@ -56,9 +52,18 @@ import {mapMutations,mapState,mapActions} from 'vuex'
 
 export default {
 
+  data(){
+    return {
+
+      pageTitle:'',
+
+    }
+  },
+
   
   created(){
     this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
+    this.selectPageTitle(this.$route.name)
    
  
     
@@ -80,6 +85,24 @@ export default {
       'getCarsData',
       
       ]),
+
+      selectPageTitle(name){
+        let titles=[
+          {routeName:'Vehicles', title:'Vehicles'},
+          {routeName:'Electric', title:'Electrics and Hybrids'},
+          {routeName:'Home', title:'Vehicles'},
+          {routeName:'searchResults', title:'Search Results'}
+        ]
+
+        titles.forEach(one =>{
+          if(name == one.routeName){
+            this.pageTitle = one.title
+          }
+        })
+
+      }
+
+
   },
   computed:{
     ...mapState([

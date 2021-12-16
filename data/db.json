@@ -533,7 +533,7 @@
         {
           "make":"HONDA",
           "model":"CIVIC",
-          "trim":"HYBRID",
+          "trim":"Hybrid",
           "price":10751,
           "year":2013,
           "mainPic":"civic-hybrid-front.jpeg",
@@ -547,7 +547,7 @@
           "mileage":"44",
           "carType":"Sedan",
           "carCondition":"Used",
-          "fuel":"HYBRID",
+          "fuel":"Hybrid",
           "transmission":"Continuously Variable Transmission",
           "driveTrain":"FWD",
           "engine":"110 hp 1.5L I4 Hybrid",

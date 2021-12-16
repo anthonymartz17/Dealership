@@ -195,13 +195,23 @@ export default new Vuex.Store({
          }
        })
        state.vehiclesDisplay = carsByMake
+      }    
+     },
+     selectElectricCars(state,routeName){
+      let electricCars=[]
+      if(routeName == 'Electric'){
+        state.vehiclesDisplay.forEach(one =>{
+          if(one.fuel == 'Electric' || one.fuel == 'Hybrid'){
+           electricCars.push(one)
+          }
+        })
+        state.vehiclesDisplay = electricCars
       }
 
-         
-     },
+    },
     // receive the data of the current car selected and saves it to local storage
-    saveCarToViewToLocalStore(state,carToView){
-      localStorage.setItem('carToView',JSON.stringify(carToView)) 
+    saveCarToViewToLocalStore(state,data){
+      localStorage.setItem(data.name,JSON.stringify(data.data)) 
     },
     
      // get the data of current car from local storage and assigns it to the prop carToView.
@@ -350,7 +360,7 @@ export default new Vuex.Store({
         })
 
     },
-    // ///////////////////////////////////////////  use the display cars randomly to decide the cars that you want to show whether electric, or the results from the filters //////////////////////////////////////////////////////////////////////
+   
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
     setDataInVehiclesDisplay(state,data){
       // console.log(data.funcAndRoute.route.name)
