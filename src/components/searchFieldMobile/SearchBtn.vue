@@ -1,7 +1,12 @@
 <template>
  <!-- :class="{'btn-container':$router.name == 'Advance'}"  -->
 <router-link :to="{name:'searchResults'}" >
-    <div  @click="searchByMake"  class="btn btn-search" >Search</div>
+    <div class="btn btn-search"
+      @click="
+      searchByMake();
+      searchByModel();
+      "
+    >Search</div>
 </router-link>
 
 </template>
@@ -12,7 +17,9 @@ export default {
 
   methods:{
     ...mapMutations([
-      'searchByMake'
+      'searchByMake',
+      'searchByModel'
+
     ])
   }
  

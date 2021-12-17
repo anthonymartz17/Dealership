@@ -23,10 +23,12 @@
        <div class="car2view-details">
         <p class="car2view-red-title car2view-title">Vehicle Details</p>
         <div class="car2view-details-specs">
-          <div v-for="(detail,key) in carToViewDetails" :key="key">
+          <template v-for="(detail,key) in carToViewDetails">
+          <div :key="key" v-if="detail.val">
             <p class="car2view-details-bold">{{detail.key}}:</p>
             <p class="car2view-details-text">{{detail.val}}</p>
           </div>
+          </template>
         </div>
          <p class="car2view-red-title car2view-title">Vehicle History</p>
          <div class="car2view-history">

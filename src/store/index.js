@@ -184,11 +184,11 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+    ///////////////////////// the two functions searchbymake and searchbymodel do not wnat to work at the same time. it s either one or the other///////////////////////////////////////////////////
     // search filters
      searchByMake(state){
-       let carsByMake = [];
-
-       if(state.make.typeSelected !== ''){
+       if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`){
+         let carsByMake = [];
        state.vehiclesDisplay.forEach(one =>{
          if(one.make == state.make.typeSelected){
              carsByMake.push(one)
@@ -196,7 +196,31 @@ export default new Vuex.Store({
        })
        state.vehiclesDisplay = carsByMake
       }    
+
+      // console.log(state.vehiclesDisplay)
      },
+
+     searchByModel(){
+       
+      //  if(state.models.typeSelected !== `All ${state.make.typeSelected}` || state.models.typeSelected !== ''){
+
+      //    let carsByModel=[];
+      //    state.vehiclesDisplay.forEach(one =>{
+          
+      //      if(state.models.typeSelected == one.model){
+      //        carsByModel.push(one) 
+      //       }
+      //     })
+      //     state.vehiclesDisplay = carsByModel
+      //   }
+        // console.log(state.vehiclesDisplay)
+     },
+
+
+
+
+
+
      selectElectricCars(state,routeName){
       let electricCars=[]
       if(routeName == 'Electric'){

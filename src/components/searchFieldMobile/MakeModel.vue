@@ -15,43 +15,6 @@
     </div>                     
   </div> 
 
-    <!-- <div class="selected-field-options" 
-    v-show="$store.state.optionsCardToggler"
-    @click="
-    toggleOptionsCard($event);
-    "
-    >
-      <div class="selected-field-options-card" >
-        <div  class="selected-field-options-card">
-          <label
-            v-for="(field,key) in makeOrModel.type"
-            :key="key"  
-            :class="[
-            'selected-field-options-card-content',
-            {'card-content-disabled':makeOrModel.id == 'model' && make.typeSelected == ''
-            }
-            ]"
-            :for="key" 
-            @click.stop="
-            toggleOptionsCard($event);
-            assignValueToTypeSelected({$event,id:makeOrModel.id});
-            selectModelByMake($event,makeOrModel.id);
-            "
-        >
-            <p >{{field}}</p>
-            <input 
-              class="radio"
-              type="radio" 
-              :id="key" 
-              :value="field"
-              name="searchFields" 
-            >    
-          </label>
-        </div>
-
-      </div>
-    
-    </div> -->
 
 
  </div>
