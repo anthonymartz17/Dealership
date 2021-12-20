@@ -16,6 +16,7 @@ export default new Vuex.Store({
     carsData:[],
     // allModels:[],
     vehiclesDisplay:[],
+    allModels:[],
     testNums:[],
     // receives the data of the clicked car
     carToView:{},
@@ -184,12 +185,14 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    ///////////////////////// the two functions searchbymake and searchbymodel do not wnat to work at the same time. it s either one or the other///////////////////////////////////////////////////
+    ///////////////////////// working on getting all models from local storage///////////////////////////////////////////
     // search filters
      searchByMake(state){
+       console.log(state.allModels)
        if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`){
+         let allModels = [JSON.parse(localStorage.getItem('allModels'))]
          let carsByMake = [];
-       state.vehiclesDisplay.forEach(one =>{
+       allModels.forEach(one =>{
          if(one.make == state.make.typeSelected){
              carsByMake.push(one)
          }
@@ -200,20 +203,35 @@ export default new Vuex.Store({
       // console.log(state.vehiclesDisplay)
      },
 
-     searchByModel(){
+     searchByModel(state){
        
-      //  if(state.models.typeSelected !== `All ${state.make.typeSelected}` || state.models.typeSelected !== ''){
+       if(state.models.typeSelected !== `All ${state.make.typeSelected}` || state.models.typeSelected !== ''){
 
-      //    let carsByModel=[];
-      //    state.vehiclesDisplay.forEach(one =>{
+         let carsByModel=[];
+         state.vehiclesDisplay.forEach(one =>{
           
-      //      if(state.models.typeSelected == one.model){
-      //        carsByModel.push(one) 
-      //       }
-      //     })
-      //     state.vehiclesDisplay = carsByModel
-      //   }
-        // console.log(state.vehiclesDisplay)
+           if(state.models.typeSelected == one.model){
+             carsByModel.push(one) 
+            }
+          })
+          state.vehiclesDisplay = carsByModel
+        }
+     },
+
+     searchByPrice(state){
+       if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0){
+          // let carsByPriceFrom=[]
+          state.vehiclesDisplay.forEach(one =>{
+            console.log(one.price)
+            // if(state.priceFrom.typeSelected < one.price){
+               
+            //   carsByPriceFrom.push(one)
+            // }
+          })
+
+          // console.log(carsByPriceFrom)
+          // state.vehiclesDisplay = carsByPriceFrom
+       }
      },
 
 
@@ -242,6 +260,15 @@ export default new Vuex.Store({
      getCarToViewFromLocalStore(state){
       state.carToView = [JSON.parse(localStorage.getItem('carToView'))]
     }, 
+    
+    // saves all models availables to local storage when the app component is created
+    saveAllModelsToLocal(state,data){
+      localStorage.setItem('allModels',JSON.stringify(data.data))
+    },
+    // gets all models from local storage and set them in the state prop allModels when the app component is created
+    getAllModelsFromLocal(state){
+      state.allModels = [JSON.parse(localStorage.getItem('allModels'))]
+    },
 
     // receives the data of the current car to view and sets the specifications in the setCarToViewGeneralInfo prop that is  in the state.
     setCarToViewGeneralInfo(state){
@@ -405,18 +432,15 @@ export default new Vuex.Store({
        temporaryArray[ranNum] = temporaryArray[arrLength]
        temporaryArray[arrLength] = temp
       }
-              
-             
+   
                 state.vehiclesDisplay = temporaryArray
-                // console.log(data.funcAndRoute.route.name)
+               
               } 
               else if(data.funcAndRoute.route.name == 'Vehicles'){
                 
-                // console.log(data.funcAndRoute.route.name)
                 state.vehiclesDisplay = temporaryArray
                 
               }
-            
 
         },
       

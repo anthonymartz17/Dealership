@@ -124,7 +124,7 @@ export default {
 }
 
 .vehicles-height{
-  height: 75vh;
+  height: 72vh;
 }
 
 .vehicles{

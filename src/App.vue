@@ -30,6 +30,8 @@ export default {
    this.getCarsData({funcToCommit:'setMakes'});
    this.getPriceRange();
    this.getYearsRange();
+   this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
+   this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
 
   },
 
@@ -44,7 +46,10 @@ export default {
       'getPriceRange',
       'getYearsRange',
       'getAllModels',
-      'detectResize'
+      'detectResize',
+      'getAllModelsFromLocal',
+      'saveAllModelsToLocal'
+
      
       
     ])

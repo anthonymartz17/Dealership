@@ -5,6 +5,7 @@
       @click="
       searchByMake();
       searchByModel();
+      searchByPrice();
       "
     >Search</div>
 </router-link>
@@ -18,7 +19,8 @@ export default {
   methods:{
     ...mapMutations([
       'searchByMake',
-      'searchByModel'
+      'searchByModel',
+      'searchByPrice',
 
     ])
   }
