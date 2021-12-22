@@ -7,29 +7,27 @@
     >
   <h2 class="vehicles-title">{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
 
-
   <router-link :to="{name:'CarToView'}">
   <div class="vehicles-display" 
-  v-for="(carToView,key) in vehiclesDisplay"
+  v-for="(car,key) in vehiclesDisplay"
   :key="key"
   @click="
-  saveCarToViewToLocalStore({name:'carToView',data:carToView})
+  saveCarToViewToLocalStore({name:'carToView',data:car})
   getCarToViewFromLocalStore();
    setCarToViewGeneralInfo();
    setVehicleHistory();
    setCarToviewDetails()"
-  >
-  
+  >  
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img :src="`/images/${carToView.mainPic}`" :alt="`picture of ${carToView.model}`">       
+        <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
       </div>
       <div class="vehicles-display-description">
-        <h3 class="vehicles-display-title">{{carToView.year}} {{carToView.make}} {{carToView.model}}</h3>
+        <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
         <p class="vehicles-display-specs">
-          {{carToView.fuel}} - {{carToView.carCondition}} - {{carToView.miles}} miles
+          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
         </p>
-        <p class="vehicles-display-price">{{carToView.price | currency}}</p>
+        <p class="vehicles-display-price">{{car.price | currency}}</p>
         
       </div>
     </div>
@@ -64,6 +62,9 @@ export default {
   created(){
     this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
     this.selectPageTitle(this.$route.name)
+    this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
+    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
+    this.selectElectricCars(this.$route.name)
    
  
     
@@ -78,7 +79,11 @@ export default {
       'setCarToViewGeneralInfo',
       'setVehicleHistory',
       'setCarToviewDetails',
-      'saveCarToViewToLocalStore'
+      'saveCarToViewToLocalStore',
+      'saveAllModelsToLocal',
+      'getAllModelsFromLocal',
+      'selectElectricCars'
+      
      
     ]),
      ...mapActions([

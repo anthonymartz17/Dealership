@@ -8,8 +8,10 @@ import {mapMutations} from 'vuex'
 
 export default {
 
+
   created(){
     this.selectElectricCars(this.$route.name)
+    
 
   },
 
@@ -19,11 +21,12 @@ export default {
   },
   methods:{
 
+
     ...mapMutations([
       'selectElectricCars'
     ])
 
-  }
+  },
 
 }
 </script>

@@ -14,7 +14,6 @@ export default new Vuex.Store({
     fieldContent:null,
     
     carsData:[],
-    // allModels:[],
     vehiclesDisplay:[],
     allModels:[],
     testNums:[],
@@ -185,22 +184,20 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    ///////////////////////// working on getting all models from local storage///////////////////////////////////////////
+   
     // search filters
      searchByMake(state){
-       console.log(state.allModels)
        if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`){
-         let allModels = [JSON.parse(localStorage.getItem('allModels'))]
+        //  let allModels = JSON.parse(localStorage.getItem('allModels'))
          let carsByMake = [];
-       allModels.forEach(one =>{
+         state.vehiclesDisplay.forEach(one =>{
          if(one.make == state.make.typeSelected){
              carsByMake.push(one)
          }
        })
-       state.vehiclesDisplay = carsByMake
+        state.vehiclesDisplay = carsByMake
+      //  console.log(state.vehiclesDisplay)
       }    
-
-      // console.log(state.vehiclesDisplay)
      },
 
      searchByModel(state){
@@ -208,7 +205,7 @@ export default new Vuex.Store({
        if(state.models.typeSelected !== `All ${state.make.typeSelected}` || state.models.typeSelected !== ''){
 
          let carsByModel=[];
-         state.vehiclesDisplay.forEach(one =>{
+         state.allModels.forEach(one =>{
           
            if(state.models.typeSelected == one.model){
              carsByModel.push(one) 
@@ -221,13 +218,13 @@ export default new Vuex.Store({
      searchByPrice(state){
        if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0){
           // let carsByPriceFrom=[]
-          state.vehiclesDisplay.forEach(one =>{
-            console.log(one.price)
+          // state.vehiclesDisplay.forEach(one =>{
+            // console.log(one.price)
             // if(state.priceFrom.typeSelected < one.price){
                
             //   carsByPriceFrom.push(one)
             // }
-          })
+          // })
 
           // console.log(carsByPriceFrom)
           // state.vehiclesDisplay = carsByPriceFrom
@@ -242,7 +239,7 @@ export default new Vuex.Store({
      selectElectricCars(state,routeName){
       let electricCars=[]
       if(routeName == 'Electric'){
-        state.vehiclesDisplay.forEach(one =>{
+        state.allModels.forEach(one =>{
           if(one.fuel == 'Electric' || one.fuel == 'Hybrid'){
            electricCars.push(one)
           }
@@ -263,11 +260,18 @@ export default new Vuex.Store({
     
     // saves all models availables to local storage when the app component is created
     saveAllModelsToLocal(state,data){
-      localStorage.setItem('allModels',JSON.stringify(data.data))
+            // the nested loop gets all the models contained in the model array  of each car object
+      let allModels = []
+      data.data.forEach(one =>{
+        one.model.forEach(one =>{
+          allModels.push(one)
+        })
+      })
+      localStorage.setItem('allModels',JSON.stringify(allModels))
     },
     // gets all models from local storage and set them in the state prop allModels when the app component is created
     getAllModelsFromLocal(state){
-      state.allModels = [JSON.parse(localStorage.getItem('allModels'))]
+      state.allModels = JSON.parse(localStorage.getItem('allModels'))
     },
 
     // receives the data of the current car to view and sets the specifications in the setCarToViewGeneralInfo prop that is  in the state.
@@ -414,31 +418,32 @@ export default new Vuex.Store({
    
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
     setDataInVehiclesDisplay(state,data){
+
       // console.log(data.funcAndRoute.route.name)
-      let temporaryArray=[];
-     data.data.forEach(one =>{
-       one.model.forEach(one =>{
-        temporaryArray.push(one)
-       })
-     })
-    
+    //   let temporaryArray=[];
+    //  state.allModels.forEach(one =>{
+    //    one.model.forEach(one =>{
+    //     temporaryArray.push(one)
+    //    })
+    //  })
+    // console.log(state.allModels[0])
        if(data.funcAndRoute.route.name == 'Home'){
 
     //  fisher yates modern shuffle
-         let arrLength = temporaryArray.length,temp,ranNum;
+         let arrLength = state.allModels.length,temp,ranNum;
       while(arrLength-- > 0){
        ranNum = Math.round(Math.random() * (arrLength + 1));
-       temp = temporaryArray[ranNum];
-       temporaryArray[ranNum] = temporaryArray[arrLength]
-       temporaryArray[arrLength] = temp
+       temp = state.allModels[ranNum];
+       state.allModels[ranNum] = state.allModels[arrLength]
+       state.allModels[arrLength] = temp
       }
    
-                state.vehiclesDisplay = temporaryArray
+                state.vehiclesDisplay = state.allModels
                
               } 
               else if(data.funcAndRoute.route.name == 'Vehicles'){
                 
-                state.vehiclesDisplay = temporaryArray
+                state.vehiclesDisplay = state.allModels
                 
               }
 

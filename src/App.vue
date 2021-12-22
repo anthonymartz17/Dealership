@@ -32,6 +32,7 @@ export default {
    this.getYearsRange();
    this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
+   
 
   },
 
