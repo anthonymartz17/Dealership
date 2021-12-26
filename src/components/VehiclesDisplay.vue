@@ -20,7 +20,7 @@
   >  
     <div class="vehicles-display-car">
       <div class="vehicles-display-img">
-        <img :src="`/images/${car.mainPic}`" :alt="`picture of ${car.model}`">       
+        <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
       </div>
       <div class="vehicles-display-description">
         <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
@@ -60,11 +60,11 @@ export default {
 
   
   created(){
+    
     this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
     this.selectPageTitle(this.$route.name)
-    this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
-    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
-    this.selectElectricCars(this.$route.name)
+    // this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route})
+    this.searchByMake()
    
  
     
@@ -80,9 +80,8 @@ export default {
       'setVehicleHistory',
       'setCarToviewDetails',
       'saveCarToViewToLocalStore',
-      'saveAllModelsToLocal',
-      'getAllModelsFromLocal',
-      'selectElectricCars'
+      'selectElectricCars',
+      'searchByMake'
       
      
     ]),

@@ -3,9 +3,11 @@
 <router-link :to="{name:'searchResults'}" >
     <div class="btn btn-search"
       @click="
-      searchByMake();
+      searchByMake($route.name);
       searchByModel();
+      searchByYear();
       searchByPrice();
+      setSearchResultsWithNoUserInput();
       "
     >Search</div>
 </router-link>
@@ -21,6 +23,8 @@ export default {
       'searchByMake',
       'searchByModel',
       'searchByPrice',
+      'searchByYear',
+      'setSearchResultsWithNoUserInput',
 
     ])
   }

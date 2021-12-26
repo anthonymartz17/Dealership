@@ -25,6 +25,7 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 
 export default {
   created(){
+    console.log(this.vehiclesDisplay)
  
    this.getCarsData({funcToCommit:'setCarsData'});
    this.getCarsData({funcToCommit:'setMakes'});
@@ -49,7 +50,7 @@ export default {
       'getAllModels',
       'detectResize',
       'getAllModelsFromLocal',
-      'saveAllModelsToLocal'
+      // 'saveAllModelsToLocal'
 
      
       
@@ -71,6 +72,7 @@ export default {
   computed:{
     ...mapState([
       'makeSelected',
+      'vehiclesDisplay'
      
 
       

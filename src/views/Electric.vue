@@ -11,8 +11,6 @@ export default {
 
   created(){
     this.selectElectricCars(this.$route.name)
-    
-
   },
 
 

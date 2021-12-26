@@ -184,52 +184,154 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
+
+    // when the app is created, this function get the data  that is at the moment in the  searchResults prop in local storage and sets it to the vehicleDisplay prop that is in the state. this allows the data to stay rendered when the page is reloaded.
+    setDataInVehiclesDisplayFromLocal(state){
+        state.vehiclesDisplay = JSON.parse(localStorage.getItem('searchResults'))
+    },
+
+
+    // sets all available models to the searchResults prop that is in local storage, when the user hit search without specifying any criteria for the search. this allows a result of all available models.
+    setSearchResultsWithNoUserInput(state){
+      if(
+          state.make.typeSelected == '' &&
+          state.models.typeSelected == '' && 
+          state.priceFrom.typeSelected == '' &&
+          state.priceTo.typeSelected == '' &&
+          state.yearFrom.typeSelected == '' &&
+          state.yearTo.typeSelected == '' &&
+          state.carType.typeSelected == '' &&
+          state.carCondition.typeSelected == '' &&
+          state.fuel.typeSelected == '' &&
+          state.transmission.typeSelected == '' &&
+          state.driveTrain.typeSelected == '' &&
+          state.engine.typeSelected == '' &&
+          state.color.typeSelected == ''
+        
+      ){
+       
+            let allModels = JSON.parse(localStorage.getItem('allModels'))
+            localStorage.setItem('searchResults',JSON.stringify(allModels))
+          }
+      
+      
+
+    },
    
-    // search filters
-     searchByMake(state){
-       if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`){
-        //  let allModels = JSON.parse(localStorage.getItem('allModels'))
+    searchByMake(state){
+  
+      if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`)
+      {
          let carsByMake = [];
-         state.vehiclesDisplay.forEach(one =>{
+         let allModels = JSON.parse(localStorage.getItem('allModels'))
+         allModels.forEach(one =>{
          if(one.make == state.make.typeSelected){
              carsByMake.push(one)
          }
        })
-        state.vehiclesDisplay = carsByMake
-      //  console.log(state.vehiclesDisplay)
-      }    
+ 
+       localStorage.setItem('searchResults',JSON.stringify(carsByMake))
+       
+      }  
      },
 
      searchByModel(state){
        
-       if(state.models.typeSelected !== `All ${state.make.typeSelected}` || state.models.typeSelected !== ''){
+       if(state.models.typeSelected != `All ${state.make.typeSelected}` ){
+        let allModels = JSON.parse(localStorage.getItem('allModels'))
+        let carsByModel=[];
 
-         let carsByModel=[];
-         state.allModels.forEach(one =>{
+         allModels.forEach(one =>{
           
            if(state.models.typeSelected == one.model){
              carsByModel.push(one) 
             }
           })
-          state.vehiclesDisplay = carsByModel
+           localStorage.setItem('searchResults',JSON.stringify(carsByModel))
         }
      },
 
      searchByPrice(state){
-       if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0){
-          // let carsByPriceFrom=[]
-          // state.vehiclesDisplay.forEach(one =>{
-            // console.log(one.price)
-            // if(state.priceFrom.typeSelected < one.price){
-               
-            //   carsByPriceFrom.push(one)
-            // }
-          // })
+       if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0 && state.priceTo.typeSelected == 0 ){
 
-          // console.log(carsByPriceFrom)
-          // state.vehiclesDisplay = carsByPriceFrom
+          let allModels = JSON.parse(localStorage.getItem('allModels'))
+          let carsByPrice=[]
+
+          allModels.forEach(one =>{
+            if(one.price > state.priceFrom.typeSelected ){
+              carsByPrice.push(one)
+            }
+          })
+          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
        }
+      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected == 0  && state.priceTo.typeSelected !== 0 ){
+
+          let allModels = JSON.parse(localStorage.getItem('allModels'))
+          let carsByPrice=[]
+
+          allModels.forEach(one =>{
+            if(one.price < state.priceTo.typeSelected ){
+              carsByPrice.push(one)
+            }
+          })
+          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
+       }
+
+      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0  && state.priceTo.typeSelected !== 0 ){
+
+          let allModels = JSON.parse(localStorage.getItem('allModels'))
+          let carsByPrice=[]
+
+          allModels.forEach(one =>{
+            if(one.price > state.priceFrom.typeSelected && one.price < state.priceTo.typeSelected ){
+              carsByPrice.push(one)
+            }
+          })
+          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
+       }
+
      },
+
+     searchByYear(state){
+      if(state.make.typeSelected == '' && state.yearFrom.typeSelected !== 0 && state.yearTo.typeSelected == 0 ){
+
+         let allModels = JSON.parse(localStorage.getItem('allModels'))
+         let carsByYear=[]
+
+         allModels.forEach(one =>{
+           if(one.year > state.yearFrom.typeSelected ){
+            carsByYear.push(one)
+           }
+         })
+         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+      }
+     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected == 0  && state.yearTo.typeSelected !== 0 ){
+
+         let allModels = JSON.parse(localStorage.getItem('allModels'))
+         let carsByYear=[]
+
+         allModels.forEach(one =>{
+           if(one.year < state.yearTo.typeSelected ){
+            carsByYear.push(one)
+           }
+         })
+         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+      }
+
+     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected !== 0  && state.yearTo.typeSelected !== 0 ){
+
+         let allModels = JSON.parse(localStorage.getItem('allModels'))
+         let carsByYear=[]
+
+         allModels.forEach(one =>{
+           if(one.year > state.yearFrom.typeSelected && one.year < state.yearTo.typeSelected ){
+            carsByYear.push(one)
+           }
+         })
+         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+      }
+
+    },
 
 
 
@@ -237,9 +339,12 @@ export default new Vuex.Store({
 
 
      selectElectricCars(state,routeName){
-      let electricCars=[]
-      if(routeName == 'Electric'){
-        state.allModels.forEach(one =>{
+       
+       if(routeName == 'Electric'){
+         let allModels = JSON.parse(localStorage.getItem('allModels'))
+
+        let electricCars=[]
+        allModels.forEach(one =>{
           if(one.fuel == 'Electric' || one.fuel == 'Hybrid'){
            electricCars.push(one)
           }
@@ -261,6 +366,7 @@ export default new Vuex.Store({
     // saves all models availables to local storage when the app component is created
     saveAllModelsToLocal(state,data){
             // the nested loop gets all the models contained in the model array  of each car object
+            
       let allModels = []
       data.data.forEach(one =>{
         one.model.forEach(one =>{
@@ -419,14 +525,6 @@ export default new Vuex.Store({
 //  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component 
     setDataInVehiclesDisplay(state,data){
 
-      // console.log(data.funcAndRoute.route.name)
-    //   let temporaryArray=[];
-    //  state.allModels.forEach(one =>{
-    //    one.model.forEach(one =>{
-    //     temporaryArray.push(one)
-    //    })
-    //  })
-    // console.log(state.allModels[0])
        if(data.funcAndRoute.route.name == 'Home'){
 
     //  fisher yates modern shuffle
@@ -443,7 +541,7 @@ export default new Vuex.Store({
               } 
               else if(data.funcAndRoute.route.name == 'Vehicles'){
                 
-                state.vehiclesDisplay = state.allModels
+                state.vehiclesDisplay = JSON.parse(localStorage.getItem('allModels'))
                 
               }
 
@@ -486,7 +584,7 @@ export default new Vuex.Store({
         },
         
         clearPropsVal(state){
-     
+       
           state.make.typeSelected = ''
           state.models.typeSelected = ''
           state.priceFrom.typeSelected = ''

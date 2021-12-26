@@ -4,8 +4,7 @@
       <i class="fas fa-bars fa-2x" @click="toggleMobileMenu()"></i>
         <div class="logo-container">
           <router-link :to="{name:'Home'}">
-            <span  @click="clearPropsVal;" class="logo">
-              Auto <span class="logo-m">M</span>artz
+            <span  @click="clearPropsVal" class="logo">Auto <span class="logo-m">M</span>artz
             </span>
           </router-link>
         </div>
@@ -33,8 +32,8 @@ export default {
   },
   methods:{
     ...mapMutations([
-    'toggleMobileMenu',
-    'clearPropsVal',
+      'clearPropsVal',
+      'toggleMobileMenu',
     
    
     ]),
