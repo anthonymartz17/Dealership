@@ -252,38 +252,38 @@ export default new Vuex.Store({
      },
 
      searchByPrice(state){
-       if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0 && state.priceTo.typeSelected == 0 ){
+       if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0 && state.priceTo.typeSelected == 0 ){
 
           let allModels = JSON.parse(localStorage.getItem('allModels'))
           let carsByPrice=[]
 
           allModels.forEach(one =>{
-            if(one.price > state.priceFrom.typeSelected ){
+            if(one.price >= state.priceFrom.typeSelected ){
               carsByPrice.push(one)
             }
           })
           localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
        }
-      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected == 0  && state.priceTo.typeSelected !== 0 ){
+      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected == 0  && state.priceTo.typeSelected > 0 ){
 
           let allModels = JSON.parse(localStorage.getItem('allModels'))
           let carsByPrice=[]
 
           allModels.forEach(one =>{
-            if(one.price < state.priceTo.typeSelected ){
+            if(one.price <= state.priceTo.typeSelected ){
               carsByPrice.push(one)
             }
           })
           localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
        }
 
-      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected !== 0  && state.priceTo.typeSelected !== 0 ){
+      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0  && state.priceTo.typeSelected > 0 ){
 
           let allModels = JSON.parse(localStorage.getItem('allModels'))
           let carsByPrice=[]
 
           allModels.forEach(one =>{
-            if(one.price > state.priceFrom.typeSelected && one.price < state.priceTo.typeSelected ){
+            if(one.price >= state.priceFrom.typeSelected && one.price <= state.priceTo.typeSelected ){
               carsByPrice.push(one)
             }
           })
@@ -291,40 +291,40 @@ export default new Vuex.Store({
        }
 
      },
-
+// the order of where you are placing the handlers is affecting the functionality of the methods////////////////////////
      searchByYear(state){
-      if(state.make.typeSelected == '' && state.yearFrom.typeSelected !== 0 && state.yearTo.typeSelected == 0 ){
+      if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0 && state.yearTo.typeSelected == 0 ){
 
          let allModels = JSON.parse(localStorage.getItem('allModels'))
          let carsByYear=[]
 
          allModels.forEach(one =>{
-           if(one.year > state.yearFrom.typeSelected ){
+           if(one.year >= state.yearFrom.typeSelected ){
             carsByYear.push(one)
            }
          })
          localStorage.setItem('searchResults',JSON.stringify(carsByYear))
       }
-     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected == 0  && state.yearTo.typeSelected !== 0 ){
+     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected == 0  && state.yearTo.typeSelected > 0 ){
 
          let allModels = JSON.parse(localStorage.getItem('allModels'))
          let carsByYear=[]
 
          allModels.forEach(one =>{
-           if(one.year < state.yearTo.typeSelected ){
+           if(one.year <= state.yearTo.typeSelected ){
             carsByYear.push(one)
            }
          })
          localStorage.setItem('searchResults',JSON.stringify(carsByYear))
       }
 
-     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected !== 0  && state.yearTo.typeSelected !== 0 ){
+     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0  && state.yearTo.typeSelected > 0 ){
 
          let allModels = JSON.parse(localStorage.getItem('allModels'))
          let carsByYear=[]
 
          allModels.forEach(one =>{
-           if(one.year > state.yearFrom.typeSelected && one.year < state.yearTo.typeSelected ){
+           if(one.year >= state.yearFrom.typeSelected && one.year <= state.yearTo.typeSelected ){
             carsByYear.push(one)
            }
          })

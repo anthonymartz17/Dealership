@@ -19,7 +19,7 @@
    setCarToviewDetails()"
   >  
     <div class="vehicles-display-car">
-      <div class="vehicles-display-img">
+      <div v-if="car.pics[0]" class="vehicles-display-img">
         <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
       </div>
       <div class="vehicles-display-description">
