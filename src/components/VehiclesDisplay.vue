@@ -123,8 +123,10 @@ export default {
 
 <style lang="scss">
 .vehicles-container{
-   background: $light;
+
+   height: 100%;
    padding: .5em;
+   flex: 1;
 }
 
 .vehicles-height{

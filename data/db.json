@@ -278,10 +278,10 @@
           "year":2018,
           "mainPic":"traverse-lt-front.jpeg",
           "pics":[
-            "traverse-lt-front",
-            "traverse-lt-back",
-            "traverse-lt-interior",
-            "traverse-lt-dashboard"
+            "traverse-lt-front.jpeg",
+            "traverse-lt-back.jpeg",
+            "traverse-lt-interior.jpeg",
+            "traverse-lt-dashboard.jpeg"
         ],
           "miles":"39,876",
           "mileage":"21",

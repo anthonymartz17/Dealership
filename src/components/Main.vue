@@ -26,10 +26,11 @@ export default {
 
 <style lang="scss" scoped>
 .main-container{
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  // max-height: 100%;
-
-
+  min-height: 70vh;
+ 
 
 
  

@@ -24,8 +24,10 @@ export default {
 
 <style lang="scss">
 .footer-container{
+
+  background: $lightDark;
   width: 100%;
-  height:25vh;
+  min-height:20vh;
   color: $light;
   display: flex;
   flex-direction: column;

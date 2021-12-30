@@ -206,13 +206,16 @@ export default new Vuex.Store({
           state.transmission.typeSelected == '' &&
           state.driveTrain.typeSelected == '' &&
           state.engine.typeSelected == '' &&
-          state.color.typeSelected == ''
-        
+          state.color.typeSelected == ''  ||
+          state.make.typeSelected == 'All Makes'
+  
       ){
        
             let allModels = JSON.parse(localStorage.getItem('allModels'))
             localStorage.setItem('searchResults',JSON.stringify(allModels))
           }
+
+          
       
       
 
@@ -519,6 +522,7 @@ export default new Vuex.Store({
         data.data.forEach(one =>{
           state.make.type.push(one.make)
         })
+        state.make.type.unshift(`All Makes`)
 
     },
    
@@ -672,7 +676,7 @@ export default new Vuex.Store({
           state.color
         ]
         
-        if(id == 'model' && state.make.typeSelected == ''){
+        if(id == 'model' && state.make.typeSelected == '' || id == 'model' && state.make.typeSelected == 'All Makes' ){
           state.clickedFieldContent = {id: 'model' ,type:['Select Make First']}
         }
         else{
@@ -700,6 +704,8 @@ export default new Vuex.Store({
               })
             } 
           })
+          // adds the option (all makes) and puts it in the first position in the array 
+          state.models.type.unshift(`All ${state.make.typeSelected}`)
         } 
       // assigns val of clicked field in model card content to the type selected
       if(data.id == 'model'){

@@ -4,7 +4,7 @@
     <div class="btn btn-search"
       @click="groupAllSearchMethods($route.name)"
     >Search</div>
-          <!-- setSearchResultsWithNoUserInput(); -->
+          
 </router-link>
 
 </template>
@@ -19,12 +19,14 @@ export default {
       this.searchByModel();
       this.searchByPrice();
       this.searchByYear();
+      this.setSearchResultsWithNoUserInput();
     },
     ...mapMutations([
       'searchByMake',
       'searchByModel',
       'searchByPrice',
       'searchByYear',
+      'setSearchResultsWithNoUserInput'
     ])
   }
  

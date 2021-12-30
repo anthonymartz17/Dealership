@@ -61,8 +61,9 @@ export default {
 // }
 
 .header-container{
+  
   background: $dark;
-  height: 10vh;
+  min-height: 10vh;
   width: 100%;
   color: $light;
   position: sticky;
@@ -71,9 +72,8 @@ export default {
   
 }
 .header-wrapper{
-
+ 
   width: 100%;
-  height: 100%;
   justify-content: space-between;
   padding-inline: 1.5em;
 
