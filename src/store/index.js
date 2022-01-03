@@ -12,6 +12,7 @@ export default new Vuex.Store({
     optionsCardToggler:false,
     searchBtnPosition:false,
     fieldContent:null,
+    checked: false,
     
     carsData:[],
     vehiclesDisplay:[],
@@ -657,9 +658,10 @@ export default new Vuex.Store({
         })
        
       },
+     
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
       showSelectedFieldContent(state,id){
-        
+       
         let contentToShow = [
           state.make,
           state.models,

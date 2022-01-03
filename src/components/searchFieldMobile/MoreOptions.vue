@@ -9,6 +9,7 @@
         @click="
           toggleOptionsCard($event);  
           showSelectedFieldContent(field.id);
+         
         "
      >
         <p>{{field.field}}</p>
@@ -27,6 +28,7 @@ export default {
       'toggleOptionsCard',
        'showSelectedFieldContent',
        'selectedFieldData',
+      
     ])
   },
   computed:{

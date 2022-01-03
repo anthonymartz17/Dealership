@@ -41,6 +41,7 @@
               :id="key" 
               :value="field"
               name="searchFields" 
+              :checked="key == 0"
             >    
           </label>
         </div>
@@ -66,7 +67,8 @@ export default {
        'optionsCardToggler',
        'clickedFieldContent',
        'pricesUnavailable',
-       'yearsUnavailable'
+       'yearsUnavailable',
+       'checked'
      ]),
 
   },
