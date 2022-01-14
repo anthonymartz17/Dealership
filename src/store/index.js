@@ -12,7 +12,7 @@ export default new Vuex.Store({
     optionsCardToggler:false,
     searchBtnPosition:false,
     fieldContent:null,
-    checked: false,
+    msg:true,
     
     carsData:[],
     vehiclesDisplay:[],
@@ -191,69 +191,73 @@ export default new Vuex.Store({
         state.vehiclesDisplay = JSON.parse(localStorage.getItem('searchResults'))
     },
 
-
-    // sets all available models to the searchResults prop that is in local storage, when the user hit search without specifying any criteria for the search. this allows a result of all available models.
-    setSearchResultsWithNoUserInput(state){
+    ///////////////////////// reorganizing the search ///////////////////////////// ///////////
+    searchVehicles(state){
+      // search with no specification from user
+      let allModels = JSON.parse(localStorage.getItem('allModels'))
       if(
-          state.make.typeSelected == '' &&
-          state.models.typeSelected == '' && 
-          state.priceFrom.typeSelected == '' &&
-          state.priceTo.typeSelected == '' &&
-          state.yearFrom.typeSelected == '' &&
-          state.yearTo.typeSelected == '' &&
-          state.carType.typeSelected == '' &&
-          state.carCondition.typeSelected == '' &&
-          state.fuel.typeSelected == '' &&
-          state.transmission.typeSelected == '' &&
-          state.driveTrain.typeSelected == '' &&
-          state.engine.typeSelected == '' &&
-          state.color.typeSelected == ''  ||
-          state.make.typeSelected == 'All Makes'
-  
-      ){
-       
-            let allModels = JSON.parse(localStorage.getItem('allModels'))
-            localStorage.setItem('searchResults',JSON.stringify(allModels))
-          }
+        state.make.typeSelected == '' &&
+        state.models.typeSelected == '' && 
+        state.priceFrom.typeSelected == '' &&
+        state.priceTo.typeSelected == '' &&
+        state.yearFrom.typeSelected == '' &&
+        state.yearTo.typeSelected == '' &&
+        state.carType.typeSelected == '' &&
+        state.carCondition.typeSelected == '' &&
+        state.fuel.typeSelected == '' &&
+        state.transmission.typeSelected == '' &&
+        state.driveTrain.typeSelected == '' &&
+        state.engine.typeSelected == '' &&
+        state.color.typeSelected == ''  ||
+        state.make.typeSelected == 'All Makes'
 
-          
-      
-      
+    ){  localStorage.setItem('searchResults',JSON.stringify(allModels)) }
+
+
+      //  search by make
+       if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`)
+      {  
+        let carsByMake = allModels.filter(one =>{
+          return one.make.includes(state.make.typeSelected)
+      })
+      localStorage.setItem('searchResults',JSON.stringify(carsByMake))
+      }  
+
+     // search by model
+      if(state.models.typeSelected !== `All ${state.make.typeSelected}` ){   
+        let carsByModel= allModels.filter(one =>{          
+        return one.model.includes(state.models.typeSelected)
+       })
+        localStorage.setItem('searchResults',JSON.stringify(carsByModel))
+        }
+
+   
 
     },
+
+
+
    
-    searchByMake(state){
-  
-      if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`)
-      {
-         let carsByMake = [];
-         let allModels = JSON.parse(localStorage.getItem('allModels'))
-         allModels.forEach(one =>{
-         if(one.make == state.make.typeSelected){
-             carsByMake.push(one)
-         }
-       })
- 
-       localStorage.setItem('searchResults',JSON.stringify(carsByMake))
-       
-      }  
-     },
+    // searchByMake(state){
+    //   let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //   let carsByMake = allModels.filter(one =>{
+    //     console.log(one.make)
+    //   // if(one.make == state.make.typeSelected){
+    //   //     return allModels
+    //   // }
+    // })
+    // localStorage.setItem('searchResults',JSON.stringify(carsByMake))
+    //  },
 
-     searchByModel(state){
-       
-       if(state.models.typeSelected != `All ${state.make.typeSelected}` ){
-        let allModels = JSON.parse(localStorage.getItem('allModels'))
-        let carsByModel=[];
-
-         allModels.forEach(one =>{
-          
-           if(state.models.typeSelected == one.model){
-             carsByModel.push(one) 
-            }
-          })
-           localStorage.setItem('searchResults',JSON.stringify(carsByModel))
-        }
-     },
+    //  searchByModel(state){
+    //   let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //   let carsByModel= allModels.filter(one =>{          
+    //     if(state.models.typeSelected == one.model){
+    //       return allModels
+    //      }
+    //    })
+    //     localStorage.setItem('searchResults',JSON.stringify(carsByModel))
+    //  },
 
      searchByPrice(state){
        if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0 && state.priceTo.typeSelected == 0 ){
@@ -636,7 +640,7 @@ export default new Vuex.Store({
     assignValueToTypeSelected(state,data){
       
       let selectedDataField =[
-          state.make,
+        
           state.make,
           state.models,
           state.priceFrom,
@@ -690,6 +694,7 @@ export default new Vuex.Store({
             }
             
           })
+          // console.log(state.clickedFieldContent.id)
         }
         
       },

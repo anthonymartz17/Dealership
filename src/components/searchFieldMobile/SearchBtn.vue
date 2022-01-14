@@ -2,7 +2,7 @@
  <!-- :class="{'btn-container':$router.name == 'Advance'}"  -->
 <router-link :to="{name:'searchResults'}" >
     <div class="btn btn-search"
-      @click="groupAllSearchMethods($route.name)"
+      @click="searchVehicles($route.name)"
     >Search</div>
           
 </router-link>
@@ -14,19 +14,9 @@ import {mapMutations} from 'vuex'
 export default {
 
   methods:{
-    groupAllSearchMethods(routeName){
-      this.searchByMake(routeName);
-      this.searchByModel();
-      this.searchByPrice();
-      this.searchByYear();
-      this.setSearchResultsWithNoUserInput();
-    },
+
     ...mapMutations([
-      'searchByMake',
-      'searchByModel',
-      'searchByPrice',
-      'searchByYear',
-      'setSearchResultsWithNoUserInput'
+      'searchVehicles',
     ])
   }
  

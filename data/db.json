@@ -1206,7 +1206,7 @@
       "make":"VOLVO",
       "model":[ 
         {
-          "make":"Volvo",
+          "make":"VOLVO",
           "model":"S90",
           "trim":"T6",
           "price":38495,
@@ -1235,7 +1235,7 @@
           "titleCheck":"No issues"
         },
         {
-          "make":"Volvo",
+          "make":"VOLVO",
           "model":"XC60",
           "trim":"T6",
           "price":38484,

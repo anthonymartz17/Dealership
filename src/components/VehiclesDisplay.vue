@@ -6,8 +6,8 @@
     :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
     >
   <h2 class="vehicles-title">{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
-
-  <router-link :to="{name:'CarToView'}">
+ 
+  <router-link  :to="{name:'CarToView'}">
   <div class="vehicles-display" 
   v-for="(car,key) in vehiclesDisplay"
   :key="key"
@@ -111,6 +111,7 @@ export default {
   computed:{
     ...mapState([
       'vehiclesDisplay',
+      'msg'
      
        
     ]),
@@ -122,6 +123,11 @@ export default {
 </script>
 
 <style lang="scss">
+.msg{
+  font:$font-logo-S;
+    padding: .2em;
+    margin-bottom: .5em ;
+}
 .vehicles-container{
 
    height: 100%;

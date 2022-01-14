@@ -41,7 +41,8 @@
               :id="key" 
               :value="field"
               name="searchFields" 
-              :checked="key == 0"
+              :checked="clickedFieldContent.id == 'make' && key == 0"
+             
             >    
           </label>
         </div>
@@ -80,6 +81,7 @@ export default {
       'selectModelByMake',
       'formatPrice',
       'disablePricesYears',
+      'checkField'
      
      
         
