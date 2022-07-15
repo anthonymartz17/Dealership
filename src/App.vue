@@ -25,15 +25,14 @@ import {mapActions,mapState,mapMutations} from 'vuex'
 
 export default {
   created(){
-    console.log(this.vehiclesDisplay)
  
-   this.getCarsData({funcToCommit:'setCarsData'});
+   this.$store.dispatch('getCarsData', {funcToCommit:'setCarsData'})
    this.getCarsData({funcToCommit:'setMakes'});
    this.getPriceRange();
    this.getYearsRange();
    this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
-   
+   this.setCarsData()
 
   },
 
@@ -51,6 +50,7 @@ export default {
       'detectResize',
       'getAllModelsFromLocal',
       // 'saveAllModelsToLocal'
+      'setCarsData'
 
      
       

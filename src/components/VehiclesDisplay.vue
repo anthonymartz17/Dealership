@@ -64,7 +64,7 @@ export default {
     this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
     this.selectPageTitle(this.$route.name)
     // this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route})
-    this.searchByMake()
+    // this.searchByMake()
    
  
     

@@ -11,7 +11,7 @@
     "
     >
       <div class="selected-field-options-card" >
-        <div  class="selected-field-options-card">
+        <div class="selected-field-options-card">
           <label
             v-for="(field,key) in clickedFieldContent.type"
             :key="key"  
@@ -19,14 +19,15 @@
             'selected-field-options-card-content',
             {
               'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '',
-              disabledOptions: clickedFieldContent.id == 'priceTo' && pricesUnavailable != null && pricesUnavailable > key  ||  clickedFieldContent.id == 'yearTo' && yearsUnavailable != null && yearsUnavailable < key 
+              disabledOptions: clickedFieldContent.id == 'priceTo' && pricesUnavailable != null && pricesUnavailable > key  ||  clickedFieldContent.id == 'yearTo' && yearsUnavailable != null && yearsUnavailable < key,
+              'rememberSelection':clickedFieldContent.typeSelected !='' && field == clickedFieldContent.typeSelected
              }
             ]"
             :for="key" 
             @click.stop="
             toggleOptionsCard($event);
             assignValueToTypeSelected({$event,id:clickedFieldContent.id});
-            selectModelByMake({$event,id:clickedFieldContent.id});
+            selectModelByMake({$event, id:clickedFieldContent.id});
             disablePricesYears({clickedFieldContent,key});
             "
         >
@@ -34,14 +35,13 @@
             <p v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">  
               {{field | currency}}
             </p>
-            <p v-else>{{field}}</p>
+            <p  v-else>{{field}}</p>
             <input 
               class="radio"
-              type="radio" 
+              type="hidden" 
               :id="key" 
               :value="field"
               name="searchFields" 
-              :checked="clickedFieldContent.id == 'make' && key == 0"
              
             >    
           </label>
@@ -75,6 +75,7 @@ export default {
   },
   methods:{
     ...mapMutations([
+      'remSelection',
       'toggleOptionsCard',
       'showSelectedFieldContent',
       'assignValueToTypeSelected',
@@ -92,5 +93,8 @@ export default {
 </script>
 
 <style lang="scss">
+.rememberSelection{
+  background: $lightestDark;
 
+}
 </style>

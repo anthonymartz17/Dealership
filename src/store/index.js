@@ -520,7 +520,10 @@ export default new Vuex.Store({
     },
     
     setCarsData(state,data){
-        state.carsData = data.data
+     if(data){
+
+      state.carsData = data.data
+     }
     },
     // receives the data object which contains the data of vehicles and and object with current route
     setMakes(state,data){
@@ -617,6 +620,7 @@ export default new Vuex.Store({
             
     // togggles on and off to show the card with the options  of the selected field
     toggleOptionsCard(state,e){
+      
       if(e.target.classList.contains('selected-field-options') || e.target.classList.contains('selected-field-options-card-content') || e.target.classList.contains('search-fields-container-field')){
         state.optionsCardToggler = !state.optionsCardToggler      
       }
@@ -636,7 +640,6 @@ export default new Vuex.Store({
       
       
     },
-    
     assignValueToTypeSelected(state,data){
       
       let selectedDataField =[
@@ -658,6 +661,7 @@ export default new Vuex.Store({
         selectedDataField.forEach(one =>{
           if(one.id == data.id){
             one.typeSelected = data.$event.currentTarget.lastElementChild.value
+          
           }
         })
        
@@ -665,7 +669,6 @@ export default new Vuex.Store({
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
       showSelectedFieldContent(state,id){
-       
         let contentToShow = [
           state.make,
           state.models,
@@ -694,8 +697,13 @@ export default new Vuex.Store({
             }
             
           })
-          // console.log(state.clickedFieldContent.id)
         }
+
+        contentToShow.filter(one =>{
+          if(one.id == id && one.typeSelected != ''){
+            console.log(one.typeSelected)
+          }
+        })
         
       },
       // selects the car models to show according to the make selected
@@ -747,22 +755,25 @@ export default new Vuex.Store({
   actions: {
     
     getCarsData(context,funcAndRoute){
-           
+      
       const carSelectionUrl = 'http://localhost:3000/car_selection';
       fetch(carSelectionUrl)
       .then(response => response.json())
       .then(data => {
-        
+      
         // receiving function and current route object. to commit function and send route to the displaycarsramdomly function
+       
         context.commit(funcAndRoute.funcToCommit,{data,funcAndRoute})
         
       })
         
-
+     
       .catch(err =>{
         console.log(err)
-      })   
+      })  
       
+      
+     
     },
 
 
