@@ -1,52 +1,124 @@
 <template>
-  <div class="search-vehicle">
-            <p>Search Your Vehicle!</p>
-            <form>
-              <div class="field make">
-                <select name="make" id="make" v-model="$store.state.make">
-                  <option selected value="" disabled>Marcas</option>
-                  <option class="opt" v-for="(make,key) in $store.state.makes" :key="key" :value="make">{{make}}</option>
-                </select>
-              </div>
-              <div class="field model">
-                  <select name="model" id="model" v-model="$store.state.model">
-                  <option selected value="" disabled>Model</option>
-                   <option v-for="(model,key) in $store.state.models" :key="key" :value="model">{{model}}</option>
-                </select>
-              </div>
-              <div class="field price">
-                   <select name="price-from" id="price-from" v-model="$store.state.priceFrom">
-                  <option selected value="" disabled>Price from</option>
-                   <option v-for="(price,key) in priceFromComputed" :key="key" :value="price">{{price}}</option>
-                </select>
+     <div class="search-type-wrapper">
 
-                <select name="price-to" id="price-to" v-model="$store.state.priceTo">
-                  <option selected value="" disabled>Price to</option>
-                   <option v-for="(price,key) in priceToComputed" :key="key" :value="price">{{price}}</option>
+     <div class="search-vehicle">
+     <p class="search-title-desktop"><span> Search</span> Your Vehicle!</p>
+     <form>
+      
+              <div class="field">
+                <label for="condition">Car Condition:</label>
+                <select 
+                name="condition" 
+                id="condition" 
+                @click="assignValueToTypeSelected('condition')"
+                >
+                  <template v-for="(condition,key) in $store.state.carCondition.type">
+                    <option  
+                      :key="key" 
+                      :value="condition" 
+                      >
+                        {{condition}}
+                    </option>
+                  </template>
                 </select>
               </div>
-              <div class="field year">
-                   <select name="year-from" id="year-from" v-model="$store.state.yearFrom">
-                  <option selected value="" disabled>Year from</option>
-                   <option v-for="(year,key) in yearFromComputed" :key="key" :value="year">{{year}}</option>
-                   </select>
+              <div class="field">
+                <label for="make">Make:</label>
+                <select 
+                name="make" 
+                id="make" 
+                @click="assignValueToTypeSelected('make')"
+                >
+                  <template v-for="(make,key) in $store.state.make.type">
+                    <option  
+                      :key="key" 
+                      :value="make" 
+                      >
+                        {{make}}
+                    </option>
+                  </template>
+                </select>
+              </div>
+              <div class="field">
+                <label for="model">Model:</label>
+                <select 
+                name="model" 
+                id="model" 
+                @click="assignValueToTypeSelected('model')"
+                >
+                  <template v-for="(model,key) in $store.state.model.type">
+                    <option  
+                      :key="key" 
+                      :value="model" 
+                      >
+                        {{model}}
+                    </option>
+                  </template>
+                </select>
+              </div>
+              <p>{{this.$store.state.typeSelected}}</p>
+             
+              <!-- <div class="btn btn-advanceSearch">Advanced Search</div> -->
+     </form>
+     </div>
 
-                   <select name="year-to" id="year-to" v-model="$store.state.yearTo">
-                  <option selected value="" disabled>Year to</option>
-                   <option v-for="(year,key) in yearToComputed" :key="key" :value="year">{{year}}</option>
-                </select>
-              </div>
-              <input class="btn btn-search" type="submit" value="Search">
-              <div class="btn btn-advanceSearch">Advanced Search</div>
-            </form>
-          </div>
+     <div class="search-types">
+
+     </div>
+
+</div>
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters,mapState,mapMutations} from 'vuex'
 export default {
-  
+ data(){
+  return{
+
+    searchLabels:[
+      'Condition',
+      'Make',
+      'Model',
+      'Year',
+      'Price',
+    ],
+
+
+
+  }
+ },
+  methods:{
+     ...mapMutations([
+      'showSelectedFieldContent',
+     'assignValueToTypeSelected' ,
+     'selectModelByMake',
+     ])
+  },
   computed:{
+    searchFieldPlaceholder(){
+       let make,model;
+      //  ,condition,year,price;
+        if(this.make.typeSelected == ''){
+          make = 'Make'
+        }else{
+          make = this.make.typeSelected
+        }
+        if(this.models.typeSelected == ''){
+          model = 'Model'
+        }else{
+          model = this.models.typeSelected
+        }
+         
+        return[
+          {field:make, id:'make'},
+          {field:model, id:'model'},
+        ]
+      }, 
+    ...mapState([
+      'clickedFieldContent',
+      'carCondition'
+
+    ]),
     ...mapGetters([
       'priceToComputed',
       'priceFromComputed',
@@ -65,23 +137,51 @@ export default {
   // color: $light;
 
 }
+.search-type-wrapper{
+  display: flex;
+  gap: 1em;
+  margin-block: 1em;
+}
+.search-title-desktop{
+  border-bottom: 2px solid $lightestDark;
+  padding-bottom: .5em;
+  margin-bottom: 1em;
+   span{
+    color: $primary;  
+   }
+   font:$font-text-bold;
+}
 
   .search-vehicle{
-    background: $lightDark;
+    box-shadow:0px -2px 0px 0px $lightestDark;
+    border:1px solid  $lightestDark;
     padding: 1em .5em;
+    flex: 1;
  
+  }
+  .search-types{
+    box-shadow:0px -2px 0px 0px $lightestDark;
+    border:1px solid  $lightestDark;
+    padding: 1em .5em;
+    flex: 1;
   }
   
   .field{
     height: 3em;
     margin-block: .2em;
+    display: flex;
+    align-items: center;
+  
     
+    label{
+    
+      flex: 1;
+    }
 
     select{
-      width: 100%;
-      background:$lightestDark;
+      flex: 3;
       font: $font-text-bold;
-      height: 100%;
+      padding: .2em;
     }
   }
   .price{

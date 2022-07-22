@@ -641,7 +641,7 @@ export default new Vuex.Store({
       
     },
     assignValueToTypeSelected(state,data){
-      
+      console.log(data.$event.currentTarget.lastElementChild)
       let selectedDataField =[
         
           state.make,
@@ -659,7 +659,7 @@ export default new Vuex.Store({
           state.color
         ]
         selectedDataField.forEach(one =>{
-          if(one.id == data.id){
+          if(one.id.toLowerCase() == data.id.toLowerCase()){
             one.typeSelected = data.$event.currentTarget.lastElementChild.value
           
           }
@@ -669,6 +669,7 @@ export default new Vuex.Store({
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
       showSelectedFieldContent(state,id){
+        // console.log(id)
         let contentToShow = [
           state.make,
           state.models,
@@ -690,20 +691,21 @@ export default new Vuex.Store({
         }
         else{
 
-          contentToShow.forEach(one =>{
-            
-            if(one.id == id){
+          contentToShow.find(one =>{
+            // console.log(id)
+            if(one.id.toLowerCase() === id.toLowerCase()){
               state.clickedFieldContent = one
+             console.log(state.clickedFieldContent.type)
             }
             
           })
         }
 
-        contentToShow.filter(one =>{
-          if(one.id == id && one.typeSelected != ''){
-            console.log(one.typeSelected)
-          }
-        })
+        // contentToShow.filter(one =>{
+        //   if(one.id == id && one.typeSelected != ''){
+        //     console.log(one.typeSelected)
+        //   }
+        // })
         
       },
       // selects the car models to show according to the make selected

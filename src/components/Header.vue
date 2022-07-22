@@ -18,7 +18,11 @@
         <router-link :to="{name:'Advance'}" tag="div">
           <i class="fas fa-search" @click="clearPropsVal"></i>
         </router-link>
-        <!-- <SocialMedia class="show-or-Hide"/> -->
+
+        <div class="sMedia" >
+          <div><i class="fab fa-facebook sMedia-icons"></i></div>
+          <div><i class="fab fa-instagram sMedia-icons"></i></div>
+        </div>
     </div>
   </header>
 </template>
@@ -61,7 +65,6 @@ export default {
 // }
 
 .header-container{
-  
   background: $dark;
   min-height: 10vh;
   width: 100%;
@@ -70,19 +73,27 @@ export default {
   top: -10px;
   border-bottom: 1px solid $lightestDark;
   
+  
+}
+.logo-container{
+  flex: .7;
 }
 .header-wrapper{
- 
   width: 100%;
   justify-content: space-between;
-  padding-inline: 1.5em;
+  // padding-inline: 1.5em;
+  
+  
 
   @include desktop{
-      width: 70%;
-  }
-  @include tablet{
-    width: 90%;
-  }
+  padding:0 15em;
+  gap: 1em;
+  
+ }
+  
+  // @include tablet{
+  //   width: 90%;
+  // }
 }
 
 
@@ -90,7 +101,6 @@ export default {
 
 .desktopNav-container{
   display: none;
- 
   @include desktop{
     display: flex;
     flex: 2 1 100%;
@@ -122,6 +132,59 @@ export default {
         color: $primary;
       }
     } 
+}
+
+.fa-bars{
+  cursor: pointer;
+  @include desktop{
+    display: none;
+  }
+}
+
+.fa-search{
+  @include desktop{
+    display: none;
+  }
+  font-size: 1.5em;
+  cursor: pointer;
+  
+   
+}
+.sMedia{
+
+  @include desktop{
+
+  flex: 1;
+  height: 100%;
+  gap: .5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  margin-right: 1em;
+  
+  // @include tablet{
+  //   flex: 1 ;
+  // }
+ 
+    
+    i{ 
+      
+      border: 1px solid $light;
+      font-size: 1em;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 100%;
+      text-align: center;
+      padding-top:.2em ;
+      transition: all .3s ease-in-out;
+      cursor: pointer;
+
+      &:hover{
+        color: $primary;
+      }
+    }
+  }
 }
 
 </style>

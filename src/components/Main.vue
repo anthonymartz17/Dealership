@@ -31,7 +31,10 @@ export default {
   width: 100%;
   min-height: 70vh;
  
-
+ @include desktop{
+  padding:0 15em;
+  justify-self: center;
+ }
 
  
 

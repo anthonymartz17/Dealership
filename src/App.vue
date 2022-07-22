@@ -93,10 +93,6 @@ export default {
   // overflow: auto;
   position: relative;
 
- 
- 
-
- 
 }
 
 

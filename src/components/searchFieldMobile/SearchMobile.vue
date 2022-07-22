@@ -34,7 +34,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- 
+ .search-fields-container{
+  @include desktop{
+    display: none;
+  }
+ }
   .btn{
     width: 100%;
     height: 3em;
@@ -52,6 +56,7 @@ export default {
       color: $light;
       border: 1px solid $light;
     }
+    
 
   }
 

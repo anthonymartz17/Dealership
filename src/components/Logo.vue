@@ -30,6 +30,7 @@ methods:{
     cursor: pointer;
     color: $light;
     padding: .1em .5em;
+   
 
 
   .logo-m{
@@ -40,13 +41,14 @@ methods:{
     background: black;
   }
   @include desktop{
+    
     text-align: left;
-    font: $font-logo-L;
-  }
-   @include tablet{
-    flex: 1 ;
     font: $font-logo-S;
   }
+  //  @include tablet{
+  //   flex: 1 ;
+  //   font: $font-logo-S;
+  // }
 }
 
 </style>
