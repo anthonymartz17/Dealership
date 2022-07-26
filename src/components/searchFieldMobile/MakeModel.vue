@@ -29,7 +29,6 @@ export default {
     ...mapMutations([
       'toggleOptionsCard',
       'showSelectedFieldContent',
-      'assignValueToTypeSelected',
       'showSelectedFieldContent',
       'selectModelByMake'
      

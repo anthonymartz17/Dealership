@@ -147,6 +147,7 @@ export default new Vuex.Store({
       ],
       typeSelected:'',
     },
+    
     clickedFieldContent:{},
 
     desktopNav:[
@@ -640,10 +641,10 @@ export default new Vuex.Store({
       
       
     },
-    assignValueToTypeSelected(state,data){
-      console.log(data.$event.currentTarget.lastElementChild)
-      let selectedDataField =[
-        
+
+    assignValueToTypeSelected(state,event){
+     
+      let allFields =[    
           state.make,
           state.models,
           state.priceFrom,
@@ -658,18 +659,22 @@ export default new Vuex.Store({
           state.engine,
           state.color
         ]
-        selectedDataField.forEach(one =>{
-          if(one.id.toLowerCase() == data.id.toLowerCase()){
-            one.typeSelected = data.$event.currentTarget.lastElementChild.value
-          
-          }
-        })
+      
+        let selectedField =  allFields.find(one => one.id.toLowerCase() === event.target.id.toLowerCase())
+        if(selectedField.id === 'priceFrom' || selectedField.id === 'priceTo'){
+
+               selectedField.typeSelected = +event.target.getAttribute("value")
+               
+        }else{
+
+          selectedField.typeSelected = event.target.value || event.target.textContent
+        }
        
       },
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
       showSelectedFieldContent(state,id){
-        // console.log(id)
+        
         let contentToShow = [
           state.make,
           state.models,
@@ -691,27 +696,15 @@ export default new Vuex.Store({
         }
         else{
 
-          contentToShow.find(one =>{
-            // console.log(id)
-            if(one.id.toLowerCase() === id.toLowerCase()){
-              state.clickedFieldContent = one
-             console.log(state.clickedFieldContent.type)
-            }
-            
-          })
+          state.clickedFieldContent  = contentToShow.find(one => one.id.toLowerCase() === id.toLowerCase())
+           
         }
-
-        // contentToShow.filter(one =>{
-        //   if(one.id == id && one.typeSelected != ''){
-        //     console.log(one.typeSelected)
-        //   }
-        // })
         
       },
       // selects the car models to show according to the make selected
       
       selectModelByMake(state,data){
-        
+        // console.log(state.model.type)
         if(data.id == 'make'){  
           state.carsData.forEach(one =>{
             if(state.make.typeSelected == one.make){
@@ -722,7 +715,12 @@ export default new Vuex.Store({
             } 
           })
           // adds the option (all makes) and puts it in the first position in the array 
-          state.models.type.unshift(`All ${state.make.typeSelected}`)
+          if(state.make.typeSelected != 'All Makes'){
+            state.models.type.unshift(`All ${state.make.typeSelected}`)
+          }else{
+            state.models.typeSelected = `Models`
+            state.models.type = ['Models']
+          }
         } 
       // assigns val of clicked field in model card content to the type selected
       if(data.id == 'model'){

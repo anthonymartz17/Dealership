@@ -1,52 +1,61 @@
 <template>
      <div class="search-type-wrapper">
-
      <div class="search-vehicle">
      <p class="search-title-desktop"><span> Search</span> Your Vehicle!</p>
+        
      <form>
       
               <div class="field">
-                <label for="condition">Car Condition:</label>
+                <label for="condition">Condition:</label>
                 <select 
                 name="condition" 
                 id="condition" 
-                @click="assignValueToTypeSelected('condition')"
+                value ="hello"
+                
                 >
-                  <template v-for="(condition,key) in $store.state.carCondition.type">
+                  <template v-for="(condition,key) in carCondition.type">
                     <option  
+                     @click="assignValueToTypeSelected({$event,id:'condition'});"
                       :key="key" 
-                      :value="condition" 
+                     
                       >
                         {{condition}}
                     </option>
                   </template>
                 </select>
               </div>
+         
               <div class="field">
                 <label for="make">Make:</label>
                 <select 
                 name="make" 
                 id="make" 
-                @click="assignValueToTypeSelected('make')"
+                value="Make"
+                @input="assignValueToTypeSelected"
+                @click="
+                showSelectedFieldContent('make');
+                selectModelByMake({$event, id:clickedFieldContent.id});
+                "
                 >
-                  <template v-for="(make,key) in $store.state.make.type">
+                  <template v-for="(make,key) in make.type">
                     <option  
                       :key="key" 
-                      :value="make" 
                       >
                         {{make}}
                     </option>
                   </template>
                 </select>
               </div>
+            
               <div class="field">
                 <label for="model">Model:</label>
                 <select 
                 name="model" 
                 id="model" 
-                @click="assignValueToTypeSelected('model')"
+                @click="
+                assignValueToTypeSelected({$event, id:'model'})"
                 >
-                  <template v-for="(model,key) in $store.state.model.type">
+                  <template v-for="(model,key) in modelByMake">
                     <option  
                       :key="key" 
                       :value="model" 
@@ -56,7 +65,80 @@
                   </template>
                 </select>
               </div>
-              <p>{{this.$store.state.typeSelected}}</p>
+              <div class="field">
+                <label for="model">Year:</label>
+                <div class="spacing-years-price">
+                  <select 
+                      name="yearFrom" 
+                      id="yearFrom" 
+                      @click="
+                      assignValueToTypeSelected({$event, id:'yearFrom'})"
+                  >
+                     <option :value="null">From</option>
+                     <template v-for="(yearFrom,key) in yearFrom.type">
+                        <option  
+                          :key="key" 
+                          >
+                            {{yearFrom}}
+                        </option>
+                     </template>
+                  </select>
+                  <select 
+                      name="yearTo" 
+                      id="yearTo" 
+                      @click="
+                      assignValueToTypeSelected({$event, id:'yearTo'})"
+                    >
+                    <option :value="null">To</option>
+                    <template v-for="(yearTo,key) in yearTo.type">
+                      <option  
+                        :key="key" 
+                        >
+                          {{yearTo}}
+                      </option>
+                    </template>
+                  </select>
+
+               
+                </div>
+              </div>
+              <div class="field">
+                <label for="model">Price:</label>
+                <div class="spacing-years-price">
+                  <select 
+                      name="priceFrom" 
+                      id="priceFrom" 
+                      @click="
+                      assignValueToTypeSelected({$event, id:'priceFrom'})"
+                  >
+                     <option :value="null">From</option>
+                     <template v-for="(priceFrom,key) in priceFrom.type">
+                        <option  
+                          :key="key" 
+                          >
+                            {{priceFrom}}
+                        </option>
+                     </template>
+                  </select>
+                  <select 
+                      name="priceTo" 
+                      id="priceTo" 
+                      @click="
+                      assignValueToTypeSelected({$event, id:'priceTo'})"
+                    >
+                    <option :value="null">To</option>
+                    <template v-for="(priceTo,key) in priceTo.type">
+                      <option  
+                        :key="key" 
+                        >
+                          {{priceTo}}
+                      </option>
+                    </template>
+                  </select>
+
+               
+                </div>
+              </div>
              
               <!-- <div class="btn btn-advanceSearch">Advanced Search</div> -->
      </form>
@@ -70,11 +152,10 @@
 </template>
 
 <script>
-import {mapGetters,mapState,mapMutations} from 'vuex'
+import {mapGetters,mapState,mapMutations, mapActions} from 'vuex'
 export default {
  data(){
   return{
-
     searchLabels:[
       'Condition',
       'Make',
@@ -87,14 +168,34 @@ export default {
 
   }
  },
+ created(){
+  this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
+                
+   
+ },
   methods:{
      ...mapMutations([
       'showSelectedFieldContent',
      'assignValueToTypeSelected' ,
      'selectModelByMake',
+     
+     ]),
+     ...mapActions([
+      'getCarsData'
      ])
   },
+
   computed:{
+
+    modelByMake(){
+       if(this.make.typeSelected === ''){
+          return ['Models']
+       } 
+          else{
+            return this.models.type
+          }  
+    },
+  
     searchFieldPlaceholder(){
        let make,model;
       //  ,condition,year,price;
@@ -115,8 +216,21 @@ export default {
         ]
       }, 
     ...mapState([
+      'carsData',
       'clickedFieldContent',
-      'carCondition'
+      'make',
+      'models',
+      'priceFrom',
+      'priceTo',
+      'yearFrom',
+      'yearTo',
+      'carType',
+      'carCondition',
+      'fuel',
+      'transmission',
+      'driveTrain',
+      'engine',
+      'color'
 
     ]),
     ...mapGetters([
@@ -136,6 +250,13 @@ export default {
   font-family: $font-stack;
   // color: $light;
 
+}
+.spacing-years-price{
+  display: flex;
+  align-items: center;
+  gap:1em;
+  flex: 3;
+  
 }
 .search-type-wrapper{
   display: flex;
@@ -167,14 +288,14 @@ export default {
   }
   
   .field{
+    
     height: 3em;
     margin-block: .2em;
     display: flex;
     align-items: center;
-  
+     
     
     label{
-    
       flex: 1;
     }
 

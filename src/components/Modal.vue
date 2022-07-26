@@ -1,19 +1,19 @@
 <template>
    <transition 
-    enter-active-class="animate__animated animate__fadeIn animate__faster"
-    leave-active-class="animate__animated animate__fadeOut animate__faster"
-  >
-  
-       <div class="selected-field-options" 
-    v-show="$store.state.optionsCardToggler"
-    @click="
-    toggleOptionsCard($event);
-    "
-    >
-      <div class="selected-field-options-card" >
+      enter-active-class="animate__animated animate__fadeIn animate__faster"
+      leave-active-class="animate__animated animate__fadeOut animate__faster"
+   >
+      <div 
+        class="selected-field-options" 
+        v-show="$store.state.optionsCardToggler"
+        @click="toggleOptionsCard($event);"
+      >
         <div class="selected-field-options-card">
-          <label
+          <div
+          
             v-for="(field,key) in clickedFieldContent.type"
+            :id="clickedFieldContent.id"
+            :value="field"
             :key="key"  
             :class="[
             'selected-field-options-card-content',
@@ -25,35 +25,32 @@
             ]"
             :for="key" 
             @click.stop="
+            assignValueToTypeSelected($event)
             toggleOptionsCard($event);
-            assignValueToTypeSelected({$event,id:clickedFieldContent.id});
             selectModelByMake({$event, id:clickedFieldContent.id});
             disablePricesYears({clickedFieldContent,key});
             "
         >
-           
-            <p v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">  
+           <template v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">
+                   {{field | currency}}
+           </template>
+            <!-- <p v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">  
               {{field | currency}}
-            </p>
-            <p  v-else>{{field}}</p>
-            <input 
+            </p> -->
+            <template v-else>{{field}}</template>
+            <!-- <p  v-else>{{field}}</p> -->
+            <!-- <input 
               class="radio"
               type="hidden" 
               :id="key" 
-              :value="field"
-              name="searchFields" 
-             
-            >    
-          </label>
+              name="searchFields"  
+              value="Make"
+                @change="testAssign"
+            >     -->
+          </div>
         </div>
-
       </div>
-    
-    </div>
-
-
-  
-  </transition>
+   </transition>
 </template>
 
 <script>
@@ -75,6 +72,7 @@ export default {
   },
   methods:{
     ...mapMutations([
+      'testAssign',
       'remSelection',
       'toggleOptionsCard',
       'showSelectedFieldContent',
