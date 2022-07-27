@@ -562,11 +562,12 @@ export default new Vuex.Store({
       
         // keeps track of the index of the priceFrom property selected, to disable prices below this index in the priceTo options
         disablePricesYears(state,data){
-          
-          if(data.clickedFieldContent.id == 'priceFrom'){
+      
+          if(data.clickedFieldContent.id == 'priceFrom' || data.id == 'priceFrom'){
             state.pricesUnavailable = data.key
+
           }
-          else  if(data.clickedFieldContent.id == 'yearFrom'){
+          else  if(data.clickedFieldContent.id == 'yearFrom' || data.id == 'yearFrom'){
             state.yearsUnavailable = data.key
           } 
         },
@@ -643,7 +644,8 @@ export default new Vuex.Store({
     },
 
     assignValueToTypeSelected(state,event){
-     
+    
+    
       let allFields =[    
           state.make,
           state.models,
@@ -660,16 +662,26 @@ export default new Vuex.Store({
           state.color
         ]
       
+      
         let selectedField =  allFields.find(one => one.id.toLowerCase() === event.target.id.toLowerCase())
-        if(selectedField.id === 'priceFrom' || selectedField.id === 'priceTo'){
+        //in mobile view the fields selections are textcontent of event target, they are in divs, in desktop view they are value of event target, they are in a select option tags
 
-               selectedField.typeSelected = +event.target.getAttribute("value")
+
+        if(selectedField.id === 'priceFrom' || selectedField.id === 'priceTo'){
+               //since the price comes formatted as currency and is a string, had to remove "$" and "," with the replace method and regExp. also used parseFloat() to remove two decimal zeros and get just the whole number.
+               selectedField.typeSelected = parseFloat(event.target.textContent.replace(/\$|,/g,''));
                
-        }else{
+              //  console.log(state.priceFrom.type.indexOf(4000))
+               
+        }else if(selectedField.id === 'yearFrom' || selectedField.id === 'yearTo'){
+          selectedField.typeSelected = +event.target.value || +event.target.textContent
+        }
+        
+        else{
 
           selectedField.typeSelected = event.target.value || event.target.textContent
         }
-       
+        console.log(selectedField.typeSelected)
       },
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card

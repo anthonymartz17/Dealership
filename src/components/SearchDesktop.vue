@@ -11,11 +11,11 @@
                 name="condition" 
                 id="condition" 
                 value ="hello"
+                @input="assignValueToTypeSelected"
                 
                 >
                   <template v-for="(condition,key) in carCondition.type">
                     <option  
-                     @click="assignValueToTypeSelected({$event,id:'condition'});"
                       :key="key" 
                      
                       >
@@ -52,8 +52,7 @@
                 <select 
                 name="model" 
                 id="model" 
-                @click="
-                assignValueToTypeSelected({$event, id:'model'})"
+                @input="assignValueToTypeSelected"
                 >
                   <template v-for="(model,key) in modelByMake">
                     <option  
@@ -69,15 +68,16 @@
                 <label for="model">Year:</label>
                 <div class="spacing-years-price">
                   <select 
+                  
                       name="yearFrom" 
                       id="yearFrom" 
-                      @click="
-                      assignValueToTypeSelected({$event, id:'yearFrom'})"
+                      @input="assignValueToTypeSelected"
                   >
                      <option :value="null">From</option>
                      <template v-for="(yearFrom,key) in yearFrom.type">
                         <option  
                           :key="key" 
+                          @click="disablePricesYears({id:'yearFrom',key})"
                           >
                             {{yearFrom}}
                         </option>
@@ -86,13 +86,13 @@
                   <select 
                       name="yearTo" 
                       id="yearTo" 
-                      @click="
-                      assignValueToTypeSelected({$event, id:'yearTo'})"
+                      @input="assignValueToTypeSelected"
                     >
                     <option :value="null">To</option>
                     <template v-for="(yearTo,key) in yearTo.type">
                       <option  
-                        :key="key" 
+                        :key="key"
+                         :class="[{ disabledOptions: yearsUnavailable != null && yearsUnavailable < key,}]" 
                         >
                           {{yearTo}}
                       </option>
@@ -108,8 +108,7 @@
                   <select 
                       name="priceFrom" 
                       id="priceFrom" 
-                      @click="
-                      assignValueToTypeSelected({$event, id:'priceFrom'})"
+                      @input="assignValueToTypeSelected"
                   >
                      <option :value="null">From</option>
                      <template v-for="(priceFrom,key) in priceFrom.type">
@@ -123,13 +122,13 @@
                   <select 
                       name="priceTo" 
                       id="priceTo" 
-                      @click="
-                      assignValueToTypeSelected({$event, id:'priceTo'})"
+                      @input="assignValueToTypeSelected"
                     >
                     <option :value="null">To</option>
                     <template v-for="(priceTo,key) in priceTo.type">
                       <option  
                         :key="key" 
+                        :class="[{ disabledOptions: pricesUnavailable != null && pricesUnavailable > key}]" 
                         >
                           {{priceTo}}
                       </option>
@@ -178,6 +177,7 @@ export default {
       'showSelectedFieldContent',
      'assignValueToTypeSelected' ,
      'selectModelByMake',
+     'disablePricesYears'
      
      ]),
      ...mapActions([
@@ -230,7 +230,9 @@ export default {
       'transmission',
       'driveTrain',
       'engine',
-      'color'
+      'color',
+      'pricesUnavailable',
+      'yearsUnavailable',
 
     ]),
     ...mapGetters([
