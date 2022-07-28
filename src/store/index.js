@@ -562,12 +562,12 @@ export default new Vuex.Store({
       
         // keeps track of the index of the priceFrom property selected, to disable prices below this index in the priceTo options
         disablePricesYears(state,data){
-      
-          if(data.clickedFieldContent.id == 'priceFrom' || data.id == 'priceFrom'){
+            
+          if(data.id == 'priceFrom'){
             state.pricesUnavailable = data.key
 
           }
-          else  if(data.clickedFieldContent.id == 'yearFrom' || data.id == 'yearFrom'){
+          else  if(data.id == 'yearFrom'){
             state.yearsUnavailable = data.key
           } 
         },
@@ -645,7 +645,6 @@ export default new Vuex.Store({
 
     assignValueToTypeSelected(state,event){
     
-    
       let allFields =[    
           state.make,
           state.models,
@@ -669,19 +668,18 @@ export default new Vuex.Store({
 
         if(selectedField.id === 'priceFrom' || selectedField.id === 'priceTo'){
                //since the price comes formatted as currency and is a string, had to remove "$" and "," with the replace method and regExp. also used parseFloat() to remove two decimal zeros and get just the whole number.
-               selectedField.typeSelected = parseFloat(event.target.textContent.replace(/\$|,/g,''));
-               
-              //  console.log(state.priceFrom.type.indexOf(4000))
-               
+             
+               selectedField.typeSelected = parseFloat(event.target.textContent.replace(/\$|,/g,'')) || parseFloat(event.target.value.replace(/\$|,/g,''))
+         
         }else if(selectedField.id === 'yearFrom' || selectedField.id === 'yearTo'){
-          selectedField.typeSelected = +event.target.value || +event.target.textContent
+          selectedField.typeSelected = event.target.value || +event.target.textContent
         }
         
         else{
 
           selectedField.typeSelected = event.target.value || event.target.textContent
         }
-        console.log(selectedField.typeSelected)
+        
       },
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card

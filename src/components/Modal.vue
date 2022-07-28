@@ -25,10 +25,10 @@
             ]"
             :for="key" 
             @click.stop="
-            assignValueToTypeSelected($event)
+            assignValueToTypeSelected($event,field)
             toggleOptionsCard($event);
             selectModelByMake({$event, id:clickedFieldContent.id});
-            disablePricesYears({clickedFieldContent,key});
+            disablePricesYears({id:clickedFieldContent.id,key});
             "
         >
            <template v-if="clickedFieldContent.id == 'priceFrom' || clickedFieldContent.id == 'priceTo' ">

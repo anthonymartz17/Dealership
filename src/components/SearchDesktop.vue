@@ -71,13 +71,12 @@
                   
                       name="yearFrom" 
                       id="yearFrom" 
-                      @input="assignValueToTypeSelected"
+                      @input="onChangeMultiple($event)"
                   >
                      <option :value="null">From</option>
                      <template v-for="(yearFrom,key) in yearFrom.type">
                         <option  
                           :key="key" 
-                          @click="disablePricesYears({id:'yearFrom',key})"
                           >
                             {{yearFrom}}
                         </option>
@@ -86,13 +85,14 @@
                   <select 
                       name="yearTo" 
                       id="yearTo" 
-                      @input="assignValueToTypeSelected"
+                      @input="onChangeMultiple($event)"
                     >
                     <option :value="null">To</option>
                     <template v-for="(yearTo,key) in yearTo.type">
                       <option  
                         :key="key"
-                         :class="[{ disabledOptions: yearsUnavailable != null && yearsUnavailable < key,}]" 
+                        :disabled="yearsUnavailable != null && yearsUnavailable <= key"
+                        :class="{disabledOptions : yearsUnavailable != null && yearsUnavailable <= key}"
                         >
                           {{yearTo}}
                       </option>
@@ -103,19 +103,19 @@
                 </div>
               </div>
               <div class="field">
-                <label for="model">Price:</label>
+                <label for="priceFrom">Price:</label>
                 <div class="spacing-years-price">
                   <select 
                       name="priceFrom" 
                       id="priceFrom" 
-                      @input="assignValueToTypeSelected"
+                      @input="onChangeMultiple($event)"
                   >
                      <option :value="null">From</option>
                      <template v-for="(priceFrom,key) in priceFrom.type">
                         <option  
                           :key="key" 
                           >
-                            {{priceFrom}}
+                            {{priceFrom | currency}}
                         </option>
                      </template>
                   </select>
@@ -123,14 +123,17 @@
                       name="priceTo" 
                       id="priceTo" 
                       @input="assignValueToTypeSelected"
+                     
                     >
                     <option :value="null">To</option>
                     <template v-for="(priceTo,key) in priceTo.type">
                       <option  
+                      :disabled="pricesUnavailable != null && pricesUnavailable > key"
+                       :class="{disabledOptions : pricesUnavailable != null && pricesUnavailable > key}"
                         :key="key" 
-                        :class="[{ disabledOptions: pricesUnavailable != null && pricesUnavailable > key}]" 
+                        
                         >
-                          {{priceTo}}
+                          {{priceTo | currency}}
                       </option>
                     </template>
                   </select>
@@ -173,6 +176,10 @@ export default {
    
  },
   methods:{
+    onChangeMultiple(e){
+      this.assignValueToTypeSelected(e)
+      this.disablePricesYears({id:e.target.id, key: e.target.selectedIndex})
+    },
      ...mapMutations([
       'showSelectedFieldContent',
      'assignValueToTypeSelected' ,
@@ -253,6 +260,11 @@ export default {
   // color: $light;
 
 }
+.disabledOptions{
+    
+    background: darken($light, 10%);
+    text-decoration: line-through;
+  }
 .spacing-years-price{
   display: flex;
   align-items: center;
