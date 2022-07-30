@@ -147,6 +147,15 @@
      </div>
 
      <div class="search-types">
+      <p class="search-title-desktop"><span> Types</span> of Vehicles</p>
+      <ul class="typesCarList">
+        <router-link :to="{name:'searchResults'}">
+
+        <li v-for="(type,key) in carType.type" :key="key">
+          {{type}}
+        </li>
+        </router-link>
+      </ul>
 
      </div>
 
@@ -259,6 +268,18 @@ export default {
   font-family: $font-stack;
   // color: $light;
 
+}
+
+.typesCarList{
+  list-style: none;
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+
+  li{
+    flex: 1 1 30%;
+    height: 3em;
+  }
 }
 .disabledOptions{
     

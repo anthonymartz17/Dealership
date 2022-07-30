@@ -5,23 +5,29 @@
       <h2 class="car2view-title">{{car.year}} {{car.make}} {{car.model}}</h2>
       <p class="car2view-red-title">{{car.price|currency}}</p>
      </div>
+     <div class="car-breakdown">   
       <div class="car2view-info">
-        <template v-for="(icon,key) in carToViewGeneralInfo">
+        <!-- <template v-for="(icon,key) in carToViewGeneralInfo">
         <div  class="car2view-info-children"  v-if="icon.iconInfo"  :key="key" >
          <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" :alt="`icon of ${icon.iconInfo}`">
           <p class="car2view-info-specs">{{icon.iconInfo}}</p> 
         </div>
-        </template>
+        </template> -->
       </div>
       <div :class="['car2view-images',{hidePics:!morePics}]">
-        <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
-        <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
+        <!-- <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
+           <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
+        </div> -->
       </div>
+      <div 
+        v-if="!morePics" 
+        class="btn btn-search morePics " 
+        @click="showMorePics"> 
+          + Show More Pictures
       </div>
-      <div v-if="!morePics" class="btn btn-search" @click="showMorePics">+ Show More Pictures</div>
 
-       <div class="car2view-details">
-        <p class="car2view-red-title car2view-title">Vehicle Details</p>
+      <div class="car2view-details">
+        <!-- <p class="car2view-red-title car2view-title">Vehicle Details</p>
         <div class="car2view-details-specs">
           <template v-for="(detail,key) in carToViewDetails">
           <div :key="key" v-if="detail.val">
@@ -41,12 +47,13 @@
             </div>
           
           </div>          
-         </div>
+         </div> -->
 
       </div>
-      <div class="car-comments"></div>
-      <div class="car-seller"></div>
+
+     </div>
     </div>
+    <div class="car-seller"></div>
   </div>
 </template>
 
@@ -106,16 +113,28 @@ export default {
 </script>
 
 <style lang="scss">
-
+.morePics{
+  @include desktop{
+    display: none;
+  }
+}
 .hidePics{
   overflow: hidden;
   height: 40vh;
+  @include desktop{
+    height: 100%;
+    overflow: visible;
+  }
 }
 .car2view-history{
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1em 0;
   padding-block: 1em;
+
+  @include desktop{
+    grid-area: history;
+  }
   
 
 
@@ -128,6 +147,7 @@ export default {
   }
 }
 .car-history-icon{
+  
   border-radius: 50%;
   // width: 2em;
   height: 3.5em;
@@ -141,22 +161,66 @@ export default {
 
 }
 
+.car-seller{
+  @include desktop{
+    flex: 1;
+    background: lighten($lightestDark,35);
+  }
+
+}
+.car-breakdown{
+  @include desktop{
+    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1em;
+    grid-area: 
+    "carPics info info" 
+    "carPics detail detail" 
+    "carPics detail detail" 
+    ;
+  }
+  
+}
+
 
 .car2view{
+  @include desktop{
+    border-top: 1px solid $lightestDark;
+    margin-block: 1em;
+    padding: 0;
+    display: flex;
+    gap: 1em;
+  }
   
    background: $light;
    padding: .5em;
 
  &-title-price{
    margin-block: 1em;
+
+   @include desktop{
+    display: flex;
+    height: 3em;
+    justify-content: space-between;
+    border-bottom: 2px solid $lightestDark;
+   }
  }
  &-title{
    font:$font-logo-S;
     border-bottom: 2px solid $dark;
+    @include desktop{
+      border: none;
+      color: $primary;
+    }
  }
  &-red-title{
     font:$font-logo-S;
     color: $primary;
+    @include desktop{
+      color: $dark;
+    }
 }
 
 }
@@ -167,6 +231,13 @@ export default {
   gap: .5em .2em;
   grid-template-columns: 1fr 1fr 1fr;
   margin-block: 1em;
+
+  @include desktop{
+     grid-area: info;
+     background: green;
+     height: 10em;
+     width: 6em;
+  }
 
   &-children{
     text-align: center;
@@ -182,9 +253,20 @@ export default {
     .car2view-images{
       display: grid;
       gap: 1em;
+      @include desktop{
+        // grid-area: carPics;
+         background: blue;
+        height: 100%;
+     width: 6em;
+
+      }
      
       &-wrapper{
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        @include desktop{
+           grid-area: carPics;
+          // height: 100%;
+        }
    
       }
       img{
@@ -195,6 +277,12 @@ export default {
 
     .car2view-details{
       margin-block: 1em;
+
+      @include desktop{
+        grid-area: detail;
+        // background: blue;
+        width: 40%;
+      }
 
       &-title{
         border-bottom: 2px solid $dark;

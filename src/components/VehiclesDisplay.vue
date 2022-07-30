@@ -9,16 +9,19 @@
  
   <router-link  :to="{name:'CarToView'}">
   <div class="vehicles-display" 
-  v-for="(car,key) in vehiclesDisplay"
-  :key="key"
-  @click="
-  saveCarToViewToLocalStore({name:'carToView',data:car})
-  getCarToViewFromLocalStore();
-   setCarToViewGeneralInfo();
-   setVehicleHistory();
-   setCarToviewDetails()"
+  
   >  
-    <div class="vehicles-display-car">
+    <div
+        class="vehicles-display-car"
+        v-for="(car,key) in vehiclesDisplay"
+        :key="key"
+        @click="
+        saveCarToViewToLocalStore({name:'carToView',data:car})
+        getCarToViewFromLocalStore();
+        setCarToViewGeneralInfo();
+        setVehicleHistory();
+        setCarToviewDetails()"
+   >
       <div v-if="car.pics[0]" class="vehicles-display-img">
         <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
       </div>
@@ -35,7 +38,7 @@
   </router-link>
     </div>
 
- <router-link :to="{name:'Vehicles'}">
+    <router-link class="moreVehicleBtn"  :to="{name:'Vehicles'}">
       <div v-show="$route.name == 'Home'" class="btn-search btn">
         + More Vehicles
       </div>
@@ -123,23 +126,29 @@ export default {
 </script>
 
 <style lang="scss">
+
 .msg{
   font:$font-logo-S;
     padding: .2em;
     margin-bottom: .5em ;
 }
 .vehicles-container{
-
+  
    height: 100%;
    padding: .5em;
    flex: 1;
+
 }
 
 .vehicles-height{
   height: 72vh;
+  @include desktop{
+    height: 85vh;
+  }
 }
 
 .vehicles{
+ 
   color: $dark;
   overflow: hidden;
   
@@ -154,14 +163,26 @@ export default {
 
 }
   .vehicles-display{
-
+   
+     @include desktop{
+       display: flex;
+       justify-content: space-evenly;
+       flex-wrap: wrap;
+       gap: 1em;
+      }
     &-car{
-
+      @include desktop{
+        
+        
+        width: 20%;
+        flex-direction: column;
+      }
+      
       display: flex;
       justify-content: space-around;
       gap: .5em;
       padding-block: .3em;
-      cursor: pointer;
+      // cursor: pointer;
 
     }
 
@@ -177,6 +198,10 @@ export default {
      }
     &-description{
       flex: 2;
+      //  @include desktop{
+        
+        
+      // }
 
     }
     &-title{
@@ -192,6 +217,11 @@ export default {
      font:$font-text-bold;
     }
    
+  }
+  .moreVehicleBtn{
+    @include desktop{
+      display: none;
+    }
   }
   
 
