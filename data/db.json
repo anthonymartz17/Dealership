@@ -33,7 +33,10 @@
           "location":"Elizabeth, NJ",
           "owner":1,
           "accidents":2,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
 
         } 
         
@@ -70,7 +73,10 @@
           "location":"Bronfx, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
          
        },
        {
@@ -100,7 +106,10 @@
         "location":"Maplewood, NJ",
         "owner":3,
         "accidents":1,
-        "titleCheck":"No issues"
+        "titleCheck":"No issues",
+        "accesories":[
+          "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+        ]
         
        }
      ]
@@ -136,7 +145,10 @@
           "location":"Darien, CT",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"BMW",
@@ -165,7 +177,10 @@
           "location":"Darien, CT",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -200,7 +215,10 @@
           "location":"Woodbridge, CT",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
          
@@ -230,7 +248,10 @@
           "location":"Stradford, CT",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
          
         }
       ]
@@ -266,7 +287,10 @@
           "location":"Douglaston, NY",
           "owner":1,
           "accidents":1,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
           
         },
         {
@@ -297,7 +321,10 @@
           "location":"St James, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -333,7 +360,10 @@
           "location":"South Orange, NJ",
           "owner":3,
           "accidents":1,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {         
           "make":"DODGE",
@@ -362,7 +392,11 @@
           "location":"Amityville, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
+
         }
       ]
     },
@@ -398,7 +432,10 @@
           "location":"Red Bank, NJ",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"FORD",
@@ -427,7 +464,10 @@
           "location":"Newark, NJ",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -462,7 +502,10 @@
           "location":"Long Island City, NY",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
 
       
@@ -493,7 +536,10 @@
           "location":"Nanuet, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -528,7 +574,10 @@
           "location":"Glen Head, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"HONDA",
@@ -557,7 +606,10 @@
           "location":"Farmington, NY",
           "owner":4,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"HONDA",
@@ -586,7 +638,10 @@
           "location":"Nanuet, NY",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
         
       ]
@@ -623,7 +678,10 @@
           "location":"New Rochelle, NY",
           "owner":2,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         
         },
         {
@@ -653,7 +711,10 @@
           "location":"Olathe, KS",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
        
       ]
@@ -690,7 +751,10 @@
           "location":"Levittown, NY",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
           
         },
         {
@@ -720,7 +784,10 @@
           "location":"Hazlet, NJ",
           "owner":2,
           "accidents":1,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -755,7 +822,11 @@
           "location":"Hamden, CT",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues" 
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
+
         },
         {
           "make":"KIA",
@@ -784,7 +855,10 @@
           "location":"Little Ferry, NJ",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -819,7 +893,10 @@
           "location":"Totowa, NJ",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"LEXUS",
@@ -848,7 +925,10 @@
           "location":"Ramsey, NJ",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -883,7 +963,10 @@
           "location":"Hamden, CT",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"MAZDA",
@@ -912,7 +995,10 @@
           "location":"Rahway, NJ",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -947,7 +1033,10 @@
           "location":"Nanuet, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"MERCEDES-BENZ",
@@ -976,7 +1065,10 @@
           "location":"Nanuet, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -1011,7 +1103,10 @@
           "location":"New Rochelle, NY",
           "owner":0,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"NISSAN",
@@ -1040,7 +1135,10 @@
           "location":"Red Bank, NJ",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -1075,7 +1173,10 @@
           "location":"Jamaica, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"TESLA",
@@ -1104,7 +1205,10 @@
           "location":"Mt Kisco, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -1139,7 +1243,10 @@
           "location":"Trooper, PA",
           "owner":1,
           "accidents":1,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"TOYOTA",
@@ -1168,7 +1275,10 @@
           "location":"Copiague, NY",
           "owner":4,
           "accidents":1,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"TOYOTA",
@@ -1197,7 +1307,10 @@
           "location":"Brooklyn, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     },
@@ -1232,7 +1345,10 @@
           "location":"Commack, NY",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         },
         {
           "make":"VOLVO",
@@ -1261,7 +1377,10 @@
           "location":"Ramsey, NJ",
           "owner":1,
           "accidents":0,
-          "titleCheck":"No issues"
+          "titleCheck":"No issues",
+          "accesories":[
+            "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
+          ]
         }
       ]
     }

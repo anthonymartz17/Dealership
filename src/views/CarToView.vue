@@ -7,17 +7,17 @@
      </div>
      <div class="car-breakdown">   
       <div class="car2view-info">
-        <!-- <template v-for="(icon,key) in carToViewGeneralInfo">
+        <template v-for="(icon,key) in carToViewGeneralInfo">
         <div  class="car2view-info-children"  v-if="icon.iconInfo"  :key="key" >
          <img class="car2view-info-icons" :src="`/images/icons/${icon.icon}`" :alt="`icon of ${icon.iconInfo}`">
           <p class="car2view-info-specs">{{icon.iconInfo}}</p> 
         </div>
-        </template> -->
+        </template>
       </div>
       <div :class="['car2view-images',{hidePics:!morePics}]">
-        <!-- <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
+        <div class="car2view-images-wrapper" v-for="(img,key) in car.pics" :key="key">
            <img :src="`/images/${img}`" :alt="`picture of ${car.model}`">       
-        </div> -->
+        </div>
       </div>
       <div 
         v-if="!morePics" 
@@ -27,7 +27,7 @@
       </div>
 
       <div class="car2view-details">
-        <!-- <p class="car2view-red-title car2view-title">Vehicle Details</p>
+        <p class="car2view-red-title car2view-title">Vehicle Details</p>
         <div class="car2view-details-specs">
           <template v-for="(detail,key) in carToViewDetails">
           <div :key="key" v-if="detail.val">
@@ -36,20 +36,39 @@
           </div>
           </template>
         </div>
-         <p class="car2view-red-title car2view-title">Vehicle History</p>
-         <div class="car2view-history">
-         <div  class="flex-gap" v-for="(detail,key) in carToViewHistory" :key="key">
-              <i :class="[detail.icon,'car-history-icon']" :style="{'backgroundColor':detail.iconBg}"></i>
-           <div class="car2view-history-details">
-            <p class="car2view-details-bold">{{detail.key}}:</p>
-            <p class="car2view-details-text">{{detail.val}}
-            </p>
-            </div>
-          
-          </div>          
-         </div> -->
+      </div>
+      <div class="car2view-accesories">
+       <p class="car2view-red-title car2view-title">Accesories</p>
+        <ul>
+          <li v-for="(accesory,key) in car.accesories" :key="key">{{accesory}}</li>
+        </ul>
 
       </div>
+         <div class="car2view-history">
+            <p class="car2view-red-title car2view-title">Vehicle History</p>
+            <div class= "car2view-history-detailWrap">
+              <div  
+                class="history-detail"
+                v-for="(detail,key) in carToViewHistory" 
+                :key="key"
+               > 
+               <div class="icon-detail-wrapper">
+                  <div>
+                    <i :class="[detail.icon,'car-history-icon']" 
+                    :style="{'backgroundColor':detail.iconBg}"
+                    >
+                  </i>
+                  </div>
+                
+                  <div class="car2view-history-details">
+                      <p class="car2view-details-bold">{{detail.key}}:</p>
+                      <p class="car2view-details-text">{{detail.val}}
+                      </p>
+                  </div>
+                </div>
+              </div>          
+            </div>
+         </div>
 
      </div>
     </div>
@@ -127,44 +146,42 @@ export default {
   }
 }
 .car2view-history{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1em 0;
   padding-block: 1em;
+  margin-block: 1em;
 
   @include desktop{
     grid-area: history;
   }
-  
-
-
-
-  &-details{
-    flex: 2;
-    min-width: 6em;
-    // background: red;
-
+  &-detailWrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-block: 1em;
+    
   }
+  
 }
+
 .car-history-icon{
   
   border-radius: 50%;
-  // width: 2em;
-  height: 3.5em;
+  width: 4em;
+  height: 4em;
   display: grid;
   place-items: center;
   color: $light;
-  overflow: hidden;
-  flex: 1;
+  margin:.5em 0;
   
   
 
 }
-
+.car2view-car{
+  flex: 3;
+}
 .car-seller{
   @include desktop{
     flex: 1;
     background: lighten($lightestDark,35);
+   height: 100vh;
   }
 
 }
@@ -172,13 +189,13 @@ export default {
   @include desktop{
     flex: 2;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 1em;
-    grid-area: 
-    "carPics info info" 
-    "carPics detail detail" 
-    "carPics detail detail" 
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: .5fr 1fr .5fr;
+    column-gap: 1em;
+    grid-template-areas: 
+    "carPics detail" 
+    "carPics accesories" 
+    "carPics history" 
     ;
   }
   
@@ -187,11 +204,12 @@ export default {
 
 .car2view{
   @include desktop{
+    
     border-top: 1px solid $lightestDark;
     margin-block: 1em;
     padding: 0;
     display: flex;
-    gap: 1em;
+    gap: .5em;
   }
   
    background: $light;
@@ -233,10 +251,8 @@ export default {
   margin-block: 1em;
 
   @include desktop{
-     grid-area: info;
-     background: green;
-     height: 10em;
-     width: 6em;
+     display: none;
+   
   }
 
   &-children{
@@ -254,25 +270,43 @@ export default {
       display: grid;
       gap: 1em;
       @include desktop{
-        // grid-area: carPics;
-         background: blue;
-        height: 100%;
-     width: 6em;
+        grid-area: carPics;
+     
 
       }
      
       &-wrapper{
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         @include desktop{
-           grid-area: carPics;
-          // height: 100%;
         }
    
       }
       img{
          max-width: 100%;
-         height: 100%;
       }
+     }
+     .car2view-accesories{
+      display: none;
+     @include desktop{
+      display: block;
+      padding-bottom: 1em;
+      border-bottom: 1px solid lighten($lightestDark,30);
+
+      ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      li{
+        list-style: none;
+        line-height:180%;
+      }
+      
+      ul li::before{
+        content: '▪ ' ;
+        color: $primary;
+      }
+     }
      }
 
     .car2view-details{
@@ -280,8 +314,10 @@ export default {
 
       @include desktop{
         grid-area: detail;
-        // background: blue;
-        width: 40%;
+        padding-bottom: 1em;
+        border-bottom: 1px solid lighten($lightestDark,30);
+      
+      
       }
 
       &-title{
@@ -289,10 +325,12 @@ export default {
         
       }
       &-specs{
+        background: red;
         margin-block: .5em;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 0 2em;
+        justify-content: stretch;
+        // gap: 0 2em;
         
         
        
