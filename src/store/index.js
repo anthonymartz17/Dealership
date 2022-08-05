@@ -453,9 +453,18 @@ export default new Vuex.Store({
       ]
     },
     //gets the dealer according to the car selected
-    setCarToViewDealer(state,dealerId){
-      state.carToViewDealer = state.dealersData.find(one => dealerId === one.dealerId)
+    saveCarToViewDealerToLocalS(state,dealerId){
+      let dealer = state.dealersData.find(one => dealerId === one.dealerId)
+      if(localStorage.getItem('carToViewDealer') === null){
+        localStorage.setItem('carToViewDealer',JSON.stringify(dealer))
+       }else{
+        localStorage.setItem('carToViewDealer',JSON.stringify(dealer))
+       }
     },
+    setCarToViewDealer(state){
+      state.carToViewDealer = JSON.parse(localStorage.getItem('carToViewDealer'))
+    },
+ 
 
     // receives the data of the current car to view and sets the car history of the current vehicle in the carToViewHistory prop that is in the state.
     setVehicleHistory(state){

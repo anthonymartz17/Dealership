@@ -1430,7 +1430,7 @@
       "dealerId":"dealer-1",
       "name":"DC Autos",
       "logo":"Logo",
-      "tel":"5168717944",
+      "tel":"516-871-4456",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
       "email":"email@hotmail.com"
     },
@@ -1439,45 +1439,45 @@
       "dealerId":"dealer-2",
       "name":"Banboo Auto",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"516-345-4366",
+      "address":"8154 peanuts Lane Bethpage, NY 23456",
+      "email":"Banboo@hotmail.com"
     },
     {
       "id":3,
       "dealerId":"dealer-3",
       "name":"Pines Auto",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"516-871-3456",
+      "address":"8154 Pines ave Wyandanch, NY 234567",
+      "email":"Pines@hotmail.com"
     },
     {
       "id":4,
       "dealerId":"dealer-4",
       "name":"Crazy Cars",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"516-871-7944",
+      "address":"3245 Crazy Lane bronx, NY 34567",
+      "email":"Crazy@hotmail.com"
     },
     {
       "id":5,
       "dealerId":"dealer-5",
       "name":"Martz Auto",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"578-345-2334",
+      "address":"2345 Hicksville ave Hicksville, NY 87654",
+      "email":"Martz@hotmail.com"
     },
     {
       "id":6,
       "dealerId":"dealer-6",
       "name":"Hoopties",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"536-432-3455",
+      "address":"8154 Hoopties Lane Farmingdale, NY 12550",
+      "email":"Hoopties@hotmail.com"
     },
     {
       "id":7,
@@ -1485,35 +1485,35 @@
       "name":"Chilling Autos",
       "logo":"Logo",
       "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "address":"5432 golden Lane Dix Hills, NY 23456",
+      "email":"Chilling@hotmail.com"
     },
     {
       "id":8,
       "dealerId":"dealer-8",
       "name":"JD Auto",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"345-654-33456",
+      "address":"5432 peach st fruits, NY 12550",
+      "email":"JD@hotmail.com"
     },
     {
       "id":9,
       "dealerId":"dealer-9",
       "name":"Easy Car",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"543-455-6543",
+      "address":"6543 caramel Lane Candy, NY 12550",
+      "email":"Easy@hotmail.com"
     },
     {
       "id":10,
       "dealerId":"dealer-10",
       "name":"ABC Autos",
       "logo":"Logo",
-      "tel":"5168717944",
-      "address":"8154 Walnut Lane Newburgh, NY 12550",
-      "email":"email@hotmail.com"
+      "tel":"234-543-2356",
+      "address":"987 mango ave tropical, NY 54322",
+      "email":"ABC@hotmail.com"
     }
 ],
 "cars_inventory":[

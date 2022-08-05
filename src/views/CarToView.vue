@@ -2,7 +2,7 @@
   <div class="car2view">
     <div class="car2view-car" v-for="(car,key) in carToView" :key="key">
      <div class="car2view-title-price">
-      <h2 class="car2view-title">{{car.year}} {{car.make}} {{car.model}}</h2>
+      <h2 class="car2view-titles">{{car.year}} {{car.make}} {{car.model}}</h2>
       <p class="car2view-red-title">{{car.price|currency}}</p>
      </div>
      <div class="car-breakdown">   
@@ -27,7 +27,7 @@
       </div>
 
       <div class="car2view-details">
-        <p class="car2view-red-title car2view-title">Vehicle Details</p>
+        <p class="car2view-red-title car2view-titles">Vehicle Details</p>
         <div class="car2view-details-specs">
           <template v-for="(detail,key) in carToViewDetails">
           <div :key="key" v-if="detail.val">
@@ -38,14 +38,14 @@
         </div>
       </div>
       <div class="car2view-accesories">
-       <p class="car2view-red-title car2view-title">Accesories</p>
+       <p class="car2view-red-title car2view-titles">Accesories</p>
         <ul>
           <li v-for="(accesory,key) in car.accesories" :key="key">{{accesory}}</li>
         </ul>
 
       </div>
          <div class="car2view-history">
-            <p class="car2view-red-title car2view-title">Vehicle History</p>
+            <p class="car2view-red-title car2view-titles">Vehicle History</p>
             <div class= "car2view-history-detailWrap">
               <div  
                 class="history-detail"
@@ -72,11 +72,13 @@
      </div>
     </div>
     <div class="car-seller">
-      <h3 class="car-seller-title">{{carToViewDealer.name}}</h3>
+      <h3 class="car2view-titles">Seller</h3>
       <p class="car-seller-logo">{{carToViewDealer.name}}</p>
       <div class="car-seller-info">
-        <h4>seller name</h4>
-        <p><span>Tel:</span></p>
+        <h4>{{carToViewDealer.name}}</h4>
+        <p><span>Tel:</span>  <span>{{carToViewDealer.tel}}</span></p>
+        <p><span>Address:</span> <span>{{carToViewDealer.address}}</span></p>
+        <p><span>E-mail:</span> <span>{{carToViewDealer.email}}</span></p>
       </div>
     </div>
   </div>
@@ -91,6 +93,7 @@ export default {
      this.setCarToViewGeneralInfo()
      this.setVehicleHistory()
      this.setCarToviewDetails()
+     this.setCarToViewDealer()
   },
   destroyed(){
     this.showMorePics()
@@ -108,6 +111,7 @@ export default {
     'setCarToViewGeneralInfo',
      'setVehicleHistory',
       'setCarToviewDetails',
+      'setCarToViewDealer',
     ]),
        // toggles the showMorePics btn 
     showMorePics(){
@@ -124,15 +128,6 @@ export default {
     'carToViewDealer'
   ]),
 
-  // vehicleHistory(){
-  //   let owner;
-  //    this.carToViewHistory.forEach(one =>{
-  //     if(one.key == 'Owners' && one.val == 1){
-  //       owner = 'One owner'
-  //     }
-  //   })
-  //   return owner
-  // }
  }
 
 }
@@ -234,21 +229,21 @@ export default {
     font-size: 1.375em;
    }
  }
- &-title{
-   font:$font-logo-S;
-    border-bottom: 2px solid $dark;
-    @include desktop{
-      border: none;
-      color: $primary;
-    }
- }
+
  &-red-title{
-    font:$font-logo-S;
+    font:$font-mobile-xl;
     color: $primary;
     @include desktop{
       color: $dark;
     }
 }
+
+}
+.car2view-titles{
+  border-bottom: 2px solid $lightestDark;
+  padding-block: .5em;
+  margin-bottom: 1em;
+  font:$font-mobile-xl;
 
 }
 
@@ -296,18 +291,14 @@ export default {
       }
      }
      .car2view-accesories{
-      display: none;
-     @include desktop{
-      display: block;
-      padding-bottom: 1em;
-      border-bottom: 1px solid lighten($lightestDark,30);
+      // display: none;
 
-      ul{
+     
+        ul{
         display: grid;
         grid-template-columns: 1fr 1fr;
-      }
-
-      li{
+        }
+         li{
         list-style: none;
         line-height:180%;
       }
@@ -316,11 +307,21 @@ export default {
         content: '▪ ' ;
         color: $primary;
       }
+
+     @include desktop{
+      display: block;
+      padding-bottom: 1em;
+      border-bottom: 1px solid lighten($lightestDark,30);
+
+    
+
+     
      }
      }
 
     .car2view-details{
       margin-block: 1em;
+
 
       @include desktop{
         margin:0;
@@ -331,10 +332,6 @@ export default {
       
       }
 
-      &-title{
-        border-bottom: 2px solid $dark;
-        
-      }
       &-specs{
         margin-block: .5em;
         display: grid;
@@ -359,25 +356,38 @@ export default {
       position: relative;
       height: 30vh;
 
-      &-title{
-        font: $font-mobile-xl;
-        border-bottom: 2px solid $lightestDark;
-        margin-block: 1em;
-       
-      }
-
       &-logo{
-        border: 1px solid $lightestDark;
+        // border: 1px solid $lightestDark;
         color: $primary;
         font: $font-mobile-m-bold;
-        background: $dark;
-        height: 5em;
-        width: 5em;
+        background: $lightestDark;
+        height: 6em;
+        width: 6em;
         display: grid;
-        place-content: center;
+        place-items: center;
         position: absolute;
         top: -10px;
         right: 1em;
+      }
+
+      &-info{
+        h4{
+          font: $font-mobile-l;
+          color: $primary;
+        }
+        p{
+          margin-block: 1em;
+          color: $dark;
+          
+        }
+        span:nth-child(1){
+          font: $font-mobile-m-bold;
+          margin-right: .5em;
+        }
+        span:nth-child(2){
+          font: $font-mobile-m;
+          margin-right: .5em;
+        }
       }
     }
     
