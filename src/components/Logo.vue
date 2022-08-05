@@ -25,7 +25,7 @@ methods:{
 
   
   .logo{
-    font: $font-logo-S;
+    font: $font-mobile-xl;
     background: $dark;
     cursor: pointer;
     color: $light;
@@ -40,15 +40,6 @@ methods:{
     border-radius: 50%;
     background: black;
   }
-  @include desktop{
-    
-    text-align: left;
-    font: $font-logo-S;
-  }
-  //  @include tablet{
-  //   flex: 1 ;
-  //   font: $font-logo-S;
-  // }
 }
 
 </style>

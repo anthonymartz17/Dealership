@@ -15,6 +15,7 @@ export default new Vuex.Store({
     msg:true,
     
     carsData:[],
+    dealersData:[],
     vehiclesDisplay:[],
     allModels:[],
     testNums:[],
@@ -23,6 +24,7 @@ export default new Vuex.Store({
     carToViewGeneralInfo:[],
     carToViewDetails:[],
     carToViewHistory:[],
+    carToViewDealer:{},
 
     //Search mobile component
 
@@ -450,6 +452,10 @@ export default new Vuex.Store({
         {key:'Vin', val: state.carToView[0].vin},
       ]
     },
+    //gets the dealer according to the car selected
+    setCarToViewDealer(state,dealerId){
+      state.carToViewDealer = state.dealersData.find(one => dealerId === one.dealerId)
+    },
 
     // receives the data of the current car to view and sets the car history of the current vehicle in the carToViewHistory prop that is in the state.
     setVehicleHistory(state){
@@ -525,6 +531,11 @@ export default new Vuex.Store({
 
       state.carsData = data.data
      }
+    },
+    setDealersData(state,data){
+      if(data){
+        state.dealersData = data
+      }
     },
     // receives the data object which contains the data of vehicles and and object with current route
     setMakes(state,data){
@@ -781,10 +792,17 @@ export default new Vuex.Store({
       .catch(err =>{
         console.log(err)
       })  
-      
-      
-     
+         
     },
+
+    getDealersData(context){
+      let urlDealers ='http://localhost:3000/dealers' 
+      fetch(urlDealers)
+      .then(res => res.json())
+      .then(data =>{
+        context.commit('setDealersData',data)
+      })
+    }
 
 
   },

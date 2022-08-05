@@ -19,6 +19,7 @@
         saveCarToViewToLocalStore({name:'carToView',data:car})
         getCarToViewFromLocalStore();
         setCarToViewGeneralInfo();
+        setCarToViewDealer(car.dealerId)
         setVehicleHistory();
         setCarToviewDetails()"
    >
@@ -80,6 +81,7 @@ export default {
       'setDataInVehiclesDisplayb',
       'getCarToViewFromLocalStore',
       'setCarToViewGeneralInfo',
+      'setCarToViewDealer',
       'setVehicleHistory',
       'setCarToviewDetails',
       'saveCarToViewToLocalStore',

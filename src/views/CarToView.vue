@@ -69,10 +69,16 @@
               </div>          
             </div>
          </div>
-
      </div>
     </div>
-    <div class="car-seller"></div>
+    <div class="car-seller">
+      <h3 class="car-seller-title">{{carToViewDealer.name}}</h3>
+      <p class="car-seller-logo">{{carToViewDealer.name}}</p>
+      <div class="car-seller-info">
+        <h4>seller name</h4>
+        <p><span>Tel:</span></p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -115,6 +121,7 @@ export default {
     'carToViewGeneralInfo',
     'carToViewDetails',
     'carToViewHistory',
+    'carToViewDealer'
   ]),
 
   // vehicleHistory(){
@@ -189,7 +196,7 @@ export default {
   @include desktop{
     flex: 2;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1.5fr 2fr;
     grid-template-rows: .5fr 1fr .5fr;
     column-gap: 1em;
     grid-template-areas: 
@@ -210,6 +217,7 @@ export default {
     padding: 0;
     display: flex;
     gap: .5em;
+    
   }
   
    background: $light;
@@ -223,6 +231,7 @@ export default {
     height: 3em;
     justify-content: space-between;
     border-bottom: 2px solid $lightestDark;
+    font-size: 1.375em;
    }
  }
  &-title{
@@ -268,9 +277,9 @@ export default {
 
     .car2view-images{
       display: grid;
-      gap: 1em;
       @include desktop{
         grid-area: carPics;
+        align-content: start;
      
 
       }
@@ -278,6 +287,7 @@ export default {
       &-wrapper{
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         @include desktop{
+          height: 75%;
         }
    
       }
@@ -313,6 +323,7 @@ export default {
       margin-block: 1em;
 
       @include desktop{
+        margin:0;
         grid-area: detail;
         padding-bottom: 1em;
         border-bottom: 1px solid lighten($lightestDark,30);
@@ -325,7 +336,6 @@ export default {
         
       }
       &-specs{
-        background: red;
         margin-block: .5em;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -342,6 +352,32 @@ export default {
       }
       &-text{
         font: $font-text;
+      }
+    }
+    .car-seller{
+      color: $dark;
+      position: relative;
+      height: 30vh;
+
+      &-title{
+        font: $font-mobile-xl;
+        border-bottom: 2px solid $lightestDark;
+        margin-block: 1em;
+       
+      }
+
+      &-logo{
+        border: 1px solid $lightestDark;
+        color: $primary;
+        font: $font-mobile-m-bold;
+        background: $dark;
+        height: 5em;
+        width: 5em;
+        display: grid;
+        place-content: center;
+        position: absolute;
+        top: -10px;
+        right: 1em;
       }
     }
     

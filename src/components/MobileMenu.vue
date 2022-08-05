@@ -100,7 +100,7 @@ a.router-link-exact-active{
      display: flex;
      align-items: baseline;
      gap: 1em;
-     font: $font-text-bold;
+     font: $font-mobile-m-bold;
   
 
         

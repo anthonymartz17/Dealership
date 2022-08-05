@@ -27,6 +27,7 @@ export default {
   created(){
  
    this.$store.dispatch('getCarsData', {funcToCommit:'setCarsData'})
+   this.$store.dispatch('getDealersData')
    this.getCarsData({funcToCommit:'setMakes'});
    this.getPriceRange();
    this.getYearsRange();

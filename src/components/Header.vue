@@ -76,7 +76,9 @@ export default {
   
 }
 .logo-container{
-  flex: .7;
+  @include desktop{
+    flex: 1;
+  }
 }
 .header-wrapper{
   width: 100%;
@@ -103,11 +105,11 @@ export default {
   display: none;
   @include desktop{
     display: flex;
-    flex: 2 1 100%;
+    flex: 3;
   }
-   @include tablet{
-    flex: 2 ;
-  }
+  //  @include tablet{
+  //   flex: 2 ;
+  // }
 
   
   
@@ -153,8 +155,7 @@ export default {
 .sMedia{
 
   @include desktop{
-
-  flex: 1;
+  flex: .5;
   height: 100%;
   gap: .5em;
   display: flex;

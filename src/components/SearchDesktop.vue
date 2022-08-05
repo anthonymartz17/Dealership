@@ -264,11 +264,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-*{
-  font-family: $font-stack;
-  // color: $light;
+// *{
+//   font-family: $font-stack;
+//   // color: $light;
 
-}
+// }
 
 .typesCarList{
   list-style: none;
@@ -294,9 +294,12 @@ export default {
   
 }
 .search-type-wrapper{
-  display: flex;
-  gap: 1em;
-  margin-block: 1em;
+  display: none;
+  @include desktop{
+    display: flex;
+    gap: 1em;
+    margin-block: 1em;
+  }
 }
 .search-title-desktop{
   border-bottom: 2px solid $lightestDark;

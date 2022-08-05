@@ -6,7 +6,8 @@
       "id": 1,
       "make":"ACURA",
       "model":[
-         {
+        {
+          "dealerId":"dealer-1",
           "make":"ACURA",
           "model":"MDX",
           "trim":"SH-AWD",
@@ -47,6 +48,7 @@
       "make":"AUDI",
       "model":[
         {
+          "dealerId":"dealer-1",
           "make":"AUDI",
           "model":"A3",
           "trim":"QUATTRO",
@@ -80,6 +82,7 @@
          
        },
        {
+        "dealerId":"dealer-1",
         "make":"AUDI",
         "model":"A4",
         "trim":"QUATTRO",
@@ -87,11 +90,11 @@
         "year":2014,
         "mainPic":"audi-a4-front.jpeg",
         "pics":[
-"audi-a4-front.jpeg",
-"audi-a4-back.jpeg",
-"audi-a4-interior.jpeg",
-"audi-a4-dashboard.jpeg"
-      ],
+                "audi-a4-front.jpeg",
+                "audi-a4-back.jpeg",
+                "audi-a4-interior.jpeg",
+                "audi-a4-dashboard.jpeg"
+             ],
         "miles":"134,970",
         "mileage":"25",
         "carType":"Sedan",
@@ -119,6 +122,7 @@
       "make":"BMW",
       "model":[ 
         {
+          "dealerId":"dealer-2",
           "make":"BMW",
           "model":"2 SERIE",
           "trim":"228i",
@@ -151,6 +155,7 @@
           ]
         },
         {
+          "dealerId":"dealer-2",
           "make":"BMW",
           "model":"X3",
           "trim":"30i",
@@ -189,6 +194,7 @@
       "make":"CADILLAC",
       "model":[ 
         {
+          "dealerId":"dealer-2",
           "make":"CADILLAC",
           "model":"ESCALADE",
           "trim":"ESV",
@@ -221,7 +227,7 @@
           ]
         },
         {
-         
+          "dealerId":"dealer-2",
           "make":"CADILLAC",
           "model":"ATS",
           "trim":"Luxury",
@@ -261,6 +267,7 @@
       "make":"CHEVROLET",
       "model":[
         {
+          "dealerId":"dealer-3",
           "make":"CHEVROLET",
           "model":"TAHOE",
           "trim":"LT",
@@ -294,7 +301,7 @@
           
         },
         {
-        
+          "dealerId":"dealer-3",
           "make":"CHEVROLET",
           "model":"TRAVERSE",
           "trim":"LT",
@@ -333,7 +340,8 @@
       "make":"DODGE",
       "model":[
         {
-         
+          
+          "dealerId":"dealer-3",
           "make":"DODGE",
           "model":"AVENGER",
           "trim":"SE",
@@ -365,7 +373,8 @@
             "All Wheel Drive","Power Steering,ABS","4-Wheel Disc Brakes","Brake Assist","Aluminum Wheels","Tires - Front All-Season","Temporary Spare Tire","Sun/Moonroof","Generic Sun/Moonroof","Heated Mirrors","Power Mirror(s)","Integrated Turn Signal Mirrors","Rear Defrost","Privacy Glass","Intermittent Wipers","Power Door Locks","AM/FM Stereo","CD Player","MP3 Player","Bluetooth Connection","Back-Up Camera","Adjustable Steering Wheel","Cruise Control","Power Windows","Power Door Locks","Stability Control","Traction Control","Front Side Air Bag","Driver Air Bag","Passenger Air Bag","Child Safety Locks"
           ]
         },
-        {         
+        {      
+          "dealerId":"dealer-3",   
           "make":"DODGE",
           "model":"DURANGO",
           "trim":"SGT",
@@ -406,6 +415,7 @@
       "make":"FORD",
       "model":[ 
         {
+          "dealerId":"dealer-4",
           "make":"FORD",
           "model":"ESCAPE",
           "trim":"Titanium ",
@@ -438,6 +448,7 @@
           ]
         },
         {
+          "dealerId":"dealer-4",
           "make":"FORD",
           "model":"EXPLORER",
           "trim":"Titanium ",
@@ -476,6 +487,7 @@
       "make":"GMC",
       "model":[
         {
+          "dealerId":"dealer-4",
           "make":"GMC",
           "model":"ACADIA",
           "trim":"Denali ",
@@ -510,6 +522,7 @@
 
       
         {
+          "dealerId":"dealer-4",
           "make":"GMC",
           "model":"CANYON",
           "trim":"SLE Crew Cab ",
@@ -548,6 +561,7 @@
       "make":"HONDA",
       "model":[ 
         {
+          "dealerId":"dealer-5",
           "make":"HONDA",
           "model":"ACCORD",
           "trim":"EX",
@@ -580,6 +594,7 @@
           ]
         },
         {
+          "dealerId":"dealer-5",
           "make":"HONDA",
           "model":"CIVIC",
           "trim":"Hybrid",
@@ -612,6 +627,7 @@
           ]
         },
         {
+          "dealerId":"dealer-5",
           "make":"HONDA",
           "model":"CR-V",
           "trim":"EX",
@@ -652,6 +668,7 @@
       "make":"HYUNDAI",
       "model":[ 
         {
+          "dealerId":"dealer-5",
           "make":"HYUNDAI",
           "model":"Sonata",
           "trim":"N20",
@@ -685,6 +702,7 @@
         
         },
         {
+          "dealerId":"dealer-5",
           "make":"HYUNDAI",
           "model":"TUCSON",
           "trim":"Blue ",
@@ -725,6 +743,7 @@
       "make":"JEEP",
       "model":[ 
         {
+          "dealerId":"dealer-6",
           "make":"JEEP",
           "model":"GRAND CHEROKEE",
           "trim":"Blue",
@@ -758,6 +777,7 @@
           
         },
         {
+          "dealerId":"dealer-6",
           "make":"JEEP",
           "model":"Liberty",
           "trim":"70th Anniversary Sport",
@@ -796,6 +816,7 @@
       "make":"KIA",
       "model":[ 
         {
+          "dealerId":"dealer-6",
           "make":"KIA",
           "model":"FORTE",
           "trim":"S",
@@ -829,6 +850,7 @@
 
         },
         {
+          "dealerId":"dealer-6",
           "make":"KIA",
           "model":"SORENTO",
           "trim":"S",
@@ -867,6 +889,7 @@
       "make":"LEXUS",
       "model":[ 
         {
+          "dealerId":"dealer-7",
           "make":"LEXUS",
           "model":"NX",
           "trim":"300",
@@ -899,6 +922,7 @@
           ]
         },
         {
+          "dealerId":"dealer-7",
           "make":"LEXUS",
           "model":"UX",
           "trim":"200",
@@ -937,6 +961,7 @@
       "make":"MAZDA",
       "model":[ 
         {
+          "dealerId":"dealer-7",
           "make":"MAZDA",
           "model":"MAZDA3",
           "trim":"Touring",
@@ -969,6 +994,7 @@
           ]
         },
         {
+          "dealerId":"dealer-7",
           "make":"MAZDA",
           "model":"CX-9",
           "trim":"Touring",
@@ -1007,6 +1033,7 @@
       "make":"MERCEDES-BENZ",
       "model":[ 
         {
+          "dealerId":"dealer-8",
           "make":"MERCEDES-BENZ",
           "model":"CLA-Class",
           "trim":"CLA 250",
@@ -1039,6 +1066,7 @@
           ]
         },
         {
+          "dealerId":"dealer-8",
           "make":"MERCEDES-BENZ",
           "model":"GLS-Class",
           "trim":"GLS 450",
@@ -1077,6 +1105,7 @@
       "make":"NISSAN",
       "model":[ 
         {
+          "dealerId":"dealer-8",
           "make":"NISSAN",
           "model":"GLS-Class",
           "trim":"GLS 450",
@@ -1109,6 +1138,7 @@
           ]
         },
         {
+          "dealerId":"dealer-8",
           "make":"NISSAN",
           "model":"Rogue",
           "trim":"SV",
@@ -1147,6 +1177,7 @@
       "make":"TESLA",
       "model":[ 
         {
+          "dealerId":"dealer-9",
           "make":"TESLA",
           "model":"Model Y",
           "trim":"Long Range",
@@ -1179,6 +1210,7 @@
           ]
         },
         {
+          "dealerId":"dealer-9",
           "make":"TESLA",
           "model":"Model 3",
           "trim":"Long Range",
@@ -1217,6 +1249,7 @@
       "make":"TOYOTA",
       "model":[ 
         {
+          "dealerId":"dealer-9",
           "make":"TOYOTA",
           "model":"Avalon",
           "trim":"Limited",
@@ -1249,6 +1282,7 @@
           ]
         },
         {
+          "dealerId":"dealer-9",
           "make":"TOYOTA",
           "model":"Corolla",
           "trim":"L",
@@ -1281,6 +1315,7 @@
           ]
         },
         {
+          "dealerId":"dealer-9",
           "make":"TOYOTA",
           "model":"Highlander",
           "trim":"XLE",
@@ -1319,6 +1354,7 @@
       "make":"VOLVO",
       "model":[ 
         {
+          "dealerId":"dealer-10",
           "make":"VOLVO",
           "model":"S90",
           "trim":"T6",
@@ -1351,6 +1387,7 @@
           ]
         },
         {
+          "dealerId":"dealer-10",
           "make":"VOLVO",
           "model":"XC60",
           "trim":"T6",
@@ -1391,7 +1428,7 @@
     {
       "id":1,
       "dealerId":"dealer-1",
-      "model":"Dealer's model",
+      "name":"DC Autos",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1400,7 +1437,7 @@
     {
       "id":2,
       "dealerId":"dealer-2",
-      "model":"Dealer's model",
+      "name":"Banboo Auto",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1409,7 +1446,7 @@
     {
       "id":3,
       "dealerId":"dealer-3",
-      "model":"Dealer's model",
+      "name":"Pines Auto",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1418,7 +1455,7 @@
     {
       "id":4,
       "dealerId":"dealer-4",
-      "model":"Dealer's model",
+      "name":"Crazy Cars",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1427,7 +1464,7 @@
     {
       "id":5,
       "dealerId":"dealer-5",
-      "model":"Dealer's model",
+      "name":"Martz Auto",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1436,7 +1473,7 @@
     {
       "id":6,
       "dealerId":"dealer-6",
-      "model":"Dealer's model",
+      "name":"Hoopties",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1445,7 +1482,7 @@
     {
       "id":7,
       "dealerId":"dealer-7",
-      "model":"Dealer's model",
+      "name":"Chilling Autos",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1454,7 +1491,7 @@
     {
       "id":8,
       "dealerId":"dealer-8",
-      "model":"Dealer's model",
+      "name":"JD Auto",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1463,7 +1500,7 @@
     {
       "id":9,
       "dealerId":"dealer-9",
-      "model":"Dealer's model",
+      "name":"Easy Car",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
@@ -1472,7 +1509,7 @@
     {
       "id":10,
       "dealerId":"dealer-10",
-      "model":"Dealer's model",
+      "name":"ABC Autos",
       "logo":"Logo",
       "tel":"5168717944",
       "address":"8154 Walnut Lane Newburgh, NY 12550",
