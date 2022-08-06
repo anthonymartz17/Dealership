@@ -7,6 +7,7 @@ import Contact from '../views/Contact.vue'
 import Advance from '../views/AdvanceSearch.vue'
 import CarToView from '../views/CarToView.vue'
 import SearchResults from '../views/SearchResults'
+import Dealers from '../views/Dealers'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/searchResults',
     name: 'searchResults',
     component: SearchResults
+  },
+  {
+    path: '/dealerInventory',
+    name: 'dealerInventory',
+    component: Dealers
   },
   
  

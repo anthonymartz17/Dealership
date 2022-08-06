@@ -71,23 +71,23 @@
          </div>
      </div>
     </div>
-    <div class="car-seller">
-      <h3 class="car2view-titles">Seller</h3>
-      <p class="car-seller-logo">{{carToViewDealer.name}}</p>
-      <div class="car-seller-info">
-        <h4>{{carToViewDealer.name}}</h4>
-        <p><span>Tel:</span>  <span>{{carToViewDealer.tel}}</span></p>
-        <p><span>Address:</span> <span>{{carToViewDealer.address}}</span></p>
-        <p><span>E-mail:</span> <span>{{carToViewDealer.email}}</span></p>
-      </div>
-    </div>
+    <Dealers/>
+
+    <router-link :to="{name:'dealerInventory'}" >     
+      <div class="btn-search btn">Visit Our Inventory</div>
+    </router-link>
   </div>
 </template>
 
 <script>
 import {mapState,mapMutations} from 'vuex';
+import Dealers from '@/views/Dealers.vue';
 export default {
   // resets the morePics prop back to false.
+  components:{
+    Dealers,
+
+  },
   created(){
      this.getCarToViewFromLocalStore()
      this.setCarToViewGeneralInfo()
@@ -112,6 +112,7 @@ export default {
      'setVehicleHistory',
       'setCarToviewDetails',
       'setCarToViewDealer',
+      'selectDealerInventory'
     ]),
        // toggles the showMorePics btn 
     showMorePics(){
@@ -148,7 +149,6 @@ export default {
   }
 }
 .car2view-history{
-  padding-block: 1em;
   margin-block: 1em;
 
   @include desktop{
@@ -178,14 +178,6 @@ export default {
 }
 .car2view-car{
   flex: 3;
-}
-.car-seller{
-  @include desktop{
-    flex: 1;
-    background: lighten($lightestDark,35);
-   height: 100vh;
-  }
-
 }
 .car-breakdown{
   @include desktop{
@@ -351,44 +343,6 @@ export default {
         font: $font-text;
       }
     }
-    .car-seller{
-      color: $dark;
-      position: relative;
-      height: 30vh;
-
-      &-logo{
-        // border: 1px solid $lightestDark;
-        color: $primary;
-        font: $font-mobile-m-bold;
-        background: $lightestDark;
-        height: 6em;
-        width: 6em;
-        display: grid;
-        place-items: center;
-        position: absolute;
-        top: -10px;
-        right: 1em;
-      }
-
-      &-info{
-        h4{
-          font: $font-mobile-l;
-          color: $primary;
-        }
-        p{
-          margin-block: 1em;
-          color: $dark;
-          
-        }
-        span:nth-child(1){
-          font: $font-mobile-m-bold;
-          margin-right: .5em;
-        }
-        span:nth-child(2){
-          font: $font-mobile-m;
-          margin-right: .5em;
-        }
-      }
-    }
+   
     
 </style>

@@ -53,6 +53,7 @@ import {mapMutations,mapState,mapActions} from 'vuex'
 
 
 
+
 export default {
 
   data(){
@@ -102,7 +103,8 @@ export default {
           {routeName:'Vehicles', title:'Vehicles'},
           {routeName:'Electric', title:'Electrics and Hybrids'},
           {routeName:'Home', title:'Vehicles'},
-          {routeName:'searchResults', title:'Search Results'}
+          {routeName:'searchResults', title:'Search Results'},
+          {routeName:'dealerInventory', title:'Our Inventory'}
         ]
 
         titles.forEach(one =>{

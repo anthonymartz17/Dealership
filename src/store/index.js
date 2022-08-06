@@ -343,24 +343,20 @@ export default new Vuex.Store({
       }
 
     },
-
-
-
-
-
-
-     selectElectricCars(state,routeName){
+ selectElectricCars(state,routeName){
        
        if(routeName == 'Electric'){
          let allModels = JSON.parse(localStorage.getItem('allModels'))
 
-        let electricCars=[]
-        allModels.forEach(one =>{
-          if(one.fuel == 'Electric' || one.fuel == 'Hybrid'){
-           electricCars.push(one)
-          }
-        })
-        state.vehiclesDisplay = electricCars
+        state.vehiclesDisplay = allModels.filter(one => one.fuel =='Electric'|| one.fuel == 'Hybrid')
+      }
+
+    },
+ selectDealerInventory(state,routeName){
+       
+       if(routeName == 'dealerInventory'){
+        let inventory = JSON.parse(localStorage.getItem('carToViewDealer'))
+        state.vehiclesDisplay = inventory.inventory
       }
 
     },
@@ -455,6 +451,8 @@ export default new Vuex.Store({
     //gets the dealer according to the car selected
     saveCarToViewDealerToLocalS(state,dealerId){
       let dealer = state.dealersData.find(one => dealerId === one.dealerId)
+      let dealerInventory = state.allModels.filter(one => one.dealerId === dealerId )
+      dealer['inventory'] = dealerInventory
       if(localStorage.getItem('carToViewDealer') === null){
         localStorage.setItem('carToViewDealer',JSON.stringify(dealer))
        }else{
