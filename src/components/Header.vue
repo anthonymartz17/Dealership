@@ -71,7 +71,8 @@ export default {
   color: $light;
   position: sticky;
   top: -10px;
-  border-bottom: 1px solid $lightestDark;
+  z-index: 10;
+  // border-bottom: 1px solid $lightestDark;
   
   
 }

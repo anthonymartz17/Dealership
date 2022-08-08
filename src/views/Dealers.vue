@@ -1,16 +1,24 @@
 <template>
-  <div class="car-seller">
-      <h3 class="car2view-titles">Seller</h3>
-      <p class="car-seller-logo">{{carToViewDealer.name}}</p>
-      <div class="car-seller-info">
-        <h4>{{carToViewDealer.name}}</h4>
-        <p><span>Tel:</span>  <span>{{carToViewDealer.tel}}</span></p>
-        <p><span>E-mail:</span> <span>{{carToViewDealer.email}}</span></p>
-        <p><span>Address:</span> <span>{{carToViewDealer.address}}</span></p>
+<!-- added inventory-deskt class to dynamically trigger in dealerinventory route, so i can display vehicle display first and seller info to the right by reversing the flex, this without affecting their position in the other component cartoview.  -->
+  <div :class="['car-seller', {'inventory-deskt':$route.name === 'dealerInventory'}]">
+    <div :class="{'inventory-deskt-seller': $route.name === 'dealerInventory'}">
+      <div class="car-seller-title-logo-wrapper">
+        <h3>Seller</h3>
+        <p class="car-seller-logo">{{carToViewDealer.name}}</p>
       </div>
-      <div v-if="$route.name === 'dealerInventory'">
-        <VehiclesDisplay/>
-      </div>
+        <div class="car-seller-info">
+          <h4>{{carToViewDealer.name}}</h4>
+          <p><span>Tel:</span>  <span>{{carToViewDealer.tel}}</span></p>
+          <p><span>E-mail:</span> <span>{{carToViewDealer.email}}</span></p>
+          <p><span>Address:</span> <span>{{carToViewDealer.address}}</span></p>
+        </div>
+    </div>
+    <div v-if="$route.name === 'dealerInventory'" :class="{'inventory-deskt-carDisplay': $route.name === 'dealerInventory'}">
+      <VehiclesDisplay/>
+    </div>
+      <router-link :to="{name:'dealerInventory'}" v-if="$route.name !='dealerInventory'">     
+        <div class="btn-search btn">Visit Our Inventory</div>
+      </router-link>
     </div>
 </template>
 
@@ -42,37 +50,73 @@ export default {
 </script>
 
 <style lang="scss">
+.inventory-deskt{
+  @include desktop{
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+.inventory-deskt-seller{
+  @include desktop{
+  min-width: 30%;
+  background: lighten($lightestDark,35);
+  padding-inline: .5em;
+  }
+}
+.inventory-deskt-carDisplay{
+//  background: blue;
+}
 
  .car-seller{
       color: $dark;
-      position: relative;
       height: min-30vh;
       padding: .5em;
-      margin-block: 1em;
         @include desktop{
-    flex: 1;
-    background: lighten($lightestDark,35);
-   height: 100vh;
+    height: 100vh;
+    position: sticky;
+    top: 100px;
+   
   }
+
+  h3{
+    @include desktop{
+     border-bottom: none;
+     color: $lightestDark;
+     margin:0px;
+    }
+  border-bottom: 2px solid $lightestDark;
+  padding-block: .5em;
+  margin-bottom: 1em;
+  font:$font-mobile-xl;
+  }
+     &-title-logo-wrapper{
+        position: relative;
+     }
 
       &-logo{
         // border: 1px solid $lightestDark;
         color: $primary;
         font: $font-mobile-m-bold;
-        background: $lightestDark;
-        height: 6em;
-        width: 6em;
+        background: lighten($lightestDark,30);
+        height: 4em;
+        width: 8em;
         display: grid;
         place-items: center;
         position: absolute;
         top: 0px;
         right: 1em;
+        @include desktop{
+          top: 40px;
+         right: 1em;
+        }
+        
       }
 
       &-info{
         h4{
           font: $font-mobile-l;
           color: $primary;
+         
         }
         p{
           margin-block: 1em;

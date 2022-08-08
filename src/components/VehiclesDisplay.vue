@@ -149,7 +149,7 @@ export default {
 .vehicles-height{
   height: 72vh;
   @include desktop{
-    height: 85vh;
+    height: 80vh;
   }
 }
 
@@ -196,6 +196,7 @@ export default {
       flex: 1;
       border: 2px solid $lightestDark;
       
+      
    
       img{
         max-width: 100%;
@@ -204,10 +205,7 @@ export default {
      }
     &-description{
       flex: 2;
-      //  @include desktop{
-        
-        
-      // }
+      
 
     }
     &-title{

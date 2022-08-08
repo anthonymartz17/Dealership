@@ -71,11 +71,9 @@
          </div>
      </div>
     </div>
-    <Dealers/>
-
-    <router-link :to="{name:'dealerInventory'}" >     
-      <div class="btn-search btn">Visit Our Inventory</div>
-    </router-link>
+    <div class="dealer-wrapper">
+     <Dealers/>
+    </div>
   </div>
 </template>
 
@@ -203,7 +201,7 @@ export default {
     margin-block: 1em;
     padding: 0;
     display: flex;
-    gap: .5em;
+    gap: 1em;
     
   }
   
@@ -217,8 +215,10 @@ export default {
     display: flex;
     height: 3em;
     justify-content: space-between;
+    align-items: baseline;
     border-bottom: 2px solid $lightestDark;
-    font-size: 1.375em;
+    font:$font-mobile-m;
+
    }
  }
 
@@ -232,6 +232,10 @@ export default {
 
 }
 .car2view-titles{
+  @include desktop{
+     border-bottom: none;
+     color: $primary;
+    }
   border-bottom: 2px solid $lightestDark;
   padding-block: .5em;
   margin-bottom: 1em;
@@ -336,11 +340,21 @@ export default {
 
       }
       &-bold{
-        font: $font-text-bold;
+        font: $font-mobile-m-bold;
+        @include desktop{
+          font: $font-mobile-m;
+
+        }
         
       }
       &-text{
-        font: $font-text;
+        font: $font-mobile-m;
+      }
+    }
+    .dealer-wrapper{
+      flex: 1.5;
+      @include desktop{
+         background: lighten($lightestDark,35);
       }
     }
    
