@@ -197,7 +197,7 @@ export default {
 .car2view{
   @include desktop{
     
-    border-top: 1px solid $lightestDark;
+    border-top: 1px solid lighten($lightestDark,20);
     margin-block: 1em;
     padding: 0;
     display: flex;

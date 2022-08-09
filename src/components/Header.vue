@@ -10,8 +10,8 @@
         </div>
         <nav class="desktopNav-container">
           <ul class="desktopNav flex-a-c">
-            <li v-for="(link,key) in $store.state.desktopNav" :key="key"> 
-              <router-link to=""> <p>{{link.link}}</p> </router-link>
+            <li v-for="(link,key) in desktopNav" :key="key"> 
+              <router-link :to="{name:link.name}"> <p>{{link.link}}</p> </router-link>
             </li>
           </ul>
         </nav>
@@ -47,7 +47,8 @@ export default {
   },
   computed:{
     ...mapState([
-      'desktopView'
+      'desktopView',
+      'desktopNav'
     ])
   }
 

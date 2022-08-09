@@ -5,7 +5,7 @@
     <div 
     :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
     >
-  <h2 class="vehicles-title">{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
+  <h2 class="vehicles-title"><span v-if="$route.name === 'dealerInventory'">{{carToViewDealer.name}} | </span>{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
  
   <router-link  :to="{name:'CarToView'}">
   <div class="vehicles-display" 
@@ -120,7 +120,8 @@ export default {
   computed:{
     ...mapState([
       'vehiclesDisplay',
-      'msg'
+      'msg',
+      'carToViewDealer'
      
        
     ]),
@@ -178,8 +179,6 @@ export default {
       }
     &-car{
       @include desktop{
-        
-        
         width: 20%;
         flex-direction: column;
       }
@@ -205,6 +204,7 @@ export default {
      }
     &-description{
       flex: 2;
+      
       
 
     }

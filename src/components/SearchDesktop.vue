@@ -299,6 +299,7 @@ export default {
     display: flex;
     gap: 1em;
     margin-block: 1em;
+    
   }
 }
 .search-title-desktop{

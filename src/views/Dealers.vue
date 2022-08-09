@@ -3,7 +3,7 @@
   <div :class="['car-seller', {'inventory-deskt':$route.name === 'dealerInventory'}]">
     <div :class="{'inventory-deskt-seller': $route.name === 'dealerInventory'}">
       <div class="car-seller-title-logo-wrapper">
-        <h3>Seller</h3>
+        <h3 class="car-seller-title">Seller</h3>
         <p class="car-seller-logo">{{carToViewDealer.name}}</p>
       </div>
         <div class="car-seller-info">
@@ -54,6 +54,8 @@ export default {
   @include desktop{
     display: flex;
     flex-direction: row-reverse;
+    border-top: 1px solid lighten($lightestDark,20);
+    margin-block: 2em;
   }
 }
 .inventory-deskt-seller{
@@ -78,7 +80,7 @@ export default {
    
   }
 
-  h3{
+  .car-seller-title{
     @include desktop{
      border-bottom: none;
      color: $lightestDark;

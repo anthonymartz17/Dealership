@@ -3,8 +3,9 @@
      <AppModal/>
       <MobileMenu/>
       <AppHeader/>
-      <AppMain/>
-      <CarSelectionCard /> 
+        <HomeAd/>
+        <AppMain/>
+        <CarSelectionCard /> 
       <AppFooter/>
     </div>
  
@@ -15,6 +16,7 @@
 import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
+import HomeAd from './components/HomeAd.vue'
 import AppMain from './components/Main.vue'
 import AppFooter from './components/Footer.vue'
 import MobileMenu from './components/MobileMenu.vue'
@@ -64,6 +66,7 @@ export default {
 
   components:{
     AppHeader,
+    HomeAd,
     AppMain,
     AppFooter,
     CarSelectionCard,
@@ -93,8 +96,12 @@ export default {
   min-width: 25em;
   // overflow: auto;
   position: relative;
+  
+  
+
 
 }
+
 
 
 
