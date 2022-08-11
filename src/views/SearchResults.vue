@@ -1,5 +1,7 @@
 <template>
+  <div>
   <VehiclesDisplay/>
+  </div>
 </template>
 
 <script>
@@ -20,7 +22,8 @@ export default {
       'setDataInVehiclesDisplayFromLocal'
     ])
 
-  }
+  },
+  
 
 }
 </script>

@@ -6,6 +6,25 @@
   box-sizing: border-box;
 }
 
+// viewports
+
+$mobile: 26em;
+$tablet: 48em;
+
+
+@mixin desktop {
+  @media (min-width:#{$mobile}){
+    @content;
+  }
+  
+}
+
+@mixin tablet {
+  @media (min-width:#{$tablet}){
+    @content
+  }
+}
+
 // colors
 
 
@@ -116,8 +135,6 @@ a{
   
 }
 .btn-search{
-  
-  
   background: $primary;
   transition: all .3s ease-in-out;
   border: 1px solid transparent;
@@ -127,6 +144,13 @@ a{
     border: 1px solid $light;
    
   }
+
+@include desktop{
+  width: 30%;
+  height: 2.5em;
+  font: $font-mobile-m-bold;
+  // margin-block:1em;
+}
 }
 
 
@@ -202,22 +226,4 @@ a{
 
 
 
-// viewports
-
-$mobile: 26em;
-$tablet: 48em;
-
-
-@mixin desktop {
-  @media (min-width:#{$mobile}){
-    @content;
-  }
-  
-}
-
-@mixin tablet {
-  @media (min-width:#{$tablet}){
-    @content
-  }
-}
 

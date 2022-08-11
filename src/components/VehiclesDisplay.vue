@@ -1,51 +1,50 @@
 
 
 <template>
-<div class="vehicles-container">
-    <div 
-    :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]"
-    >
-  <h2 class="vehicles-title"><span v-if="$route.name === 'dealerInventory'">{{carToViewDealer.name}} | </span>{{pageTitle}} <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i></h2>
- 
-  <router-link  :to="{name:'CarToView'}">
-  <div class="vehicles-display" 
+  <div class="vehicles-container">
+    <div :class="['vehicles',{'vehicles-height':$route.name == 'Home'}]">
+      <h2 class="vehicles-title">
+        <span v-if="$route.name === 'dealerInventory'">{{carToViewDealer.name}} | </span>{{pageTitle}}
+        <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i>
+      </h2>
   
-  >  
-    <div
-        class="vehicles-display-car"
-        v-for="(car,key) in vehiclesDisplay"
-        :key="key"
-        @click="
-        saveCarToViewToLocalStore({name:'carToView',data:car})
-        getCarToViewFromLocalStore();
-        setCarToViewGeneralInfo();
-        saveCarToViewDealerToLocalS(car.dealerId)
-        setCarToViewDealer()
-        setVehicleHistory();
-        setCarToviewDetails()"
-   >
-      <div v-if="car.pics[0]" class="vehicles-display-img">
-        <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
-      </div>
-      <div class="vehicles-display-description">
-        <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
-        <p class="vehicles-display-specs">
-          {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
-        </p>
-        <p class="vehicles-display-price">{{car.price | currency}}</p>
-        
+    <router-link  :to="{name:'CarToView'}">
+      <div class="vehicles-display">  
+        <div
+            class="vehicles-display-car"
+            v-for="(car,key) in vehiclesDisplay"
+            :key="key"
+            @click="
+            saveCarToViewToLocalStore({name:'carToView',data:car})
+            getCarToViewFromLocalStore();
+            setCarToViewGeneralInfo();
+            saveCarToViewDealerToLocalS(car.dealerId)
+            setCarToViewDealer()
+            setVehicleHistory();
+            setCarToviewDetails()"
+        >
+        <div v-if="car.pics[0]" class="vehicles-display-img">
+          <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
+        </div>
+        <div class="vehicles-display-description">
+          <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
+          <p class="vehicles-display-specs">
+            {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
+          </p>
+          <p class="vehicles-display-price">{{car.price | currency}}</p>
+          
+        </div>
       </div>
     </div>
-  </div>
-  </router-link>
-    </div>
-
-    <router-link class="moreVehicleBtn"  :to="{name:'Vehicles'}">
-      <div v-show="$route.name == 'Home'" class="btn-search btn">
-        + More Vehicles
-      </div>
     </router-link>
-</div>
+    </div>
+    <router-link class="moreVehicleBtn"  :to="{name:'Vehicles'}">
+        <div v-show="$route.name == 'Home'" class="btn-search btn">
+          + More Vehicles
+        </div>
+    </router-link>
+     <p v-if="vehiclesDisplay.length === 0">No Vehicle found with these criteria</p>
+  </div>
 </template>
 
 <script>

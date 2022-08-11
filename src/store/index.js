@@ -195,49 +195,84 @@ export default new Vuex.Store({
     },
 
     ///////////////////////// reorganizing the search ///////////////////////////// ///////////
-    searchVehicles(state){
-      // search with no specification from user
-      let allModels = JSON.parse(localStorage.getItem('allModels'))
-      if(
-        state.make.typeSelected == '' &&
-        state.models.typeSelected == '' && 
-        state.priceFrom.typeSelected == '' &&
-        state.priceTo.typeSelected == '' &&
-        state.yearFrom.typeSelected == '' &&
-        state.yearTo.typeSelected == '' &&
-        state.carType.typeSelected == '' &&
-        state.carCondition.typeSelected == '' &&
-        state.fuel.typeSelected == '' &&
-        state.transmission.typeSelected == '' &&
-        state.driveTrain.typeSelected == '' &&
-        state.engine.typeSelected == '' &&
-        state.color.typeSelected == ''  ||
-        state.make.typeSelected == 'All Makes'
+    // searchVehicles(state){
+    //   // search with no specification from user
+    //   let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //   if(
+    //     state.make.typeSelected == '' &&
+    //     state.models.typeSelected == '' && 
+    //     state.priceFrom.typeSelected == '' &&
+    //     state.priceTo.typeSelected == '' &&
+    //     state.yearFrom.typeSelected == '' &&
+    //     state.yearTo.typeSelected == '' &&
+    //     state.carType.typeSelected == '' &&
+    //     state.carCondition.typeSelected == '' &&
+    //     state.fuel.typeSelected == '' &&
+    //     state.transmission.typeSelected == '' &&
+    //     state.driveTrain.typeSelected == '' &&
+    //     state.engine.typeSelected == '' &&
+    //     state.color.typeSelected == ''  ||
+    //     state.make.typeSelected == 'All Makes'
 
-    ){  localStorage.setItem('searchResults',JSON.stringify(allModels)) }
+    // ){  localStorage.setItem('searchResults',JSON.stringify(allModels)) }
 
 
-      //  search by make
-       if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`)
-      {  
-        let carsByMake = allModels.filter(one =>{
-          return one.make.includes(state.make.typeSelected)
-      })
-      localStorage.setItem('searchResults',JSON.stringify(carsByMake))
-      }  
+    //   //  search by make
+    //    if(state.make.typeSelected !== '' && state.models.typeSelected == `All ${state.make.typeSelected}`)
+    //   {  
+    //     let carsByMake = allModels.filter(one =>{
+    //       return one.make.includes(state.make.typeSelected)
+    //   })
+    //   localStorage.setItem('searchResults',JSON.stringify(carsByMake))
+    //   }  
 
-     // search by model
-      if(state.models.typeSelected !== `All ${state.make.typeSelected}` ){   
-        let carsByModel= allModels.filter(one =>{          
-        return one.model.includes(state.models.typeSelected)
-       })
-        localStorage.setItem('searchResults',JSON.stringify(carsByModel))
-        }
+    //  // search by model
+    //   if(state.models.typeSelected !== `All ${state.make.typeSelected}` ){   
+    //     let carsByModel= allModels.filter(one =>{          
+    //     return one.model.includes(state.models.typeSelected)
+    //    })
+    //     localStorage.setItem('searchResults',JSON.stringify(carsByModel))
+    //     }
 
    
 
-    },
+    // },
+    searchVehicles(state){
+      let results = state.allModels
 
+      if(state.carType.typeSelected != ''){
+        results = results.filter(one => one.carType === state.carType.typeSelected)
+        // results.sort((a,b) => a.price - b.price)
+      }
+      if(state.priceFrom.typeSelected != 0){
+        results = results.filter(one => one.price >= state.priceFrom.typeSelected)
+        // results.sort((a,b) => a.price - b.price)
+      }
+      if(state.priceTo.typeSelected != 0){
+        results = results.filter(one => one.price <= state.priceTo.typeSelected)
+        // results.sort((a,b) => a.price - b.price)
+      }
+      if(state.yearFrom.typeSelected != 0){
+        results = results.filter(one => one.year >= state.yearFrom.typeSelected)
+        // results.sort((a,b) => a.price - b.price)
+      }
+      if(state.yearTo.typeSelected != 0){
+        results = results.filter(one => one.year <= state.yearTo.typeSelected)
+        // results.sort((a,b) => a.price - b.price)
+      }
+
+      if(state.make.typeSelected != ''){
+        results = results.filter(one => one.make === state.make.typeSelected)
+      }
+      
+      // if(state.models.typeSelected != '' || state.models.typeSelected != `All ${state.make.typeSelected}`){
+      //   results = results.filter(one => one.model === state.models.typeSelected)
+      // }
+     
+      
+      localStorage.setItem('searchResults',JSON.stringify(results))
+
+    },
 
 
    
@@ -262,87 +297,87 @@ export default new Vuex.Store({
     //     localStorage.setItem('searchResults',JSON.stringify(carsByModel))
     //  },
 
-     searchByPrice(state){
-       if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0 && state.priceTo.typeSelected == 0 ){
+    //  searchByPrice(state){
+    //    if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0 && state.priceTo.typeSelected == 0 ){
 
-          let allModels = JSON.parse(localStorage.getItem('allModels'))
-          let carsByPrice=[]
+    //       let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //       let carsByPrice=[]
 
-          allModels.forEach(one =>{
-            if(one.price >= state.priceFrom.typeSelected ){
-              carsByPrice.push(one)
-            }
-          })
-          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
-       }
-      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected == 0  && state.priceTo.typeSelected > 0 ){
+    //       allModels.forEach(one =>{
+    //         if(one.price >= state.priceFrom.typeSelected ){
+    //           carsByPrice.push(one)
+    //         }
+    //       })
+    //       localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
+    //    }
+    //   else if(state.make.typeSelected == '' && state.priceFrom.typeSelected == 0  && state.priceTo.typeSelected > 0 ){
 
-          let allModels = JSON.parse(localStorage.getItem('allModels'))
-          let carsByPrice=[]
+    //       let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //       let carsByPrice=[]
 
-          allModels.forEach(one =>{
-            if(one.price <= state.priceTo.typeSelected ){
-              carsByPrice.push(one)
-            }
-          })
-          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
-       }
+    //       allModels.forEach(one =>{
+    //         if(one.price <= state.priceTo.typeSelected ){
+    //           carsByPrice.push(one)
+    //         }
+    //       })
+    //       localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
+    //    }
 
-      else if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0  && state.priceTo.typeSelected > 0 ){
+    //   else if(state.make.typeSelected == '' && state.priceFrom.typeSelected > 0  && state.priceTo.typeSelected > 0 ){
 
-          let allModels = JSON.parse(localStorage.getItem('allModels'))
-          let carsByPrice=[]
+    //       let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //       let carsByPrice=[]
 
-          allModels.forEach(one =>{
-            if(one.price >= state.priceFrom.typeSelected && one.price <= state.priceTo.typeSelected ){
-              carsByPrice.push(one)
-            }
-          })
-          localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
-       }
+    //       allModels.forEach(one =>{
+    //         if(one.price >= state.priceFrom.typeSelected && one.price <= state.priceTo.typeSelected ){
+    //           carsByPrice.push(one)
+    //         }
+    //       })
+    //       localStorage.setItem('searchResults',JSON.stringify(carsByPrice))
+    //    }
 
-     },
+    //  },
 // the order of where you are placing the handlers is affecting the functionality of the methods////////////////////////
-     searchByYear(state){
-      if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0 && state.yearTo.typeSelected == 0 ){
+    //  searchByYear(state){
+    //   if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0 && state.yearTo.typeSelected == 0 ){
 
-         let allModels = JSON.parse(localStorage.getItem('allModels'))
-         let carsByYear=[]
+    //      let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //      let carsByYear=[]
 
-         allModels.forEach(one =>{
-           if(one.year >= state.yearFrom.typeSelected ){
-            carsByYear.push(one)
-           }
-         })
-         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
-      }
-     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected == 0  && state.yearTo.typeSelected > 0 ){
+    //      allModels.forEach(one =>{
+    //        if(one.year >= state.yearFrom.typeSelected ){
+    //         carsByYear.push(one)
+    //        }
+    //      })
+    //      localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+    //   }
+    //  else if(state.make.typeSelected == '' && state.yearFrom.typeSelected == 0  && state.yearTo.typeSelected > 0 ){
 
-         let allModels = JSON.parse(localStorage.getItem('allModels'))
-         let carsByYear=[]
+    //      let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //      let carsByYear=[]
 
-         allModels.forEach(one =>{
-           if(one.year <= state.yearTo.typeSelected ){
-            carsByYear.push(one)
-           }
-         })
-         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
-      }
+    //      allModels.forEach(one =>{
+    //        if(one.year <= state.yearTo.typeSelected ){
+    //         carsByYear.push(one)
+    //        }
+    //      })
+    //      localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+    //   }
 
-     else if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0  && state.yearTo.typeSelected > 0 ){
+    //  else if(state.make.typeSelected == '' && state.yearFrom.typeSelected > 0  && state.yearTo.typeSelected > 0 ){
 
-         let allModels = JSON.parse(localStorage.getItem('allModels'))
-         let carsByYear=[]
+    //      let allModels = JSON.parse(localStorage.getItem('allModels'))
+    //      let carsByYear=[]
 
-         allModels.forEach(one =>{
-           if(one.year >= state.yearFrom.typeSelected && one.year <= state.yearTo.typeSelected ){
-            carsByYear.push(one)
-           }
-         })
-         localStorage.setItem('searchResults',JSON.stringify(carsByYear))
-      }
+    //      allModels.forEach(one =>{
+    //        if(one.year >= state.yearFrom.typeSelected && one.year <= state.yearTo.typeSelected ){
+    //         carsByYear.push(one)
+    //        }
+    //      })
+    //      localStorage.setItem('searchResults',JSON.stringify(carsByYear))
+    //   }
 
-    },
+    // },
  selectElectricCars(state,routeName){
        
        if(routeName == 'Electric'){

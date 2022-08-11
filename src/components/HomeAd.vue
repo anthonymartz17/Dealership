@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss">
 .ad-wrapper{
+  display: none;
   @include desktop{
     display: flex;
     justify-content: center;

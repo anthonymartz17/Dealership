@@ -1,6 +1,6 @@
 <template>
  <!-- :class="{'btn-container':$router.name == 'Advance'}"  -->
-<router-link :to="{name:'searchResults'}" >
+<router-link class="routerLink" :to="{name:'searchResults'}" >
     <div class="btn btn-search"
       @click="searchVehicles($route.name)"
     >Search</div>
@@ -32,7 +32,12 @@ export default {
   bottom: 0em;
   padding-inline: .5em;
 }
-
+.routerLink{
+  @include desktop{
+    display: flex;
+    justify-content: end;
+  }
+} 
    
 
 </style>

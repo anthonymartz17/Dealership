@@ -141,8 +141,7 @@
                
                 </div>
               </div>
-             
-              <!-- <div class="btn btn-advanceSearch">Advanced Search</div> -->
+            <SearchBtn/>
      </form>
      </div>
 
@@ -164,6 +163,7 @@
 
 <script>
 import {mapGetters,mapState,mapMutations, mapActions} from 'vuex'
+import SearchBtn from './searchFieldMobile/SearchBtn.vue'
 export default {
  data(){
   return{
@@ -181,8 +181,9 @@ export default {
  },
  created(){
   this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
-                
-   
+ },
+ components:{
+    SearchBtn
  },
   methods:{
     onChangeMultiple(e){
