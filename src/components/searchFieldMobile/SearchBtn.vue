@@ -35,7 +35,7 @@ export default {
 .routerLink{
   @include desktop{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
   }
 } 
    

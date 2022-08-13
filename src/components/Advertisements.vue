@@ -8,7 +8,19 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
+  computed:{
+    ...mapState([
+      'make',
+      'models',
+      'priceFrom',
+      'priceTo',
+      'yearFrom',
+      'yearTo',
+      'carCondition',
+    ])
+  }
 
 }
 </script>

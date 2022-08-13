@@ -10,7 +10,7 @@
         </div>
         <nav class="desktopNav-container">
           <ul class="desktopNav flex-a-c">
-            <li v-for="(link,key) in desktopNav" :key="key"> 
+            <li v-for="(link,key) in desktopNav" :key="key" @click="clearPropsVal"> 
               <router-link :to="{name:link.name}"> <p>{{link.link}}</p> </router-link>
             </li>
           </ul>

@@ -180,7 +180,7 @@ export default {
   }
  },
  created(){
-  this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
+  this.getCarsData({funcToCommit:'shuffleHomeDisplayCars',route:this.$route});
  },
  components:{
     SearchBtn

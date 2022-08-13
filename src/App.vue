@@ -16,7 +16,7 @@
 import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
-import HomeAd from './components/HomeAd.vue'
+import HomeAd from './components/Advertisements.vue'
 import AppMain from './components/Main.vue'
 import AppFooter from './components/Footer.vue'
 import MobileMenu from './components/MobileMenu.vue'
@@ -36,6 +36,7 @@ export default {
    this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route});
    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
    this.setCarsData()
+   this.getAvailableColors()
 
   },
 
@@ -47,6 +48,7 @@ export default {
 
     ...mapMutations([
       'toggleMobileMenu',
+      'getAvailableColors',
       'getPriceRange',
       'getYearsRange',
       'getAllModels',

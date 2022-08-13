@@ -8,42 +8,45 @@
         <i v-if="$route.name == 'Electric'" :style="{color:'#116530'}" class="fas fa-leaf"></i>
       </h2>
   
-    <router-link  :to="{name:'CarToView'}">
-      <div class="vehicles-display">  
-        <div
-            class="vehicles-display-car"
-            v-for="(car,key) in vehiclesDisplay"
-            :key="key"
-            @click="
-            saveCarToViewToLocalStore({name:'carToView',data:car})
-            getCarToViewFromLocalStore();
-            setCarToViewGeneralInfo();
-            saveCarToViewDealerToLocalS(car.dealerId)
-            setCarToViewDealer()
-            setVehicleHistory();
-            setCarToviewDetails()"
-        >
-        <div v-if="car.pics[0]" class="vehicles-display-img">
-          <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
+      <router-link  :to="{name:'CarToView'}">
+        <div :class="['vehicles-display',{'space-even': vehiclesDisplay.length > 4}]" >  
+          <div
+              class="vehicles-display-car"
+              v-for="(car,key) in vehiclesDisplay"
+              :key="key"
+              @click="
+              saveCarToViewToLocalStore({name:'carToView',data:car})
+              getCarToViewFromLocalStore();
+              setCarToViewGeneralInfo();
+              saveCarToViewDealerToLocalS(car.dealerId)
+              setCarToViewDealer()
+              setVehicleHistory();
+              setCarToviewDetails()"
+          >
+          <div v-if="car.pics[0]" class="vehicles-display-img">
+            <img :src="`/images/${car.pics[0]}`" :alt="`picture of ${car.model}`">       
+          </div>
+          <div class="vehicles-display-description">
+            <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
+            <p class="vehicles-display-specs">
+              {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
+            </p>
+            <p class="vehicles-display-price">{{car.price | currency}}</p>
+            
+          </div>
         </div>
-        <div class="vehicles-display-description">
-          <h3 class="vehicles-display-title">{{car.year}} {{car.make}} {{car.model}}</h3>
-          <p class="vehicles-display-specs">
-            {{car.fuel}} - {{car.carCondition}} - {{car.miles}} miles
-          </p>
-          <p class="vehicles-display-price">{{car.price | currency}}</p>
-          
         </div>
-      </div>
-    </div>
-    </router-link>
+      </router-link>
     </div>
     <router-link class="moreVehicleBtn"  :to="{name:'Vehicles'}">
         <div v-show="$route.name == 'Home'" class="btn-search btn">
           + More Vehicles
         </div>
     </router-link>
-     <p v-if="vehiclesDisplay.length === 0">No Vehicle found with these criteria</p>
+    <div  v-if="vehiclesDisplay.length === 0">
+      <p>No Vehicle found with these criteria</p>
+      <p>Try modifying the filters</p>
+    </div>
   </div>
 </template>
 
@@ -66,10 +69,8 @@ export default {
   
   created(){
     
-    this.getCarsData({funcToCommit:'setDataInVehiclesDisplay',route:this.$route});
+    this.getCarsData({funcToCommit:'shuffleHomeDisplayCars',route:this.$route});
     this.selectPageTitle(this.$route.name)
-    // this.getCarsData({funcToCommit:'saveAllModelsToLocal',route:this.$route})
-    // this.searchByMake()
    
  
     
@@ -79,7 +80,6 @@ export default {
   methods:{
     
     ...mapMutations([
-      'setDataInVehiclesDisplayb',
       'getCarToViewFromLocalStore',
       'setCarToViewGeneralInfo',
       'saveCarToViewDealerToLocalS',
@@ -132,7 +132,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.space-even{
+  justify-content: space-evenly;
+}
 .msg{
   font:$font-logo-S;
     padding: .2em;
@@ -154,7 +156,6 @@ export default {
 }
 
 .vehicles{
- 
   color: $dark;
   overflow: hidden;
   
@@ -168,11 +169,12 @@ export default {
   }
 
 }
+
+  
   .vehicles-display{
    
      @include desktop{
-       display: flex;
-       justify-content: space-evenly;
+       display:flex;
        flex-wrap: wrap;
        gap: 1em;
       }
