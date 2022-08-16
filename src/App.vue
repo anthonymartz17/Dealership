@@ -3,7 +3,7 @@
      <AppModal/>
       <MobileMenu/>
       <AppHeader/>
-        <HomeAd/>
+        <!-- <HomeAd/> -->
         <AppMain/>
         <CarSelectionCard /> 
       <AppFooter/>
@@ -16,7 +16,7 @@
 import AppModal from './components/Modal.vue'
 import CarSelectionCard from './components/searchFieldMobile/CarSelectionCard.vue'
 import AppHeader from './components/Header.vue'
-import HomeAd from './components/Advertisements.vue'
+// import HomeAd from './components/Advertisements.vue'
 import AppMain from './components/Main.vue'
 import AppFooter from './components/Footer.vue'
 import MobileMenu from './components/MobileMenu.vue'
@@ -68,7 +68,7 @@ export default {
 
   components:{
     AppHeader,
-    HomeAd,
+    // HomeAd,
     AppMain,
     AppFooter,
     CarSelectionCard,

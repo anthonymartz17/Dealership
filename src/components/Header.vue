@@ -73,7 +73,6 @@ export default {
   position: sticky;
   top: -10px;
   z-index: 10;
-  // border-bottom: 1px solid $lightestDark;
   
   
 }

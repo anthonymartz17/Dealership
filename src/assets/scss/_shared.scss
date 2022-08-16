@@ -144,6 +144,9 @@ a{
     border: 1px solid $light;
    
   }
+  
+  
+  
 
 @include desktop{
   width: 30%;
@@ -164,7 +167,9 @@ a{
   place-items: center;
   padding: 1em .5em;
   background:rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 12;
+ 
+
 
 
 
@@ -175,6 +180,8 @@ a{
     width: 100%;
     background: $light;
     border-radius: 5px;
+    // background-color: red;
+    
 
 
   &-content{

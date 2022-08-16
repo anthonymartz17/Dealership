@@ -1,11 +1,33 @@
 <template>
-  <div>
-  <VehiclesDisplay/>
+  <div class="resultsWrapper">
+
+    <div class="sort-ad-wrapper">
+    <div class="sort">
+       <select name="sort" id="sort" @input="sortBy"  >
+        <option :value="null" >Sort by</option>
+        <option  :value="filter.id"  v-for="(filter,key) in filters" :key="key">{{filter.sortby}}</option>
+       </select>
+    </div>
+    ``
+    <div class="ads">
+      <AdComponent/>
+    </div>
+    
+
+    </div>
+    <div class="sideSearch">
+asdfadsfadsf
+    </div>
+
+    <div class="results">
+       <VehiclesDisplay/>
+    </div>
   </div>
 </template>
 
 <script>
 import VehiclesDisplay from '../components/VehiclesDisplay.vue'
+import AdComponent from '../components/Advertisements.vue'
 import {mapMutations} from 'vuex'
 
 export default {
@@ -15,19 +37,101 @@ export default {
   
   components:{
     VehiclesDisplay,
+    AdComponent
+
 
   },
   methods:{
     ...mapMutations([
-      'setDataInVehiclesDisplayFromLocal'
+      'setDataInVehiclesDisplayFromLocal',
+      'sortBy'
     ])
 
   },
+  computed:{
+    filters(){
+      return [
+       {sortby: 'Lowest price first', id:'lowestPrice'},
+       {sortby: 'Highest price first', id:'highestPrice'},
+       {sortby: 'Highest mileage first', id:'highestMileage'},
+       {sortby: 'Lowest mileage first', id:'lowestMileage'},
+       {sortby: 'Newest first (by Car year)', id:'newest'},
+       {sortby: 'Oldest first (by Car year)', id:'oldest'},
+      ]
+    }
+  }
   
 
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+ .resultsWrapper{
+   @include desktop{
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-areas: 
+    'sideSearch head head'
+    'sideSearch results results'
+    'sideSearch results results'
+    ;
+   }
+ }
+ .sort-ad-wrapper{
+   display: none;
+  @include desktop{
+   grid-area: head;
+   display: flex;
+  }
+ 
+  
+ }
+
+.ads{
+  display: none;
+   @include desktop{ 
+    display:block;
+     flex: 3;
+     padding-inline: 1em;
+   }
+
+}
+.sort{
+  display: none;
+   @include desktop{ 
+    display:flex;
+    flex: 1;
+    align-items: flex-end;
+    padding: .2em;
+
+
+    select{
+      height: 2em;
+      border: 1px solid $lightestDark;
+      font: $font-mobile-m-bold;
+    }
+   }
+}
+.results{
+
+  grid-area: results;
+}
+.sideSearch{
+  display: none;
+  @include desktop{
+    display: block;
+    grid-area: sideSearch;
+
+  }
+ 
+  background: yellow;
+}
+
+
+  
+
+
 
 </style>

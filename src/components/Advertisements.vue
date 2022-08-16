@@ -40,7 +40,7 @@ export default {
     margin-top: 1em;
     display: grid;
     place-content: center;
-    width: 50%;
+    width: 100%;
     justify-self: center;
     background: $lightestDark;
     

@@ -43,9 +43,15 @@
           + More Vehicles
         </div>
     </router-link>
-    <div  v-if="vehiclesDisplay.length === 0">
-      <p>No Vehicle found with these criteria</p>
-      <p>Try modifying the filters</p>
+    <div class="noResultMsg"  v-if="vehiclesDisplay.length === 0">
+     <div class="noResultMsg-text">
+       <p>No Vehicles found with these criteria</p>
+       <p>Try modifying the filters!</p>
+     </div>
+
+       <router-link :to="{name:'Advance'}" class="btn-adjustSearch">
+        <div  @click="clearPropsVal" >Adjust Search</div>
+       </router-link> 
     </div>
   </div>
 </template>
@@ -88,7 +94,8 @@ export default {
       'setCarToviewDetails',
       'saveCarToViewToLocalStore',
       'selectElectricCars',
-      'searchByMake'
+      'searchByMake',
+      'clearPropsVal'
       
      
     ]),
@@ -227,6 +234,35 @@ export default {
     @include desktop{
       display: none;
     }
+  }
+  .noResultMsg{
+    display: grid;
+    place-items: center;
+    gap: 2em;
+    margin-block: 3em;
+    font: $font-mobile-m-bold;
+    color: $dark;
+
+    &-text{
+      text-align: center;
+    }
+  }
+  .btn-adjustSearch{
+  background: $primary;
+  transition: all .3s ease-in-out;
+  border: 1px solid transparent;
+  text-align: center;
+  color: $light;
+  min-width: 50%;
+  font: $font-mobile-m-bold;
+   padding: .5em 1em;
+    &:hover{
+    background: lighten($primary, 15%);
+    border: 1px solid $light;  
+  }
+  @include desktop{
+    display: none;
+  }
   }
   
 

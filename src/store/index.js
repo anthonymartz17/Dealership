@@ -131,7 +131,7 @@ export default new Vuex.Store({
       },
         {
           link:'Vehicles',
-          name:'Vehicles', 
+          name:'searchResults', 
           icon:'fas fa-car',
           subList:['Carros','Motores', 'Barcos', 'Vehiculos Pesados', 'Otros']
       },
@@ -668,7 +668,44 @@ export default new Vuex.Store({
         }
       })
     },
-    
+    // sorts the vehicles that are displaying
+    sortBy(state,event){
+       switch(event.target.value){
+        case 'lowestPrice':
+          state.vehiclesDisplay.sort((a,b) => a.price - b.price)
+          break;
+        case 'highestPrice':
+          state.vehiclesDisplay.sort((a,b) => b.price - a.price)
+          break;
+        
+        case 'lowestMileage':
+          state.vehiclesDisplay.sort((a,b) =>{
+            return (+a.miles.replace(/,/g,''))  - (+b.miles.replace(/,/g,''))
+          } )
+          break;
+
+        case 'highestMileage':
+          state.vehiclesDisplay.sort((a,b) =>{
+            return (+b.miles.replace(/,/g,''))  - (+a.miles.replace(/,/g,''))
+          } )
+          break;
+
+        case 'newest':
+          state.vehiclesDisplay.sort((a,b) => b.year - a.year)
+          break;
+          
+        case 'oldest':
+          state.vehiclesDisplay.sort((a,b) => a.year - b.year)
+          break;
+
+          default: return;
+       
+        }
+       
+        // console.log(state.vehiclesDisplay)
+      //  console.log(event.target.value)
+      //  console.log(event.target.id)
+    }
     
   },
   
