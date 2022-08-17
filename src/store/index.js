@@ -95,7 +95,7 @@ export default new Vuex.Store({
     },
     fuel:{
       id:'fuel',
-      type:['Gasoline','Diesel','Electric','Hybrid'],
+      type:[],
       typeSelected:'',    
     },
     transmission:{
@@ -118,7 +118,7 @@ export default new Vuex.Store({
        type:[],
       typeSelected:'',
     },
-    
+    typeOfCar: 'All Vehicles',
     clickedFieldContent:{},
 
     desktopNav:[
@@ -180,9 +180,21 @@ export default new Vuex.Store({
      state.color.type = Object.keys(nonDuplicate)
       
     },
-
-    ///////////////////////// reorganizing the search ///////////////////////////// ///////////
+    set_typeOfCar(state,val){
+     state.typeOfCar = val
+    },
+    filterByRadioBtn(state,e){
+     state.vehiclesDisplay = state.allModels.filter(one => {
+      if(e.target.value === 'All Vehicles'){
+        return state.allModels
+      }else{
+        return one.fuel.toLowerCase().includes(e.target.value.toLowerCase())
+      }
+     })
   
+    },
+
+   
     searchVehicles(state){
       let results = state.allModels
 
@@ -191,6 +203,10 @@ export default new Vuex.Store({
       }
       if(state.fuel.typeSelected !== ''){
         results = results.filter(one => one.fuel === state.fuel.typeSelected) 
+      }
+      // included this else here to search for all vehicles in the checkbox on desktop view side bar search
+      else if(state.fuel.typeSelected === 'All Vehicles'){
+        results = state.allModels
       }
       if(state.transmission.typeSelected !== ''){
         results = results.filter(one => one.transmission === state.transmission.typeSelected) 
@@ -702,10 +718,22 @@ export default new Vuex.Store({
        
         }
        
-        // console.log(state.vehiclesDisplay)
-      //  console.log(event.target.value)
-      //  console.log(event.target.id)
-    }
+    },
+     // dynamically sets available types of fuel, if new type of fuel is added, it will display it automatically
+     setFuelType(state,routeName){
+      console.log(routeName)
+      let types = JSON.parse(localStorage.getItem('allModels')).map(one => one.fuel)
+      let noDuplicates = {}
+  
+      for(let type of types){
+      noDuplicates[type] = true
+      }
+      state.fuel.type = Object.keys(noDuplicates)
+      console.log(state.allModels)
+      if(routeName == 'searchResults'){
+        state.fuel.type.unshift('All Vehicles')
+      }
+    },
     
   },
   
@@ -752,18 +780,8 @@ export default new Vuex.Store({
     },
     carToViewComputed(state){
       return state.carToView
-    }
+    },
 
- 
-    // allModels(state,getters){ 
-    //   let allModels=[];
-    //   getters.carsDataReady.map(one =>{
-    //     one.model.forEach(one =>{
-    //       allModels.push(one)
-    //     })
-    //   })
-    //   return allModels
-    // },
 
 
   }

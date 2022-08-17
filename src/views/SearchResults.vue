@@ -16,7 +16,7 @@
 
     </div>
     <div class="sideSearch">
-asdfadsfadsf
+      <SideSearch/>
     </div>
 
     <div class="results">
@@ -28,6 +28,7 @@ asdfadsfadsf
 <script>
 import VehiclesDisplay from '../components/VehiclesDisplay.vue'
 import AdComponent from '../components/Advertisements.vue'
+import SideSearch from '../components/sideBarSearch.vue'
 import {mapMutations} from 'vuex'
 
 export default {
@@ -37,7 +38,8 @@ export default {
   
   components:{
     VehiclesDisplay,
-    AdComponent
+    AdComponent,
+    SideSearch
 
 
   },
@@ -115,18 +117,20 @@ export default {
    }
 }
 .results{
-
   grid-area: results;
+  min-height: 80vh;
+  max-height: 80vh;
+  overflow: auto;
 }
 .sideSearch{
   display: none;
   @include desktop{
     display: block;
     grid-area: sideSearch;
+    padding-inline: 1em;
 
   }
  
-  background: yellow;
 }
 
 

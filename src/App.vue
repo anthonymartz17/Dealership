@@ -37,6 +37,7 @@ export default {
    this.getCarsData({funcToCommit:'getAllModelsFromLocal',route:this.$route});
    this.setCarsData()
    this.getAvailableColors()
+   this.setFuelType(this.$route.name)
 
   },
 
@@ -54,7 +55,7 @@ export default {
       'getAllModels',
       'detectResize',
       'getAllModelsFromLocal',
-      // 'saveAllModelsToLocal'
+      'setFuelType',
       'setCarsData'
 
      
