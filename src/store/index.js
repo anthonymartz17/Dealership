@@ -251,6 +251,18 @@ export default new Vuex.Store({
       localStorage.setItem('searchResults',JSON.stringify(results))
  
     },
+    searchByUserInput(state,e){
+     let val = e.target.value
+     state.vehiclesDisplay = state.allModels.filter(one =>{
+      return one.make.toLowerCase().includes(val.trim().toLowerCase()) ||
+       one.model.toLowerCase().includes(val.trim().toLowerCase()) ||
+       one.carType.toLowerCase().includes(val.trim().toLowerCase()) 
+          
+     })
+     if(val === ''){
+      state.vehiclesDisplay = state.allModels
+     }
+    },
 
  selectElectricCars(state,routeName){
        
