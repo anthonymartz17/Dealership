@@ -230,12 +230,15 @@ export default new Vuex.Store({
       }
       if(state.priceFrom.typeSelected != 0){
         results = results.filter(one => one.price >= state.priceFrom.typeSelected)
+        
       }
       if(state.priceTo.typeSelected != 0){
         results = results.filter(one => one.price <= state.priceTo.typeSelected)
+       
       }
       if(state.yearFrom.typeSelected != 0){
         results = results.filter(one => one.year >= state.yearFrom.typeSelected)
+       
       }
       if(state.yearTo.typeSelected != 0){
         results = results.filter(one => one.year <= state.yearTo.typeSelected)
@@ -501,43 +504,28 @@ export default new Vuex.Store({
       
         // keeps track of the index of the priceFrom property selected, to disable prices below this index in the priceTo options
         disablePricesYears(state,data){
-            
-          if(data.id == 'priceFrom'){
-            state.pricesUnavailable = data.key
-
-          }
-          else  if(data.id == 'yearFrom'){
-            state.yearsUnavailable = data.key
-          } 
+          if(data.id == 'priceFrom') state.pricesUnavailable = data.key
+          if(data.id == 'yearFrom') state.yearsUnavailable = data.key
         },
         
         //  array of prices
         getPriceRange(state){
-          let priceRange=[];
-          let lowestPrice = 4000;
-          let highestPrice = 60000;
-          for(let i = lowestPrice; i<= highestPrice; i += 1000){
-            priceRange.push(i)
-          }
-          state.priceFrom.type =  priceRange
-          state.priceTo.type =  priceRange
-          
+         let priceRange = JSON.parse(localStorage.getItem('allModels'))
+         priceRange = priceRange.map(one => one.price)
+         priceRange = [...new Set(priceRange)].sort((a,b) => a-b)
+         state.priceFrom.type = priceRange
+         state.priceTo.type =  priceRange
         },
         // array of years
         getYearsRange(state){
-          
-          let yearsRange = [];
-          let startYear = 1970;
-          let currentYear = new Date().getFullYear();
-          for (let i = startYear; i<= currentYear+1; i++){
-            yearsRange.unshift(i)
-          }
+          let yearsRange = JSON.parse(localStorage.getItem('allModels'))
+          yearsRange = yearsRange.map(one => one.year)
+          yearsRange = [...new Set(yearsRange)].sort((a,b) => a-b)
           state.yearFrom.type = yearsRange
-          state.yearTo.type = yearsRange
+          state.yearTo.type =  yearsRange
         },
         
         clearPropsVal(state){
-       
           state.make.typeSelected = ''
           state.models.typeSelected = ''
           state.priceFrom.typeSelected = ''
@@ -551,6 +539,8 @@ export default new Vuex.Store({
           state.driveTrain.typeSelected = ''
           state.engine.typeSelected = ''
           state.color.typeSelected = ''
+          state.pricesUnavailable = null
+          state.yearsUnavailable = null
           
         },
         
@@ -618,7 +608,7 @@ export default new Vuex.Store({
 
           selectedField.typeSelected = event.target.value || event.target.textContent
         }
-        
+       
       },
      
       // receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
@@ -733,7 +723,6 @@ export default new Vuex.Store({
     },
      // dynamically sets available types of fuel, if new type of fuel is added, it will display it automatically
      setFuelType(state,routeName){
-      console.log(routeName)
       let types = JSON.parse(localStorage.getItem('allModels')).map(one => one.fuel)
       let noDuplicates = {}
   
@@ -741,7 +730,6 @@ export default new Vuex.Store({
       noDuplicates[type] = true
       }
       state.fuel.type = Object.keys(noDuplicates)
-      console.log(state.allModels)
       if(routeName == 'searchResults'){
         state.fuel.type.unshift('All Vehicles')
       }

@@ -19,7 +19,8 @@
             'selected-field-options-card-content',
             {
               'card-content-disabled':clickedFieldContent.id == 'model' && make.typeSelected == '',
-              disabledOptions: clickedFieldContent.id == 'priceTo' && pricesUnavailable != null && pricesUnavailable > key  ||  clickedFieldContent.id == 'yearTo' && yearsUnavailable != null && yearsUnavailable < key,
+              disabledOptions: clickedFieldContent.id === 'priceTo' && pricesUnavailable != null && key < pricesUnavailable  ||
+              clickedFieldContent.id === 'yearTo' && yearsUnavailable != null && key < yearsUnavailable,
               'rememberSelection':clickedFieldContent.typeSelected !='' && field == clickedFieldContent.typeSelected
              }
             ]"

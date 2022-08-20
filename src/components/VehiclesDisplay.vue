@@ -38,7 +38,7 @@
         </div>
       </router-link>
     </div>
-    <router-link class="moreVehicleBtn"  :to="{name:'Vehicles'}">
+    <router-link class="moreVehicleBtn"  :to="{name:'searchResults'}">
         <div v-show="$route.name == 'Home'" class="btn-search btn">
           + More Vehicles
         </div>

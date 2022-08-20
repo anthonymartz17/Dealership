@@ -1,5 +1,4 @@
 <template>
- <!-- :class="{'btn-container':$router.name == 'Advance'}"  -->
 <router-link class="routerLink" :to="{name:'searchResults'}" >
     <div class="btn btn-search"
       @click="searchVehicles($route.name)"

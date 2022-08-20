@@ -64,7 +64,10 @@
                   </template>
                 </select>
               </div>
-              <div class="field">
+              <div>
+                    <PriceYear/>
+              </div>
+              <!-- <div class="field">
                 <label for="model">Year:</label>
                 <div class="spacing-years-price">
                   <select 
@@ -91,15 +94,13 @@
                     <template v-for="(yearTo,key) in yearTo.type">
                       <option  
                         :key="key"
-                        :disabled="yearsUnavailable != null && yearsUnavailable <= key"
-                        :class="{disabledOptions : yearsUnavailable != null && yearsUnavailable <= key}"
+                        :disabled="yearsUnavailable != null &&   key < yearsUnavailable"
+                        :class="{disabledOptions : yearsUnavailable != null && key < yearsUnavailable}"
                         >
                           {{yearTo}}
                       </option>
                     </template>
                   </select>
-
-               
                 </div>
               </div>
               <div class="field">
@@ -128,8 +129,8 @@
                     <option :value="null">To</option>
                     <template v-for="(priceTo,key) in priceTo.type">
                       <option  
-                      :disabled="pricesUnavailable != null && pricesUnavailable > key"
-                       :class="{disabledOptions : pricesUnavailable != null && pricesUnavailable > key}"
+                      :disabled="pricesUnavailable != null && key < pricesUnavailable "
+                       :class="{disabledOptions : pricesUnavailable != null && key < pricesUnavailable }"
                         :key="key" 
                         
                         >
@@ -140,7 +141,7 @@
 
                
                 </div>
-              </div>
+              </div> -->
             <SearchBtn/>
      </form>
      </div>
@@ -164,6 +165,7 @@
 <script>
 import {mapGetters,mapState,mapMutations, mapActions} from 'vuex'
 import SearchBtn from './searchFieldMobile/SearchBtn.vue'
+import PriceYear from './priceYearDesktop.vue'
 export default {
  data(){
   return{
@@ -183,13 +185,14 @@ export default {
   this.getCarsData({funcToCommit:'shuffleHomeDisplayCars',route:this.$route});
  },
  components:{
-    SearchBtn
+    SearchBtn,
+    PriceYear,
  },
   methods:{
-    onChangeMultiple(e){
-      this.assignValueToTypeSelected(e)
-      this.disablePricesYears({id:e.target.id, key: e.target.selectedIndex})
-    },
+    // onChangeMultiple(e){
+    //   this.assignValueToTypeSelected(e)
+    //   this.disablePricesYears({id:e.target.id, key: e.target.selectedIndex})
+    // },
      ...mapMutations([
       'showSelectedFieldContent',
      'assignValueToTypeSelected' ,
@@ -265,11 +268,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// *{
-//   font-family: $font-stack;
-//   // color: $light;
-
-// }
 
 .typesCarList{
   list-style: none;
@@ -282,18 +280,7 @@ export default {
     height: 3em;
   }
 }
-.disabledOptions{
-    
-    background: darken($light, 10%);
-    text-decoration: line-through;
-  }
-.spacing-years-price{
-  display: flex;
-  align-items: center;
-  gap:1em;
-  flex: 3;
-  
-}
+
 .search-type-wrapper{
   display: none;
   @include desktop{
@@ -337,11 +324,15 @@ export default {
     
     label{
       flex: 1;
+    font: $font-mobile-m-bold;
+    color: $dark;
+
     }
 
     select{
       flex: 3;
-      font: $font-text-bold;
+      font: $font-mobile-m-bold;
+      color: $dark;
       padding: .2em;
     }
   }
