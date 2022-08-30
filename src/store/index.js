@@ -24,6 +24,7 @@ export default new Vuex.Store({
 		carToViewDetails: [],
 		carToViewHistory: [],
 		carToViewDealer: {},
+		inputTextUser: "",
 
 		//Search mobile component
 
@@ -130,12 +131,6 @@ export default new Vuex.Store({
 				icon: "fas fa-charging-station",
 			},
 			{
-				link: "Advance Search",
-				name: "Advance",
-				icon: "fas fa-search",
-			},
-
-			{
 				link: "Contacto",
 				name: "Contact",
 				icon: "fas fa-phone-volume",
@@ -183,7 +178,6 @@ export default new Vuex.Store({
 
 		searchVehicles(state) {
 			let results = state.allModels;
-
 			if (state.carCondition.typeSelected !== "") {
 				results = results.filter(
 					(one) => one.carCondition === state.carCondition.typeSelected
@@ -227,9 +221,10 @@ export default new Vuex.Store({
 				);
 			}
 			if (state.carType.typeSelected !== "") {
-				results = results.filter((one) =>
-					one.carType.includes(state.carType.typeSelected)
+				results = results.filter((one) => one.carType.includes(state.carType.typeSelected)
 				);
+				console.log(results);
+				state.inputTextUser = state.carType.typeSelected;
 			}
 			if (state.priceFrom.typeSelected != 0) {
 				results = results.filter(
@@ -240,6 +235,7 @@ export default new Vuex.Store({
 				results = results.filter(
 					(one) => one.price <= state.priceTo.typeSelected
 				);
+				
 			}
 			if (state.yearFrom.typeSelected != 0) {
 				results = results.filter(
@@ -255,7 +251,12 @@ export default new Vuex.Store({
 				results = results.filter((one) =>
 					one.make.includes(state.make.typeSelected)
 				);
+				// displays user selection in text field of searchResults component, when the selection was made in the home component.
+				if (state.models.typeSelected != `All ${state.make.typeSelected}`)
+					state.inputTextUser = `${state.make.typeSelected}>>${state.models.typeSelected}`;
+				else state.inputTextUser = state.make.typeSelected;
 			}
+
 			if (
 				state.models.typeSelected != "" &&
 				state.models.typeSelected != `All ${state.make.typeSelected}`
@@ -267,31 +268,36 @@ export default new Vuex.Store({
 
 			localStorage.setItem("searchResults", JSON.stringify(results));
 		},
-
+		toggleDropDownTextField(state) {
+			state.showDropDownTextField = false;
+		},
 		//prepares user type in input on side search to be used in mutation assignValueToTypeSelected
 		searchByInputText(state, e) {
-      let val = e.target.value;
-      
+			// there is a mess here you have to work on
+			let val = e.target.value;
+			state.inputTextUser = val;
+
 			state.models.type = state.allModels.filter((one) => {
-				if (one.make.toLowerCase().includes(val.trim().toLowerCase())) {
-          state.make.typeSelected = one.make;
-          return one
+				switch (val.trim().toLowerCase()) {
+					case one.make.toLowerCase():
+						state.make.typeSelected = one.make;
+						return one;
+					case one.model.toLowerCase():
+						state.make.typeSelected = one.make;
+						return one;
+					case one.carType.toLowerCase():
+						state.carType.typeSelected = one.carType;
+						return one;
+					default:
+						return;
 				}
-				else if (one.model.toLowerCase().includes(val.trim().toLowerCase())) {
-          return one
-				}
-				else if (one.carType.toLowerCase().includes(val.trim().toLowerCase())) {
-          state.carType.typeSelected = one.carType;
-          return one
-				}
-      });
+			});
 
-      if (val == '') {
-        state.make.typeSelected = ''
-        state.carType.typeSelected = '' 
-        state.models.type = []
-
-      }
+			if (val == "") {
+				state.make.typeSelected = "";
+				state.carType.typeSelected = "";
+				state.models.type = [];
+			}
 		},
 		selectElectricCars(state, routeName) {
 			if (routeName == "Electric") {
@@ -527,7 +533,7 @@ export default new Vuex.Store({
 		disablePricesYears(state, data) {
 			if (data.id == "priceFrom") state.pricesUnavailable = data.key;
 			if (data.id == "yearFrom") state.yearsUnavailable = data.key;
-		},
+		}, 
 
 		//  array of prices
 		getPriceRange(state) {
@@ -545,14 +551,33 @@ export default new Vuex.Store({
 			state.yearFrom.type = yearsRange;
 			state.yearTo.type = yearsRange;
 		},
+		clearFilters(state) {
+			state.vehiclesDisplay = JSON.parse(localStorage.getItem("allModels"));
+			state.make.typeSelected = "";
+			state.models.typeSelected = "";
+			state.priceFrom.typeSelected = 0;
+			state.priceTo.typeSelected = 0;
+			state.yearFrom.typeSelected = 0;
+			state.yearTo.typeSelected = 0;
+			state.carType.typeSelected = "";
+			state.carCondition.typeSelected = "";
+			state.fuel.typeSelected = "";
+			state.transmission.typeSelected = "";
+			state.driveTrain.typeSelected = "";
+			state.engine.typeSelected = "";
+			state.color.typeSelected = "";
+			state.inputTextUser = "";
+			state.pricesUnavailable = null;
+			state.yearsUnavailable = null;
+		},
 
 		clearPropsVal(state) {
 			state.make.typeSelected = "";
 			state.models.typeSelected = "";
-			state.priceFrom.typeSelected = "";
-			state.priceTo.typeSelected = "";
-			state.yearFrom.typeSelected = "";
-			state.yearTo.typeSelected = "";
+			state.priceFrom.typeSelected = 0;
+			state.priceTo.typeSelected = 0;
+			state.yearFrom.typeSelected = 0;
+			state.yearTo.typeSelected = 0;
 			state.carType.typeSelected = "";
 			state.carCondition.typeSelected = "";
 			state.fuel.typeSelected = "";
@@ -594,6 +619,7 @@ export default new Vuex.Store({
 		},
 
 		assignValueToTypeSelected(state, event) {
+			
 			let allFields = [
 				state.make,
 				state.models,
@@ -620,7 +646,7 @@ export default new Vuex.Store({
 				selectedField.id === "priceTo"
 			) {
 				//since the price comes formatted as currency and is a string, had to remove "$" and "," with the replace method and regExp. also used parseFloat() to remove two decimal zeros and get just the whole number.
-				if (event.target.value != null) {
+				if (event.target.value != null || event.target.textContent != undefined) {
 					selectedField.typeSelected =
 						parseFloat(event.target.textContent.replace(/\$|,/g, "")) ||
 						parseFloat(event.target.value.replace(/\$|,/g, ""));
@@ -629,13 +655,13 @@ export default new Vuex.Store({
 				selectedField.id === "yearFrom" ||
 				selectedField.id === "yearTo"
 			) {
-				if (event.target.value != null) {
+				if (event.target.value != null || event.target.textContent != undefined) {
 					selectedField.typeSelected =
 						event.target.value || +event.target.textContent;
-				}
+					}
 			} else {
 				selectedField.typeSelected =
-					event.target.value.trim() || event.target.textContent.trim();
+					event.target.value || event.target.textContent;
 			}
 		},
 
@@ -674,7 +700,6 @@ export default new Vuex.Store({
 		// selects the car models to show according to the make selected
 
 		selectModelByMake(state, data) {
-			// console.log(state.model.type)
 			if (data.id == "make") {
 				state.carsData.forEach((one) => {
 					if (state.make.typeSelected == one.make) {

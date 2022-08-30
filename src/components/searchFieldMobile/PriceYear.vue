@@ -13,47 +13,6 @@
       <i class="fas fa-caret-down"></i>
     </div>                       
     </div> 
-
-
-    <!-- <div class="selected-field-options" 
-    v-show="$store.state.optionsCardToggler"
-    @click="
-    toggleOptionsCard($event);
-    "
-    >
-      <div class="selected-field-options-card" >
-        <div  class="selected-field-options-card">
-          <label
-            v-for="(field,key) in priceOrYear.type"
-            :key="key"  
-            class="selected-field-options-card-content"
-            :for="key" 
-            @click.stop="
-            toggleOptionsCard($event);
-            assignValueToTypeSelected({$event,id:priceOrYear.id});
-          
-            "
-        >
-            <p >{{field}}</p>
-            <input 
-              class="radio"
-              type="radio" 
-              :id="key" 
-              :value="field"
-              name="searchFields" 
-            >    
-          </label>
-        </div>
-
-      </div>
-    
-    </div> -->
-
-
-
-
-
-
   </div>
   
 
@@ -75,16 +34,16 @@ export default {
       'formatPrice'  
     ]),
 
-      selectPriceOrYear(id){
-        let priceOrYear = [this.priceFrom,this.priceTo,this.yearFrom,this.yearTo];
+      // selectPriceOrYear(id){
+      //   let priceOrYear = [this.priceFrom,this.priceTo,this.yearFrom,this.yearTo];
        
-       priceOrYear.forEach(one =>{
-         if(id == one.id){
+      //  priceOrYear.forEach(one =>{
+      //    if(id == one.id){
         
-            priceOrYear = one
-         }
-       })
-      },
+      //       priceOrYear = one
+      //    }
+      //  })
+      // },
   },
   computed:{
 

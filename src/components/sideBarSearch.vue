@@ -5,31 +5,39 @@
 				<label for="typeIn">Make | Model | Type of Vehicle</label>
 				<input
 					placeholder=" Search your Vehicle"
-					@input="searchByInputText"
+					@input="searchAfterFinishTyping"
 					class="field-box"
 					id="userInputId"
 					type="text"
+					:value="inputTextUser"
 				/>
-        <div class="inputDropDown" v-show="models.type.length > 0">
-          <div>
-            <p class="list-title">Make</p>
-            <p class="hover-list">{{make.typeSelected}}</p>
-          </div>
-          <div>
-            <p class="list-title">CarType</p>
-            <p class="hover-list">{{carType.typeSelected}}</p>
-          </div>
-          <div>
-            <p class="list-title">Models</p>
-            <ul>
-              <li class="hover-list" v-for="(model,key) in models.type" :key="key"  >
-                {{model.model}}
-              </li>
-            </ul>
-
-          </div>
-          
-        </div>
+				<div class="inputDropDown" v-show="inputTextUser != ''">
+					<div v-if="models.type.length === 0">
+						<p>No results</p>
+					</div>
+					<div v-else>
+						<div v-show="make.typeSelected != ''">
+							<p class="list-title">Make</p>
+							<p class="hover-list">{{ make.typeSelected }}</p>
+						</div>
+						<div v-show="carType.typeSelected != ''">
+							<p class="list-title">CarType</p>
+							<p class="hover-list">{{ carType.typeSelected }}</p>
+						</div>
+						<div>
+							<p class="list-title">Models</p>
+							<ul>
+								<li
+									class="hover-list"
+									v-for="(model, key) in models.type"
+									:key="key"
+								>
+									{{ model.model }}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="field-checkbox">
 				<div
@@ -42,7 +50,7 @@
 						:value="option"
 						:id="key"
 						name="fuel"
-						:checked="key == 0"
+						
 					/>
 					<label :for="key"> {{ option }}</label>
 				</div>
@@ -75,7 +83,8 @@ export default {
 		return {
 			selected: "All Vehicles",
 			moreMakes: false,
-			userInputId: "",
+			timer: null,
+			// showDropdown: false,
 		};
 	},
 	components: {
@@ -84,7 +93,18 @@ export default {
 	created() {
 		//  this.setFuelType(this.$route.name)
 	},
+	// updated() {
+	// 	this.showDropdown = true;
+	// },
+
 	methods: {
+		searchAfterFinishTyping(e) {
+			clearTimeout(this.timer);
+			// this.showDropDownTextField = false;
+			this.timer = setTimeout(this.searchByInputText, 1000, e);
+			// this.$store.commit("toggleDropDownTextField");
+		},
+
 		onChangeMultiple(e) {
 			this.assignValueToTypeSelected(e);
 			this.searchVehicles();
@@ -99,19 +119,20 @@ export default {
 			"setFuelType",
 			"assignValueToTypeSelected",
 			"setDataInVehiclesDisplayFromLocal",
-      'searchByInputText'
+			"searchByInputText",
 		]),
 	},
 	computed: {
 		...mapState([
-      "allModels",
-       "carsData",
-       "make",
-       "models",
-       "carType",
-       
-       
-       ]),
+			"allModels",
+			"carsData",
+			"make",
+			"models",
+			"carType",
+			"inputTextUser",
+			"noResults",
+			// "showDropDownTextField",
+		]),
 
 		typeOfCar: {
 			get() {
@@ -126,36 +147,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.inputDropDown{
-  background: $light;
-  border-radius: 0px 0px 5px 5px;
-  position: absolute;
-  width: 100%;
-  overflow: auto;
-  max-height: 75vh;
- 
+.inputDropDown {
+	background: $light;
+	border-radius: 0px 0px 5px 5px;
+	position: absolute;
+	width: 100%;
+	overflow: auto;
+	max-height: 75vh;
 
-  ul{
-    list-style: none;
+	ul {
+		list-style: none;
 
-    li{
-      border-bottom: 1px solid rgba(128, 128, 128, 0.225);
-    }
-
-  }
-  
+		li {
+			border-bottom: 1px solid rgba(128, 128, 128, 0.225);
+		}
+	}
 }
-.hover-list{
-  transition: 200ms ease-in-out;
-  padding: .1em .5em;
-  &:hover{
-    background: darken($light,10);
-    cursor: pointer;
-  
-  }
+.hover-list {
+	transition: 200ms ease-in-out;
+	padding: 0.1em 0.5em;
+	&:hover {
+		background: darken($light, 10);
+		cursor: pointer;
+	}
 }
-.list-title{
-  background: darken($light,20);
+.list-title {
+	background: darken($light, 20);
 }
 .sideBar {
 	background: lighten($lightestDark, 30);
@@ -166,7 +183,7 @@ export default {
 .field {
 	font: $font-mobile-m-bold;
 	color: $dark;
-  position: relative;
+	position: relative;
 
 	&-box {
 		border: 2px solid $lightestDark;

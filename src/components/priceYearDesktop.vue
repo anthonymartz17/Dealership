@@ -74,7 +74,7 @@
 								disabledOptions:
 									pricesUnavailable != null && key < pricesUnavailable,
 							}"
-							:key="key"
+							:key="priceTo"
 						>
 							{{ priceTo | currency }}
 						</option>
@@ -95,8 +95,10 @@ export default {
 				id: e.target.id,
 				key: e.target.selectedIndex,
 			});
-			this.searchVehicles();
-			this.setDataInVehiclesDisplayFromLocal();
+			if (this.$route.name === "searchResults") {
+				this.searchVehicles();
+				this.setDataInVehiclesDisplayFromLocal();
+			}
 		},
 
 		...mapMutations([
@@ -107,6 +109,7 @@ export default {
 		]),
 	},
 	computed: {
+		
 		...mapState([
 			"priceFrom",
 			"priceTo",
