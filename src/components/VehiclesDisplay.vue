@@ -155,7 +155,7 @@ export default {
 }
 
 .vehicles-height {
-	height: 72vh;
+	height: 65vh;
 	@include desktop {
 		height: 80vh;
 	}

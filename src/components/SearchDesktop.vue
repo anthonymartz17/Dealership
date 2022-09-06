@@ -28,8 +28,7 @@
 						value="Make"
 						@input="assignValueToTypeSelected"
 						@click="
-							showSelectedFieldContent('make');
-							selectModelByMake({ $event, id: clickedFieldContent.id });
+							selectModelByMake({ $event, id:'make' });
 						"
 					>
 						<template v-for="(make, key) in make.type">
@@ -105,9 +104,7 @@ export default {
 		PriceYear,
 	},
 	methods: {
-		
 		...mapMutations([
-			"showSelectedFieldContent",
 			"assignValueToTypeSelected",
 			"searchVehicles",
 			"setDataInVehiclesDisplayFromLocal",

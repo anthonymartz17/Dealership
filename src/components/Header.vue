@@ -70,6 +70,8 @@ export default {
 	position: sticky;
 	top: -10px;
 	z-index: 10;
+	padding-inline: .5em;
+	
 }
 .logo-container {
 	@include desktop {

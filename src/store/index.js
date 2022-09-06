@@ -178,6 +178,7 @@ export default new Vuex.Store({
 
 		searchVehicles(state) {
 			let results = state.allModels;
+
 			if (state.carCondition.typeSelected !== "") {
 				results = results.filter(
 					(one) => one.carCondition === state.carCondition.typeSelected
@@ -220,10 +221,16 @@ export default new Vuex.Store({
 					(one) => one.colorEx === state.color.typeSelected
 				);
 			}
+			// console.log(state.carType.typeSelected)
 			if (state.carType.typeSelected !== "") {
-				results = results.filter((one) => one.carType.includes(state.carType.typeSelected)
+				// results = results.filter((one) => one.carType.includes(state.carType.typeSelected));
+				// let test = []
+				// test.push(state.carType.typeSelected.trim());
+				// console.log(test)
+				results = results.filter((one) =>
+					one.carType.includes(state.carType.typeSelected.trim())
 				);
-				console.log(results);
+		
 				state.inputTextUser = state.carType.typeSelected;
 			}
 			if (state.priceFrom.typeSelected != 0) {
@@ -235,14 +242,13 @@ export default new Vuex.Store({
 				results = results.filter(
 					(one) => one.price <= state.priceTo.typeSelected
 				);
-				
 			}
-			if (state.yearFrom.typeSelected != 0) {
+			if (state.yearFrom.typeSelected > 0) {
 				results = results.filter(
 					(one) => one.year >= state.yearFrom.typeSelected
 				);
 			}
-			if (state.yearTo.typeSelected != 0) {
+			if (state.yearTo.typeSelected > 0) {
 				results = results.filter(
 					(one) => one.year <= state.yearTo.typeSelected
 				);
@@ -533,7 +539,7 @@ export default new Vuex.Store({
 		disablePricesYears(state, data) {
 			if (data.id == "priceFrom") state.pricesUnavailable = data.key;
 			if (data.id == "yearFrom") state.yearsUnavailable = data.key;
-		}, 
+		},
 
 		//  array of prices
 		getPriceRange(state) {
@@ -619,7 +625,6 @@ export default new Vuex.Store({
 		},
 
 		assignValueToTypeSelected(state, event) {
-			
 			let allFields = [
 				state.make,
 				state.models,
@@ -638,7 +643,6 @@ export default new Vuex.Store({
 			let selectedField = allFields.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
 			);
-
 			//in mobile view the fields selections are textcontent of event target, they are in divs, in desktop view they are value of event target, they are in a select option tags
 
 			if (
@@ -646,27 +650,32 @@ export default new Vuex.Store({
 				selectedField.id === "priceTo"
 			) {
 				//since the price comes formatted as currency and is a string, had to remove "$" and "," with the replace method and regExp. also used parseFloat() to remove two decimal zeros and get just the whole number.
-				if (event.target.value != null || event.target.textContent != undefined) {
+				if (
+					event.target.value != null ||
+					event.target.textContent != undefined
+				) {
 					selectedField.typeSelected =
 						parseFloat(event.target.textContent.replace(/\$|,/g, "")) ||
 						parseFloat(event.target.value.replace(/\$|,/g, ""));
 				}
-			} else if (
-				selectedField.id === "yearFrom" ||
-				selectedField.id === "yearTo"
-			) {
-				if (event.target.value != null || event.target.textContent != undefined) {
-					selectedField.typeSelected =
-						event.target.value || +event.target.textContent;
-					}
-			} else {
+			}
+			// else if (
+			// 	selectedField.id === "yearFrom" ||
+			// 	selectedField.id === "yearTo"
+			// ) {
+			// 	if (event.target.value != null || event.target.textContent != undefined) {
+			// 		selectedField.typeSelected =
+			// 			event.target.value || +event.target.textContent;
+			// 		}
+			// }
+			else {
 				selectedField.typeSelected =
 					event.target.value || event.target.textContent;
 			}
 		},
 
 		// receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
-		showSelectedFieldContent(state, id) {
+		updateClickedFieldContent(state, id) {
 			let contentToShow = [
 				state.make,
 				state.models,
