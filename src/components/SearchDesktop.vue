@@ -27,9 +27,7 @@
 						id="make"
 						value="Make"
 						@input="assignValueToTypeSelected"
-						@click="
-							selectModelByMake({ $event, id:'make' });
-						"
+						@click="selectModelByMake({ $event, id: 'make' })"
 					>
 						<template v-for="(make, key) in make.type">
 							<option :key="key">
@@ -74,9 +72,7 @@
 						"
 						v-for="(type, key) in carType.type"
 						:key="key"
-					>
-						{{ type }}
-					</li>
+					>{{ type }}</li>
 				</router-link>
 			</ul>
 		</div>

@@ -25,6 +25,7 @@ export default new Vuex.Store({
 		carToViewHistory: [],
 		carToViewDealer: {},
 		inputTextUser: "",
+		showDropDownTextField: false,
 
 		//Search mobile component
 
@@ -71,7 +72,7 @@ export default new Vuex.Store({
 		yearsUnavailable: null,
 		carType: {
 			id: "carType",
-			type: ["Body Style", "Sedan", "SUV", "Van", "Pickup", "Convertible"],
+			type: [],
 			typeSelected: "",
 		},
 		carCondition: {
@@ -86,12 +87,12 @@ export default new Vuex.Store({
 		},
 		transmission: {
 			id: "transmission",
-			type: ["Automatic", "Manual"],
+			type: [],
 			typeSelected: "",
 		},
 		driveTrain: {
 			id: "driveTrain",
-			type: ["RWD", "FWD", "AWD"],
+			type: [],
 			typeSelected: "",
 		},
 		engine: {
@@ -144,23 +145,7 @@ export default new Vuex.Store({
 				localStorage.getItem("searchResults")
 			);
 		},
-		// gets colors of every car available to be displayed in the colors dropdown filter.
-		//this way we only show options of colors that are actually available
-		getAvailableColors(state) {
-			let colors = JSON.parse(localStorage.getItem("allModels")).map(
-				(one) => one.colorEx
-			);
-			let nonDuplicate = {};
 
-			for (let i = 0; i < colors.length; i++) {
-				if (nonDuplicate[colors[i]] == colors[i]) {
-					continue;
-				} else {
-					nonDuplicate[colors[i]] = i;
-				}
-			}
-			state.color.type = Object.keys(nonDuplicate);
-		},
 		set_typeOfCar(state, val) {
 			state.typeOfCar = val;
 		},
@@ -221,16 +206,11 @@ export default new Vuex.Store({
 					(one) => one.colorEx === state.color.typeSelected
 				);
 			}
-			// console.log(state.carType.typeSelected)
 			if (state.carType.typeSelected !== "") {
-				// results = results.filter((one) => one.carType.includes(state.carType.typeSelected));
-				// let test = []
-				// test.push(state.carType.typeSelected.trim());
-				// console.log(test)
 				results = results.filter((one) =>
-					one.carType.includes(state.carType.typeSelected.trim())
+					one.carType.includes(state.carType.typeSelected)
 				);
-		
+
 				state.inputTextUser = state.carType.typeSelected;
 			}
 			if (state.priceFrom.typeSelected != 0) {
@@ -258,9 +238,11 @@ export default new Vuex.Store({
 					one.make.includes(state.make.typeSelected)
 				);
 				// displays user selection in text field of searchResults component, when the selection was made in the home component.
-				if (state.models.typeSelected != `All ${state.make.typeSelected}`)
-					state.inputTextUser = `${state.make.typeSelected}>>${state.models.typeSelected}`;
-				else state.inputTextUser = state.make.typeSelected;
+				// if (state.models.typeSelected != `All ${state.make.typeSelected}`) {
+					
+				// 	state.inputTextUser = `${state.make.typeSelected} ${state.models.typeSelected}`
+				// }
+				// else {state.inputTextUser = state.make.typeSelected}
 			}
 
 			if (
@@ -279,30 +261,33 @@ export default new Vuex.Store({
 		},
 		//prepares user type in input on side search to be used in mutation assignValueToTypeSelected
 		searchByInputText(state, e) {
-			// there is a mess here you have to work on
-			let val = e.target.value;
-			state.inputTextUser = val;
-
-			state.models.type = state.allModels.filter((one) => {
-				switch (val.trim().toLowerCase()) {
-					case one.make.toLowerCase():
-						state.make.typeSelected = one.make;
-						return one;
-					case one.model.toLowerCase():
-						state.make.typeSelected = one.make;
-						return one;
-					case one.carType.toLowerCase():
-						state.carType.typeSelected = one.carType;
-						return one;
-					default:
-						return;
-				}
-			});
-
-			if (val == "") {
+			state.inputTextUser = e.target.value;
+			if (state.inputTextUser == "") {
+				state.vehiclesDisplay = JSON.parse(
+					localStorage.getItem("allModels")
+				);
 				state.make.typeSelected = "";
 				state.carType.typeSelected = "";
 				state.models.type = [];
+				state.showDropDownTextField = false;
+			} else {
+				state.models.type = state.allModels.filter((one) => {
+					switch (state.inputTextUser.toLowerCase()) {
+						case one.make.toLowerCase():
+							state.make.typeSelected = one.make;
+							return one;
+						case one.model.toLowerCase():
+							state.make.typeSelected = one.make;
+							return one;
+						case one.carType.toLowerCase():
+							state.carType.typeSelected = one.carType;
+							return one;
+						default:
+							return;
+					}
+				});
+				if (e.target.id === "userInputId")
+					state.showDropDownTextField = true;
 			}
 		},
 		selectElectricCars(state, routeName) {
@@ -540,22 +525,36 @@ export default new Vuex.Store({
 			if (data.id == "priceFrom") state.pricesUnavailable = data.key;
 			if (data.id == "yearFrom") state.yearsUnavailable = data.key;
 		},
+		// dynamically sets content into the array named 'type' that every filter prop object in the store has.
+		fillTypeArrOfProps(state, routeName) {
+			let content = JSON.parse(localStorage.getItem("allModels"));
 
-		//  array of prices
-		getPriceRange(state) {
-			let priceRange = JSON.parse(localStorage.getItem("allModels"));
-			priceRange = priceRange.map((one) => one.price);
-			priceRange = [...new Set(priceRange)].sort((a, b) => a - b);
-			state.priceFrom.type = priceRange;
-			state.priceTo.type = priceRange;
-		},
-		// array of years
-		getYearsRange(state) {
-			let yearsRange = JSON.parse(localStorage.getItem("allModels"));
-			yearsRange = yearsRange.map((one) => one.year);
-			yearsRange = [...new Set(yearsRange)].sort((a, b) => a - b);
-			state.yearFrom.type = yearsRange;
-			state.yearTo.type = yearsRange;
+			state.priceFrom.type = [
+				...new Set(content.map((one) => one.price)),
+			].sort((a, b) => a - b);
+			state.priceTo.type = [
+				...new Set(content.map((one) => one.price)),
+			].sort((a, b) => a - b);
+			state.yearFrom.type = [
+				...new Set(content.map((one) => one.year)),
+			].sort((a, b) => a - b);
+			state.yearTo.type = [...new Set(content.map((one) => one.year))].sort(
+				(a, b) => a - b
+			);
+			state.carType.type = [...new Set(content.map((one) => one.carType))];
+			state.fuel.type = [...new Set(content.map((one) => one.fuel))];
+			if (routeName == "searchResults") {
+				state.fuel.type.unshift("All Vehicles");
+			}
+			state.transmission.type = [
+				...new Set(content.map((one) => one.transmission)),
+			];
+			state.driveTrain.type = [
+				...new Set(content.map((one) => one.driveTrain)),
+			];
+			state.color.type = [
+				...new Set(content.map((one) => one.colorEx)),
+			].sort();
 		},
 		clearFilters(state) {
 			state.vehiclesDisplay = JSON.parse(localStorage.getItem("allModels"));
@@ -658,17 +657,7 @@ export default new Vuex.Store({
 						parseFloat(event.target.textContent.replace(/\$|,/g, "")) ||
 						parseFloat(event.target.value.replace(/\$|,/g, ""));
 				}
-			}
-			// else if (
-			// 	selectedField.id === "yearFrom" ||
-			// 	selectedField.id === "yearTo"
-			// ) {
-			// 	if (event.target.value != null || event.target.textContent != undefined) {
-			// 		selectedField.typeSelected =
-			// 			event.target.value || +event.target.textContent;
-			// 		}
-			// }
-			else {
+			} else {
 				selectedField.typeSelected =
 					event.target.value || event.target.textContent;
 			}
@@ -783,21 +772,6 @@ export default new Vuex.Store({
 
 				default:
 					return;
-			}
-		},
-		// dynamically sets available types of fuel, if new type of fuel is added, it will display it automatically
-		setFuelType(state, routeName) {
-			let types = JSON.parse(localStorage.getItem("allModels")).map(
-				(one) => one.fuel
-			);
-			let noDuplicates = {};
-
-			for (let type of types) {
-				noDuplicates[type] = true;
-			}
-			state.fuel.type = Object.keys(noDuplicates);
-			if (routeName == "searchResults") {
-				state.fuel.type.unshift("All Vehicles");
 			}
 		},
 	},

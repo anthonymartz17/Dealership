@@ -3,6 +3,7 @@
 		<div class="field-and-checkbox">
 			<div class="field">
 				<label for="typeIn">Make | Model | Type of Vehicle</label>
+				<p>{{[make.typeSelected]}}</p>
 				<input
 					placeholder=" Search your Vehicle"
 					@input="searchAfterFinishTyping"
@@ -11,18 +12,26 @@
 					type="text"
 					:value="inputTextUser"
 				/>
-				<div class="inputDropDown" v-show="inputTextUser != ''">
+				<div class="inputDropDown" v-show="showDropDownTextField">
 					<div v-if="models.type.length === 0">
 						<p>No results</p>
 					</div>
 					<div v-else>
 						<div v-show="make.typeSelected != ''">
 							<p class="list-title">Make</p>
-							<p class="hover-list">{{ make.typeSelected }}</p>
+							<p
+								class="hover-list"
+								id="make"
+								@click="onChangeMultiple($event)"
+							>{{ make.typeSelected }}</p>
 						</div>
 						<div v-show="carType.typeSelected != ''">
 							<p class="list-title">CarType</p>
-							<p class="hover-list">{{ carType.typeSelected }}</p>
+							<p
+								class="hover-list"
+								id="carType"
+								@click="onChangeMultiple($event)"
+							>{{ carType.typeSelected }}</p>
 						</div>
 						<div>
 							<p class="list-title">Models</p>
@@ -31,6 +40,8 @@
 									class="hover-list"
 									v-for="(model, key) in models.type"
 									:key="key"
+									id="model"
+									@click="onChangeMultiple($event)"
 								>
 									{{ model.model }}
 								</li>
@@ -45,13 +56,7 @@
 					:key="key"
 					@input="filterByRadioBtn"
 				>
-					<input
-						type="radio"
-						:value="option"
-						:id="key"
-						name="fuel"
-						
-					/>
+					<input type="radio" :value="option" :id="key" name="fuel" />
 					<label :for="key"> {{ option }}</label>
 				</div>
 			</div>
@@ -90,19 +95,11 @@ export default {
 	components: {
 		PriceYear,
 	},
-	created() {
-		//  this.setFuelType(this.$route.name)
-	},
-	// updated() {
-	// 	this.showDropdown = true;
-	// },
 
 	methods: {
 		searchAfterFinishTyping(e) {
 			clearTimeout(this.timer);
-			// this.showDropDownTextField = false;
 			this.timer = setTimeout(this.searchByInputText, 1000, e);
-			// this.$store.commit("toggleDropDownTextField");
 		},
 
 		onChangeMultiple(e) {
@@ -131,7 +128,7 @@ export default {
 			"carType",
 			"inputTextUser",
 			"noResults",
-			// "showDropDownTextField",
+			"showDropDownTextField",
 		]),
 
 		typeOfCar: {

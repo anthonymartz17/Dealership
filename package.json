@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
+    "@capacitor/android": "^4.1.0",
+    "@capacitor/core": "^4.1.0",
     "bootstrap": "^4.5.2",
     "core-js": "^3.6.5",
     "json": "^11.0.0",
@@ -25,6 +27,7 @@
     "yarn": "^1.22.11"
   },
   "devDependencies": {
+    "@capacitor/cli": "^4.1.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
