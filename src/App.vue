@@ -23,19 +23,8 @@ import { mapActions, mapState, mapMutations } from "vuex";
 
 export default {
 	created() {
-		this.$store.dispatch("getCarsData", { funcToCommit: "setCarsData" });
+		this.$store.dispatch("getCarsData");
 		this.$store.dispatch("getDealersData");
-		this.getCarsData({ funcToCommit: "setMakes" });
-		this.getCarsData({
-			funcToCommit: "saveAllModelsToLocal",
-			route: this.$route,
-		});
-		this.getCarsData({
-			funcToCommit: "getAllModelsFromLocal",
-			route: this.$route,
-		});
-		this.setCarsData();
-		this.fillTypeArrOfProps(this.$route.name);
 	},
 
 	methods: {
@@ -43,11 +32,7 @@ export default {
 
 		...mapMutations([
 			"toggleMobileMenu",
-			"getAllModels",
 			"detectResize",
-			"getAllModelsFromLocal",
-			"setCarsData",
-			"fillTypeArrOfProps",
 		]),
 	},
 

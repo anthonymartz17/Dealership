@@ -3,7 +3,6 @@
 		<div class="field-and-checkbox">
 			<div class="field">
 				<label for="typeIn">Make | Model | Type of Vehicle</label>
-				<p>{{[make.typeSelected]}}</p>
 				<input
 					placeholder=" Search your Vehicle"
 					@input="searchAfterFinishTyping"
@@ -23,7 +22,8 @@
 								class="hover-list"
 								id="make"
 								@click="onChangeMultiple($event)"
-							>{{ make.typeSelected }}</p>
+								>{{ make.typeSelected }}</p
+							>
 						</div>
 						<div v-show="carType.typeSelected != ''">
 							<p class="list-title">CarType</p>
@@ -31,7 +31,8 @@
 								class="hover-list"
 								id="carType"
 								@click="onChangeMultiple($event)"
-							>{{ carType.typeSelected }}</p>
+								>{{ carType.typeSelected }}</p
+							>
 						</div>
 						<div>
 							<p class="list-title">Models</p>
@@ -42,9 +43,8 @@
 									:key="key"
 									id="model"
 									@click="onChangeMultiple($event)"
+									>{{ model.model }}</li
 								>
-									{{ model.model }}
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 					@input="filterByRadioBtn"
 				>
 					<input type="radio" :value="option" :id="key" name="fuel" />
-					<label :for="key"> {{ option }}</label>
+					<label :for="key">{{ option }}</label>
 				</div>
 			</div>
 			<div class="year-price">
@@ -65,11 +65,11 @@
 			</div>
 			<div class="makes">
 				<p>Makes</p>
-				<ul :class="['listMakes', { showMoreMakes: moreMakes }]">
+				<ul :class="['listMakes', {showMoreMakes: moreMakes}]">
 					<li v-for="(car, key) in carsData" :key="key">
-						<span id="make" @click="onChangeMultiple">
-							{{ car.make }}
-						</span>
+						<span id="make" @click="onChangeMultiple">{{
+							car.make
+						}}</span>
 						<span>({{ car.model.length }})</span>
 					</li>
 					<!-- ({{car.model.length}}) -->
@@ -81,7 +81,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import {mapMutations, mapState} from "vuex";
 import PriceYear from "./priceYearDesktop.vue";
 export default {
 	data() {

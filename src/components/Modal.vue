@@ -45,9 +45,8 @@
 							clickedFieldContent.id == 'priceFrom' ||
 								clickedFieldContent.id == 'priceTo'
 						"
+						>{{ field | currency }}</template
 					>
-						{{ field | currency }}
-					</template>
 					<template v-else>{{ field }}</template>
 				</div>
 			</div>

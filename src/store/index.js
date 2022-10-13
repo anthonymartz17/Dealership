@@ -32,12 +32,16 @@ export default new Vuex.Store({
 		searchMobileModalContent: null,
 
 		// endPoints
-
-		dealersUrl: "http://localhost:3000/dealers",
-		carsInventory: "http://localhost:3000/cars_inventory",
+		endPoints: {
+			carsUrl: "http://localhost:3000/car_selection",
+			dealersUrl: "http://localhost:3000/dealers",
+			carsInventoryUrl: "http://localhost:3000/cars_inventory",
+		},
 
 		// mobile nav links
 		mobileMenuToggler: false,
+
+		// filter props
 		make: {
 			id: "make",
 			type: [],
@@ -105,6 +109,8 @@ export default new Vuex.Store({
 			type: [],
 			typeSelected: "",
 		},
+		// ends filter props
+
 		typeOfCar: "All Vehicles",
 		clickedFieldContent: {},
 
@@ -208,7 +214,9 @@ export default new Vuex.Store({
 			}
 			if (state.carType.typeSelected !== "") {
 				results = results.filter((one) =>
-					one.carType.includes(state.carType.typeSelected)
+					one.carType
+						.toLowerCase()
+						.includes(state.carType.typeSelected.toLowerCase().trim())
 				);
 
 				state.inputTextUser = state.carType.typeSelected;
@@ -235,14 +243,12 @@ export default new Vuex.Store({
 			}
 			if (state.make.typeSelected != "") {
 				results = results.filter((one) =>
-					one.make.includes(state.make.typeSelected)
+					one.make
+						.toLowerCase()
+						.includes(state.make.typeSelected.toLowerCase().trim())
 				);
-				// displays user selection in text field of searchResults component, when the selection was made in the home component.
-				// if (state.models.typeSelected != `All ${state.make.typeSelected}`) {
-					
-				// 	state.inputTextUser = `${state.make.typeSelected} ${state.models.typeSelected}`
-				// }
-				// else {state.inputTextUser = state.make.typeSelected}
+				console.log(state.make.typeSelected);
+				console.log("entre marcas");
 			}
 
 			if (
@@ -250,8 +256,12 @@ export default new Vuex.Store({
 				state.models.typeSelected != `All ${state.make.typeSelected}`
 			) {
 				results = results.filter((one) =>
-					one.model.includes(state.models.typeSelected)
+					one.model
+						.toLowerCase()
+						.includes(state.models.typeSelected.toLowerCase().trim())
 				);
+				console.log(results);
+				console.log("entre modelos");
 			}
 
 			localStorage.setItem("searchResults", JSON.stringify(results));
@@ -316,11 +326,10 @@ export default new Vuex.Store({
 		},
 
 		// saves all models availables to local storage when the app component is created
-		saveAllModelsToLocal(state, data) {
+		saveAllModelsToLocal(state, vehicles) {
 			// the nested loop gets all the models contained in the model array  of each car object
-
 			let allModels = [];
-			data.data.forEach((one) => {
+			vehicles.forEach((one) => {
 				one.model.forEach((one) => {
 					allModels.push(one);
 				});
@@ -368,29 +377,29 @@ export default new Vuex.Store({
 					icon: "transmission.svg",
 					iconInfo: state.carToView.transmission,
 				},
-				{ icon: "drivetrain.svg", iconInfo: state.carToView[0].driveTrain },
-				{ icon: "engine.svg", iconInfo: state.carToView[0].engine },
-				{ icon: fuelIcon, iconInfo: state.carToView[0].fuel },
-				{ icon: milesIcon, iconInfo: `${state.carToView[0].mileage} MPG` },
-				{ icon: "excolor.svg", iconInfo: state.carToView[0].colorEx },
-				{ icon: "incolor.svg", iconInfo: state.carToView[0].colorIn },
-				{ icon: ownerIcon, iconInfo: owner },
+				{icon: "drivetrain.svg", iconInfo: state.carToView[0].driveTrain},
+				{icon: "engine.svg", iconInfo: state.carToView[0].engine},
+				{icon: fuelIcon, iconInfo: state.carToView[0].fuel},
+				{icon: milesIcon, iconInfo: `${state.carToView[0].mileage} MPG`},
+				{icon: "excolor.svg", iconInfo: state.carToView[0].colorEx},
+				{icon: "incolor.svg", iconInfo: state.carToView[0].colorIn},
+				{icon: ownerIcon, iconInfo: owner},
 			];
 		},
 
 		setCarToviewDetails(state) {
 			state.carToViewDetails = [
-				{ key: "Location", val: state.carToView[0].location },
-				{ key: "Engine", val: state.carToView[0].engine },
-				{ key: "Miles", val: state.carToView[0].miles },
-				{ key: "MPG", val: state.carToView[0].mileage },
-				{ key: "Fuel", val: state.carToView[0].fuel },
-				{ key: "transmission", val: state.carToView[0].transmission },
-				{ key: "Car type", val: state.carToView[0].carType },
-				{ key: "Drivetrain", val: state.carToView[0].driveTrain },
-				{ key: "Color Exterior", val: state.carToView[0].colorEx },
-				{ key: "Color Interior", val: state.carToView[0].colorIn },
-				{ key: "Vin", val: state.carToView[0].vin },
+				{key: "Location", val: state.carToView[0].location},
+				{key: "Engine", val: state.carToView[0].engine},
+				{key: "Miles", val: state.carToView[0].miles},
+				{key: "MPG", val: state.carToView[0].mileage},
+				{key: "Fuel", val: state.carToView[0].fuel},
+				{key: "transmission", val: state.carToView[0].transmission},
+				{key: "Car type", val: state.carToView[0].carType},
+				{key: "Drivetrain", val: state.carToView[0].driveTrain},
+				{key: "Color Exterior", val: state.carToView[0].colorEx},
+				{key: "Color Interior", val: state.carToView[0].colorIn},
+				{key: "Vin", val: state.carToView[0].vin},
 			];
 		},
 		//gets the dealer according to the car selected
@@ -479,9 +488,9 @@ export default new Vuex.Store({
 			];
 		},
 
-		setCarsData(state, data) {
-			if (data) {
-				state.carsData = data.data;
+		setCarsData(state, vehicles) {
+			if (vehicles) {
+				state.carsData = vehicles;
 			}
 		},
 		setDealersData(state, data) {
@@ -497,27 +506,20 @@ export default new Vuex.Store({
 			state.make.type.unshift(`All Makes`);
 		},
 
-		//  shuffles the randomCarsDisplay array that displays the cars  in the vehicleDisplay component
-		shuffleHomeDisplayCars(state, data) {
-			if (data.funcAndRoute.route.name == "Home") {
-				//  fisher yates modern shuffle
-				let arrLength = state.allModels.length,
-					temp,
-					ranNum;
-				while (arrLength-- > 0) {
-					ranNum = Math.round(Math.random() * (arrLength + 1));
-					temp = state.allModels[ranNum];
-					state.allModels[ranNum] = state.allModels[arrLength];
-					state.allModels[arrLength] = temp;
-				}
+		//  shuffles the vehicleDisplay array
+		shuffleHomeDisplayCars(state) {
+			let shuffledCars = JSON.parse(localStorage.getItem("allModels"));
+			let arrLength = shuffledCars.length,
+				temp,
+				ranNum;
+			while (arrLength-- > 0) {
+				ranNum = Math.round(Math.random() * (arrLength + 1));
+				temp = shuffledCars[ranNum];
+				shuffledCars[ranNum] = shuffledCars[arrLength];
+				shuffledCars[arrLength] = temp;
 
-				state.vehiclesDisplay = state.allModels;
+				state.vehiclesDisplay = shuffledCars;
 			}
-			// else if(data.funcAndRoute.route.name == 'Vehicles'){
-
-			//   state.vehiclesDisplay = JSON.parse(localStorage.getItem('allModels'))
-
-			// }
 		},
 
 		// keeps track of the index of the priceFrom property selected, to disable prices below this index in the priceTo options
@@ -525,8 +527,8 @@ export default new Vuex.Store({
 			if (data.id == "priceFrom") state.pricesUnavailable = data.key;
 			if (data.id == "yearFrom") state.yearsUnavailable = data.key;
 		},
-		// dynamically sets content into the array named 'type' that every filter prop object in the store has.
-		fillTypeArrOfProps(state, routeName) {
+		//sets the content in every array named 'type' of every filter prop object.
+		setItemsInArrayOfEveryPropType(state, routeName) {
 			let content = JSON.parse(localStorage.getItem("allModels"));
 
 			state.priceFrom.type = [
@@ -777,34 +779,32 @@ export default new Vuex.Store({
 	},
 
 	actions: {
-		getCarsData(context, funcAndRoute) {
-			const carSelectionUrl = "http://localhost:3000/car_selection";
-			fetch(carSelectionUrl)
-				.then((response) => response.json())
-				.then((data) => {
-					// receiving function and current route object. to commit function and send route to the displaycarsramdomly function
+		//fetches the cars data, then commits mutations in charge of setting data in the state.
+		async getCarsData({commit, state}) {
+			try {
+				const response = await fetch(state.endPoints.carsUrl);
+				const vehicles = await response.json();
 
-					context.commit(funcAndRoute.funcToCommit, {
-						data,
-						funcAndRoute,
-					});
-				})
-
-				.catch((err) => {
-					console.log(err);
-				});
+				commit("setCarsData", vehicles);
+				commit("setCarsData", "setMakes");
+				commit("saveAllModelsToLocal", vehicles);
+				commit("getAllModelsFromLocal");
+			} catch (error) {
+				console.log(error);
+			}
 		},
 
-		getDealersData(context) {
-			let urlDealers = "http://localhost:3000/dealers";
-			fetch(urlDealers)
-				.then((response) => response.json())
-				.then((data) => {
-					context.commit("setDealersData", data);
-				});
+		async getDealersData({commit, state}) {
+			try {
+				const response = await fetch(state.endPoints.dealersUrl);
+				const carDealers = await response.json();
+
+				commit("setDealersData", carDealers);
+			} catch (error) {
+				console.log(error);
+			}
 		},
 	},
-	modules: {},
 
 	getters: {
 		carsDataReady(state) {

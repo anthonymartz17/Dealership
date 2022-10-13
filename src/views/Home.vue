@@ -17,6 +17,10 @@ import VehiclesDisplay from '../components/VehiclesDisplay.vue'
 
 
 export default {
+// fires shuffleHomeDisplayCars mutation to display vehicles ramdomly everytime the home component is created.
+  created(){
+     this.$store.commit("shuffleHomeDisplayCars")
+  },
 
   components:{
     SearchMobile,

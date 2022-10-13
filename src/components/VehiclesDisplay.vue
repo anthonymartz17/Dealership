@@ -1,22 +1,22 @@
 <template>
 	<div class="vehicles-container">
-		<div :class="['vehicles', { 'vehicles-height': $route.name == 'Home' }]">
+		<div :class="['vehicles', {'vehicles-height': $route.name == 'Home'}]">
 			<h2 class="vehicles-title">
 				<span v-if="$route.name === 'dealerInventory'"
 					>{{ carToViewDealer.name }} | </span
 				>{{ pageTitle }}
 				<i
 					v-if="$route.name == 'Electric'"
-					:style="{ color: '#116530' }"
+					:style="{color: '#116530'}"
 					class="fas fa-leaf"
 				></i>
 			</h2>
 
-			<router-link :to="{ name: 'CarToView' }">
+			<router-link :to="{name: 'CarToView'}">
 				<div
 					:class="[
 						'vehicles-display',
-						{ 'space-even': vehiclesDisplay.length > 4 },
+						{'space-even': vehiclesDisplay.length > 4},
 					]"
 				>
 					<div
@@ -58,7 +58,7 @@
 				</div>
 			</router-link>
 		</div>
-		<router-link class="moreVehicleBtn" :to="{ name: 'searchResults' }">
+		<router-link class="moreVehicleBtn" :to="{name: 'searchResults'}">
 			<div
 				@click="
 					searchVehicles();
@@ -76,7 +76,7 @@
 				<p>Try modifying the filters!</p>
 			</div>
 
-			<router-link :to="{ name: 'Advance' }" class="btn-adjustSearch">
+			<router-link :to="{name: 'Advance'}" class="btn-adjustSearch">
 				<div @click="clearPropsVal">Adjust Search</div>
 			</router-link>
 		</div>
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import { mapMutations, mapState, mapActions } from "vuex";
+import {mapMutations, mapState, mapActions} from "vuex";
 
 export default {
 	data() {
@@ -94,10 +94,10 @@ export default {
 	},
 
 	created() {
-		this.getCarsData({
-			funcToCommit: "shuffleHomeDisplayCars",
-			route: this.$route,
-		});
+		// this.getCarsData({
+		// 	funcToCommit: "shuffleHomeDisplayCars",
+		// 	route: this.$route,
+		// });
 		this.selectPageTitle(this.$route.name);
 	},
 
@@ -119,11 +119,11 @@ export default {
 
 		selectPageTitle(name) {
 			let titles = [
-				{ routeName: "Vehicles", title: "Vehicles" },
-				{ routeName: "Electric", title: "Electrics and Hybrids" },
-				{ routeName: "Home", title: "Vehicles" },
-				{ routeName: "searchResults", title: "Search Results" },
-				{ routeName: "dealerInventory", title: "Our Inventory" },
+				{routeName: "Vehicles", title: "Vehicles"},
+				{routeName: "Electric", title: "Electrics and Hybrids"},
+				{routeName: "Home", title: "Vehicles"},
+				{routeName: "searchResults", title: "Search Results"},
+				{routeName: "dealerInventory", title: "Our Inventory"},
 			];
 
 			titles.forEach((one) => {
