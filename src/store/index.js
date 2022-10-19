@@ -17,7 +17,6 @@ export default new Vuex.Store({
 		dealersData: [],
 		vehiclesDisplay: [],
 		allModels: [],
-		testNums: [],
 		// receives the data of the clicked car
 		carToView: {},
 		carToViewGeneralInfo: [],
@@ -42,6 +41,7 @@ export default new Vuex.Store({
 		mobileMenuToggler: false,
 
 		// filter props
+		
 		make: {
 			id: "make",
 			type: [],
@@ -81,7 +81,7 @@ export default new Vuex.Store({
 		},
 		carCondition: {
 			id: "condition",
-			type: ["New/Used", "New", "Used"],
+			type: [],
 			typeSelected: "",
 		},
 		fuel: {
@@ -498,14 +498,6 @@ export default new Vuex.Store({
 				state.dealersData = data;
 			}
 		},
-		// receives the data object which contains the data of vehicles and and object with current route
-		setMakes(state, data) {
-			data.data.forEach((one) => {
-				state.make.type.push(one.make);
-			});
-			state.make.type.unshift(`All Makes`);
-		},
-
 		//  shuffles the vehicleDisplay array
 		shuffleHomeDisplayCars(state) {
 			let shuffledCars = JSON.parse(localStorage.getItem("allModels"));
@@ -528,36 +520,22 @@ export default new Vuex.Store({
 			if (data.id == "yearFrom") state.yearsUnavailable = data.key;
 		},
 		//sets the content in every array named 'type' of every filter prop object.
-		setItemsInArrayOfEveryPropType(state, routeName) {
+		setItemsInArrayOfEveryPropType(state) {
 			let content = JSON.parse(localStorage.getItem("allModels"));
 
-			state.priceFrom.type = [
-				...new Set(content.map((one) => one.price)),
-			].sort((a, b) => a - b);
-			state.priceTo.type = [
-				...new Set(content.map((one) => one.price)),
-			].sort((a, b) => a - b);
-			state.yearFrom.type = [
-				...new Set(content.map((one) => one.year)),
-			].sort((a, b) => a - b);
-			state.yearTo.type = [...new Set(content.map((one) => one.year))].sort(
-				(a, b) => a - b
-			);
+			state.make.type = ["All Makes",...new Set(content.map(one => one.make))]
+			state.priceFrom.type = [...new Set(content.map((one) => one.price))].sort((a, b) => a - b);
+			state.priceTo.type = [...new Set(content.map((one) => one.price))].sort((a, b) => a - b);
+			state.yearFrom.type = [...new Set(content.map((one) => one.year))].sort((a, b) => a - b);
+			state.yearTo.type = [...new Set(content.map((one) => one.year))].sort((a, b) => a - b);
 			state.carType.type = [...new Set(content.map((one) => one.carType))];
+			state.carCondition.type = [...new Set(content.map((one) => one.carCondition))].sort();
 			state.fuel.type = [...new Set(content.map((one) => one.fuel))];
-			if (routeName == "searchResults") {
-				state.fuel.type.unshift("All Vehicles");
-			}
-			state.transmission.type = [
-				...new Set(content.map((one) => one.transmission)),
-			];
-			state.driveTrain.type = [
-				...new Set(content.map((one) => one.driveTrain)),
-			];
-			state.color.type = [
-				...new Set(content.map((one) => one.colorEx)),
-			].sort();
+			state.transmission.type = [...new Set(content.map((one) => one.transmission))];
+			state.driveTrain.type = [...new Set(content.map((one) => one.driveTrain))];
+			state.color.type = [...new Set(content.map((one) => one.colorEx))].sort();
 		},
+		
 		clearFilters(state) {
 			state.vehiclesDisplay = JSON.parse(localStorage.getItem("allModels"));
 			state.make.typeSelected = "";
@@ -663,6 +641,7 @@ export default new Vuex.Store({
 				selectedField.typeSelected =
 					event.target.value || event.target.textContent;
 			}
+			
 		},
 
 		// receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
@@ -786,9 +765,10 @@ export default new Vuex.Store({
 				const vehicles = await response.json();
 
 				commit("setCarsData", vehicles);
-				commit("setCarsData", "setMakes");
+				// commit("setMakes", vehicles);
 				commit("saveAllModelsToLocal", vehicles);
 				commit("getAllModelsFromLocal");
+				commit("setItemsInArrayOfEveryPropType");
 			} catch (error) {
 				console.log(error);
 			}
