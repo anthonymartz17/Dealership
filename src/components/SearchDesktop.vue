@@ -12,7 +12,7 @@
 						value="hello"
 						@input="assignValueToTypeSelected"
 					>
-						<template v-for="(condition, key) in carCondition.type">
+						<template v-for="(condition, key) in filters.carCondition.type">
 							<option :key="key">
 								{{ condition }}
 							</option>
@@ -29,7 +29,7 @@
 						@input="assignValueToTypeSelected"
 						@click="selectModelByMake({ $event, id: 'make' })"
 					>
-						<template v-for="(make, key) in make.type">
+						<template v-for="(make, key) in filters.make.type">
 							<option :key="key">
 								{{ make }}
 							</option>
@@ -70,7 +70,7 @@
 							searchVehicles();
 							setDataInVehiclesDisplayFromLocal();
 						"
-						v-for="(type, key) in carType.type"
+						v-for="(type, key) in filters.carType.type"
 						:key="key"
 					>{{ type }}</li>
 				</router-link>
@@ -112,25 +112,25 @@ export default {
 
 	computed: {
 		modelByMake() {
-			if (this.make.typeSelected === "") {
+			if (this.filters.make.typeSelected === "") {
 				return ["Models"];
 			} else {
-				return this.models.type;
+				return this.filters.models.type;
 			}
 		},
 
 		searchFieldPlaceholder() {
 			let make, model;
 			//  ,condition,year,price;
-			if (this.make.typeSelected == "") {
+			if (this.filters.make.typeSelected == "") {
 				make = "Make";
 			} else {
-				make = this.make.typeSelected;
+				make = this.filters.make.typeSelected;
 			}
-			if (this.models.typeSelected == "") {
+			if (this.filters.models.typeSelected == "") {
 				model = "Model";
 			} else {
-				model = this.models.typeSelected;
+				model = this.filters.models.typeSelected;
 			}
 
 			return [
@@ -139,21 +139,9 @@ export default {
 			];
 		},
 		...mapState([
-			"carsData",
+			"filters",
 			"clickedFieldContent",
-			"make",
-			"models",
-			"priceFrom",
-			"priceTo",
-			"yearFrom",
-			"yearTo",
-			"carType",
-			"carCondition",
-			"fuel",
-			"transmission",
-			"driveTrain",
-			"engine",
-			"color",
+			"carsData",
 			"pricesUnavailable",
 			"yearsUnavailable",
 		]),

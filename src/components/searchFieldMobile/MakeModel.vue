@@ -24,23 +24,22 @@ export default {
 		...mapMutations([
 			"toggleOptionsCard",
 			"updateClickedFieldContent",
-			// "selectModelByMake",
 		]),
 	},
 	computed: {
-		...mapState(["make", "models", "carsData"]),
+		...mapState(["filters"]),
 
 		makeModel() {
 			let make, model;
-			if (this.make.typeSelected == "") {
+			if (this.filters.make.typeSelected == "") {
 				make = "Make";
 			} else {
-				make = this.make.typeSelected;
+				make = this.filters.make.typeSelected;
 			}
-			if (this.models.typeSelected == "") {
+			if (this.filters.models.typeSelected == "") {
 				model = "Model";
 			} else {
-				model = this.models.typeSelected;
+				model = this.filters.models.typeSelected;
 			}
 
 			return [

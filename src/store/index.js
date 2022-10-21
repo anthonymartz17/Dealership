@@ -25,6 +25,8 @@ export default new Vuex.Store({
 		carToViewDealer: {},
 		inputTextUser: "",
 		showDropDownTextField: false,
+		pricesUnavailable: null,
+		yearsUnavailable: null,
 
 		//Search mobile component
 
@@ -41,73 +43,72 @@ export default new Vuex.Store({
 		mobileMenuToggler: false,
 
 		// filter props
-		
-		make: {
-			id: "make",
-			type: [],
-			typeSelected: "",
-		},
-		models: {
-			id: "model",
-			type: [],
-			typeSelected: "",
-		},
-		priceFrom: {
-			id: "priceFrom",
-			type: [],
-			typeSelected: 0,
-		},
-		priceTo: {
-			id: "priceTo",
-			type: [],
-			typeSelected: 0,
-		},
-		yearFrom: {
-			id: "yearFrom",
-			type: [],
-			typeSelected: 0,
-		},
-		yearTo: {
-			id: "yearTo",
-			type: [],
-			typeSelected: 0,
-		},
-		pricesUnavailable: null,
-		yearsUnavailable: null,
-		carType: {
-			id: "carType",
-			type: [],
-			typeSelected: "",
-		},
-		carCondition: {
-			id: "condition",
-			type: [],
-			typeSelected: "",
-		},
-		fuel: {
-			id: "fuel",
-			type: [],
-			typeSelected: "",
-		},
-		transmission: {
-			id: "transmission",
-			type: [],
-			typeSelected: "",
-		},
-		driveTrain: {
-			id: "driveTrain",
-			type: [],
-			typeSelected: "",
-		},
-		engine: {
-			id: "engine",
-			type: ["I4", "V6", "V8"],
-			typeSelected: "",
-		},
-		color: {
-			id: "color",
-			type: [],
-			typeSelected: "",
+		filters: {
+			make: {
+				id: "make",
+				type: [],
+				typeSelected: "",
+			},
+			models: {
+				id: "model",
+				type: [],
+				typeSelected: "",
+			},
+			priceFrom: {
+				id: "priceFrom",
+				type: [],
+				typeSelected: 0,
+			},
+			priceTo: {
+				id: "priceTo",
+				type: [],
+				typeSelected: 0,
+			},
+			yearFrom: {
+				id: "yearFrom",
+				type: [],
+				typeSelected: 0,
+			},
+			yearTo: {
+				id: "yearTo",
+				type: [],
+				typeSelected: 0,
+			},
+			carType: {
+				id: "carType",
+				type: [],
+				typeSelected: "",
+			},
+			carCondition: {
+				id: "condition",
+				type: [],
+				typeSelected: "",
+			},
+			fuel: {
+				id: "fuel",
+				type: [],
+				typeSelected: "",
+			},
+			transmission: {
+				id: "transmission",
+				type: [],
+				typeSelected: "",
+			},
+			driveTrain: {
+				id: "driveTrain",
+				type: [],
+				typeSelected: "",
+			},
+			engine: {
+				id: "engine",
+				type: ["I4", "V6", "V8"],
+				typeSelected: "",
+			},
+			color: {
+				id: "color",
+				type: [],
+				typeSelected: "",
+			},
 		},
 		// ends filter props
 
@@ -170,98 +171,103 @@ export default new Vuex.Store({
 		searchVehicles(state) {
 			let results = state.allModels;
 
-			if (state.carCondition.typeSelected !== "") {
+			if (state.filters.carCondition.typeSelected !== "") {
 				results = results.filter(
-					(one) => one.carCondition === state.carCondition.typeSelected
+					(one) =>
+						one.carCondition === state.filters.carCondition.typeSelected
 				);
 			}
-			if (state.fuel.typeSelected !== "") {
+			if (state.filters.fuel.typeSelected !== "") {
 				results = results.filter(
-					(one) => one.fuel === state.fuel.typeSelected
+					(one) => one.fuel === state.filters.fuel.typeSelected
 				);
 			}
 			// included this else here to search for all vehicles in the checkbox on desktop view side bar search
-			else if (state.fuel.typeSelected === "All Vehicles") {
+			else if (state.filters.fuel.typeSelected === "All Vehicles") {
 				results = state.allModels;
 			}
-			if (state.transmission.typeSelected !== "") {
+			if (state.filters.transmission.typeSelected !== "") {
 				results = results.filter(
-					(one) => one.transmission === state.transmission.typeSelected
+					(one) =>
+						one.transmission === state.filters.transmission.typeSelected
 				);
 			}
-			if (state.driveTrain.typeSelected !== "") {
+			if (state.filters.driveTrain.typeSelected !== "") {
 				results = results.filter(
-					(one) => one.driveTrain === state.driveTrain.typeSelected
+					(one) => one.driveTrain === state.filters.driveTrain.typeSelected
 				);
 			}
-			if (state.engine.typeSelected !== "") {
+			if (state.filters.engine.typeSelected !== "") {
 				results = results.filter((one) => {
 					if (
 						one.engine != undefined &&
 						one.engine
 							.toLowerCase()
-							.includes(state.engine.typeSelected.toLowerCase())
+							.includes(state.filters.engine.typeSelected.toLowerCase())
 					) {
 						return one;
 					}
 				});
 			}
 
-			if (state.color.typeSelected !== "") {
+			if (state.filters.color.typeSelected !== "") {
 				results = results.filter(
-					(one) => one.colorEx === state.color.typeSelected
+					(one) => one.colorEx === state.filters.color.typeSelected
 				);
 			}
-			if (state.carType.typeSelected !== "") {
+			if (state.filters.carType.typeSelected !== "") {
 				results = results.filter((one) =>
 					one.carType
 						.toLowerCase()
-						.includes(state.carType.typeSelected.toLowerCase().trim())
+						.includes(
+							state.filters.carType.typeSelected.toLowerCase().trim()
+						)
 				);
 
-				state.inputTextUser = state.carType.typeSelected;
+				state.inputTextUser = state.filters.carType.typeSelected;
 			}
-			if (state.priceFrom.typeSelected != 0) {
+			if (state.filters.priceFrom.typeSelected != 0) {
 				results = results.filter(
-					(one) => one.price >= state.priceFrom.typeSelected
+					(one) => one.price >= state.filters.priceFrom.typeSelected
 				);
 			}
-			if (state.priceTo.typeSelected != 0) {
+			if (state.filters.priceTo.typeSelected != 0) {
 				results = results.filter(
-					(one) => one.price <= state.priceTo.typeSelected
+					(one) => one.price <= state.filters.priceTo.typeSelected
 				);
 			}
-			if (state.yearFrom.typeSelected > 0) {
+			if (state.filters.yearFrom.typeSelected > 0) {
 				results = results.filter(
-					(one) => one.year >= state.yearFrom.typeSelected
+					(one) => one.year >= state.filters.yearFrom.typeSelected
 				);
 			}
-			if (state.yearTo.typeSelected > 0) {
+			if (state.filters.yearTo.typeSelected > 0) {
 				results = results.filter(
-					(one) => one.year <= state.yearTo.typeSelected
+					(one) => one.year <= state.filters.yearTo.typeSelected
 				);
 			}
-			if (state.make.typeSelected != "") {
+			if (state.filters.make.typeSelected != "") {
 				results = results.filter((one) =>
 					one.make
 						.toLowerCase()
-						.includes(state.make.typeSelected.toLowerCase().trim())
+						.includes(
+							state.filters.make.typeSelected.toLowerCase().trim()
+						)
 				);
-				console.log(state.make.typeSelected);
-				console.log("entre marcas");
 			}
 
 			if (
-				state.models.typeSelected != "" &&
-				state.models.typeSelected != `All ${state.make.typeSelected}`
+				state.filters.models.typeSelected != "" &&
+				state.filters.models.typeSelected !=
+					`All ${state.filters.make.typeSelected}`
 			) {
 				results = results.filter((one) =>
 					one.model
 						.toLowerCase()
-						.includes(state.models.typeSelected.toLowerCase().trim())
+						.includes(
+							state.filters.models.typeSelected.toLowerCase().trim()
+						)
 				);
-				console.log(results);
-				console.log("entre modelos");
 			}
 
 			localStorage.setItem("searchResults", JSON.stringify(results));
@@ -276,21 +282,21 @@ export default new Vuex.Store({
 				state.vehiclesDisplay = JSON.parse(
 					localStorage.getItem("allModels")
 				);
-				state.make.typeSelected = "";
-				state.carType.typeSelected = "";
-				state.models.type = [];
-				state.showDropDownTextField = false;
+				state.filters.make.typeSelected = "";
+				state.filters.carType.typeSelected = "";
+				state.filters.models.type = [];
+				state.filters.showDropDownTextField = false;
 			} else {
-				state.models.type = state.allModels.filter((one) => {
+				state.filters.models.type = state.allModels.filter((one) => {
 					switch (state.inputTextUser.toLowerCase()) {
 						case one.make.toLowerCase():
-							state.make.typeSelected = one.make;
+							state.filters.make.typeSelected = one.make;
 							return one;
 						case one.model.toLowerCase():
-							state.make.typeSelected = one.make;
+							state.filters.make.typeSelected = one.make;
 							return one;
 						case one.carType.toLowerCase():
-							state.carType.typeSelected = one.carType;
+							state.filters.carType.typeSelected = one.carType;
 							return one;
 						default:
 							return;
@@ -523,55 +529,78 @@ export default new Vuex.Store({
 		setItemsInArrayOfEveryPropType(state) {
 			let content = JSON.parse(localStorage.getItem("allModels"));
 
-			state.make.type = ["All Makes",...new Set(content.map(one => one.make))]
-			state.priceFrom.type = [...new Set(content.map((one) => one.price))].sort((a, b) => a - b);
-			state.priceTo.type = [...new Set(content.map((one) => one.price))].sort((a, b) => a - b);
-			state.yearFrom.type = [...new Set(content.map((one) => one.year))].sort((a, b) => a - b);
-			state.yearTo.type = [...new Set(content.map((one) => one.year))].sort((a, b) => a - b);
-			state.carType.type = [...new Set(content.map((one) => one.carType))];
-			state.carCondition.type = [...new Set(content.map((one) => one.carCondition))].sort();
-			state.fuel.type = [...new Set(content.map((one) => one.fuel))];
-			state.transmission.type = [...new Set(content.map((one) => one.transmission))];
-			state.driveTrain.type = [...new Set(content.map((one) => one.driveTrain))];
-			state.color.type = [...new Set(content.map((one) => one.colorEx))].sort();
+			state.filters.make.type = [
+				"All Makes",
+				...new Set(content.map((one) => one.make)),
+			];
+			state.filters.priceFrom.type = [
+				...new Set(content.map((one) => one.price)),
+			].sort((a, b) => a - b);
+			state.filters.priceTo.type = [
+				...new Set(content.map((one) => one.price)),
+			].sort((a, b) => a - b);
+			state.filters.yearFrom.type = [
+				...new Set(content.map((one) => one.year)),
+			].sort((a, b) => a - b);
+			state.filters.yearTo.type = [
+				...new Set(content.map((one) => one.year)),
+			].sort((a, b) => a - b);
+			state.filters.carType.type = [
+				...new Set(content.map((one) => one.carType)),
+			];
+			state.filters.carCondition.type = [
+				...new Set(content.map((one) => one.carCondition)),
+			].sort();
+			state.filters.fuel.type = [...new Set(content.map((one) => one.fuel))];
+			state.filters.transmission.type = [
+				...new Set(content.map((one) => one.transmission)),
+			];
+			state.filters.driveTrain.type = [
+				...new Set(content.map((one) => one.driveTrain)),
+			];
+			state.filters.color.type = [
+				...new Set(content.map((one) => one.colorEx)),
+			].sort();
 		},
-		
+
 		clearFilters(state) {
+			state.filters.make.typeSelected = "";
+			state.filters.models.typeSelected = "";
+			state.filters.priceFrom.typeSelected = 0;
+			state.filters.priceTo.typeSelected = 0;
+			state.filters.yearFrom.typeSelected = 0;
+			state.filters.yearTo.typeSelected = 0;
+			state.filters.carType.typeSelected = "";
+			state.filters.carCondition.typeSelected = "";
+			state.filters.fuel.typeSelected = "";
+			state.filters.transmission.typeSelected = "";
+			state.filters.driveTrain.typeSelected = "";
+			state.filters.engine.typeSelected = "";
+			state.filters.color.typeSelected = "";
+			state.filters.inputTextUser = "";
+			state.filters.pricesUnavailable = null;
+			state.filters.yearsUnavailable = null;
+
+			// after clearing all props, all models are loaded to be displayed as default
 			state.vehiclesDisplay = JSON.parse(localStorage.getItem("allModels"));
-			state.make.typeSelected = "";
-			state.models.typeSelected = "";
-			state.priceFrom.typeSelected = 0;
-			state.priceTo.typeSelected = 0;
-			state.yearFrom.typeSelected = 0;
-			state.yearTo.typeSelected = 0;
-			state.carType.typeSelected = "";
-			state.carCondition.typeSelected = "";
-			state.fuel.typeSelected = "";
-			state.transmission.typeSelected = "";
-			state.driveTrain.typeSelected = "";
-			state.engine.typeSelected = "";
-			state.color.typeSelected = "";
-			state.inputTextUser = "";
-			state.pricesUnavailable = null;
-			state.yearsUnavailable = null;
 		},
 
 		clearPropsVal(state) {
-			state.make.typeSelected = "";
-			state.models.typeSelected = "";
-			state.priceFrom.typeSelected = 0;
-			state.priceTo.typeSelected = 0;
-			state.yearFrom.typeSelected = 0;
-			state.yearTo.typeSelected = 0;
-			state.carType.typeSelected = "";
-			state.carCondition.typeSelected = "";
-			state.fuel.typeSelected = "";
-			state.transmission.typeSelected = "";
-			state.driveTrain.typeSelected = "";
-			state.engine.typeSelected = "";
-			state.color.typeSelected = "";
-			state.pricesUnavailable = null;
-			state.yearsUnavailable = null;
+			state.filters.make.typeSelected = "";
+			state.filters.models.typeSelected = "";
+			state.filters.priceFrom.typeSelected = 0;
+			state.filters.priceTo.typeSelected = 0;
+			state.filters.yearFrom.typeSelected = 0;
+			state.filters.yearTo.typeSelected = 0;
+			state.filters.carType.typeSelected = "";
+			state.filters.carCondition.typeSelected = "";
+			state.filters.fuel.typeSelected = "";
+			state.filters.transmission.typeSelected = "";
+			state.filters.driveTrain.typeSelected = "";
+			state.filters.engine.typeSelected = "";
+			state.filters.color.typeSelected = "";
+			state.filters.pricesUnavailable = null;
+			state.filters.yearsUnavailable = null;
 		},
 
 		toggleMobileMenu(state) {
@@ -604,22 +633,9 @@ export default new Vuex.Store({
 		},
 
 		assignValueToTypeSelected(state, event) {
-			let allFields = [
-				state.make,
-				state.models,
-				state.priceFrom,
-				state.priceTo,
-				state.yearFrom,
-				state.yearTo,
-				state.carType,
-				state.carCondition,
-				state.fuel,
-				state.transmission,
-				state.driveTrain,
-				state.engine,
-				state.color,
-			];
-			let selectedField = allFields.find(
+			let filters = Object.values(state.filters)
+
+			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
 			);
 			//in mobile view the fields selections are textcontent of event target, they are in divs, in desktop view they are value of event target, they are in a select option tags
@@ -641,37 +657,21 @@ export default new Vuex.Store({
 				selectedField.typeSelected =
 					event.target.value || event.target.textContent;
 			}
-			
 		},
 
 		// receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
 		updateClickedFieldContent(state, id) {
-			let contentToShow = [
-				state.make,
-				state.models,
-				state.priceFrom,
-				state.priceTo,
-				state.yearFrom,
-				state.yearTo,
-				state.carType,
-				state.carCondition,
-				state.fuel,
-				state.transmission,
-				state.driveTrain,
-				state.engine,
-				state.color,
-			];
-
+			let filters = Object.values(state.filters)
 			if (
-				(id == "model" && state.make.typeSelected == "") ||
-				(id == "model" && state.make.typeSelected == "All Makes")
+				(id == "model" && state.filters.make.typeSelected == "") ||
+				(id == "model" && state.filters.make.typeSelected == "All Makes")
 			) {
 				state.clickedFieldContent = {
 					id: "model",
 					type: ["Select Make First"],
 				};
 			} else {
-				state.clickedFieldContent = contentToShow.find(
+				state.clickedFieldContent = filters.find(
 					(one) => one.id.toLowerCase() === id.toLowerCase()
 				);
 			}
@@ -681,24 +681,27 @@ export default new Vuex.Store({
 		selectModelByMake(state, data) {
 			if (data.id == "make") {
 				state.carsData.forEach((one) => {
-					if (state.make.typeSelected == one.make) {
-						state.models.typeSelected = `All ${one.make}`;
-						state.models.type = one.model.map((one) => {
+					if (state.filters.make.typeSelected == one.make) {
+						state.filters.models.typeSelected = `All ${one.make}`;
+						state.filters.models.type = one.model.map((one) => {
 							return one.model;
 						});
 					}
 				});
 				// adds the option (all makes) and puts it in the first position in the array
-				if (state.make.typeSelected != "All Makes") {
-					state.models.type.unshift(`All ${state.make.typeSelected}`);
+				if (state.filters.make.typeSelected != "All Makes") {
+					state.filters.models.type.unshift(
+						`All ${state.filters.make.typeSelected}`
+					);
 				} else {
-					state.models.typeSelected = `Models`;
-					state.models.type = ["Models"];
+					state.filters.models.typeSelected = `Models`;
+					state.filters.models.type = ["Models"];
 				}
 			}
 			// assigns val of clicked field in model card content to the type selected
 			if (data.id == "model") {
-				state.models.typeSelected = data.$event.currentTarget.textContent;
+				state.filters.models.typeSelected =
+					data.$event.currentTarget.textContent;
 			} else {
 				return;
 			}
@@ -706,10 +709,10 @@ export default new Vuex.Store({
 
 		selectPriceAndYear(state, data) {
 			let priceYear = [
-				state.priceFrom,
-				state.priceTo,
-				state.yearFrom,
-				state.yearTo,
+				state.filters.priceFrom,
+				state.filters.priceTo,
+				state.filters.yearFrom,
+				state.filters.yearTo,
 			];
 			priceYear.forEach((one) => {
 				if (one.id == data.clickedFieldContent.id) {

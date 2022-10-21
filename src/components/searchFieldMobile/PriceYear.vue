@@ -31,20 +31,9 @@ export default {
 			"updateClickedFieldContent",
 			"formatPrice",
 		]),
-
-		// selectPriceOrYear(id){
-		//   let priceOrYear = [this.priceFrom,this.priceTo,this.yearFrom,this.yearTo];
-
-		//  priceOrYear.forEach(one =>{
-		//    if(id == one.id){
-
-		//       priceOrYear = one
-		//    }
-		//  })
-		// },
 	},
 	computed: {
-		...mapState(["priceFrom", "priceTo", "yearFrom", "yearTo"]),
+		...mapState(["filters"]),
 
 		// price formatter function is throwing undefined
 
@@ -56,25 +45,25 @@ export default {
 
 			let priceFrom, priceTo, yearFrom, yearTo;
 
-			if (this.priceFrom.typeSelected == 0) {
+			if (this.filters.priceFrom.typeSelected == 0) {
 				priceFrom = "Price From";
 			} else {
-				priceFrom = `$${formatPrice(this.priceFrom.typeSelected)}`;
+				priceFrom = `$${formatPrice(this.filters.priceFrom.typeSelected)}`;
 			}
-			if (this.priceTo.typeSelected == 0) {
+			if (this.filters.priceTo.typeSelected == 0) {
 				priceTo = "Price To";
 			} else {
-				priceTo = `$${formatPrice(this.priceTo.typeSelected)}`;
+				priceTo = `$${formatPrice(this.filters.priceTo.typeSelected)}`;
 			}
-			if (this.yearFrom.typeSelected == 0) {
+			if (this.filters.yearFrom.typeSelected == 0) {
 				yearFrom = "Year From";
 			} else {
-				yearFrom = this.yearFrom.typeSelected;
+				yearFrom = this.filters.yearFrom.typeSelected;
 			}
-			if (this.yearTo.typeSelected == 0) {
+			if (this.filters.yearTo.typeSelected == 0) {
 				yearTo = "Year to";
 			} else {
-				yearTo = this.yearTo.typeSelected;
+				yearTo = this.filters.yearTo.typeSelected;
 			}
 
 			return [

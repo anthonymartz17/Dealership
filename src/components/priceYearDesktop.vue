@@ -14,7 +14,7 @@
 					@input="onChangeMultiple($event)"
 				>
 					<option :value="null">From</option>
-					<template v-for="(yearFrom, key) in yearFrom.type">
+					<template v-for="(yearFrom, key) in filters.yearFrom.type">
 						<option :key="key">
 							{{ yearFrom }}
 						</option>
@@ -22,7 +22,7 @@
 				</select>
 				<select name="yearTo" id="yearTo" @input="onChangeMultiple($event)">
 					<option :value="null">To</option>
-					<template v-for="(yearTo, key) in yearTo.type">
+					<template v-for="(yearTo, key) in filters.yearTo.type">
 						<option
 							:key="key"
 							:disabled="
@@ -53,7 +53,7 @@
 					@input="onChangeMultiple($event)"
 				>
 					<option :value="null">From</option>
-					<template v-for="(priceFrom, key) in priceFrom.type">
+					<template v-for="(priceFrom, key) in filters.priceFrom.type">
 						<option :key="key">
 							{{ priceFrom | currency }}
 						</option>
@@ -65,7 +65,7 @@
 					@input="onChangeMultiple($event)"
 				>
 					<option :value="null">To</option>
-					<template v-for="(priceTo, key) in priceTo.type">
+					<template v-for="(priceTo, key) in filters.priceTo.type">
 						<option
 							:disabled="
 								pricesUnavailable != null && key < pricesUnavailable
@@ -111,10 +111,7 @@ export default {
 	computed: {
 		
 		...mapState([
-			"priceFrom",
-			"priceTo",
-			"yearFrom",
-			"yearTo",
+			"filters",
 			"pricesUnavailable",
 			"yearsUnavailable",
 		]),
