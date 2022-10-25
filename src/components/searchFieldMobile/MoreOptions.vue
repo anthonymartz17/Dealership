@@ -29,36 +29,36 @@ export default {
 		]),
 	},
 	computed: {
-		...mapState(["clickedFieldContent"]),
+		...mapState(["clickedFieldContent","filters"]),
 
 		...mapGetters(["advanceSearchFieldsMobile"]),
 
 		moreOptionsComputed() {
 			let fuel, transmission, driveTrain, engine, color;
-			if (this.$store.state.fuel.typeSelected == "") {
+			if (this.filters.fuel.typeSelected == "") {
 				fuel = "Fuel";
 			} else {
-				fuel = this.$store.state.fuel.typeSelected;
+				fuel = this.filters.fuel.typeSelected;
 			}
-			if (this.$store.state.transmission.typeSelected == "") {
+			if (this.filters.transmission.typeSelected == "") {
 				transmission = "transmission";
 			} else {
-				transmission = this.$store.state.transmission.typeSelected;
+				transmission = this.filters.transmission.typeSelected;
 			}
-			if (this.$store.state.driveTrain.typeSelected == "") {
+			if (this.filters.driveTrain.typeSelected == "") {
 				driveTrain = "DriveTrain";
 			} else {
-				driveTrain = this.$store.state.driveTrain.typeSelected;
+				driveTrain = this.filters.driveTrain.typeSelected;
 			}
-			if (this.$store.state.engine.typeSelected == "") {
+			if (this.filters.engine.typeSelected == "") {
 				engine = "Engine";
 			} else {
-				engine = this.$store.state.engine.typeSelected;
+				engine = this.filters.engine.typeSelected;
 			}
-			if (this.$store.state.color.typeSelected == "") {
+			if (this.filters.color.typeSelected == "") {
 				color = "Color";
 			} else {
-				color = this.$store.state.color.typeSelected;
+				color = this.filters.color.typeSelected;
 			}
 			return [
 				{ field: fuel, id: "fuel" },

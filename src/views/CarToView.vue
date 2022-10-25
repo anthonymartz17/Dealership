@@ -21,7 +21,7 @@
       </div>
       <div 
         v-if="!morePics" 
-        class="btn btn-search morePics " 
+        class="btn btn-search hiden-when-desktop" 
         @click="showMorePics"> 
           + Show More Pictures
       </div>
@@ -133,7 +133,7 @@ export default {
 </script>
 
 <style lang="scss">
-.morePics{
+.hiden-when-desktop{
   @include desktop{
     display: none;
   }

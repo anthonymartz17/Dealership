@@ -55,19 +55,19 @@ export default {
 		...mapGetters(["advanceSearchFieldsMobile"]),
 		carTypeComputed() {
 			let cartype;
-			if (this.$store.state.carType.typeSelected == "") {
+			if (this.$store.state.filters.carType.typeSelected == "") {
 				cartype = "Car Types";
 			} else {
-				cartype = this.$store.state.carType.typeSelected;
+				cartype = this.$store.state.filters.carType.typeSelected;
 			}
 			return { field: cartype, id: "carType" };
 		},
 		carConditionComputed() {
 			let condition;
-			if (this.$store.state.carCondition.typeSelected == "") {
+			if (this.$store.state.filters.carCondition.typeSelected == "") {
 				condition = "New/Used";
 			} else {
-				condition = this.$store.state.carCondition.typeSelected;
+				condition = this.$store.state.filters.carCondition.typeSelected;
 			}
 			return [{ field: condition, id: "condition" }];
 		},

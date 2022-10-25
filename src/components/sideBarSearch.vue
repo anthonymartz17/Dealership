@@ -12,26 +12,26 @@
 					:value="inputTextUser"
 				/>
 				<div class="inputDropDown" v-show="showDropDownTextField">
-					<div v-if="models.type.length === 0">
+					<div v-if="filters.models.type.length === 0">
 						<p>No results</p>
 					</div>
 					<div v-else>
-						<div v-show="make.typeSelected != ''">
+						<div v-show="filters.make.typeSelected != ''">
 							<p class="list-title">Make</p>
 							<p
 								class="hover-list"
 								id="make"
 								@click="onChangeMultiple($event)"
-								>{{ make.typeSelected }}</p
+								>{{ filters.make.typeSelected }}</p
 							>
 						</div>
-						<div v-show="carType.typeSelected != ''">
+						<div v-show="filters.carType.typeSelected != ''">
 							<p class="list-title">CarType</p>
 							<p
 								class="hover-list"
 								id="carType"
 								@click="onChangeMultiple($event)"
-								>{{ carType.typeSelected }}</p
+								>{{ filters.carType.typeSelected }}</p
 							>
 						</div>
 						<div>
@@ -39,7 +39,7 @@
 							<ul>
 								<li
 									class="hover-list"
-									v-for="(model, key) in models.type"
+									v-for="(model, key) in filters.models.type"
 									:key="key"
 									id="model"
 									@click="onChangeMultiple($event)"
@@ -52,7 +52,7 @@
 			</div>
 			<div class="field-checkbox">
 				<div
-					v-for="(option, key) in $store.state.fuel.type"
+					v-for="(option, key) in filters.fuel.type"
 					:key="key"
 					@input="filterByRadioBtn"
 				>
@@ -72,7 +72,6 @@
 						}}</span>
 						<span>({{ car.model.length }})</span>
 					</li>
-					<!-- ({{car.model.length}}) -->
 				</ul>
 				<p class="moreMakesBtn" @click="switchMoreMakes">More makes>></p>
 			</div>
@@ -123,9 +122,7 @@ export default {
 		...mapState([
 			"allModels",
 			"carsData",
-			"make",
-			"models",
-			"carType",
+			"filters",
 			"inputTextUser",
 			"noResults",
 			"showDropDownTextField",
