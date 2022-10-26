@@ -3,17 +3,20 @@
 		<div class="field-and-checkbox">
 			<div class="field">
 				<label for="typeIn">Make | Model | Type of Vehicle</label>
+				<p>{{dropDownError}}</p>
 				<input
 					placeholder=" Search your Vehicle"
 					@input="searchAfterFinishTyping"
+					@focus="fireSearchByInputText($event)"
+					@blur="clearDropDownErrorMsg"
 					class="field-box"
 					id="userInputId"
 					type="text"
 					:value="inputTextUser"
 				/>
 				<div class="inputDropDown" v-show="showDropDownTextField">
-					<div v-if="filters.models.type.length === 0">
-						<p>No results</p>
+					<div v-if="dropDownError">
+						<p>{{dropDownErrorMsg}}</p>
 					</div>
 					<div v-else>
 						<div v-show="filters.make.typeSelected != ''">
@@ -88,7 +91,7 @@ export default {
 			selected: "All Vehicles",
 			moreMakes: false,
 			timer: null,
-			// showDropdown: false,
+			isFocused: false,
 		};
 	},
 	components: {
@@ -96,6 +99,12 @@ export default {
 	},
 
 	methods: {
+		// if user clicked outside textfield, let text in inputtext and focus the textfield again, this methods fires the searchbyinputtext to search again.
+		fireSearchByInputText(e) {
+			if(this.inputTextUser !== ""){
+				this.$store.commit("searchByInputText",e)
+			}
+		},
 		searchAfterFinishTyping(e) {
 			clearTimeout(this.timer);
 			this.timer = setTimeout(this.searchByInputText, 1000, e);
@@ -116,6 +125,7 @@ export default {
 			"assignValueToTypeSelected",
 			"setDataInVehiclesDisplayFromLocal",
 			"searchByInputText",
+			"clearDropDownErrorMsg"
 		]),
 	},
 	computed: {
@@ -126,6 +136,7 @@ export default {
 			"inputTextUser",
 			"noResults",
 			"showDropDownTextField",
+			"dropDownErrorMsg",
 		]),
 
 		typeOfCar: {
@@ -136,6 +147,10 @@ export default {
 				this.$store.commit("setTypeOfCar", val);
 			},
 		},
+
+		dropDownError(){
+			return !!this.dropDownErrorMsg
+		}
 	},
 };
 </script>

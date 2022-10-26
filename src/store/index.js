@@ -23,8 +23,11 @@ export default new Vuex.Store({
 		carToViewDetails: [],
 		carToViewHistory: [],
 		carToViewDealer: {},
+		// sidebarsearch component
 		inputTextUser: "",
+		dropDownErrorMsg: "",
 		showDropDownTextField: false,
+		// End sidebarsearch component
 		pricesUnavailable: null,
 		yearsUnavailable: null,
 
@@ -272,9 +275,9 @@ export default new Vuex.Store({
 
 			localStorage.setItem("searchResults", JSON.stringify(results));
 		},
-		toggleDropDownTextField(state) {
-			state.showDropDownTextField = false;
-		},
+		// toggleDropDownTextField(state) {
+		// 	state.showDropDownTextField = false;
+		// },
 		//prepares user type in input on side search to be used in mutation assignValueToTypeSelected
 		searchByInputText(state, e) {
 			state.inputTextUser = e.target.value;
@@ -284,8 +287,9 @@ export default new Vuex.Store({
 				);
 				state.filters.make.typeSelected = "";
 				state.filters.carType.typeSelected = "";
+				state.dropDownErrorMsg = "";
 				state.filters.models.type = [];
-				state.filters.showDropDownTextField = false;
+				state.showDropDownTextField = false;
 			} else {
 				state.filters.models.type = state.allModels.filter((one) => {
 					switch (state.inputTextUser.toLowerCase()) {
@@ -302,10 +306,23 @@ export default new Vuex.Store({
 							return;
 					}
 				});
+
+				if (state.filters.models.type.length == 0) {
+					state.dropDownErrorMsg = " Invalid Make | Model | Type";
+				} else {
+					state.dropDownErrorMsg = "";
+				}
+
 				if (e.target.id === "userInputId")
 					state.showDropDownTextField = true;
 			}
+		}, 
+		// clears invalid input error  and resets the dropdown visibility to false on sidebarsearch componet text input. this happens on a blur event
+		clearDropDownErrorMsg(state) {
+			state.dropDownErrorMsg = "";
+			state.showDropDownTextField = false;
 		},
+	
 		selectElectricCars(state, routeName) {
 			if (routeName == "Electric") {
 				let allModels = JSON.parse(localStorage.getItem("allModels"));
@@ -548,9 +565,7 @@ export default new Vuex.Store({
 			state.filters.carType.type = [
 				...new Set(content.map((one) => one.carType)),
 			];
-			state.filters.carCondition.type = [
-				...new Set(content.map((one) => one.carCondition)),
-			].sort();
+			state.filters.carCondition.type = ["New/Used", "New", "Used"];
 			state.filters.fuel.type = [...new Set(content.map((one) => one.fuel))];
 			state.filters.transmission.type = [
 				...new Set(content.map((one) => one.transmission)),
@@ -633,7 +648,7 @@ export default new Vuex.Store({
 		},
 
 		assignValueToTypeSelected(state, event) {
-			let filters = Object.values(state.filters)
+			let filters = Object.values(state.filters);
 
 			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
@@ -661,7 +676,7 @@ export default new Vuex.Store({
 
 		// receives the id of the clicked field, compares it to the id of car description data to decide which content to show in the card
 		updateClickedFieldContent(state, id) {
-			let filters = Object.values(state.filters)
+			let filters = Object.values(state.filters);
 			if (
 				(id == "model" && state.filters.make.typeSelected == "") ||
 				(id == "model" && state.filters.make.typeSelected == "All Makes")

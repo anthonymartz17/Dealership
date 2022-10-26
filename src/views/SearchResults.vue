@@ -8,12 +8,9 @@
         <option  :value="filter.id"  v-for="(filter,key) in filters" :key="key">{{filter.sortby}}</option>
        </select>
     </div>
-    ``
     <div class="ads">
       <AdComponent/>
     </div>
-    
-
     </div>
     <div class="sideSearch">
       <SideSearch/>
