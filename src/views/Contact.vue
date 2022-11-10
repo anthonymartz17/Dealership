@@ -3,30 +3,30 @@
 		<h2 class="contact-title">Contact page</h2>
 		<div class="contact-wrapper">
 			<div class="contact-location">
-				<h3>Our Office</h3>
+				<h3 class="contact-subtitle">Our Office</h3>
 				<p><span>Tel:</span>516 679-3454</p>
 				<p><span>Fax:</span>516 679-3454</p>
 				<address>358 N Broadway, Hicksville, NY 11801</address>
 				<p><span>Hours:</span>Mon-Fri 9am-6pm</p>
 				<div class="geo-location">
-
-			<GmapMap
-  :center="myCoordinates"
-  :zoom="15"
-  map-type-id="terrain"
-  class="gmap"
->
-</GmapMap>
-         
+					<GmapMap
+						:center="myCoordinates"
+						:zoom="15"
+						map-type-id="terrain"
+						class="gmap"
+					>
+					</GmapMap>
 				</div>
 			</div>
 			<div class="contact-form">
-				<h3>Email</h3>
-				<p
-					>For any questions or comments, please complete this form. We
-					will get back to you as soon as possible.</p
-				>
-				<form @submit.prevent="tryToSubmit">
+				<div class="form-header">
+					<h3 class="contact-subtitle">Email</h3>
+					<p
+						>For any questions or comments, please complete this form. We
+						will get back to you as soon as possible.</p
+					>
+				</div>
+				<form @submit.prevent="tryToSubmit" class="form">
 					<div class="fields">
 						<label for="name">Name:</label>
 						<input
@@ -35,12 +35,12 @@
 							v-model="user.name"
 							:class="{is_invalid: submitted && !$v.user.name.required}"
 						/>
-						<small
-							v-if="submitted && !$v.user.name.required"
-							class="errorText"
-							>Name is required</small
-						>
 					</div>
+					<small
+						v-if="submitted && !$v.user.name.required"
+						class="errorText"
+						>Name is required</small
+					>
 					<div class="fields">
 						<label for="Phone">Phone:</label>
 						<input type="text" id="phone" v-model="user.phone" />
@@ -57,17 +57,18 @@
 									(!$v.user.email.required || !$v.user.email.email),
 							}"
 						/>
-						<small
-							v-if="submitted && !$v.user.name.required"
-							class="errorText"
-							>Email is required</small
-						>
-						<small
-							v-else-if="submitted && !$v.user.email.email"
-							class="errorText"
-							>Email is invalid</small
-						>
 					</div>
+					<small
+						v-if="submitted && !$v.user.name.required"
+						class="errorText"
+						>Email is required</small
+					>
+					<small
+						v-else-if="submitted && !$v.user.email.email"
+						class="errorText"
+						>Email is invalid</small
+					>
+
 					<div class="fields">
 						<label for="about">about:</label>
 						<select
@@ -86,12 +87,12 @@
 								>{{ choice }}</option
 							>
 						</select>
-						<small
-							v-if="submitted && !$v.user.contactAbout.required"
-							class="errorText"
-							>Select an option</small
-						>
 					</div>
+					<small
+						v-if="submitted && !$v.user.contactAbout.required"
+						class="errorText"
+						>Select an option</small
+					>
 					<div class="fields">
 						<label for="comments">Comments:</label>
 						<textarea
@@ -104,13 +105,13 @@
 								is_invalid: submitted && !$v.user.comments.required,
 							}"
 						></textarea>
-						<small
-							v-if="submitted && !$v.user.comments.required"
-							class="errorText"
-							>Comments can not be empty</small
-						>
 					</div>
-					<button>Send</button>
+					<small
+						v-if="submitted && !$v.user.comments.required"
+						class="errorText"
+						>Comments can not be empty</small
+					>
+					<button class="btn-search btn-submit">Send</button>
 				</form>
 			</div>
 		</div>
@@ -121,11 +122,10 @@
 import {required, email} from "vuelidate/lib/validators";
 
 export default {
-	created(){
-     this.$getLocation(this.myCoordinates)
-  .then(coordinates => {
-		console.log(coordinates)
-  });
+	created() {
+		this.$getLocation(this.myCoordinates).then((coordinates) => {
+			console.log(coordinates);
+		});
 	},
 	data() {
 		return {
@@ -145,11 +145,11 @@ export default {
 				"Report error",
 				"Other",
 			],
-		myCoordinates:{
-			lat:40.7748980666624,
-			lng:-73.53101231626863,
-		}
-			};
+			myCoordinates: {
+				lat: 40.7748980666624,
+				lng: -73.53101231626863,
+			},
+		};
 	},
 	validations: {
 		user: {
@@ -168,13 +168,12 @@ export default {
 				return;
 			} else {
 				alert("form has been submited");
-				this.user.name = "",
-				this.user.phone = "",
-				this.user.email = "",
-				this.user.comments = "",
-				this.user.contactAbout = "",
-
-				this.submitted = false;
+				(this.user.name = ""),
+					(this.user.phone = ""),
+					(this.user.email = ""),
+					(this.user.comments = ""),
+					(this.user.contactAbout = ""),
+					(this.submitted = false);
 			}
 		},
 	},
@@ -182,32 +181,100 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.contact-wrapper {
-	display: flex;
-	margin-block: 1em;
-	gap: 1em;
-	font-family:$font-stack;
-	color: $dark;
-
-}
-.contact-title{
-	font: $font-logo-S;
-	color: $dark;
-}
-.contact-location{
-	flex: 1;
-}
-.geo-location{
-  @include desktop{
-		height: 100%;
-		width: 100%;
-		border: 1px solid $dark;
-
+.contact {
+	margin: 1em;
+	@include desktop {
+		min-height: 40em;
+		display: flex;
+		flex-direction: column;
+		gap: 1em;
 	}
-
 }
-.contact-form{
+.contact-wrapper {
+	font-family: $font-stack;
+	color: $dark;
+	@include desktop {
+		flex: 3;
+		display: flex;
+		gap: 1em;
+	}
+}
+.contact-title {
+	font: $font-mobile-l;
+	color: $dark;
+	@include desktop {
+		flex: 0.5;
+	}
+}
+.contact-subtitle {
+	margin-block: 0.5em;
+	font: $font-mobile-l;
+}
+.contact-location {
+	@include desktop {
+		flex: 1;
+	}
+}
+.geo-location {
+	height: 20em;
+	width: 20em;
+	border: 1px solid $lightestDark;
+	margin-block: 0.5em;
+
+	@include desktop {
+		height: 70%;
+		width: 90%;
+	}
+}
+.gmap {
+	width: 100%;
+	height: 100%;
+}
+.contact-form {
+	@include desktop {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+}
+.form-header {
+	margin-block: 1em;
+	@include desktop {
+		flex: 1;
+		margin-block: 0;
+	}
+}
+.form {
+	min-height: 35em;
+	display: flex;
+	flex-direction: column;
+	// border: 1px solid red;
+	@include desktop {
+		flex: 3;
+		height: auto;
+	}
+}
+.fields {
+	// border: 1px solid green;
+	display: flex;
+	flex-direction: column;
+	margin-block: 0.5em;
 	flex: 1;
+	@include desktop {
+		flex-direction: initial;
+	}
+}
+.fields :first-child {
+	flex: 1;
+	@include desktop {
+		flex: 0.5;
+	}
+}
+.fields :last-child {
+	flex: 2;
+	@include desktop {
+		flex: 2;
+	}
 }
 
 .is_invalid {
@@ -217,9 +284,11 @@ export default {
 	color: red;
 	display: block;
 }
-.gmap{
-	width: 100%;
-	height: 100%;
+.btn-submit {
+	padding-block: .5em;
+	font: $font-mobile-l;
+	@include desktop {
+		padding-block: 0;
+	}
 }
-
 </style>
