@@ -191,7 +191,7 @@ export default {
 	}
 }
 .contact-wrapper {
-	font-family: $font-stack;
+	font: $font-text;
 	color: $dark;
 	@include desktop {
 		flex: 3;
@@ -208,7 +208,7 @@ export default {
 }
 .contact-subtitle {
 	margin-block: 0.5em;
-	font: $font-mobile-l;
+	font: $font-text-bold;
 }
 .contact-location {
 	@include desktop {
@@ -268,12 +268,17 @@ export default {
 	flex: 1;
 	@include desktop {
 		flex: 0.5;
+		align-self: center;
 	}
 }
 .fields :last-child {
 	flex: 2;
+	font: $font-text;
 	@include desktop {
 		flex: 2;
+	}
+	option{
+		font: $font-text;
 	}
 }
 
@@ -285,8 +290,8 @@ export default {
 	display: block;
 }
 .btn-submit {
-	padding-block: .5em;
-	font: $font-mobile-l;
+	padding-block: 0.5em;
+	font: $font-mobile-m;
 	@include desktop {
 		padding-block: 0;
 	}

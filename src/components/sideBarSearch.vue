@@ -185,7 +185,7 @@ export default {
 }
 .sideBar {
 	background: lighten($lightestDark, 30);
-	height: 100vh;
+	height: auto;
 	padding: 1em;
 }
 
