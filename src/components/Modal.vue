@@ -19,7 +19,7 @@
 						{
 							'card-content-disabled':
 								clickedFieldContent.id == 'model' &&
-								make.typeSelected == '',
+								filters.make.typeSelected == '',
 							disabledOptions:
 								(clickedFieldContent.id === 'priceTo' &&
 									pricesUnavailable != null &&
@@ -59,9 +59,7 @@ import { mapMutations, mapState } from "vuex";
 export default {
 	computed: {
 		...mapState([
-			"make",
-			"priceFrom",
-			"priceTo",
+			"filters",
 			"modalToggler",
 			"optionsCardToggler",
 			"clickedFieldContent",

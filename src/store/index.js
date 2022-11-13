@@ -316,13 +316,13 @@ export default new Vuex.Store({
 				if (e.target.id === "userInputId")
 					state.showDropDownTextField = true;
 			}
-		}, 
+		},
 		// clears invalid input error  and resets the dropdown visibility to false on sidebarsearch componet text input. this happens on a blur event
 		clearDropDownErrorMsg(state) {
 			state.dropDownErrorMsg = "";
 			state.showDropDownTextField = false;
 		},
-	
+
 		selectElectricCars(state, routeName) {
 			if (routeName == "Electric") {
 				let allModels = JSON.parse(localStorage.getItem("allModels"));
@@ -653,24 +653,47 @@ export default new Vuex.Store({
 			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
 			);
-			//in mobile view the fields selections are textcontent of event target, they are in divs, in desktop view they are value of event target, they are in a select option tags
+			//in mobile view the fields selections are textcontent of event target because  they are divs. In desktop the fields selections are value of event target, they come from inputs
 
-			if (
-				selectedField.id === "priceFrom" ||
-				selectedField.id === "priceTo"
-			) {
-				//since the price comes formatted as currency and is a string, had to remove "$" and "," with the replace method and regExp. also used parseFloat() to remove two decimal zeros and get just the whole number.
+			// checks to use event.target.value
+			if (event.type == "input") {
 				if (
-					event.target.value != null ||
-					event.target.textContent != undefined
+					(selectedField.id === "priceFrom" ||
+						selectedField.id === "priceTo") &&
+					event.target.value
 				) {
-					selectedField.typeSelected =
-						parseFloat(event.target.textContent.replace(/\$|,/g, "")) ||
-						parseFloat(event.target.value.replace(/\$|,/g, ""));
+					selectedField.typeSelected = parseFloat(
+						event.target.value.replace(/\$|,/g, "")
+					);
+				} else if (
+					(selectedField.id === "priceFrom" ||
+						selectedField.id === "priceTo") &&
+					!event.target.value
+				) {
+					selectedField.typeSelected = 0;
+				} else {
+					selectedField.typeSelected = event.target.value;
 				}
-			} else {
-				selectedField.typeSelected =
-					event.target.value || event.target.textContent;
+			}
+			// checks to use event.target.textcontent, instead
+			else {
+				if (
+					(selectedField.id === "priceFrom" ||
+						selectedField.id === "priceTo") &&
+					event.target.textContent
+				) {
+					selectedField.typeSelected = parseFloat(
+						event.target.textContent.replace(/\$|,/g, "")
+					);
+				} else if (
+					(selectedField.id === "priceFrom" ||
+						selectedField.id === "priceTo") &&
+					!event.target.textContent
+				) {
+					selectedField.typeSelected = 0;
+				} else {
+					selectedField.typeSelected = event.target.value;
+				}
 			}
 		},
 
