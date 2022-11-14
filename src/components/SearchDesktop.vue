@@ -12,7 +12,9 @@
 						value="hello"
 						@input="assignValueToTypeSelected"
 					>
-						<template v-for="(condition, key) in filters.carCondition.type">
+						<template
+							v-for="(condition, key) in filters.carCondition.type"
+						>
 							<option :key="key">
 								{{ condition }}
 							</option>
@@ -27,7 +29,7 @@
 						id="make"
 						value="Make"
 						@input="assignValueToTypeSelected"
-						@click="selectModelByMake({ $event, id: 'make' })"
+						@click="selectModelByMake({$event, id: 'make'})"
 					>
 						<template v-for="(make, key) in filters.make.type">
 							<option :key="key">
@@ -62,17 +64,25 @@
 		<div class="search-types">
 			<p class="search-title-desktop"><span> Types</span> of Vehicles</p>
 			<ul class="typesCarList">
-				<router-link :to="{ name: 'searchResults' }">
-					<li
-						id="carType"
-						@click="
-							assignValueToTypeSelected($event);
-							searchVehicles();
-							setDataInVehiclesDisplayFromLocal();
-						"
-						v-for="(type, key) in filters.carType.type"
-						:key="key"
-					>{{ type }}</li>
+				<router-link
+					:to="{name: 'searchResults'}"
+					v-for="(type, key) in cartypes"
+					:key="key"
+					id="carType"
+					@click="
+						assignValueToTypeSelected($event);
+						searchVehicles();
+						setDataInVehiclesDisplayFromLocal();
+					"
+				>
+					<li>
+						<img
+							class="type-cars-icons"
+							:src="`/images/icons/${type.img}`"
+							:alt="`picture of ${type.type}`"
+						/>
+						<p>{{ type.type }}</p>
+					</li>
 				</router-link>
 			</ul>
 		</div>
@@ -80,7 +90,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState, mapMutations, mapActions } from "vuex";
+import {mapGetters, mapState, mapMutations, mapActions} from "vuex";
 import SearchBtn from "./searchFieldMobile/SearchBtn.vue";
 import PriceYear from "./priceYearDesktop.vue";
 export default {
@@ -111,6 +121,14 @@ export default {
 	},
 
 	computed: {
+		cartypes() {
+			return [
+				{type: "Sedan", img: "sedan.png"},
+				{type: "SUV", img: "suv.png"},
+				{type: "Midsize SUV", img: "midsize.png"},
+				{type: "Pickup", img: "pickup.png"},
+			];
+		},
 		modelByMake() {
 			if (this.filters.make.typeSelected === "") {
 				return ["Models"];
@@ -134,8 +152,8 @@ export default {
 			}
 
 			return [
-				{ field: make, id: "make" },
-				{ field: model, id: "model" },
+				{field: make, id: "make"},
+				{field: model, id: "model"},
 			];
 		},
 		...mapState([
@@ -156,16 +174,39 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.types-icon-container {
+	max-height: 100%;
+}
 .typesCarList {
+	height: 100%;
 	list-style: none;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	gap: 2em;
 	flex-wrap: wrap;
+	flex: 2;
+	transition: ease-in-out, 2s;
+
+	& {
+		:hover {
+			background: lighten($lightestDark, 35);
+		}
+	}
 
 	li {
-		flex: 1 1 30%;
-		height: 3em;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-block: 0.5em;
+		justify-content: center;
+		p {
+			font: $font-text-bold;
+		}
 	}
+}
+.type-cars-icons {
+	max-width: 40%;
 }
 
 .search-type-wrapper {
@@ -197,6 +238,8 @@ export default {
 	border: 1px solid $lightestDark;
 	padding: 1em 0.5em;
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .field {

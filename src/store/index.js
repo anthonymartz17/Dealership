@@ -649,7 +649,6 @@ export default new Vuex.Store({
 
 		assignValueToTypeSelected(state, event) {
 			let filters = Object.values(state.filters);
-
 			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
 			);
