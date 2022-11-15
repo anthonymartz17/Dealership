@@ -651,7 +651,9 @@ export default new Vuex.Store({
 			let filters = Object.values(state.filters);
 			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
-			);
+				);
+				
+			
 			//in mobile view the fields selections are textcontent of event target because  they are divs. In desktop the fields selections are value of event target, they come from inputs
 
 			// checks to use event.target.value
@@ -691,7 +693,7 @@ export default new Vuex.Store({
 				) {
 					selectedField.typeSelected = 0;
 				} else {
-					selectedField.typeSelected = event.target.value;
+					selectedField.typeSelected = event.target.textContent;
 				}
 			}
 		},

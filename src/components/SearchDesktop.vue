@@ -64,26 +64,25 @@
 		<div class="search-types">
 			<p class="search-title-desktop"><span> Types</span> of Vehicles</p>
 			<ul class="typesCarList">
-				<router-link
-					:to="{name: 'searchResults'}"
-					v-for="(type, key) in cartypes"
-					:key="key"
-					id="carType"
-					@click="
-						assignValueToTypeSelected($event);
-						searchVehicles();
-						setDataInVehiclesDisplayFromLocal();
-					"
-				>
-					<li>
+				<li v-for="(type, key) in cartypes" :key="key">
+					<router-link
+						:to="{name: 'searchResults'}"
+						class="routerlink"
+						id="carType"
+						@click.native="
+							assignValueToTypeSelected($event);
+							searchVehicles();
+							setDataInVehiclesDisplayFromLocal();
+						"
+					>
 						<img
 							class="type-cars-icons"
 							:src="`/images/icons/${type.img}`"
 							:alt="`picture of ${type.type}`"
 						/>
 						<p>{{ type.type }}</p>
-					</li>
-				</router-link>
+					</router-link>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -185,28 +184,30 @@ export default {
 	gap: 2em;
 	flex-wrap: wrap;
 	flex: 2;
-	transition: ease-in-out, 2s;
-
-	& {
-		:hover {
-			background: lighten($lightestDark, 35);
-		}
-	}
 
 	li {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		padding-block: 0.5em;
 		justify-content: center;
+		transition: all 0.3s ease-in-out;
+		&:hover {
+				background: lighten($lightestDark, 35);
+			}
+		
 		p {
 			font: $font-text-bold;
+			pointer-events: none;
+		}
+		.routerlink {
+			height: 100%;
 		}
 	}
 }
 .type-cars-icons {
 	max-width: 40%;
+	pointer-events: none;
 }
 
 .search-type-wrapper {

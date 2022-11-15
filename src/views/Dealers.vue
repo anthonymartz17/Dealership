@@ -17,7 +17,7 @@
       <VehiclesDisplay/>
     </div>
       <router-link :to="{name:'dealerInventory'}" v-if="$route.name !='dealerInventory'">     
-        <div class="btn-search btn">Visit Our Inventory</div>
+        <div class="btn btn-local">Visit Our Inventory</div>
       </router-link>
     </div>
 </template>
@@ -50,6 +50,17 @@ export default {
 </script>
 
 <style lang="scss">
+.btn-local{
+  background: $primary;
+  transition: all .3s ease-in-out;
+  border: 1px solid transparent;
+  color: $light;
+    &:hover{
+    background: lighten($primary, 15%);
+    border: 1px solid $light;
+   
+  }
+}
 .inventory-deskt{
   @include desktop{
     display: flex;
