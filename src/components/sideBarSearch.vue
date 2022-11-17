@@ -3,12 +3,11 @@
 		<div class="field-and-checkbox">
 			<div class="field">
 				<label for="typeIn">Make | Model | Type of Vehicle</label>
-				<p>{{dropDownError}}</p>
+				<!-- added searchbyinput on focus, so that when the user clicks out but clicks back in the field and there is still something written, the search fires. -->
 				<input
 					placeholder=" Search your Vehicle"
+					@focus="searchByInputText($event)"
 					@input="searchAfterFinishTyping"
-					@focus="fireSearchByInputText($event)"
-					@blur="clearDropDownErrorMsg"
 					class="field-box"
 					id="userInputId"
 					type="text"
@@ -57,10 +56,10 @@
 				<div
 					v-for="(option, key) in filters.fuel.type"
 					:key="key"
-					@input="filterByRadioBtn"
+					
 				>
-					<input type="radio" :value="option" :id="key" name="fuel" />
-					<label :for="key">{{ option }}</label>
+					<input type="radio" :value="option" id="fuel" name="fuel" @input="onChangeMultiple($event)"/>
+					<label>{{ option }}</label>
 				</div>
 			</div>
 			<div class="year-price">

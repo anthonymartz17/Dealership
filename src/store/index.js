@@ -159,17 +159,6 @@ export default new Vuex.Store({
 		set_typeOfCar(state, val) {
 			state.typeOfCar = val;
 		},
-		filterByRadioBtn(state, e) {
-			state.vehiclesDisplay = state.allModels.filter((one) => {
-				if (e.target.value === "All Vehicles") {
-					return state.allModels;
-				} else {
-					return one.fuel
-						.toLowerCase()
-						.includes(e.target.value.toLowerCase());
-				}
-			});
-		},
 
 		searchVehicles(state) {
 			let results = state.allModels;
@@ -181,9 +170,16 @@ export default new Vuex.Store({
 				);
 			}
 			if (state.filters.fuel.typeSelected !== "") {
-				results = results.filter(
-					(one) => one.fuel === state.filters.fuel.typeSelected
-				);
+				// shows all cars regardless of fuel, that are in the results array, when there is any other filter applied or not
+				if (state.filters.fuel.typeSelected == "All fuels") {
+					results = results = results.filter(
+						(one) => one.fuel !== ''
+					);
+				} else {
+					results = results.filter(
+						(one) => one.fuel === state.filters.fuel.typeSelected
+					);
+				}
 			}
 			// included this else here to search for all vehicles in the checkbox on desktop view side bar search
 			else if (state.filters.fuel.typeSelected === "All Vehicles") {
@@ -250,6 +246,7 @@ export default new Vuex.Store({
 				);
 			}
 			if (state.filters.make.typeSelected != "") {
+				console.log("entre por make");
 				results = results.filter((one) =>
 					one.make
 						.toLowerCase()
@@ -272,8 +269,11 @@ export default new Vuex.Store({
 						)
 				);
 			}
-
 			localStorage.setItem("searchResults", JSON.stringify(results));
+			// state.filters.make.typeSelected = '';
+			// state.filters.models.typeSelected = '';
+			// state.filters.carType.typeSelected = '';
+			state.showDropDownTextField = false;
 		},
 		// toggleDropDownTextField(state) {
 		// 	state.showDropDownTextField = false;
@@ -318,10 +318,10 @@ export default new Vuex.Store({
 			}
 		},
 		// clears invalid input error  and resets the dropdown visibility to false on sidebarsearch componet text input. this happens on a blur event
-		clearDropDownErrorMsg(state) {
-			state.dropDownErrorMsg = "";
-			state.showDropDownTextField = false;
-		},
+		// clearDropDownErrorMsg(state) {
+		// 	state.dropDownErrorMsg = "";
+		// 	state.showDropDownTextField = false;
+		// },
 
 		selectElectricCars(state, routeName) {
 			if (routeName == "Electric") {
@@ -566,7 +566,10 @@ export default new Vuex.Store({
 				...new Set(content.map((one) => one.carType)),
 			];
 			state.filters.carCondition.type = ["New/Used", "New", "Used"];
-			state.filters.fuel.type = [...new Set(content.map((one) => one.fuel))];
+			state.filters.fuel.type = [
+				"All fuels",
+				...new Set(content.map((one) => one.fuel)),
+			];
 			state.filters.transmission.type = [
 				...new Set(content.map((one) => one.transmission)),
 			];
@@ -651,9 +654,8 @@ export default new Vuex.Store({
 			let filters = Object.values(state.filters);
 			let selectedField = filters.find(
 				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
-				);
-				
-			
+			);
+
 			//in mobile view the fields selections are textcontent of event target because  they are divs. In desktop the fields selections are value of event target, they come from inputs
 
 			// checks to use event.target.value
