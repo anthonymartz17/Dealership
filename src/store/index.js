@@ -172,7 +172,7 @@ export default new Vuex.Store({
 			if (state.filters.fuel.typeSelected !== "") {
 				// shows all cars regardless of fuel, that are in the results array, when there is any other filter applied or not
 				if (state.filters.fuel.typeSelected == "All fuels") {
-					results = results = results.filter(
+					results = results.filter(
 						(one) => one.fuel !== ''
 					);
 				} else {
@@ -246,7 +246,6 @@ export default new Vuex.Store({
 				);
 			}
 			if (state.filters.make.typeSelected != "") {
-				console.log("entre por make");
 				results = results.filter((one) =>
 					one.make
 						.toLowerCase()
@@ -652,8 +651,12 @@ export default new Vuex.Store({
 
 		assignValueToTypeSelected(state, event) {
 			let filters = Object.values(state.filters);
-			let selectedField = filters.find(
-				(one) => one.id.toLowerCase() === event.target.id.toLowerCase()
+			let selectedField = filters.find(one => {
+				// did the following if statement like this, so that i can add a string id + key to radio btn in the sidebarsearch component, so i can match the id to the label of the radio btn, and still be able to filter here,using the id coming from the selection
+				if (event.target.id.toLowerCase().includes(one.id.toLowerCase())) {
+					return one
+				}
+			}
 			);
 
 			//in mobile view the fields selections are textcontent of event target because  they are divs. In desktop the fields selections are value of event target, they come from inputs

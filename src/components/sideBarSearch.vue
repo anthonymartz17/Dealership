@@ -6,7 +6,7 @@
 				<!-- added searchbyinput on focus, so that when the user clicks out but clicks back in the field and there is still something written, the search fires. -->
 				<input
 					placeholder=" Search your Vehicle"
-					@focus="searchByInputText($event)"
+					@focus="fireSearchByInputText($event)"
 					@input="searchAfterFinishTyping"
 					class="field-box"
 					id="userInputId"
@@ -15,7 +15,7 @@
 				/>
 				<div class="inputDropDown" v-show="showDropDownTextField">
 					<div v-if="dropDownError">
-						<p>{{dropDownErrorMsg}}</p>
+						<p>{{ dropDownErrorMsg }}</p>
 					</div>
 					<div v-else>
 						<div v-show="filters.make.typeSelected != ''">
@@ -53,13 +53,20 @@
 				</div>
 			</div>
 			<div class="field-checkbox">
-				<div
-					v-for="(option, key) in filters.fuel.type"
-					:key="key"
-					
-				>
-					<input type="radio" :value="option" id="fuel" name="fuel" @input="onChangeMultiple($event)"/>
-					<label>{{ option }}</label>
+				<div v-for="(option, key) in filters.fuel.type" :key="key">
+					<input
+						type="radio"
+						:checked="
+							option === 'All fuels'
+								? filters.fuel.typeSelected === ''
+								: option === filters.fuel.typeSelected
+						"
+						:value="option"
+						:id="`fuel ${key}`"
+						name="fuel"
+						@input="onChangeMultiple($event)"
+					/>
+					<label :for="`fuel ${key}`">{{ option }}</label>
 				</div>
 			</div>
 			<div class="year-price">
@@ -68,8 +75,8 @@
 			<div class="makes">
 				<p>Makes</p>
 				<ul :class="['listMakes', {showMoreMakes: moreMakes}]">
-					<li v-for="(car, key) in carsData" :key="key">
-						<span id="make" @click="onChangeMultiple">{{
+					<li v-for="(car, key) in carsData" :key="key" :class="{'selected':car.make === filters.make.typeSelected}">
+						<span  id="make" @click="onChangeMultiple">{{
 							car.make
 						}}</span>
 						<span>({{ car.model.length }})</span>
@@ -100,8 +107,8 @@ export default {
 	methods: {
 		// if user clicked outside textfield, let text in inputtext and focus the textfield again, this methods fires the searchbyinputtext to search again.
 		fireSearchByInputText(e) {
-			if(this.inputTextUser !== ""){
-				this.$store.commit("searchByInputText",e)
+			if (this.inputTextUser !== "") {
+				this.$store.commit("searchByInputText", e);
 			}
 		},
 		searchAfterFinishTyping(e) {
@@ -124,7 +131,7 @@ export default {
 			"assignValueToTypeSelected",
 			"setDataInVehiclesDisplayFromLocal",
 			"searchByInputText",
-			"clearDropDownErrorMsg"
+			"hideDropDown",
 		]),
 	},
 	computed: {
@@ -147,14 +154,17 @@ export default {
 			},
 		},
 
-		dropDownError(){
-			return !!this.dropDownErrorMsg
-		}
+		dropDownError() {
+			return !!this.dropDownErrorMsg;
+		},
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+.selected{
+	color: $primary;
+}
 .inputDropDown {
 	background: $light;
 	border-radius: 0px 0px 5px 5px;
