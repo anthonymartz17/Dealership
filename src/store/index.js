@@ -619,6 +619,14 @@ export default new Vuex.Store({
 			state.filters.pricesUnavailable = null;
 			state.filters.yearsUnavailable = null;
 		},
+		clearMakeModel(state,id) {
+			if (id === 'clear-model') {
+				state.filters.models.typeSelected = ''
+			} else {
+				state.filters.make.typeSelected = ''
+				state.filters.models.typeSelected = ''
+			}
+		},
 
 		toggleMobileMenu(state) {
 			state.mobileMenuToggler = !state.mobileMenuToggler;

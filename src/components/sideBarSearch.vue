@@ -72,16 +72,51 @@
 			<div class="year-price">
 				<PriceYear />
 			</div>
-			<div class="makes">
-				<p>Makes</p>
-				<ul :class="['listMakes', {showMoreMakes: moreMakes}]">
-					<li v-for="(car, key) in carsData" :key="key" :class="{'selected':car.make === filters.make.typeSelected}">
-						<span  id="make" @click="onChangeMultiple">{{
+			<div class="make-models">
+				<p>Models</p>
+				<ul :class="['list',]">
+				<!-- <ul :class="['list', {showMoreMakes: moreMakes}]"> -->
+					<li
+						v-for="(car, key) in modelsByMake"
+						:key="key"
+						:class="{selected: car.make === filters.make.typeSelected}"
+					>
+						<span id="make" @click="onChangeMultiple">{{
 							car.make
 						}}</span>
 						<span>({{ car.model.length }})</span>
 					</li>
 				</ul>
+				<small
+					id="clear-makes"
+					@click="clearMakeModel($event)"
+					v-if="filters.make.typeSelected"
+					class="btn-search clear-btn"
+					>Clear this filter</small
+				>
+				<p class="moreMakesBtn" @click="switchMoreMakes">More makes>></p>
+			</div>
+			<div class="make-models">
+				<p>Makes</p>
+				<ul :class="['listMakes', {showMoreMakes: moreMakes}]">
+					<li
+						v-for="(car, key) in carsData"
+						:key="key"
+						:class="{selected: car.make === filters.make.typeSelected}"
+					>
+						<span id="make" @click="onChangeMultiple">{{
+							car.make
+						}}</span>
+						<span>({{ car.model.length }})</span>
+					</li>
+				</ul>
+				<small
+					id="clear-makes"
+					@click="clearMakeModel($event)"
+					v-if="filters.make.typeSelected"
+					class="btn-search clear-btn"
+					>Clear this filter</small
+				>
 				<p class="moreMakesBtn" @click="switchMoreMakes">More makes>></p>
 			</div>
 		</div>
@@ -124,6 +159,12 @@ export default {
 		switchMoreMakes() {
 			this.moreMakes = !this.moreMakes;
 		},
+		clearMakeModel(e) {
+			this.$store.commit("clearMakeModel", e.target.id);
+			this.searchVehicles();
+			this.setDataInVehiclesDisplayFromLocal();
+			this.moreMakes = false;
+		},
 		...mapMutations([
 			"searchVehicles",
 			"filterByRadioBtn",
@@ -135,6 +176,18 @@ export default {
 		]),
 	},
 	computed: {
+		// working here on showing models by make 
+		modelsByMake(){
+      let models;
+			if(this.filters.make.typeSelected !== '' && this.filters.make.typeSelected !== 'All Models'){
+				models = this.allModels.filter(one =>{
+					if(one.make.toLowerCase() === this.filters.make.typeSelected.toLowerCase()){
+						return one.model
+					}
+				})
+			}
+			return models
+		},
 		...mapState([
 			"allModels",
 			"carsData",
@@ -162,7 +215,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.selected{
+.selected {
 	color: $primary;
 }
 .inputDropDown {
@@ -224,7 +277,7 @@ export default {
 	border-bottom: 1px solid $lightestDark;
 }
 
-.makes {
+.make-models {
 	font: $font-mobile-m-bold;
 	color: $dark;
 	padding-block: 1em;
@@ -238,6 +291,11 @@ export default {
 			color: $lightestDark;
 		}
 	}
+}
+.clear-btn{
+	font-size: 12px;
+	border-radius: 10px;
+	cursor: pointer;
 }
 .listMakes {
 	padding-left: 1em;
