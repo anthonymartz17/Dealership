@@ -64,7 +64,7 @@
 						:value="option"
 						:id="`fuel ${key}`"
 						name="fuel"
-						@input="onChangeMultiple($event)"
+						@input="onChangeMultiple($event);selectModelByMake()"
 					/>
 					<label :for="`fuel ${key}`">{{ option }}</label>
 				</div>
@@ -72,29 +72,27 @@
 			<div class="year-price">
 				<PriceYear />
 			</div>
-			<div class="make-models">
+			<div class="make-models" v-if="filters.make.typeSelected !== ''">
 				<p>Models</p>
 				<ul :class="['list',]">
-				<!-- <ul :class="['list', {showMoreMakes: moreMakes}]"> -->
 					<li
-						v-for="(car, key) in modelsByMake"
+						v-for="(model, key) in filters.models.type"
 						:key="key"
-						:class="{selected: car.make === filters.make.typeSelected}"
+						:class="{selected: model === filters.models.typeSelected}"
 					>
-						<span id="make" @click="onChangeMultiple">{{
-							car.make
+						<span id="model" @click="onChangeMultiple">{{
+							model
 						}}</span>
-						<span>({{ car.model.length }})</span>
 					</li>
 				</ul>
 				<small
-					id="clear-makes"
+					id="clear-models"
 					@click="clearMakeModel($event)"
 					v-if="filters.make.typeSelected"
 					class="btn-search clear-btn"
 					>Clear this filter</small
 				>
-				<p class="moreMakesBtn" @click="switchMoreMakes">More makes>></p>
+				<p class="moreMakesBtn" @click="switchMoreMakes">More models>></p>
 			</div>
 			<div class="make-models">
 				<p>Makes</p>
@@ -104,7 +102,7 @@
 						:key="key"
 						:class="{selected: car.make === filters.make.typeSelected}"
 					>
-						<span id="make" @click="onChangeMultiple">{{
+						<span id="make" @click="onChangeMultiple($event); selectModelByMake({$event, id:'make'})">{{
 							car.make
 						}}</span>
 						<span>({{ car.model.length }})</span>
@@ -131,7 +129,7 @@ export default {
 		return {
 			selected: "All Vehicles",
 			moreMakes: false,
-			timer: null,
+			timer: true,
 			isFocused: false,
 		};
 	},
@@ -173,6 +171,7 @@ export default {
 			"setDataInVehiclesDisplayFromLocal",
 			"searchByInputText",
 			"hideDropDown",
+			"selectModelByMake"
 		]),
 	},
 	computed: {

@@ -45,7 +45,6 @@ methods:{
  
   ...mapMutations([
     'closeSelectionCard',
-    'selectModelByMake',
     'selectPriceAndYear',
     'disablePriceAndYear',
     'selectedFieldData',

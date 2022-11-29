@@ -44,7 +44,6 @@ export default new Vuex.Store({
 
 		// mobile nav links
 		mobileMenuToggler: false,
-
 		// filter props
 		filters: {
 			make: {
@@ -159,7 +158,7 @@ export default new Vuex.Store({
 		set_typeOfCar(state, val) {
 			state.typeOfCar = val;
 		},
-
+// bug. when in sidebarserach component, clicking the different makes on the left sidebar, program wont display them.
 		searchVehicles(state) {
 			let results = state.allModels;
 
@@ -619,8 +618,8 @@ export default new Vuex.Store({
 			state.filters.pricesUnavailable = null;
 			state.filters.yearsUnavailable = null;
 		},
-		clearMakeModel(state,id) {
-			if (id === 'clear-model') {
+		clearMakeModel(state, id) {
+			if (id === 'clear-models') {
 				state.filters.models.typeSelected = ''
 			} else {
 				state.filters.make.typeSelected = ''
@@ -722,7 +721,8 @@ export default new Vuex.Store({
 					id: "model",
 					type: ["Select Make First"],
 				};
-			} else {
+			}
+			else {
 				state.clickedFieldContent = filters.find(
 					(one) => one.id.toLowerCase() === id.toLowerCase()
 				);
@@ -745,18 +745,21 @@ export default new Vuex.Store({
 					state.filters.models.type.unshift(
 						`All ${state.filters.make.typeSelected}`
 					);
-				} else {
-					state.filters.models.typeSelected = `Models`;
-					state.filters.models.type = ["Models"];
 				}
+				// else {
+				// 	state.filters.models.typeSelected = `Models`;
+				// 	state.filters.models.type = ["Models"];
+				// }
 			}
 			// assigns val of clicked field in model card content to the type selected
-			if (data.id == "model") {
-				state.filters.models.typeSelected =
-					data.$event.currentTarget.textContent;
-			} else {
-				return;
-			}
+			// ////// this lines below should probably have their own function
+			// i think this lines shouldnt even be here cause i have the assignto typeselected fucntion
+			// if (data.id == "model") {
+			// 	state.filters.models.typeSelected =
+			// 		data.$event.currentTarget.textContent;
+			// } else {
+			// 	return;
+			// }
 		},
 
 		selectPriceAndYear(state, data) {
@@ -848,5 +851,7 @@ export default new Vuex.Store({
 		carToViewComputed(state) {
 			return state.carToView;
 		},
+
 	},
+	
 });

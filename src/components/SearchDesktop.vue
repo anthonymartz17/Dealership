@@ -129,7 +129,7 @@ export default {
 			];
 		},
 		modelByMake() {
-			if (this.filters.make.typeSelected === "") {
+			if (this.filters.make.typeSelected === "" || this.filters.make.typeSelected === "All Makes") {
 				return ["Models"];
 			} else {
 				return this.filters.models.type;
