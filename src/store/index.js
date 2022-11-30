@@ -244,7 +244,8 @@ export default new Vuex.Store({
 					(one) => one.year <= state.filters.yearTo.typeSelected
 				);
 			}
-			if (state.filters.make.typeSelected != "") {
+			// the following condition ensures to show selected make, and in case all makes is selected, it doesnt get into the condition which makes the program run as if nothing was selected and shows all makes avalables.
+			if (state.filters.make.typeSelected !== "" && state.filters.make.typeSelected !== "All Makes") {
 				results = results.filter((one) =>
 					one.make
 						.toLowerCase()
@@ -268,14 +269,9 @@ export default new Vuex.Store({
 				);
 			}
 			localStorage.setItem("searchResults", JSON.stringify(results));
-			// state.filters.make.typeSelected = '';
-			// state.filters.models.typeSelected = '';
-			// state.filters.carType.typeSelected = '';
 			state.showDropDownTextField = false;
 		},
-		// toggleDropDownTextField(state) {
-		// 	state.showDropDownTextField = false;
-		// },
+
 		//prepares user type in input on side search to be used in mutation assignValueToTypeSelected
 		searchByInputText(state, e) {
 			state.inputTextUser = e.target.value;
@@ -315,11 +311,6 @@ export default new Vuex.Store({
 					state.showDropDownTextField = true;
 			}
 		},
-		// clears invalid input error  and resets the dropdown visibility to false on sidebarsearch componet text input. this happens on a blur event
-		// clearDropDownErrorMsg(state) {
-		// 	state.dropDownErrorMsg = "";
-		// 	state.showDropDownTextField = false;
-		// },
 
 		selectElectricCars(state, routeName) {
 			if (routeName == "Electric") {

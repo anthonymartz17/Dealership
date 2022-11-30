@@ -51,10 +51,12 @@
 					name="priceFrom"
 					id="priceFrom"
 					@input="onChangeMultiple($event)"
+					
 				>
-					<option :value="null">From</option>
+				<!-- working on lines bellow, prices and years not showing when going from home search to sidebar search -->
+					<option :value="null">{{filters.priceFrom.typeSelected == 0 ? "from":filters.priceFrom.typeSelected | currency }}</option>
 					<template v-for="(priceFrom, key) in filters.priceFrom.type">
-						<option :key="key">
+						<option :key="key" >
 							{{ priceFrom | currency }}
 						</option>
 					</template>

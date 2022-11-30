@@ -64,7 +64,10 @@
 						:value="option"
 						:id="`fuel ${key}`"
 						name="fuel"
-						@input="onChangeMultiple($event);selectModelByMake()"
+						@input="
+							onChangeMultiple($event);
+							selectModelByMake();
+						"
 					/>
 					<label :for="`fuel ${key}`">{{ option }}</label>
 				</div>
@@ -74,48 +77,53 @@
 			</div>
 			<div class="make-models" v-if="filters.make.typeSelected !== ''">
 				<p>Models</p>
-				<ul :class="['list',]">
+				<ul :class="['list']">
 					<li
 						v-for="(model, key) in filters.models.type"
 						:key="key"
 						:class="{selected: model === filters.models.typeSelected}"
 					>
-						<span id="model" @click="onChangeMultiple">{{
-							model
-						}}</span>
+						<span id="model" @click="onChangeMultiple">{{ model }}</span>
 					</li>
 				</ul>
 				<small
 					id="clear-models"
-					@click="clearMakeModel($event)"
-					v-if="filters.make.typeSelected"
+					@click="clearMakeModel('clear-models')"
+					v-if="filters.models.typeSelected"
 					class="btn-search clear-btn"
 					>Clear this filter</small
 				>
-				<p class="moreMakesBtn" @click="switchMoreMakes">More models>></p>
 			</div>
 			<div class="make-models">
 				<p>Makes</p>
-				<ul :class="['listMakes', {showMoreMakes: moreMakes}]">
+				<ul :class="['listMakes', {showMoreMakes: moreLessMakes}]">
 					<li
 						v-for="(car, key) in carsData"
 						:key="key"
 						:class="{selected: car.make === filters.make.typeSelected}"
 					>
-						<span id="make" @click="onChangeMultiple($event); selectModelByMake({$event, id:'make'})">{{
-							car.make
-						}}</span>
+						<span
+							id="make"
+							@click="
+								onChangeMultiple($event);
+								selectModelByMake({$event, id: 'make'});
+								clearMakeModel('clear-models');
+							"
+							>{{ car.make }}</span
+						>
 						<span>({{ car.model.length }})</span>
 					</li>
 				</ul>
 				<small
 					id="clear-makes"
-					@click="clearMakeModel($event)"
+					@click="clearMakeModel('clear-makes')"
 					v-if="filters.make.typeSelected"
 					class="btn-search clear-btn"
 					>Clear this filter</small
 				>
-				<p class="moreMakesBtn" @click="switchMoreMakes">More makes>></p>
+				<p class="moreMakesBtn" @click="switchMoreMakes">{{
+					moreLessMakesBtn
+				}}</p>
 			</div>
 		</div>
 	</div>
@@ -128,7 +136,7 @@ export default {
 	data() {
 		return {
 			selected: "All Vehicles",
-			moreMakes: false,
+			moreLessMakes: false,
 			timer: true,
 			isFocused: false,
 		};
@@ -155,13 +163,12 @@ export default {
 			this.setDataInVehiclesDisplayFromLocal();
 		},
 		switchMoreMakes() {
-			this.moreMakes = !this.moreMakes;
+			this.moreLessMakes = !this.moreLessMakes;
 		},
-		clearMakeModel(e) {
-			this.$store.commit("clearMakeModel", e.target.id);
+		clearMakeModel(id) {
+			this.$store.commit("clearMakeModel",id);
 			this.searchVehicles();
 			this.setDataInVehiclesDisplayFromLocal();
-			this.moreMakes = false;
 		},
 		...mapMutations([
 			"searchVehicles",
@@ -171,21 +178,36 @@ export default {
 			"setDataInVehiclesDisplayFromLocal",
 			"searchByInputText",
 			"hideDropDown",
-			"selectModelByMake"
+			"selectModelByMake",
 		]),
 	},
 	computed: {
-		// working here on showing models by make 
-		modelsByMake(){
-      let models;
-			if(this.filters.make.typeSelected !== '' && this.filters.make.typeSelected !== 'All Models'){
-				models = this.allModels.filter(one =>{
-					if(one.make.toLowerCase() === this.filters.make.typeSelected.toLowerCase()){
-						return one.model
-					}
-				})
+		moreLessMakesBtn() {
+			let text;
+			if (this.moreLessMakes === false) {
+				text = "Show more makes>>";
+			} else {
+				text = "Show less makes>>";
 			}
-			return models
+			return text;
+		},
+		// working here on showing models by make
+		modelsByMake() {
+			let models;
+			if (
+				this.filters.make.typeSelected !== "" &&
+				this.filters.make.typeSelected !== "All Models"
+			) {
+				models = this.allModels.filter((one) => {
+					if (
+						one.make.toLowerCase() ===
+						this.filters.make.typeSelected.toLowerCase()
+					) {
+						return one.model;
+					}
+				});
+			}
+			return models;
 		},
 		...mapState([
 			"allModels",
@@ -291,7 +313,7 @@ export default {
 		}
 	}
 }
-.clear-btn{
+.clear-btn {
 	font-size: 12px;
 	border-radius: 10px;
 	cursor: pointer;
@@ -307,6 +329,7 @@ export default {
 }
 .moreMakesBtn {
 	cursor: pointer;
+	margin-block: 0.5em;
 	transition: 200ms ease-in-out;
 	&:hover {
 		color: $lightestDark;
