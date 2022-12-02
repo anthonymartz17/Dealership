@@ -125,6 +125,22 @@
 					moreLessMakesBtn
 				}}</p>
 			</div>
+			<div class="other-options-wrapper">
+				<p class="title">Other options</p>
+				<ul class="other-options-list">
+					<li v-for="(filter, key) in otherOptions" :key="key">
+						<label>{{ filter.filter }}</label>
+						<select :name="filter.filter" :id="filter.id">
+							<option
+								value=""
+								v-for="(option, key) in filter.options"
+								:key="key"
+								>{{ option }}</option
+							>
+						</select>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 </template>
@@ -166,7 +182,7 @@ export default {
 			this.moreLessMakes = !this.moreLessMakes;
 		},
 		clearMakeModel(id) {
-			this.$store.commit("clearMakeModel",id);
+			this.$store.commit("clearMakeModel", id);
 			this.searchVehicles();
 			this.setDataInVehiclesDisplayFromLocal();
 		},
@@ -208,6 +224,40 @@ export default {
 				});
 			}
 			return models;
+		},
+		otherOptions() {
+			return [
+				{
+					id: "carCondition",
+					filter: "Condition",
+					options: this.filters.carCondition.type,
+				},
+				{
+					id: "transmission",
+					filter: "Transmission",
+					options: this.filters.transmission.type,
+				},
+				{
+					id: "driveTrain",
+					filter: "DriveTrain",
+					options: this.filters.driveTrain.type,
+				},
+				{
+					id: "mileage",
+					filter: "mileage",
+					options: this.filters.mileage.type,
+				},
+				{
+					id: "color",
+					filter: "Color",
+					options: this.filters.color.type,
+				},
+				{
+					id: "engine",
+					filter: "Engine",
+					options: this.filters.engine.type,
+				},
+			];
 		},
 		...mapState([
 			"allModels",
@@ -333,6 +383,48 @@ export default {
 	transition: 200ms ease-in-out;
 	&:hover {
 		color: $lightestDark;
+	}
+}
+.other-options-wrapper {
+	margin-block: 1em;
+	.title {
+		font: $font-mobile-m-bold;
+		margin-block: 1em;
+	}
+}
+.other-options-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	max-width: 16.5em;
+	// background: blue;
+
+	li {
+		font: $font-mobile-s-bold;
+		max-width: 100%;
+		border: 1px solid $lightestDark;
+		border-radius: 5px;
+		display: flex;
+		height: 2.5em;
+		
+	
+	}
+	label {
+		flex: 1;
+		padding-left: .5em;
+		border-inline-end: 1px solid $lightestDark;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+	select {
+		flex: 2;
+		max-width: 12em;
+		font: $font-mobile-m-bold;
+		height: 100%;
+		border: transparent;
+		border-radius: 0 5px 5px 0;
+		padding-left: .5em;
 	}
 }
 </style>

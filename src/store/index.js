@@ -101,9 +101,14 @@ export default new Vuex.Store({
 				type: [],
 				typeSelected: "",
 			},
+			mileage: {
+				id: "mileage",
+				type: [],
+				typeSelected: "",
+			},
 			engine: {
 				id: "engine",
-				type: ["I4", "V6", "V8"],
+				type: [],
 				typeSelected: "",
 			},
 			color: {
@@ -158,7 +163,7 @@ export default new Vuex.Store({
 		set_typeOfCar(state, val) {
 			state.typeOfCar = val;
 		},
-// bug. when in sidebarserach component, clicking the different makes on the left sidebar, program wont display them.
+		// bug. when in sidebarserach component, clicking the different makes on the left sidebar, program wont display them.
 		searchVehicles(state) {
 			let results = state.allModels;
 
@@ -171,9 +176,7 @@ export default new Vuex.Store({
 			if (state.filters.fuel.typeSelected !== "") {
 				// shows all cars regardless of fuel, that are in the results array, when there is any other filter applied or not
 				if (state.filters.fuel.typeSelected == "All fuels") {
-					results = results.filter(
-						(one) => one.fuel !== ''
-					);
+					results = results.filter((one) => one.fuel !== "");
 				} else {
 					results = results.filter(
 						(one) => one.fuel === state.filters.fuel.typeSelected
@@ -245,7 +248,10 @@ export default new Vuex.Store({
 				);
 			}
 			// the following condition ensures to show selected make, and in case all makes is selected, it doesnt get into the condition which makes the program run as if nothing was selected and shows all makes avalables.
-			if (state.filters.make.typeSelected !== "" && state.filters.make.typeSelected !== "All Makes") {
+			if (
+				state.filters.make.typeSelected !== "" &&
+				state.filters.make.typeSelected !== "All Makes"
+			) {
 				results = results.filter((one) =>
 					one.make
 						.toLowerCase()
@@ -555,6 +561,16 @@ export default new Vuex.Store({
 				...new Set(content.map((one) => one.carType)),
 			];
 			state.filters.carCondition.type = ["New/Used", "New", "Used"];
+			state.filters.engine.type = ["I4", "V6", "V8"];
+			// comeback see how to filter by mileage
+			state.filters.mileage.type = [
+				"0 to 10k",
+				"10 to 25k",
+				"25k to 50k",
+				"50k to 75k",
+				"75k to 100k",
+				"100k +",
+			];
 			state.filters.fuel.type = [
 				"All fuels",
 				...new Set(content.map((one) => one.fuel)),
@@ -610,11 +626,11 @@ export default new Vuex.Store({
 			state.filters.yearsUnavailable = null;
 		},
 		clearMakeModel(state, id) {
-			if (id === 'clear-models') {
-				state.filters.models.typeSelected = ''
+			if (id === "clear-models") {
+				state.filters.models.typeSelected = "";
 			} else {
-				state.filters.make.typeSelected = ''
-				state.filters.models.typeSelected = ''
+				state.filters.make.typeSelected = "";
+				state.filters.models.typeSelected = "";
 			}
 		},
 
@@ -649,13 +665,12 @@ export default new Vuex.Store({
 
 		assignValueToTypeSelected(state, event) {
 			let filters = Object.values(state.filters);
-			let selectedField = filters.find(one => {
+			let selectedField = filters.find((one) => {
 				// did the following if statement like this, so that i can add a string id + key to radio btn in the sidebarsearch component, so i can match the id to the label of the radio btn, and still be able to filter here,using the id coming from the selection
 				if (event.target.id.toLowerCase().includes(one.id.toLowerCase())) {
-					return one
+					return one;
 				}
-			}
-			);
+			});
 
 			//in mobile view the fields selections are textcontent of event target because  they are divs. In desktop the fields selections are value of event target, they come from inputs
 
@@ -712,8 +727,7 @@ export default new Vuex.Store({
 					id: "model",
 					type: ["Select Make First"],
 				};
-			}
-			else {
+			} else {
 				state.clickedFieldContent = filters.find(
 					(one) => one.id.toLowerCase() === id.toLowerCase()
 				);
@@ -842,7 +856,5 @@ export default new Vuex.Store({
 		carToViewComputed(state) {
 			return state.carToView;
 		},
-
 	},
-	
 });
