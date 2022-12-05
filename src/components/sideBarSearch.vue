@@ -130,13 +130,15 @@
 				<ul class="other-options-list">
 					<li v-for="(filter, key) in otherOptions" :key="key">
 						<label>{{ filter.filter }}</label>
-						<select :name="filter.filter" :id="filter.id">
-							<option
-								value=""
-								v-for="(option, key) in filter.options"
-								:key="key"
-								>{{ option }}</option
-							>
+						<select
+							@input="onChangeMultiple($event)"
+							:name="filter.filter"
+							:id="filter.id"
+						>
+							<option v-for="(option, key) in filter.options" :key="key">
+								<p  v-if="filter.id !== 'mileage'">{{ option }}</p>
+								<p v-else>{{ option.range }}</p>
+							</option>
 						</select>
 					</li>
 				</ul>
@@ -406,12 +408,10 @@ export default {
 		border-radius: 5px;
 		display: flex;
 		height: 2.5em;
-		
-	
 	}
 	label {
 		flex: 1;
-		padding-left: .5em;
+		padding-left: 0.5em;
 		border-inline-end: 1px solid $lightestDark;
 		height: 100%;
 		display: flex;
@@ -424,7 +424,7 @@ export default {
 		height: 100%;
 		border: transparent;
 		border-radius: 0 5px 5px 0;
-		padding-left: .5em;
+		padding-left: 0.5em;
 	}
 }
 </style>

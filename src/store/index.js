@@ -167,38 +167,44 @@ export default new Vuex.Store({
 		searchVehicles(state) {
 			let results = state.allModels;
 
-			if (state.filters.carCondition.typeSelected !== "") {
+			if (
+				state.filters.carCondition.typeSelected !== "" &&
+				state.filters.carCondition.typeSelected !== "New/Used"
+			) {
 				results = results.filter(
 					(one) =>
 						one.carCondition === state.filters.carCondition.typeSelected
 				);
 			}
-			if (state.filters.fuel.typeSelected !== "") {
-				// shows all cars regardless of fuel, that are in the results array, when there is any other filter applied or not
-				if (state.filters.fuel.typeSelected == "All fuels") {
-					results = results.filter((one) => one.fuel !== "");
-				} else {
-					results = results.filter(
-						(one) => one.fuel === state.filters.fuel.typeSelected
-					);
-				}
+			if (
+				state.filters.fuel.typeSelected !== "" &&
+				state.filters.fuel.typeSelected !== "All"
+			) {
+				results = results.filter(
+					(one) => one.fuel === state.filters.fuel.typeSelected
+				);
 			}
-			// included this else here to search for all vehicles in the checkbox on desktop view side bar search
-			else if (state.filters.fuel.typeSelected === "All Vehicles") {
-				results = state.allModels;
-			}
-			if (state.filters.transmission.typeSelected !== "") {
+			if (
+				state.filters.transmission.typeSelected !== "" &&
+				state.filters.transmission.typeSelected !== "All"
+			) {
 				results = results.filter(
 					(one) =>
 						one.transmission === state.filters.transmission.typeSelected
 				);
 			}
-			if (state.filters.driveTrain.typeSelected !== "") {
+			if (
+				state.filters.driveTrain.typeSelected !== "" &&
+				state.filters.driveTrain.typeSelected !== "All"
+			) {
 				results = results.filter(
 					(one) => one.driveTrain === state.filters.driveTrain.typeSelected
 				);
 			}
-			if (state.filters.engine.typeSelected !== "") {
+			if (
+				state.filters.engine.typeSelected !== "" &&
+				state.filters.engine.typeSelected !== "All"
+			) {
 				results = results.filter((one) => {
 					if (
 						one.engine != undefined &&
@@ -210,8 +216,19 @@ export default new Vuex.Store({
 					}
 				});
 			}
-
-			if (state.filters.color.typeSelected !== "") {
+			if (
+				state.filters.mileage.typeSelected !== "" &&
+				state.filters.mileage.typeSelected !== "All"
+			) { 
+				console.log(state.filters.mileage.typeSelected)
+				// results = results.filter(
+				// 	(one) => one.colorEx === state.filters.mileage.typeSelected
+				// );
+			}
+			if (
+				state.filters.color.typeSelected !== "" &&
+				state.filters.color.typeSelected !== "All"
+			) {
 				results = results.filter(
 					(one) => one.colorEx === state.filters.color.typeSelected
 				);
@@ -561,27 +578,31 @@ export default new Vuex.Store({
 				...new Set(content.map((one) => one.carType)),
 			];
 			state.filters.carCondition.type = ["New/Used", "New", "Used"];
-			state.filters.engine.type = ["I4", "V6", "V8"];
+			state.filters.engine.type = ["All", "I4", "V6", "V8"];
 			// comeback see how to filter by mileage
 			state.filters.mileage.type = [
-				"0 to 10k",
-				"10 to 25k",
-				"25k to 50k",
-				"50k to 75k",
-				"75k to 100k",
-				"100k +",
+				{range: "All"},
+				{range: "0 to 10k", min: 0, max: 10000},
+				{range: "10 to 25k", min: 10000, max: 25000},
+				{range: "25k to 50k", min: 10000, max: 25000},
+				{range: "50k to 75k", min: 50000, max: 75000},
+				{range: "75k to 100k", min: 75000, max: 100000},
+				{range: "100k +", min: 100000},
 			];
 			state.filters.fuel.type = [
-				"All fuels",
+				"All",
 				...new Set(content.map((one) => one.fuel)),
 			];
 			state.filters.transmission.type = [
+				"All",
 				...new Set(content.map((one) => one.transmission)),
 			];
 			state.filters.driveTrain.type = [
+				"All",
 				...new Set(content.map((one) => one.driveTrain)),
 			];
 			state.filters.color.type = [
+				"All",
 				...new Set(content.map((one) => one.colorEx)),
 			].sort();
 		},
