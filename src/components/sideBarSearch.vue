@@ -23,7 +23,10 @@
 							<p
 								class="hover-list"
 								id="make"
-								@click="onChangeMultiple($event)"
+								@click="
+									onChangeMultiple($event);
+									selectModelByMake({$event, id: 'make'});
+								"
 								>{{ filters.make.typeSelected }}</p
 							>
 						</div>
@@ -32,7 +35,10 @@
 							<p
 								class="hover-list"
 								id="carType"
-								@click="onChangeMultiple($event)"
+								@click="
+									onChangeMultiple($event);
+									selectModelByMake({$event, id: 'make'});
+								"
 								>{{ filters.carType.typeSelected }}</p
 							>
 						</div>
@@ -44,7 +50,10 @@
 									v-for="(model, key) in filters.models.type"
 									:key="key"
 									id="model"
-									@click="onChangeMultiple($event)"
+									@click="
+										onChangeMultiple($event);
+										selectModelByMake({$event, id: 'make'});
+									"
 									>{{ model.model }}</li
 								>
 							</ul>
@@ -64,10 +73,7 @@
 						:value="option"
 						:id="`fuel ${key}`"
 						name="fuel"
-						@input="
-							onChangeMultiple($event);
-							selectModelByMake();
-						"
+						@input="onChangeMultiple($event)"
 					/>
 					<label :for="`fuel ${key}`">{{ option }}</label>
 				</div>
@@ -75,15 +81,18 @@
 			<div class="year-price">
 				<PriceYear />
 			</div>
-			<div class="make-models" v-if="filters.make.typeSelected !== ''">
+			<div
+				class="make-models"
+				v-if="filters.make.typeSelected !== '' && !showDropDownTextField"
+			>
 				<p>Models</p>
 				<ul :class="['list']">
 					<li
 						v-for="(model, key) in filters.models.type"
 						:key="key"
-						:class="{selected: model === filters.models.typeSelected}"
+						:class="{selected: model.toLowerCase() === filters.models.typeSelected.toLowerCase()}"
 					>
-						<span id="model" @click="onChangeMultiple">{{ model }}</span>
+						<span id="model" @click="onChangeMultiple()">{{ model }}</span>
 					</li>
 				</ul>
 				<small
@@ -117,7 +126,7 @@
 				<small
 					id="clear-makes"
 					@click="clearMakeModel('clear-makes')"
-					v-if="filters.make.typeSelected"
+					v-if="filters.make.typeSelected && !showDropDownTextField"
 					class="btn-search clear-btn"
 					>Clear this filter</small
 				>
@@ -136,8 +145,8 @@
 							:id="filter.id"
 						>
 							<option v-for="(option, key) in filter.options" :key="key">
-								<p  v-if="filter.id !== 'mileage'">{{ option }}</p>
-								<p v-else>{{ option.range }}</p>
+								<p v-if="filter.id !== 'mileage'">{{ option }}</p>
+								<p v-else>{{ option }}</p>
 							</option>
 						</select>
 					</li>

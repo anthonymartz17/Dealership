@@ -18,33 +18,39 @@
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+import {mapMutations, mapState} from "vuex";
 export default {
 	methods: {
-		...mapMutations([
-			"toggleOptionsCard",
-			"updateClickedFieldContent",
-		]),
+		...mapMutations(["toggleOptionsCard", "updateClickedFieldContent"]),
 	},
 	computed: {
 		...mapState(["filters"]),
-
+// working here for mobile view?????????????
 		makeModel() {
 			let make, model;
-			if (this.filters.make.typeSelected == "") {
-				make = "Make";
-			} else {
-				make = this.filters.make.typeSelected;
+			switch (make) {
+				case this.filters.make.typeSelected !== "":
+					make = this.filters.make.typeSelected;
+					break;
+				default:
+					make = "Make";
 			}
+
 			if (this.filters.models.typeSelected == "") {
 				model = "Model";
+			}
+			if (
+				this.filters.make.typeSelected != "All makes" &&
+				this.filters.make.typeSelected != ""
+			) {
+				model = `All ${this.filters.make.typeSelected}`;
 			} else {
 				model = this.filters.models.typeSelected;
 			}
 
 			return [
-				{ field: make, id: "make" },
-				{ field: model, id: "model" },
+				{field: make, id: "make"},
+				{field: model, id: "model"},
 			];
 		},
 	},

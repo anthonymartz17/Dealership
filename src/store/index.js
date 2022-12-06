@@ -219,11 +219,23 @@ export default new Vuex.Store({
 			if (
 				state.filters.mileage.typeSelected !== "" &&
 				state.filters.mileage.typeSelected !== "All"
-			) { 
-				console.log(state.filters.mileage.typeSelected)
-				// results = results.filter(
-				// 	(one) => one.colorEx === state.filters.mileage.typeSelected
-				// );
+			) {
+				let reg = /\d+/g;
+				// finds the numbers in a string and returns them in an array.
+				let nums = state.filters.mileage.typeSelected.match(reg);
+				// setting numbers at position zero and one to min and max respectively and converting them to thousands.
+				let min = +nums[0] * 1000;
+				let max = +nums[1] * 1000;
+
+				results = results.filter((one) => {
+					let miles = +one.miles.replace(",", "");
+
+					if (max) {
+						return miles > min && miles < max;
+					} else {
+						return miles > min;
+					}
+				});
 			}
 			if (
 				state.filters.color.typeSelected !== "" &&
@@ -581,14 +593,23 @@ export default new Vuex.Store({
 			state.filters.engine.type = ["All", "I4", "V6", "V8"];
 			// comeback see how to filter by mileage
 			state.filters.mileage.type = [
-				{range: "All"},
-				{range: "0 to 10k", min: 0, max: 10000},
-				{range: "10 to 25k", min: 10000, max: 25000},
-				{range: "25k to 50k", min: 10000, max: 25000},
-				{range: "50k to 75k", min: 50000, max: 75000},
-				{range: "75k to 100k", min: 75000, max: 100000},
-				{range: "100k +", min: 100000},
+				"All",
+				"0 to 10k",
+				"10 to 25k",
+				"25k to 50k",
+				"50k to 75k",
+				"75k to 100k",
+				"100k +",
 			];
+			// state.filters.mileage.type = [
+			// 	{min: "All"},
+			// 	{range: "0 to 10k", min: 0, max: 10000},
+			// 	{range: "10 to 25k", min: 10000, max: 25000},
+			// 	{range: "25k to 50k", min: 10000, max: 25000},
+			// 	{range: "50k to 75k", min: 50000, max: 75000},
+			// 	{range: "75k to 100k", min: 75000, max: 100000},
+			// 	{range: "100k +", min: 100000},
+			// ];
 			state.filters.fuel.type = [
 				"All",
 				...new Set(content.map((one) => one.fuel)),
@@ -759,8 +780,7 @@ export default new Vuex.Store({
 		selectModelByMake(state, data) {
 			if (data.id == "make") {
 				state.carsData.forEach((one) => {
-					if (state.filters.make.typeSelected == one.make) {
-						state.filters.models.typeSelected = `All ${one.make}`;
+					if (state.filters.make.typeSelected == one.make ) {
 						state.filters.models.type = one.model.map((one) => {
 							return one.model;
 						});
@@ -772,20 +792,7 @@ export default new Vuex.Store({
 						`All ${state.filters.make.typeSelected}`
 					);
 				}
-				// else {
-				// 	state.filters.models.typeSelected = `Models`;
-				// 	state.filters.models.type = ["Models"];
-				// }
 			}
-			// assigns val of clicked field in model card content to the type selected
-			// ////// this lines below should probably have their own function
-			// i think this lines shouldnt even be here cause i have the assignto typeselected fucntion
-			// if (data.id == "model") {
-			// 	state.filters.models.typeSelected =
-			// 		data.$event.currentTarget.textContent;
-			// } else {
-			// 	return;
-			// }
 		},
 
 		selectPriceAndYear(state, data) {
