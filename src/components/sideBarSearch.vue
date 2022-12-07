@@ -331,6 +331,7 @@ export default {
 	background: lighten($lightestDark, 30);
 	height: auto;
 	padding: 1em;
+	
 }
 
 .field {

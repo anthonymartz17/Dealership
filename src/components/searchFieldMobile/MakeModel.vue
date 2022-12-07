@@ -25,29 +25,27 @@ export default {
 	},
 	computed: {
 		...mapState(["filters"]),
-// working here for mobile view?????????????
+		// working here for mobile view?????????????
 		makeModel() {
-			let make, model;
-			switch (make) {
-				case this.filters.make.typeSelected !== "":
-					make = this.filters.make.typeSelected;
-					break;
-				default:
-					make = "Make";
-			}
+			let selectedMake = this.filters.make.typeSelected,
+				selectedModel = this.filters.models.typeSelected,
+				make,
+				model;
 
-			if (this.filters.models.typeSelected == "") {
-				model = "Model";
-			}
+			if (selectedMake === "") make = "Make";
+			else make = selectedMake;
+
+			if (selectedModel === "") model = "Model";
+
 			if (
-				this.filters.make.typeSelected != "All makes" &&
-				this.filters.make.typeSelected != ""
+				selectedMake !== "All Makes" &&
+				selectedMake !== "" &&
+				selectedModel === ""
 			) {
-				model = `All ${this.filters.make.typeSelected}`;
-			} else {
-				model = this.filters.models.typeSelected;
+				model = `All ${selectedMake}`;
 			}
-
+			if (selectedModel !== "") model = selectedModel;
+			
 			return [
 				{field: make, id: "make"},
 				{field: model, id: "model"},

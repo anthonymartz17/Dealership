@@ -1,5 +1,10 @@
 <template>
-	<div class="vehicles-container">
+	<div
+		:class="[
+			'vehicles-container',
+			{'vehicles-container-height': $route.name == 'Home'},
+		]"
+	>
 		<div :class="['vehicles', {'vehicles-height': $route.name == 'Home'}]">
 			<h2 class="vehicles-title">
 				<span v-if="$route.name === 'dealerInventory'"
@@ -149,15 +154,18 @@ export default {
 	margin-bottom: 0.5em;
 }
 .vehicles-container {
-	height: 100%;
 	padding: 0.5em;
 	flex: 1;
+}
+// this height only when in home screen
+.vehicles-container-height {
+	height: 90vh;
 }
 
 .vehicles-height {
 	height: 65vh;
 	@include desktop {
-		height: 80vh;
+		height: 85vh;
 	}
 }
 
