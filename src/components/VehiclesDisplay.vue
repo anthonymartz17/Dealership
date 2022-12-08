@@ -22,6 +22,7 @@
 					:class="[
 						'vehicles-display',
 						{'space-even': vehiclesDisplay.length > 4},
+						{'vehicles-display-height-flow ':  $route.name == 'searchResults'},
 					]"
 				>
 					<div
@@ -156,6 +157,7 @@ export default {
 .vehicles-container {
 	padding: 0.5em;
 	flex: 1;
+	
 }
 // this height only when in home screen
 .vehicles-container-height {
@@ -163,9 +165,9 @@ export default {
 }
 
 .vehicles-height {
-	height: 65vh;
+	height: 80vh;
 	@include desktop {
-		height: 85vh;
+		height: 80vh;
 	}
 }
 
@@ -180,16 +182,23 @@ export default {
 		margin-bottom: 0.5em;
 	}
 }
+// controls overflow of div when in search results view
+.vehicles-display-height-flow {
+	height: 100vh;
+	overflow: auto;
+}
 
 .vehicles-display {
 	@include desktop {
-		display: flex;
-		flex-wrap: wrap;
+	
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		// justify-items: stretch;
 		gap: 1em;
+		padding-inline: .5em;
 	}
 	&-car {
 		@include desktop {
-			width: 20%;
 			flex-direction: column;
 		}
 
@@ -197,7 +206,6 @@ export default {
 		justify-content: space-around;
 		gap: 0.5em;
 		padding-block: 0.3em;
-		// cursor: pointer;
 	}
 
 	&-img {

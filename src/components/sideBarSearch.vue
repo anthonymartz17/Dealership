@@ -90,9 +90,15 @@
 					<li
 						v-for="(model, key) in filters.models.type"
 						:key="key"
-						:class="{selected: model.toLowerCase() === filters.models.typeSelected.toLowerCase()}"
+						:class="{
+							selected:
+								model.toLowerCase() ===
+								filters.models.typeSelected.toLowerCase(),
+						}"
 					>
-						<span id="model" @click="onChangeMultiple()">{{ model }}</span>
+						<span id="model" @click="onChangeMultiple()">{{
+							model
+						}}</span>
 					</li>
 				</ul>
 				<small
@@ -171,6 +177,9 @@ export default {
 	components: {
 		PriceYear,
 	},
+	mounted() {
+		this.scrollSelectedMakeOrModelIntoView()
+	},
 
 	methods: {
 		// if user clicked outside textfield, let text in inputtext and focus the textfield again, this methods fires the searchbyinputtext to search again.
@@ -178,6 +187,11 @@ export default {
 			if (this.inputTextUser !== "") {
 				this.$store.commit("searchByInputText", e);
 			}
+		},
+		// this function makes sure selected make or model is always into view in the sidebarsearch component, when selection is made from home view. 
+		scrollSelectedMakeOrModelIntoView() {
+			let el = document.querySelectorAll(".selected");
+			el.forEach((one) => one.scrollIntoView());
 		},
 		searchAfterFinishTyping(e) {
 			clearTimeout(this.timer);
@@ -331,7 +345,6 @@ export default {
 	background: lighten($lightestDark, 30);
 	height: auto;
 	padding: 1em;
-	
 }
 
 .field {

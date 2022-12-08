@@ -63,8 +63,6 @@ export default {
 <style lang="scss" scoped>
 .resultsWrapper {
 	@include desktop {
-    position: sticky;
-    top: 40px;
 		display: grid;
 		grid-template-columns: 1fr 4fr;
 		grid-template-areas:
@@ -105,11 +103,9 @@ export default {
 	}
 }
 .results {
-	grid-area: results;
-	min-height: 80vh;
-	height: 110vh;
-	overflow: auto;
-  padding-block: 1em;
+	height: 100%;
+	position: sticky;
+	top: 10px;
 }
 .sideSearch {
 	display: none;
