@@ -15,7 +15,7 @@
 				>
 					<option :value="null">From</option>
 					<template v-for="(yearFrom, key) in filters.yearFrom.type">
-						<option :key="key">
+						<option :key="key" :selected="yearFrom == filters.yearFrom.typeSelected">
 							{{ yearFrom }}
 						</option>
 					</template>
@@ -32,6 +32,7 @@
 								disabledOptions:
 									yearsUnavailable != null && key < yearsUnavailable,
 							}"
+							:selected="yearTo == filters.yearTo.typeSelected"
 						>
 							{{ yearTo }}
 						</option>
@@ -57,7 +58,7 @@
 					<option :value="null">From</option>
 					<!-- <option :value="null">{{filters.priceFrom.typeSelected == 0 ? "from":filters.priceFrom.typeSelected | currency }}</option> -->
 					<template v-for="(priceFrom, key) in filters.priceFrom.type">
-						<option :key="key" >
+						<option :key="key" :selected="priceFrom == filters.priceFrom.typeSelected" >
 							{{ priceFrom | currency }}
 						</option>
 					</template>
@@ -78,6 +79,7 @@
 									pricesUnavailable != null && key < pricesUnavailable,
 							}"
 							:key="priceTo"
+							:selected="priceTo == filters.priceTo.typeSelected"
 						>
 							{{ priceTo | currency }}
 						</option>

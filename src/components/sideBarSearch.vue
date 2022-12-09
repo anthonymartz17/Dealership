@@ -66,7 +66,7 @@
 					<input
 						type="radio"
 						:checked="
-							option === 'All fuels'
+							option === 'All'
 								? filters.fuel.typeSelected === ''
 								: option === filters.fuel.typeSelected
 						"
@@ -96,14 +96,17 @@
 								filters.models.typeSelected.toLowerCase(),
 						}"
 					>
-						<span id="model" @click="onChangeMultiple()">{{
+						<span id="model" @click="onChangeMultiple($event)">{{
 							model
 						}}</span>
 					</li>
 				</ul>
 				<small
 					id="clear-models"
-					@click="clearMakeModel('clear-models')"
+					@click="
+						clearInputTextUser('clear-models');
+						clearMakeModel('clear-models');
+					"
 					v-if="filters.models.typeSelected"
 					class="btn-search clear-btn"
 					>Clear this filter</small
@@ -122,6 +125,7 @@
 							@click="
 								onChangeMultiple($event);
 								selectModelByMake({$event, id: 'make'});
+								clearInputTextUser('clear-models');
 								clearMakeModel('clear-models');
 							"
 							>{{ car.make }}</span
@@ -131,7 +135,10 @@
 				</ul>
 				<small
 					id="clear-makes"
-					@click="clearMakeModel('clear-makes')"
+					@click="
+						clearInputTextUser('clear-makes');
+						clearMakeModel('clear-makes');
+					"
 					v-if="filters.make.typeSelected && !showDropDownTextField"
 					class="btn-search clear-btn"
 					>Clear this filter</small
@@ -150,7 +157,11 @@
 							:name="filter.filter"
 							:id="filter.id"
 						>
-							<option v-for="(option, key) in filter.options" :key="key">
+							<option
+								v-for="(option, key) in filter.options"
+								:key="key"
+								:selected="option == filters.carCondition.typeSelected"
+							>
 								<p v-if="filter.id !== 'mileage'">{{ option }}</p>
 								<p v-else>{{ option }}</p>
 							</option>
@@ -178,7 +189,12 @@ export default {
 		PriceYear,
 	},
 	mounted() {
-		this.scrollSelectedMakeOrModelIntoView()
+		this.scrollSelectedMakeOrModelIntoView();
+		this.updateInputTextUser();
+		// console.log(this.inputTextUser, 'i fired')
+	},
+	destroyed() {
+		this.clearFilters();
 	},
 
 	methods: {
@@ -188,7 +204,7 @@ export default {
 				this.$store.commit("searchByInputText", e);
 			}
 		},
-		// this function makes sure selected make or model is always into view in the sidebarsearch component, when selection is made from home view. 
+		// this function makes sure selected make or model is always into view in the sidebarsearch component, when selection is made from home view.
 		scrollSelectedMakeOrModelIntoView() {
 			let el = document.querySelectorAll(".selected");
 			el.forEach((one) => one.scrollIntoView());
@@ -202,6 +218,8 @@ export default {
 			this.assignValueToTypeSelected(e);
 			this.searchVehicles();
 			this.setDataInVehiclesDisplayFromLocal();
+			this.scrollSelectedMakeOrModelIntoView();
+			this.updateInputTextUser();
 		},
 		switchMoreMakes() {
 			this.moreLessMakes = !this.moreLessMakes;
@@ -220,6 +238,9 @@ export default {
 			"searchByInputText",
 			"hideDropDown",
 			"selectModelByMake",
+			"clearFilters",
+			"clearInputTextUser",
+			"updateInputTextUser",
 		]),
 	},
 	computed: {

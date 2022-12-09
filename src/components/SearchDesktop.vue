@@ -73,6 +73,7 @@
 							assignValueToTypeSelected($event);
 							searchVehicles();
 							setDataInVehiclesDisplayFromLocal();
+							updateInputTextUser();
 						"
 					>
 						<img
@@ -115,6 +116,7 @@ export default {
 			"setDataInVehiclesDisplayFromLocal",
 			"selectModelByMake",
 			"disablePricesYears",
+			"updateInputTextUser"
 		]),
 		...mapActions(["getCarsData"]),
 	},

@@ -254,7 +254,7 @@ export default new Vuex.Store({
 						)
 				);
 
-				state.inputTextUser = state.filters.carType.typeSelected;
+				// state.inputTextUser = state.filters.carType.typeSelected;
 			}
 			if (state.filters.priceFrom.typeSelected != 0) {
 				results = results.filter(
@@ -642,7 +642,7 @@ export default new Vuex.Store({
 			state.filters.driveTrain.typeSelected = "";
 			state.filters.engine.typeSelected = "";
 			state.filters.color.typeSelected = "";
-			state.filters.inputTextUser = "";
+			state.inputTextUser = "";
 			state.filters.pricesUnavailable = null;
 			state.filters.yearsUnavailable = null;
 
@@ -673,6 +673,29 @@ export default new Vuex.Store({
 			} else {
 				state.filters.make.typeSelected = "";
 				state.filters.models.typeSelected = "";
+			}
+		},
+		clearInputTextUser(state,id) {
+			if (id == 'clear-models') {
+				state.inputTextUser = state.inputTextUser.replace(state.filters.models.typeSelected,'').trim()
+			}
+			if (id == 'clear-makes') {
+				state.inputTextUser = ''
+			}
+		},
+		updateInputTextUser(state) {
+			let make = state.filters.make.typeSelected,
+			model = state.filters.models.typeSelected,
+			type = state.filters.carType.typeSelected;
+     
+			if (make) {
+				state.inputTextUser = make;
+			}
+			if (make && model && !model.includes('All')) {
+				state.inputTextUser = `${make} ${model}`;
+			}
+			if(type){
+				state.inputTextUser = type;
 			}
 		},
 
@@ -780,7 +803,7 @@ export default new Vuex.Store({
 		selectModelByMake(state, data) {
 			if (data.id == "make") {
 				state.carsData.forEach((one) => {
-					if (state.filters.make.typeSelected == one.make ) {
+					if (state.filters.make.typeSelected == one.make) {
 						state.filters.models.type = one.model.map((one) => {
 							return one.model;
 						});
