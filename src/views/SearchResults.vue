@@ -62,6 +62,7 @@ export default {
 
 <style lang="scss" scoped>
 .resultsWrapper {
+	
 	@include desktop {
 		display: grid;
 		grid-template-columns: 1fr 4fr;

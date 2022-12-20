@@ -237,6 +237,7 @@ export default {
 	}
 }
 .noResultMsg {
+	background: blue;
 	display: grid;
 	place-items: center;
 	gap: 2em;

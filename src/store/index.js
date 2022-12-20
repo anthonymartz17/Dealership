@@ -305,34 +305,58 @@ export default new Vuex.Store({
 			}
 			localStorage.setItem("searchResults", JSON.stringify(results));
 			state.showDropDownTextField = false;
+
 		},
 
 		//prepares user type in input on side search to be used in mutation assignValueToTypeSelected
 		searchByInputText(state, e) {
 			state.inputTextUser = e.target.value;
+			let make, model, type;
+			// finds the make model and type of car the user put in
+			state.allModels.find((one) => {
+				if (
+					state.inputTextUser
+						.toLowerCase()
+						.includes(one.make.toLowerCase())
+				) {
+					make = one.make;
+				}
+				if (
+					state.inputTextUser
+						.toLowerCase()
+						.includes(one.model.toLowerCase())
+				) {
+					make = one.make;
+					model = one.model;
+				}
+				if (
+					state.inputTextUser
+						.toLowerCase()
+						.includes(one.carType.toLowerCase())
+				) {
+					type = one.carType;
+				}
+			});
+
 			if (state.inputTextUser == "") {
-				state.vehiclesDisplay = JSON.parse(
-					localStorage.getItem("allModels")
-				);
+				state.vehiclesDisplay = state.allModels;
+
 				state.filters.make.typeSelected = "";
+				state.filters.models.type = [];
 				state.filters.carType.typeSelected = "";
 				state.dropDownErrorMsg = "";
-				state.filters.models.type = [];
 				state.showDropDownTextField = false;
 			} else {
 				state.filters.models.type = state.allModels.filter((one) => {
-					switch (state.inputTextUser.toLowerCase()) {
-						case one.make.toLowerCase():
-							state.filters.make.typeSelected = one.make;
-							return one;
-						case one.model.toLowerCase():
-							state.filters.make.typeSelected = one.make;
-							return one;
-						case one.carType.toLowerCase():
-							state.filters.carType.typeSelected = one.carType;
-							return one;
-						default:
-							return;
+					if (make && !model) {
+						state.filters.make.typeSelected = make;
+						return one.make === make;
+					} else if (model) {
+						state.filters.make.typeSelected = make;
+						return one.model === model;
+					} else if (type) {
+						state.filters.carType.typeSelected = type;
+						return one.carType === type;
 					}
 				});
 
@@ -675,26 +699,28 @@ export default new Vuex.Store({
 				state.filters.models.typeSelected = "";
 			}
 		},
-		clearInputTextUser(state,id) {
-			if (id == 'clear-models') {
-				state.inputTextUser = state.inputTextUser.replace(state.filters.models.typeSelected,'').trim()
+		clearInputTextUser(state, id) {
+			if (id == "clear-models") {
+				state.inputTextUser = state.inputTextUser
+					.replace(state.filters.models.typeSelected, "")
+					.trim();
 			}
-			if (id == 'clear-makes') {
-				state.inputTextUser = ''
+			if (id == "clear-makes") {
+				state.inputTextUser = "";
 			}
 		},
 		updateInputTextUser(state) {
 			let make = state.filters.make.typeSelected,
-			model = state.filters.models.typeSelected,
-			type = state.filters.carType.typeSelected;
-     
+				model = state.filters.models.typeSelected,
+				type = state.filters.carType.typeSelected;
+
 			if (make) {
 				state.inputTextUser = make;
 			}
-			if (make && model && !model.includes('All')) {
+			if (make && model && !model.includes("All")) {
 				state.inputTextUser = `${make} ${model}`;
 			}
-			if(type){
+			if (type) {
 				state.inputTextUser = type;
 			}
 		},
